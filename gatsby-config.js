@@ -1,10 +1,23 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: `Saglietti`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
   },
   plugins: [
+    // Simple config, passing URL
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        // Arbitrary name for the remote schema Query type
+        typeName: "WORDPRESS",
+        // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
+        fieldName: "wordpress",
+        // Url to query from
+        url: "http://localhost:8888/saglietti/graphql",
+        refetchInterval: 60,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
