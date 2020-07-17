@@ -45,6 +45,21 @@ const query = `
           }
           ${seoFields}
           status
+          slug
+          uri
+          title
+        }
+      }
+      pages {
+        nodes {
+          content
+          featuredImage {
+            node {
+              ${mediaFields}
+            }
+          }
+          ${seoFields}
+          status
           uri
           title
         }
@@ -62,13 +77,24 @@ exports.createPages = async ({ actions, graphql }) => {
 
   data.wordpress.posts.nodes.forEach(post => {
     actions.createPage({
-      path: `/progetti${post.uri}`,
-      component: path.resolve(`./src/components/templates/project.jsx`),
+      path: `/progetti/${post.slug}`,
+      component: path.resolve(`./src/components/particles/templates/project.jsx`),
       context: {
         ...post,
         id: post.id,
-        slug: post.uri,
         title: post.title
+      },
+    })
+  })
+
+  data.wordpress.pages.nodes.forEach(page => {
+    actions.createPage({
+      path: `${page.uri}`,
+      component: path.resolve(`./src/components/particles/templates/project.jsx`),
+      context: {
+        ...page,
+        id: page.id,
+        title: page.title
       },
     })
   })

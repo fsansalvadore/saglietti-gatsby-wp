@@ -1,9 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Layout from "../layout"
+import Layout from "../../layout"
 
-const ProjectPage = props => {
+const StudioPage = props => {
   const { content, title } = props.pageContext;
 
   return (
@@ -15,4 +15,4 @@ const ProjectPage = props => {
   )
 }
 
-export default ProjectPage
+export default StudioPage

@@ -2,10 +2,12 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 
 import Layout from "../components/layout"
+import MenuItems from '../components/molecules/menu-items/menu-items'
 
 const IndexPage = ({data}) => (
   <Layout>
-    <h1>Hi people</h1>
+    <h1>Saglietti</h1>
+    <MenuItems />
     {console.log(data)}
     <hr/>
     <h4>Posts:</h4>
@@ -14,9 +16,6 @@ const IndexPage = ({data}) => (
         <li>{post.date} - {post.slug}</li>
       ))}
     </ul>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/test/">Go to Test</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
   </Layout>
 )
 
