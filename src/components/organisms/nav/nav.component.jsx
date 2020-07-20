@@ -1,0 +1,79 @@
+import { Link } from "gatsby"
+import PropTypes from "prop-types"
+import React, { useState } from "react"
+
+import logo from '../../../images/Saglietti_logo.svg';
+import Menu from '../menu-container/menu-container.component';
+
+import styled from "styled-components";
+
+const Navbar = styled.div`
+  width: 100vw;
+  height: 100px;
+  position: fixed;
+  z-index: 999;
+  padding: 1.45rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
+const MenuBtn = styled.div`
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  span {
+    position: absolute;
+    width: 18px;
+    height: 1px;
+    background-color: #000;
+  }
+
+  span:first-of-type {
+    transform: translate3d(0, -4px, 0);
+  }
+
+  span:last-of-type {
+    transform: translate3d(0, 4px, 0);
+  }
+`
+
+const Nav = () => {
+  const [isOpen, toggleMenu] = useState(false)
+  
+  return (
+    <>
+      <Navbar>
+        <Link to="/" style={{display: "flex", alignItems: "center"}}>
+          <img src={logo} alt="Saglietti"/>
+        </Link>
+        <p>{isOpen ? "true" : "false"}</p>
+        <MenuBtn onClick={() => toggleMenu(!isOpen)}>
+          <span></span>
+          <span></span>
+        </MenuBtn>
+      </Navbar>
+      <Menu isOpen={isOpen}/>
+    </>
+  )
+}
+
+Nav.propTypes = {
+  siteTitle: PropTypes.string,
+}
+
+Nav.defaultProps = {
+  siteTitle: `Saglietti`,
+}
+
+export default Nav;
