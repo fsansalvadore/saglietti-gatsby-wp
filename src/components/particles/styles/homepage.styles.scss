@@ -1,0 +1,34 @@
+.video-section {
+  position: relative;
+  width: 100%;
+  height: auto;
+  box-sizing: content-box;
+  clear: both;
+  margin-bottom: 21vw;
+}
+
+.black-bg-container {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 250px;
+  background-color: #000;
+  text-align: center;
+  padding: 250px 0 40vw 0;
+
+  .quote-anim {
+    color: #fff;
+    font-size: 1.3rem;
+  }
+
+  .video-container {
+    position: absolute;
+    width: 90%;
+    // max-width: 1400px;
+    padding-bottom: 45%;
+    background-color: #222;
+    margin: 15vw auto 0 auto;
+    left: 0;
+    right: 0;
+  }
+}

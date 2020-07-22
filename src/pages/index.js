@@ -1,27 +1,20 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-import styled from 'styled-components';
 import Layout from "../components/layout"
-import { motion } from 'framer-motion';
 
-import VerticalLine from '../components/atoms/vertical-line.component'
+// Components
+import HeaderContainer from '../components/organisms/header-container/header-container.component'
+import VideoSection from '../components/organisms/video-section/video-section.component';
+import ContactsCTA from "../components/molecules/contacts-cta/contacts-cta.component";
 
-const HeaderContainer = styled.header`
-  position: relative;
-  width: 100%;
-  height: 200vh;
-`
+import '../components/particles/styles/homepage.styles.scss';
 
 const IndexPage = ({data}) => (
+
   <Layout>
-    <HeaderContainer>
-      <div></div>
-      <VerticalLine initial={{x: "-60vw"}} animate={{ x: 0 }}
-    transition={{ duration: 0.8 }} style={{left: "60%"}}/>
-    </HeaderContainer>
-    <h1>Saglietti</h1>
-    <hr/>
-    <h4>Posts:</h4>
+    <HeaderContainer />
+    <VideoSection />
+    <ContactsCTA />
     <ul>
       {data.wordpress.posts.nodes.map(post => (
         <li><Link key={post.id} to={`/progetti/${post.slug}`}>{post.date} - {post.slug}</Link></li>

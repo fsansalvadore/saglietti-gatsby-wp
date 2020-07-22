@@ -6,6 +6,7 @@ import logo from '../../../images/Saglietti_logo.svg';
 import Menu from '../menu-container/menu-container.component';
 
 import styled from "styled-components";
+import './nav.styles.scss';
 
 const Navbar = styled.div`
   width: 100vw;
@@ -24,6 +25,7 @@ const MenuBtn = styled.div`
   height: 50px;
   border: 1px solid black;
   border-radius: 50%;
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,7 +57,7 @@ const Nav = () => {
     <>
       <Navbar>
         <Link to="/" style={{display: "flex", alignItems: "center"}}>
-          <img src={logo} alt="Saglietti"/>
+          <img src={logo} className="logo" alt="Saglietti"/>
         </Link>
         <p>{isOpen ? "true" : "false"}</p>
         <MenuBtn onClick={() => toggleMenu(!isOpen)}>

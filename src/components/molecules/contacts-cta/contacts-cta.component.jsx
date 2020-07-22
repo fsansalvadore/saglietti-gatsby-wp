@@ -1,0 +1,48 @@
+import React from 'react'
+import { Link } from 'gatsby'
+import styled from 'styled-components'
+import Arrow from '../../../images/icons/arrow-right.svg'
+
+const ContactsComponent = styled.div`
+  width: 100%;
+  padding: 250px 5%;
+
+  a {
+    width: 100%;
+    float: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: normal;
+    margin-right: 0;
+
+    span {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @media (min-width: 900px) {
+    a {
+      width: 33%;
+      margin-right: 8.33%;
+    }
+  }
+`
+
+const ContactsCTA = () => {
+  return (
+    <ContactsComponent className="contacts-container">
+      <Link to="/contatti">Contattaci <span><img src={Arrow}/></span></Link>
+    </ContactsComponent>
+  )
+}
+
+export default ContactsCTA;

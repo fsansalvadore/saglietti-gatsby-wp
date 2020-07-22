@@ -11,6 +11,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Nav from "./organisms/nav/nav.component"
 import "./layout.css"
+import Footer from "./organisms/footer/footer.component"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -26,10 +27,8 @@ const Layout = ({ children }) => {
   return (
     <>
       <Nav siteTitle={data.site.siteMetadata.title} />
-      <main>{children}</main>
-      <footer>
-        Copyright © {new Date().getFullYear()}
-      </footer>
+        <main>{children}</main>
+      <Footer />
     </>
   )
 }
