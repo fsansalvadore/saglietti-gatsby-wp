@@ -4,7 +4,7 @@ import ContactForm from '../contact-form/contact-form.component'
 const ContactsInfoContainer = () => {
   return (
     <div className="header-left">
-      <div className="header-text-center h-screen">
+      <div className="header-text-center flex align-center h-screen">
         <div className="flex align-center">
           <div className="text-block half">
             <h2>New Business.</h2>
@@ -27,7 +27,7 @@ const ContactsInfoContainer = () => {
         </div>
       </div>
       <hr className="header-text-center"/>
-      <div className="header-text-center h-screen">
+      <div className="header-text-center flex align-center h-screen">
         <ContactForm />
       </div>
     </div>

@@ -1,5 +1,5 @@
 :root {
-  --line-color: rgba(0, 0, 0, 0.1);
+  --line-color: rgba(0, 0, 0, 1);
 }
 
 * {

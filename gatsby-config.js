@@ -29,6 +29,11 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: "gatsby-plugin-transition-link",
+      options: {
+        }
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

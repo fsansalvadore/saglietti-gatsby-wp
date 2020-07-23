@@ -1,6 +1,8 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React, { useState } from "react"
+import { Link } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+
+import PropTypes from "prop-types"
 
 import logo from '../../../images/Saglietti_logo.svg';
 import Menu from '../menu-container/menu-container.component';
@@ -58,10 +60,9 @@ const Nav = () => {
   return (
     <>
       <Navbar>
-        <Link to="/" style={{display: "flex", alignItems: "center"}}>
+        <AniLink fade to="/" style={{display: "flex", alignItems: "center"}}>
           <img src={logo} className="logo" alt="Saglietti"/>
-        </Link>
-        <p>{isOpen ? "true" : "false"}</p>
+        </AniLink>
         <MenuBtn onClick={() => toggleMenu(!isOpen)}>
           <span></span>
           <span></span>

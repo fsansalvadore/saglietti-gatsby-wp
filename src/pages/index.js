@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
+import TransitionLink from 'gatsby-plugin-transition-link' 
 import Layout from "../components/layout"
 
 // Components
@@ -17,7 +18,7 @@ const IndexPage = ({data}) => (
     <ContactsCTA />
     <ul>
       {data.wordpress.posts.nodes.map(post => (
-        <li><Link key={post.id} to={`/progetti/${post.slug}`}>{post.date} - {post.slug}</Link></li>
+        <li><TransitionLink key={post.id} to={`/progetti/${post.slug}`}>{post.date} - {post.slug}</TransitionLink></li>
       ))}
     </ul>
   </Layout>
