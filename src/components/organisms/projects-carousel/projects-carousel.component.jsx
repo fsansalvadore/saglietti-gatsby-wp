@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby'
 
 import './projects-carousel.styles.scss'
 
@@ -12,14 +13,14 @@ const ProjectsCarousel = () => {
             <p>Branding  ·  Exhibitions  ·  Digital</p>
           </div>
           <div className="info-right">
-            
+
           </div>
         </div>
       </div>
-      <div className="carousel-bottom">
+      <Link to="/contatti" className="carousel-bottom">
         <p>Project Name</p>
         <a>Link</a>
-      </div>
+      </Link>
     </div>
   )
 }

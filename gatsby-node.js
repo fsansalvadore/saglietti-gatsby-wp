@@ -87,15 +87,15 @@ exports.createPages = async ({ actions, graphql }) => {
     })
   })
 
-  data.wordpress.pages.nodes.forEach(page => {
-    actions.createPage({
-      path: `${page.uri}`,
-      component: path.resolve(`./src/components/particles/templates/project.jsx`),
-      context: {
-        ...page,
-        id: page.id,
-        title: page.title
-      },
-    })
-  })
+  // data.wordpress.pages.nodes.forEach(page => {
+  //   actions.createPage({
+  //     path: `${page.uri}`,
+  //     component: path.resolve(`./src/components/particles/templates/project.jsx`),
+  //     context: {
+  //       ...page,
+  //       id: page.id,
+  //       title: page.title
+  //     },
+  //   })
+  // })
 }

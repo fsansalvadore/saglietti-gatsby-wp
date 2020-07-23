@@ -17,18 +17,20 @@ const Navbar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  pointer-events: none;
 `
 
 const MenuBtn = styled.div`
   position: relative;
   width: 50px;
   height: 50px;
-  border: 1px solid black;
   border-radius: 50%;
   background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: auto;
+  pointer: cursor;
 
   &:hover {
     cursor: pointer;
