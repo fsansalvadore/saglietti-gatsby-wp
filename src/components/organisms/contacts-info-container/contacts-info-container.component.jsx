@@ -5,7 +5,7 @@ const ContactsInfoContainer = () => {
   return (
     <div className="header-left">
       <div className="header-text-center flex align-center h-screen">
-        <div className="flex align-center">
+        <div className="flex">
           <div className="text-block half">
             <h2>New Business.</h2>
             <p>
