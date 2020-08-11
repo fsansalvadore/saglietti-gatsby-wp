@@ -5,6 +5,46 @@ const mediaFields = `
   uri
 `
 
+const projectCustomDetails = `
+  custom_post_type_Project {
+    ambiti
+    anno
+    credits
+    titolo
+  }
+`
+
+const coreBlocksFields = `
+  name
+  originalContent
+`
+const paragraphBlocks = `
+  ... on WORDPRESS_CoreParagraphBlock {
+    ${coreBlocksFields}
+  }
+`
+const headingBlocks = `
+... on WORDPRESS_CoreHeadingBlock {
+    ${coreBlocksFields}
+  }
+` 
+const imageBlocks = `
+  ... on WORDPRESS_CoreImageBlock {
+    ${coreBlocksFields}
+  }
+` 
+const galleryBlocks = `
+  ... on WORDPRESS_CoreGalleryBlock {
+    ${coreBlocksFields}
+  }
+`
+const carouselBlocks = `
+... on WORDPRESS_EedeeBlockGutensliderBlock {
+    name
+    dynamicContent
+  }
+`
+
 const seoFields = `
   seo {
     title
@@ -27,7 +67,7 @@ const seoFields = `
 const query = `
   query {
     wordpress {
-      posts(first: 100, where: { status: PUBLISH }) {
+      projects(first: 100, where: { status: PUBLISH }) {
         nodes {
           categories {
             nodes {
@@ -44,10 +84,19 @@ const query = `
             }
           }
           ${seoFields}
+          blocks {
+            ${paragraphBlocks}
+            ${headingBlocks}
+            ${imageBlocks}
+            ${galleryBlocks}
+            ${carouselBlocks}
+          }
           status
           slug
           uri
+          id
           title
+          ${projectCustomDetails}
         }
       }
       pages {
@@ -72,30 +121,17 @@ exports.createPages = async ({ actions, graphql }) => {
   const { data } = await graphql(`
     ${query}
   `)
-  // console.log(data);
-  // if (!data.wordpress) return null
 
-  data.wordpress.posts.nodes.forEach(post => {
+  data.wordpress.projects.nodes.forEach(project => {
     actions.createPage({
-      path: `/progetti/${post.slug}`,
+      path: `/progetti/${project.slug}`,
       component: path.resolve(`./src/components/particles/templates/project.jsx`),
       context: {
-        ...post,
-        id: post.id,
-        title: post.title
+        ...project,
+        blocks: project.blocks,
+        id: project.id,
+        title: project.title
       },
     })
   })
-
-  // data.wordpress.pages.nodes.forEach(page => {
-  //   actions.createPage({
-  //     path: `${page.uri}`,
-  //     component: path.resolve(`./src/components/particles/templates/project.jsx`),
-  //     context: {
-  //       ...page,
-  //       id: page.id,
-  //       title: page.title
-  //     },
-  //   })
-  // })
 }

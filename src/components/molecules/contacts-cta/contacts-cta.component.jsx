@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import TransitionLink from 'gatsby-plugin-transition-link'
+// import { Link } from 'gatsby'
+// import TransitionLink from 'gatsby-plugin-transition-link'
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import styled from 'styled-components'
 import Arrow from '../../../images/icons/arrow-right.svg'

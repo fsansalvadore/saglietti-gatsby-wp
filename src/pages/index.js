@@ -17,8 +17,8 @@ const IndexPage = ({data}) => (
     <VideoSection />
     <ContactsCTA />
     <ul>
-      {data.wordpress.posts.nodes.map(post => (
-        <li><TransitionLink key={post.id} to={`/progetti/${post.slug}`}>{post.date} - {post.slug}</TransitionLink></li>
+      {data.wordpress.projects.nodes.map(project => (
+        <li><Link key={project.id} to={`/progetti/${project.slug}`}>{project.date} - {project.slug}</Link></li>
       ))}
     </ul>
   </Layout>
@@ -27,7 +27,7 @@ const IndexPage = ({data}) => (
 export const query = graphql`
   query MyQuery {
     wordpress {
-      posts {
+      projects {
         nodes {
           id
           title

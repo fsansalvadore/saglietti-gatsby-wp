@@ -2,14 +2,15 @@ import React from "react"
 import { Link } from "gatsby"
 
 import Layout from "../../layout"
+import ComponentParser from '../ComponentParser'
 
 const ProjectPage = props => {
-  const { content, title } = props.pageContext;
+  const { content, blocks, title } = props.pageContext;
 
   return (
     <Layout>
       <h1>{title}</h1>
-      <article dangerouslySetInnerHTML={{ __html: content }}/>
+      <ComponentParser content={blocks}/>
       <Link to="/">Go to Home Page</Link>
     </Layout>
   )
