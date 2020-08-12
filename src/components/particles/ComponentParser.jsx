@@ -4,16 +4,16 @@ import { randomID } from '../helpers'
 // import blocks components
 import Paragraph from '../organisms/projects/paragraph/paragraph.component'
 // import Heading from '../organisms/projects/heading/heading.component'
-// import SingleImage from '../organisms/projects/single-image/single-image.component'
+import SingleImage from '../organisms/projects/single-image/single-image.component'
 // import Gallery from '../organisms/projects/gallery/gallery.component'
-// import Carousel from '../organisms/projects/carousel/carousel.component'
+import Carousel from '../organisms/projects/carousel/carousel.component'
 
 const components = {
     "core/paragraph": Paragraph,
-    // "core/image": SingleImage,
+    "core/image": SingleImage,
     // "core/gallery": Gallery,
     // "core/heading": Heading,
-    // "eedee/block-gutenslider": Carousel,
+    "eedee/block-gutenslider": Carousel,
 }
 
 const isEmpty = obj => {
@@ -22,12 +22,12 @@ const isEmpty = obj => {
 
 const ComponentParser = props => {
     let { content } = props
-    console.log("Props:")
-    console.log(props)
+    // console.log("Props:")
+    // console.log(props)
 
     if(!content) return null
-    console.log("Contenuto:")
-    console.log(typeof content)
+    // console.log("Contenuto:")
+    // console.log(typeof content)
     const filteredComponents = content.filter(component => component.name !== null)
 
     if (filteredComponents && filteredComponents.length > 0) {
@@ -36,8 +36,8 @@ const ComponentParser = props => {
             if (!component) return null
 
             const Component = components[component.name]
-            console.log("Block:")
-            console.log(component.name)
+            // console.log("Block:")
+            // console.log(component.name)
 
             if (!Component) return null
 

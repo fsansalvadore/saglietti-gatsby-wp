@@ -19,7 +19,7 @@ const ProjectsCarousel = () => {
       </div>
       <Link to="/contatti" className="carousel-bottom">
         <p>Project Name</p>
-        <a>Link</a>
+        <a href="/">Link</a>
       </Link>
     </div>
   )

@@ -13,7 +13,7 @@ const ContactsInfoContainer = () => {
               Siamo pronti ad ascoltare le tue esigenze e quelle del tuo brand.<br/>
               Sarà un piacere incontrarti.
             </p>
-            <a href="mailto:alessandro@saglietti.it" target="_blank">alessandro@saglietti.it</a>
+            <a href="mailto:alessandro@saglietti.it" target="_blank" rel="noreferrer">alessandro@saglietti.it</a>
           </div>
           <div className="text-block half">
             <h2>Internship.</h2>
@@ -22,7 +22,7 @@ const ContactsInfoContainer = () => {
               Ti ricontatteremo appena possibile.<br/>
               Al momento l'organico dello studio è al completo.
             </p>
-            <a href="mailto:portfolio@saglietti.it" target="_blank">portfolio@saglietti.it</a>
+            <a href="mailto:portfolio@saglietti.it" target="_blank" rel="noreferrer">portfolio@saglietti.it</a>
           </div>
         </div>
       </div>

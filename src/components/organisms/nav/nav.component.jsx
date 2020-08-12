@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+// import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 import PropTypes from "prop-types"
 
@@ -60,9 +60,9 @@ const Nav = () => {
   return (
     <>
       <Navbar>
-        <AniLink fade to="/" style={{display: "flex", alignItems: "center"}}>
+        <Link fade to="/" style={{display: "flex", alignItems: "center"}}>
           <img src={logo} className="logo" alt="Saglietti"/>
-        </AniLink>
+        </Link>
         <MenuBtn onClick={() => toggleMenu(!isOpen)}>
           <span></span>
           <span></span>

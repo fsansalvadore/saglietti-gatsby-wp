@@ -1,7 +1,10 @@
 const path = require(`path`)
 
 const mediaFields = `
+  id
   altText
+  title(format: RENDERED)
+  link
   uri
 `
 
@@ -31,6 +34,16 @@ const headingBlocks = `
 const imageBlocks = `
   ... on WORDPRESS_CoreImageBlock {
     ${coreBlocksFields}
+    attributes {
+      ... on WORDPRESS_CoreImageBlockAttributes {
+        id
+        url
+        title
+        className
+        align
+        alt
+      }
+    }
   }
 ` 
 const galleryBlocks = `
@@ -42,6 +55,7 @@ const carouselBlocks = `
 ... on WORDPRESS_EedeeBlockGutensliderBlock {
     name
     dynamicContent
+    saveContent
   }
 `
 

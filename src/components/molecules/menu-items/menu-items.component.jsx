@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+// import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 import styled from 'styled-components';
 
@@ -29,9 +29,9 @@ const NavLinks = styled.nav`
 const MenuItems = () => {
   return (
     <NavLinks>
-      <AniLink to="/studio" className="menu-link">Studio</AniLink>
-      <AniLink to="/progetti" className="menu-link">Progetti</AniLink>
-      <AniLink to="/contatti" className="menu-link">Contatti</AniLink>
+      <Link to="/studio" className="menu-link">Studio</Link>
+      <Link to="/progetti" className="menu-link">Progetti</Link>
+      <Link to="/contatti" className="menu-link">Contatti</Link>
     </NavLinks>
   )
 }

@@ -42,7 +42,7 @@ const ContactsComponent = styled.div`
 const ContactsCTA = () => {
   return (
     <ContactsComponent className="contacts-container">
-      <AniLink fade to="/contatti">Contattaci <span><img src={Arrow}/></span></AniLink>
+      <AniLink fade to="/contatti">Contattaci <span><img src={Arrow} alt=""/></span></AniLink>
     </ContactsComponent>
   )
 }

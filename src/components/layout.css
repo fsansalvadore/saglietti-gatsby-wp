@@ -103,6 +103,7 @@ dfn {
 }
 h1 {
   font-size: 2em;
+  letter-spacing: -0.04rem;
   margin: 0.67em 0;
 }
 mark {
