@@ -22,6 +22,8 @@ module.exports = {
       resolve: `gatsby-plugin-sass`,
     },
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -34,8 +36,6 @@ module.exports = {
       options: {
         }
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

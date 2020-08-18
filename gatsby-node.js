@@ -56,6 +56,30 @@ const carouselBlocks = `
     name
     dynamicContent
     saveContent
+    innerBlocks {
+      ... on WORDPRESS_EedeeBlockGutenslideBlock {
+        dynamicContent
+        originalContent
+        name
+        attributes {
+          ... on WORDPRESS_EedeeBlockGutenslideBlockAttributes {
+            mediaId
+            mediaUrl
+            linkUrl
+            mediaAlt
+            background
+            dimRatio
+            className
+            initialized
+            isEditable
+            mediaType
+            overlayColor
+            rgbaBackground
+            verticalAlign
+          }
+        }
+      }
+    }
   }
 `
 

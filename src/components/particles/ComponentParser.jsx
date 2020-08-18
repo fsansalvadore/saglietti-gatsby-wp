@@ -5,13 +5,13 @@ import { randomID } from '../helpers'
 import Paragraph from '../organisms/projects/paragraph/paragraph.component'
 // import Heading from '../organisms/projects/heading/heading.component'
 import SingleImage from '../organisms/projects/single-image/single-image.component'
-// import Gallery from '../organisms/projects/gallery/gallery.component'
+import Gallery from '../organisms/projects/gallery/gallery.component'
 import Carousel from '../organisms/projects/carousel/carousel.component'
 
 const components = {
     "core/paragraph": Paragraph,
     "core/image": SingleImage,
-    // "core/gallery": Gallery,
+    "core/gallery": Gallery,
     // "core/heading": Heading,
     "eedee/block-gutenslider": Carousel,
 }
