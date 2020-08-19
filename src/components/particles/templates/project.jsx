@@ -25,6 +25,34 @@ const ProjectContainerComponent = styled.div`
       font-weight: 400;
       letter-spacing: -0.06rem;
     }
+
+    .proj_details-container {
+      display: flex;
+
+      .proj_details-block {
+        flex: 1;
+        font-family: 'FFMarkWebProLight';
+        font-size: 0.7rem;
+        line-height: 1rem;
+
+        h2 {
+          font-weight: 200;
+          font-size: inherit;
+          margin-bottom: 0;
+          line-height: inherit;
+        }
+        p {
+          margin: 0;
+          line-height: inherit;
+        }
+        ul, li {
+          margin: 0;
+          line-height: inherit;
+          padding: 0;
+          list-style-type: none;
+        }
+      }
+    }
   }
 
   .proj_content-container {
@@ -39,6 +67,7 @@ const ProjectContainerComponent = styled.div`
       height: 50vh;
       background-size: cover;
       background-position: center;
+      margin-bottom: 4rem;
     }
   }
 `
@@ -52,6 +81,8 @@ const ProjectPage = props => {
   
   // console.log("featuredImage:")
   // console.log(featuredImage)
+  console.log("custom_post_type_Project:")
+  console.log(custom_post_type_Project)
 
   return (
     <Layout>
@@ -62,7 +93,31 @@ const ProjectPage = props => {
               <h1>{custom_post_type_Project.titolo}</h1>
             </div>
             <div className="proj_details-container">
-
+              {
+                custom_post_type_Project.credits && custom_post_type_Project.credits.length > 0 &&
+                  <div className="proj_details-block">
+                    <h2>Credits</h2>
+                    <p>{custom_post_type_Project.credits}</p>
+                  </div>
+              }
+              {
+                custom_post_type_Project.anno && custom_post_type_Project.anno.length !== null &&
+                  <div className="proj_details-block">
+                    <h2>Anno</h2>
+                    <p>{custom_post_type_Project.anno}</p>
+                  </div>
+              }
+              {
+                custom_post_type_Project.ambiti && custom_post_type_Project.ambiti.length > 0 &&
+                  <div className="proj_details-block">
+                    <h2>Ambiti</h2>
+                    <ul>
+                      {custom_post_type_Project.ambiti.map(ambito => (
+                        <li>{ambito}</li>
+                      ))}
+                    </ul>
+                  </div>
+              }
             </div>
           </div>
         </div>

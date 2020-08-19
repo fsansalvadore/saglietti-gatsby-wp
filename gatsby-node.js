@@ -133,7 +133,6 @@ const query = `
             ${imageBlocks}
             ${galleryBlocks}
             ${carouselBlocks}
-            ${mediaTextBlocks}
           }
           status
           slug
