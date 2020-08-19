@@ -26,6 +26,11 @@ const paragraphBlocks = `
     ${coreBlocksFields}
   }
 `
+const mediaTextBlocks = `
+  ... on WORDPRESS_CoreMediaTextBlock {
+    ${coreBlocksFields}
+  }
+`
 const headingBlocks = `
 ... on WORDPRESS_CoreHeadingBlock {
     ${coreBlocksFields}
@@ -128,6 +133,7 @@ const query = `
             ${imageBlocks}
             ${galleryBlocks}
             ${carouselBlocks}
+            ${mediaTextBlocks}
           }
           status
           slug

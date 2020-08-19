@@ -5,8 +5,8 @@ import ParagraphStyled from './paragraph.styled'
 
 const Paragraph = ({name, originalContent}) => {
     
-    console.log('From paragraph component:')
-    console.log(name)
+    // console.log('From paragraph component:')
+    // console.log(name)
 
     return (
         <ParagraphStyled>

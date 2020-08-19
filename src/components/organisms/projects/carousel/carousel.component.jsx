@@ -27,12 +27,17 @@ const SliderBlock = styled.div`
     .slick-slide {
         padding: 10px;
     }
+    * {
+        outline: none !important;
+        box-shadow: none !important;
+    }
 `
 
 const Carousel = ({name, saveContent, dynamicContent, innerBlocks }) => {
     var settings = {
         dots: false,
         infinite: false,
+        arrows: false,
         speed: 500,
         slidesToShow: 2,
         slidesToScroll: 2,
@@ -59,14 +64,8 @@ const Carousel = ({name, saveContent, dynamicContent, innerBlocks }) => {
                 slidesToScroll: 1
               }
             }
-          ]
-      };
-
-    // const sliderRef = useRef(parse(dynamicContent));
-    console.log('innerBlocks:')
-    console.log(innerBlocks)
-
-    console.log(JSON.parse(innerBlocks[0].attributes.background).backgroundImage)
+        ]
+    };
 
     return (
         <SliderBlock>

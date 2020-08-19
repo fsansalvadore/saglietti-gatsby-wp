@@ -31,7 +31,6 @@ const ProjectContainerComponent = styled.div`
     position: relative;
     width: 60vw;
     min-height: 100vh;
-    padding-bottom: 4rem;
     overflow: hidden;
 
     .proj_cover {
@@ -51,8 +50,8 @@ const ProjectPage = props => {
     featuredImage
   } = props.pageContext;
   
-  console.log("featuredImage:")
-  console.log(featuredImage)
+  // console.log("featuredImage:")
+  // console.log(featuredImage)
 
   return (
     <Layout>
