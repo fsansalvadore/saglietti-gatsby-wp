@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import './gallery.style.scss'
 
 const GalleryContainer = styled.div`
-    padding: 0 4rem;
+    padding: 0 4rem 4rem 4rem;
 `
 
 const Gallery = ({originalContent}) => {

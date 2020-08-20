@@ -12,6 +12,7 @@ const SliderBlock = styled.div`
     min-height: 300px;
     max-height: 300px;
     padding: 1rem 4rem;
+    margin-bottom: 4rem;
     overflow: visible;
 
     .slick-slider,
