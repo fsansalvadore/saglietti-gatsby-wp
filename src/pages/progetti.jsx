@@ -1,84 +1,41 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import Layout from '../components/layout'
-import styled from 'styled-components'
+import { gsap } from "gsap"
+// import Charming from '../components/particles/hooks/charming.min.js'
+// import TweenMax from '../components/particles/hooks/TweenMax.min.js'
+import LinkHover from '../components/particles/hooks/linkHoverImageFX'
 
-const Container = styled.div`
-  width: 100%;
-  max-width: 1200px;
-  margin: 30vh auto 0 auto;
-  padding: 0 25% 200px 8.3%;
-  text-align: right;
-
-  h1 {
-    font-family: 'FFMarkWebProLight';
-    font-weight: 200;
-    font-size: 1rem;
-    letter-spacing: -0.03rem;
-    margin-bottom: 2rem;
-  }
-  ul, li {
-    list-style-type: none;
-    margin: 0;
-
-    a {
-      display: block;
-      text-decoration: none;
-      font-size: 3rem;
-      letter-spacing: -0.05rem;
-      margin: 0;
-      line-height: 2rem;
-      padding: 50px 0 60px 0;
-
-      @media (max-width: 768px) {
-        font-size: 1.6rem;
-      }
-    }
-  }
-
-  li {
-    position: relative;
-
-    &::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 1px;
-      background-color: #000;
-      top: 0;
-      left: 0;
-    }
-
-    &:last-of-type::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 1px;
-      background-color: #000;
-      bottom: 0;
-      left: 0;
-    }
-  }
-`
+import '../components/particles/styles/projects.styles.scss'
+import ProjectsContainer from '../components/organisms/projects/projects-container/projects-container.component'
 
 const Progetti = ({data}) => {
   console.log(data)
+
+  // Charming()
+  // TweenMax()
+  LinkHover()
+  
   return (
     <Layout>
-      <Container>
+      <ProjectsContainer>
         <h1>Progetti</h1>
-        <ul>
+        <ul className="proj_content">
           {
             data.wordpress.projects.nodes.map(proj => (
-              <li>
+              <li key={proj.id}>
                 <div className="prog_list-item">
-                  <Link key={proj.id} to={`/progetti/${proj.slug}`}>{proj.title}</Link>
+                  <Link
+                    to={`/progetti/${proj.slug}`}
+                    className="block__title"
+                    data-img={proj.featuredImage.node.link}
+                    >{proj.title}</Link>
                 </div>
               </li>
             ))
           }
         </ul>
-      </Container>
+      </ProjectsContainer>
     </Layout>
   )
 }
@@ -92,6 +49,12 @@ export const query = graphql`
           title
           date
           slug
+          featuredImage {
+            node {
+              link
+              uri
+            }
+          }
         }
       }
     }

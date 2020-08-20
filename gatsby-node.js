@@ -44,6 +44,7 @@ const imageBlocks = `
         id
         url
         title
+        caption
         className
         align
         alt

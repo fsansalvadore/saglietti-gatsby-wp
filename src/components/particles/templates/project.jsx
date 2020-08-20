@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from 'styled-components'
-
+import ArrowRight from '../../atoms/svg/arrow-right.component'
 import Layout from "../../layout"
 import VerticalLine from '../../atoms/vertical-line.component'
 import ComponentParser from '../ComponentParser'
@@ -22,15 +22,21 @@ const ProjectContainerComponent = styled.div`
     padding: 1.45rem 2rem;
 
     h1 {
-      font-weight: 400;
+      font-family: 'FFMarkWebProLight';
+      font-weight: 200;
       letter-spacing: -0.06rem;
+    }
+
+    .proj_info-block {
+      width: 100%;
     }
 
     .proj_details-container {
       display: flex;
 
       .proj_details-block {
-        flex: 1;
+        width: 25%;
+        margin-right: 10px;       
         font-family: 'FFMarkWebProLight';
         font-size: 0.7rem;
         line-height: 1rem;
@@ -52,6 +58,27 @@ const ProjectContainerComponent = styled.div`
           list-style-type: none;
         }
       }
+    }
+  }
+
+  .proj_breadbrumbs {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+
+    a, svg {
+      display: inline;
+    }
+
+    a, span {
+      text-decoration: none;
+      font-size: 0.7rem;
+      font-weight: 200;
+      letter-spacing: -0.02rem;
+    }
+
+    svg {
+      margin: 0 10px;
     }
   }
 
@@ -119,6 +146,13 @@ const ProjectPage = props => {
                   </div>
               }
             </div>
+          </div>
+          <div className="proj_breadbrumbs">
+            <Link to="/">Home</Link>
+            <ArrowRight/>
+            <Link to="/progetti/">Progetti</Link>
+            <ArrowRight/>
+            <span>{custom_post_type_Project.titolo}</span>
           </div>
         </div>
         <VerticalLine initial={{x: "-40vw"}} animate={{ x: 0 }} transition={{ duration: 0.8 }} style={{left: "40%"}} />

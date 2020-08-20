@@ -27,7 +27,10 @@ const SingleImage = ({ attributes }) => {
     return (
         <StyledImageContainer size={attributes.className ? attributes.className : ''} align={attributes.align ? attributes.align : ''}>
             <img src={attributes.url} alt={attributes.title}/>
-            <figcaption>{attributes.title}</figcaption>
+            {
+                attributes.caption && attributes.caption.length > 0 &&
+                <figcaption>{attributes.caption}</figcaption>
+            }
         </StyledImageContainer>
     )
 }

@@ -11,8 +11,7 @@ import ContactsCTA from "../components/molecules/contacts-cta/contacts-cta.compo
 import '../components/particles/styles/homepage.styles.scss';
 
 const IndexPage = ({data}) => (
-
-  <Layout>
+  <Layout>    
     <HeaderContainer />
     <VideoSection />
     <ContactsCTA />
