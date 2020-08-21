@@ -14,7 +14,7 @@ const Navbar = styled.div`
   width: 100vw;
   height: 100px;
   position: fixed;
-  z-index: 999;
+  z-index: 998;
   padding: 1.45rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -22,7 +22,7 @@ const Navbar = styled.div`
   pointer-events: none;
 `
 
-const MenuBtn = styled.div`
+const MenuBtn = styled.a`
   position: relative;
   width: 50px;
   height: 50px;

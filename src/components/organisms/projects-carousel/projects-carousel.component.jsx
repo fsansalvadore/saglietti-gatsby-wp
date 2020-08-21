@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 
 import './projects-carousel.styles.scss'
 
@@ -24,5 +24,20 @@ const ProjectsCarousel = () => {
     </div>
   )
 }
+
+export const query = graphql`
+  query CarouselQuery {
+    wordpress {
+      projects {
+        nodes {
+          id
+          title
+          date
+          slug
+        }
+      }
+    }
+  }
+`
 
 export default ProjectsCarousel;

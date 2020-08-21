@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 import Layout from '../components/layout'
-import { gsap } from "gsap"
+// import { gsap } from "gsap"
 // import Charming from '../components/particles/hooks/charming.min.js'
 // import TweenMax from '../components/particles/hooks/TweenMax.min.js'
 import LinkHover from '../components/particles/hooks/linkHoverImageFX'
@@ -35,6 +35,14 @@ const Progetti = ({data}) => {
             ))
           }
         </ul>
+        <h2>Extra</h2>
+        <ul className="extra_proj-container">
+          {
+            data.wordpress.extra_projects.nodes.map(extra_proj => (
+            <li key={extra_proj.title + "-" + extra_proj.date}>{extra_proj.title}</li>
+            ))
+          }
+        </ul>
       </ProjectsContainer>
     </Layout>
   )
@@ -55,6 +63,19 @@ export const query = graphql`
               uri
             }
           }
+        }
+      }
+      extra_projects {
+        nodes {
+          featuredImage {
+            node {
+              link
+            }
+          }
+          id
+          date
+          slug
+          title
         }
       }
     }

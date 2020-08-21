@@ -28,6 +28,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <AnimatedCursor
+        className="customCursor"
         innerSize={12}
         outerSize={0}
         color='0, 0, 0'

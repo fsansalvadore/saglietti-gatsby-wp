@@ -7,7 +7,7 @@ const ProjectsContainer = styled.div`
   padding: 0 25% 200px 8.3%;
   text-align: right;
 
-  h1 {
+  h1, h2 {
     font-family: 'FFMarkWebProLight';
     font-weight: 200;
     font-size: 1rem;
@@ -33,27 +33,42 @@ const ProjectsContainer = styled.div`
     }
   }
 
-  li {
-    position: relative;
+  .proj_content {
+    li {
+      position: relative;
 
-    &::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 1px;
-      background-color: #000;
-      top: 0;
-      left: 0;
+      &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: #000;
+        top: 0;
+        left: 0;
+      }
+
+      &:last-of-type::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: #000;
+        bottom: 0;
+        left: 0;
+      }
     }
+  }
 
-    &:last-of-type::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 1px;
-      background-color: #000;
-      bottom: 0;
-      left: 0;
+  h2 {
+    font-weight: 200;
+    margin-top: 60px;
+  }
+
+  .extra_proj-container {
+    li {
+      font-size: 1rem;
+      font-weight: 800;
+      padding: 10px 0;
     }
   }
 `
