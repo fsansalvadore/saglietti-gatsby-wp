@@ -8,11 +8,11 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import AnimatedCursor from "react-animated-cursor"
 
 import Nav from "./organisms/nav/nav.component"
 import "./layout.css"
 import Footer from "./organisms/footer/footer.component"
+import Cursor from "./atoms/cursor.component"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -27,14 +27,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <AnimatedCursor
-        className="customCursor"
-        innerSize={12}
-        outerSize={0}
-        color='0, 0, 0'
-        outerAlpha={0.2}
-        innerScale={2.5}
-        outerScale={5}/>
+      <Cursor/>
       <Nav siteTitle={data.site.siteMetadata.title} />
       <main>{children}</main>
       <Footer />

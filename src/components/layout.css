@@ -26,6 +26,7 @@
   --ease-1: cubic-bezier(.6,.01,-.05,0.9);
 }
 html {
+  background: #fff;
   font-family: 'FFMarkWebProLight', sans-serif;
   overflow: auto !important;
   -ms-text-size-adjust: 100%;

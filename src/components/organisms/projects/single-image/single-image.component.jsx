@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Reveal from 'react-reveal/Reveal';
 
 const StyledImageContainer = styled.figure`
     position: relative;
@@ -26,11 +27,13 @@ const SingleImage = ({ attributes }) => {
 
     return (
         <StyledImageContainer size={attributes.className ? attributes.className : ''} align={attributes.align ? attributes.align : ''}>
+            <Reveal effect="anim_enter">
             <img src={attributes.url} alt={attributes.title}/>
             {
                 attributes.caption && attributes.caption.length > 0 &&
                 <figcaption>{attributes.caption}</figcaption>
             }
+            </Reveal>
         </StyledImageContainer>
     )
 }

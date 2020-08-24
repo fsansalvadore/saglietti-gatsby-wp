@@ -92,9 +92,27 @@ const ProjectContainerComponent = styled.div`
       width: 100%;
       min-height: 300px;
       height: 50vh;
-      background-size: cover;
-      background-position: center;
       margin-bottom: 4rem;
+      
+      .proj_cover-img {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        animation-name: coverReveal;
+        animation-duration: 0.6s;
+        animation-timing-function: cubic-bezier(0,0,.01,1);
+        animation-fill-mode: forwards;
+      }
+    }
+  }
+
+  @keyframes coverReveal {
+    0% {
+      height: 0%;
+    }
+    100% {
+      height: 100%;
     }
   }
 `
@@ -155,10 +173,10 @@ const ProjectPage = props => {
             <span>{custom_post_type_Project.titolo}</span>
           </div>
         </div>
-        <VerticalLine initial={{x: "-40vw"}} animate={{ x: 0 }} transition={{ duration: 0.8 }} style={{left: "40%"}} />
+        <VerticalLine initial={{x: "0"}} animate={{ x: 0 }} transition={{ duration: 0.8 }} style={{left: "40%"}} />
         <div className="proj_content-container">
-          <div className="proj_cover" style={{backgroundImage: `url(${featuredImage.node.link})`}}>
-
+          <div className="proj_cover">
+            <div className="proj_cover-img" style={{backgroundImage: `url(${featuredImage.node.link})`}}></div>
           </div>
           <ComponentParser content={blocks}/>
         </div>
