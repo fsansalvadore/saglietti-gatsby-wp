@@ -12,7 +12,6 @@ const SliderBlock = styled.div`
     min-height: 300px;
     max-height: 300px;
     padding: 1rem 4rem;
-    margin-bottom: 4rem;
     overflow: visible;
 
     .slick-slider,
@@ -74,7 +73,7 @@ const Carousel = ({name, saveContent, dynamicContent, innerBlocks }) => {
                 {
                     innerBlocks.map(slide => (
                         <div key={JSON.parse(slide.attributes.background).backgroundImage.id}>
-                            <img src={JSON.parse(slide.attributes.background).backgroundImage.link}/>
+                            <img src={JSON.parse(slide.attributes.background).backgroundImage.link} alt=""/>
                         </div>
                     ))
                 }

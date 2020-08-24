@@ -61,8 +61,8 @@ const Cursor = () => {
 
     const onMouseMove = React.useCallback(({ clientX, clientY }) => {
         cursorRef.current.style.opacity = '1';
-        cursorRef.current.style.top = clientY + 'px'
-        cursorRef.current.style.left = clientX + 'px'
+        cursorRef.current.style.top = (clientY - 12) + 'px'
+        cursorRef.current.style.left = (clientX - 12) + 'px'
         endX.current = clientX
         endY.current = clientY
     }, [])

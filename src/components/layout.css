@@ -141,7 +141,7 @@ samp {
   font-size: 1em;
 }
 figure {
-  margin: 1em 40px;
+  margin: 1em 40px 0 40px;
 }
 hr {
   box-sizing: content-box;
@@ -432,7 +432,7 @@ figure {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 1.45rem;
+  /* margin-bottom: 1.45rem; */
 }
 pre {
   margin-left: 0;

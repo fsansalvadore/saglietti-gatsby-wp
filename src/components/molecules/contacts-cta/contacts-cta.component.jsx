@@ -3,7 +3,7 @@ import React from 'react'
 // import TransitionLink from 'gatsby-plugin-transition-link'
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import styled from 'styled-components'
-import Arrow from '../../../images/icons/arrow-right.svg'
+import ArrowRightSVG from '../../../images/icons/arrow-right.svg'
 
 const ContactsComponent = styled.div`
   width: 100%;
@@ -42,7 +42,7 @@ const ContactsComponent = styled.div`
 const ContactsCTA = () => {
   return (
     <ContactsComponent className="contacts-container">
-      <AniLink fade to="/contatti">Contattaci <span><img src={Arrow} alt=""/></span></AniLink>
+      <AniLink fade to="/contatti">Contattaci <span><img src={ArrowRightSVG} alt=""/></span></AniLink>
     </ContactsComponent>
   )
 }

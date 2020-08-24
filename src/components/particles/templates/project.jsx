@@ -1,10 +1,13 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql, Link } from "gatsby"
 import styled from 'styled-components'
 import ArrowRight from '../../atoms/svg/arrow-right.component'
 import Layout from "../../layout"
 import VerticalLine from '../../atoms/vertical-line.component'
 import ComponentParser from '../ComponentParser'
+
+import PrevNextProject from '../../molecules/prev-next-project/prev-next-project.component'
+import TextRevealAnimation from '../hooks/animationTextReveal'
 
 const ProjectContainerComponent = styled.div`
   position: relative;
@@ -21,10 +24,15 @@ const ProjectContainerComponent = styled.div`
     width: 40vw;
     padding: 1.45rem 2rem;
 
-    h1 {
-      font-family: 'FFMarkWebProLight';
-      font-weight: 200;
-      letter-spacing: -0.06rem;
+    .title {
+      margin-bottom: 1.45rem;
+
+      h1 {
+        font-family: 'FFMarkWebProLight';
+        font-weight: 200;
+        letter-spacing: -0.06rem;
+        margin: 0;
+      }
     }
 
     .proj_info-block {
@@ -92,7 +100,6 @@ const ProjectContainerComponent = styled.div`
       width: 100%;
       min-height: 300px;
       height: 50vh;
-      margin-bottom: 4rem;
       
       .proj_cover-img {
         width: 100%;
@@ -117,26 +124,37 @@ const ProjectContainerComponent = styled.div`
   }
 `
 
-const ProjectPage = props => {
+const ProjectPage = (props) => {
   const {
     blocks,
     custom_post_type_Project,
+    index,
     featuredImage
   } = props.pageContext;
-  
-  // console.log("featuredImage:")
-  // console.log(featuredImage)
-  console.log("custom_post_type_Project:")
-  console.log(custom_post_type_Project)
+  const {data} = props;
+  let prevPost = null
+  let nextPost = null
+  const postLength = data.wordpress.projects.nodes.length
 
+  if (index === postLength - 1) {
+    prevPost = data.wordpress.projects.nodes[index - 1]
+    nextPost = data.wordpress.projects.nodes[0]
+  } else if (index === 0) {
+    prevPost = data.wordpress.projects.nodes[postLength - 1]
+    nextPost = data.wordpress.projects.nodes[index + 1]
+  } else {
+    prevPost = data.wordpress.projects.nodes[index - 1]
+    nextPost = data.wordpress.projects.nodes[index + 1]
+  }
+  
   return (
     <Layout>
       <ProjectContainerComponent>
         <div className="proj_info-container flex align-center">
           <div className="proj_info-block">
-            <div className="title">
-              <h1>{custom_post_type_Project.titolo}</h1>
-            </div>
+            <TextRevealAnimation addClass="title">
+              <h1 className="TextRevealItem">{custom_post_type_Project.titolo}</h1>
+            </TextRevealAnimation>
             <div className="proj_details-container">
               {
                 custom_post_type_Project.credits && custom_post_type_Project.credits.length > 0 &&
@@ -181,9 +199,24 @@ const ProjectPage = props => {
           <ComponentParser content={blocks}/>
         </div>
       </ProjectContainerComponent>
-      <Link to="/">Go to Home Page</Link>
+      <PrevNextProject prev={prevPost} next={nextPost}/>
     </Layout>
   )
 }
+
+export const query = graphql`
+  query PrevNextQuery {
+    wordpress {
+      projects {
+        nodes {
+          id
+          title
+          date
+          slug
+        }
+      }
+    }
+  }
+`
 
 export default ProjectPage

@@ -10,12 +10,11 @@ import '../components/particles/styles/projects.styles.scss'
 import ProjectsContainer from '../components/organisms/projects/projects-container/projects-container.component'
 
 const Progetti = ({data}) => {
-  console.log(data)
-
-  // Charming()
-  // TweenMax()
   LinkHover()
-  
+  console.log("data.wordpress.projects.nodes.id")
+  data.wordpress.projects.nodes.map(proj => (
+    console.log(data.wordpress.projects.nodes.indexOf(proj))
+  ))
   return (
     <Layout>
       <ProjectsContainer>

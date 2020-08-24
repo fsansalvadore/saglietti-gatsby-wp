@@ -172,6 +172,7 @@ exports.createPages = async ({ actions, graphql }) => {
       component: path.resolve(`./src/components/particles/templates/project.jsx`),
       context: {
         ...project,
+        index: data.wordpress.projects.nodes.indexOf(project),
         blocks: project.blocks,
         id: project.id,
         title: project.title
