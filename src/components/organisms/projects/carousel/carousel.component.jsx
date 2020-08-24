@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Slider from "react-slick";
+import Reveal from 'react-reveal/Reveal';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -9,9 +10,8 @@ const SliderBlock = styled.div`
     position: relative;
     display: block;
     width: 100%;
-    min-height: 300px;
     max-height: 300px;
-    padding: 1rem 4rem;
+    padding: 0 4rem;
     overflow: visible;
 
     .slick-slider,
@@ -68,17 +68,19 @@ const Carousel = ({name, saveContent, dynamicContent, innerBlocks }) => {
     };
 
     return (
-        <SliderBlock>
-            <Slider {...settings}>
-                {
-                    innerBlocks.map(slide => (
-                        <div key={JSON.parse(slide.attributes.background).backgroundImage.id}>
-                            <img src={JSON.parse(slide.attributes.background).backgroundImage.link} alt=""/>
-                        </div>
-                    ))
-                }
-            </Slider>
-        </SliderBlock>
+        <Reveal effect="anim_enter">
+            <SliderBlock>
+                <Slider {...settings}>
+                    {
+                        innerBlocks.map(slide => (
+                            <div key={JSON.parse(slide.attributes.background).backgroundImage.id}>
+                                <img src={JSON.parse(slide.attributes.background).backgroundImage.link} alt=""/>
+                            </div>
+                        ))
+                    }
+                </Slider>
+            </SliderBlock>
+        </Reveal>
     )
 }
 

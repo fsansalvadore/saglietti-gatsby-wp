@@ -1,7 +1,6 @@
 import React from 'react'
-// import { Link } from 'gatsby'
+import { Link } from 'gatsby'
 // import TransitionLink from 'gatsby-plugin-transition-link'
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 import styled from 'styled-components'
 import ArrowRightSVG from '../../../images/icons/arrow-right.svg'
 
@@ -20,6 +19,10 @@ const ContactsComponent = styled.div`
     font-weight: normal;
     margin-right: 0;
 
+    &:hover span {
+      transform: translate3d(10px, 0, 0);
+    }
+
     span {
       width: 42px;
       height: 42px;
@@ -28,6 +31,7 @@ const ContactsComponent = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.3s ease;
     }
   }
 
@@ -42,7 +46,7 @@ const ContactsComponent = styled.div`
 const ContactsCTA = () => {
   return (
     <ContactsComponent className="contacts-container">
-      <AniLink fade to="/contatti">Contattaci <span><img src={ArrowRightSVG} alt=""/></span></AniLink>
+      <Link fade to="/contatti">Contattaci <span><img src={ArrowRightSVG} alt=""/></span></Link>
     </ContactsComponent>
   )
 }

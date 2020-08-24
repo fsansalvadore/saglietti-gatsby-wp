@@ -72,7 +72,7 @@ const ProjectContainerComponent = styled.div`
   .proj_breadbrumbs {
     position: absolute;
     bottom: 30px;
-    left: 30px;
+    left: 2rem;
 
     a, svg {
       display: inline;
@@ -104,10 +104,10 @@ const ProjectContainerComponent = styled.div`
       .proj_cover-img {
         width: 100%;
         height: 100%;
-        background-size: cover;
         background-position: center;
+        background-color: #ddd;
         animation-name: coverReveal;
-        animation-duration: 0.6s;
+        animation-duration: 1.6s;
         animation-timing-function: cubic-bezier(0,0,.01,1);
         animation-fill-mode: forwards;
       }
@@ -117,9 +117,11 @@ const ProjectContainerComponent = styled.div`
   @keyframes coverReveal {
     0% {
       height: 0%;
+      background-size: 150% auto;
     }
     100% {
       height: 100%;
+      background-size: 100% auto;
     }
   }
 `

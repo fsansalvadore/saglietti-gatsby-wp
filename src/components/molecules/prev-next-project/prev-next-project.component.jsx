@@ -5,7 +5,7 @@ import ArrowRightCircle from '../../atoms/arrow-right-circle.component'
 import ArrowLeftCircle from '../../atoms/arrow-left-circle.component'
 
 const PrevNextProjectContainer = styled.div`
-    padding: 60px 4rem;
+    padding: 60px 2rem;
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -22,17 +22,26 @@ const PrevNextProjectContainer = styled.div`
 
         span {
             margin: 0 10px;
+            transition: all 0.3s ease;
         }
     }
 
     .prev {
         align-self: start;
+
+        a:hover span {
+            transform: translate3d(-10px, 0, 0) scale(0.8);
+        }
     }
 
     .next {
         align-self: flex-end;
         text-align: right;
         justify-content: flex-end;
+
+        a:hover span {
+            transform: translate3d(10px, 0, 0) scale(0.8);
+        }
     }
 `
 

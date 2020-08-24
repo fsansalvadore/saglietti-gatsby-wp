@@ -6,7 +6,7 @@ import Logo from '../../../images/Saglietti_logo.svg'
 
 const FooterComponent = styled.footer`
   width: 100%;
-  padding: 70px 5%;
+  padding: 70px 2rem;
   display: flex;
   border-top: 1px solid var(--line-color);
 
