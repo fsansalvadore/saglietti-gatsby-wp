@@ -108,7 +108,7 @@ const Cursor = () => {
             el.addEventListener('mouseout', () => {
                 setIsHover(false)
                 setIsClick(false)
-            }, [isHover]);
+            });
         });
     })
         
