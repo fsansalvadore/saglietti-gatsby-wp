@@ -91,7 +91,7 @@ const Cursor = () => {
 
     React.useEffect(() => {
         const hoverables = document.querySelectorAll(
-            'a, input[type="submit"], input[type="image"], label[for], select, button, .link'
+            'a, input[type="submit"], input[type="image"], label[for], select, button, .link, .slick-slide img'
         )
 
         hoverables.forEach((el) => {
