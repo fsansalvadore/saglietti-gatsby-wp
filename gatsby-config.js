@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Saglietti`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    description: `Saglietti gatsby.`,
     author: `@gatsbyjs`,
   },
   plugins: [
@@ -14,7 +14,7 @@ module.exports = {
         // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
         fieldName: "wordpress",
         // Url to query from
-        url: "http://localhost:8888/saglietti/graphql",
+        url: "https://www.fsansalvadore.com/dev/saglietti/graphql",
         refetchInterval: 60,
       },
     },
