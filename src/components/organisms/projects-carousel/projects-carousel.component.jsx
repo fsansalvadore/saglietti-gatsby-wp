@@ -1,10 +1,25 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 
 import './projects-carousel.styles.scss'
 import ArrowRightCircle from '../../atoms/arrow-right-circle.component';
 
-const ProjectsCarousel = ({data}) => {
+const ProjectsCarousel = () => {
+  const data = useStaticQuery(graphql`
+    query CarouselQuery {
+      wordpress {
+        projects {
+          nodes {
+            id
+            title
+            date
+            slug
+          }
+        }
+      }
+    }
+  `)
+
   console.log(data)
 
   return (
@@ -27,20 +42,5 @@ const ProjectsCarousel = ({data}) => {
     </div>
   )
 }
-
-export const query = graphql`
-  query CarouselQuery {
-    wordpress {
-      projects {
-        nodes {
-          id
-          title
-          date
-          slug
-        }
-      }
-    }
-  }
-`
 
 export default ProjectsCarousel;

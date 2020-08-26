@@ -87,7 +87,7 @@ const Cursor = () => {
                 cursorRef.current.style.transform = 'scale(1)'
             }
         }
-    }, [isClick])
+    }, [isClick, isHover])
 
     React.useEffect(() => {
         const hoverables = document.querySelectorAll(
