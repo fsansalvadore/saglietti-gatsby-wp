@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
@@ -24,12 +24,17 @@ const Layout = ({ children }) => {
       }
     }
   `)
+  const [cursorComp, setCursorComp] = useState(null)
+
+  useEffect(() => {
+    if ( typeof document !== `undefined` ) {
+      setCursorComp(<Cursor/>)
+    }
+  }, [])
 
   return (
     <>
-    {
-        typeof document !== `undefined` && <Cursor/>
-    }
+      {cursorComp}
       <Nav siteTitle={data.site.siteMetadata.title} />
       <main>{children}</main>
       <Footer />
