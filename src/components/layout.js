@@ -28,7 +28,7 @@ const Layout = ({ children }) => {
   return (
     <>
     {
-        typeof window !== `undefined` && typeof document !== `undefined` && <Cursor/>
+        typeof document !== `undefined` && <Cursor/>
     }
       <Nav siteTitle={data.site.siteMetadata.title} />
       <main>{children}</main>
