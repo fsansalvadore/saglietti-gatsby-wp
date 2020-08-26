@@ -67,9 +67,7 @@ const Cursor = () => {
         endY.current = clientY
     }, [])
 
-    if(typeof window !== `undefined` && typeof document !== `undefined`) {
-        useEventListener('mousemove', onMouseMove, document)
-    }
+    useEventListener('mousemove', onMouseMove, document)
     
     React.useEffect(() => {
         if (isHover) {
@@ -113,7 +111,7 @@ const Cursor = () => {
             });
         });
     })
-        
+    
     return (
         <CursorComponent ref={cursorRef} />
     )
