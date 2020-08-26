@@ -9,13 +9,7 @@ import LinkHover from '../components/particles/hooks/linkHoverImageFX'
 import '../components/particles/styles/projects.styles.scss'
 import ProjectsContainer from '../components/organisms/projects/projects-container/projects-container.component'
 
-const Progetti = ({data}) => {
-  LinkHover()
-  console.log("data.wordpress.projects.nodes.id")
-  data.wordpress.projects.nodes.map(proj => (
-    console.log(data.wordpress.projects.nodes.indexOf(proj))
-  ))
-  return (
+const Progetti = ({data}) => (
     <Layout>
       <ProjectsContainer>
         <h1>Progetti</h1>
@@ -52,7 +46,6 @@ const Progetti = ({data}) => {
       </ProjectsContainer>
     </Layout>
   )
-}
 
 export const query = graphql`
   query ProjectsQuery {

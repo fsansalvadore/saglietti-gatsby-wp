@@ -4,4 +4,4 @@ import { client } from './src/context/ApolloContext';
 
 export const wrapRootElement = ({ element }) => (
   <ApolloProvider client={client}>{element}</ApolloProvider>
-);
+)

@@ -7,8 +7,7 @@ import TextRevealAnimation from '../components/particles/hooks/animationTextReve
 
 import '../components/particles/styles/global.styles.scss'
 
-const Studio = () => {
-  return (
+const Studio = () => (
     <Layout>
       <StudioHeader>
         <div className="header-text-center">
@@ -20,6 +19,5 @@ const Studio = () => {
       </StudioHeader>
     </Layout>
   )
-}
 
 export default Studio;

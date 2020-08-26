@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 import { TimelineLite } from "gsap/all";
 
-import * as ScrollMagic from "scrollmagic"; // Or use scrollmagic-with-ssr to avoid server rendering problems
+import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
 import { TweenMax, TimelineMax } from "gsap"; // Also works with TweenLite and TimelineLite
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 import { gsap } from "gsap";
@@ -10,7 +10,6 @@ import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 import CustomEase from '../../particles/vendor/gsap/CustomEase'
 import TextRevealAnimation from '../../particles/hooks/animationTextReveal'
 
-import "scrollMagic/scrollmagic/minified/plugins/debug.addIndicators.min.js";
 import '../../particles/styles/homepage.styles.scss';
 
 const VideoSectionStyled = styled.div`
@@ -18,7 +17,9 @@ const VideoSectionStyled = styled.div`
 `
 
 gsap.registerPlugin(CSSRulePlugin, CustomEase);
+if(typeof window !== `undefined`) {
 ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax);
+}
 
 class VideoSection extends Component {
   constructor(props){
@@ -31,18 +32,20 @@ class VideoSection extends Component {
 	}
 
   componentDidMount() {
-    // gsap
-    const controller = new ScrollMagic.Controller();
-  
-    this.videoTL.from(this.video, 0.5, {scale: 0.75, y: 50})
-  
-    new ScrollMagic.Scene({
-      triggerElement: this.video,
-      duration: "95%",
-      triggerHook: 1
-    })
-      .setTween(this.videoTL)
-      .addTo(controller);
+    if(typeof window !== `undefined`) {
+      // gsap
+      const controller = new ScrollMagic.Controller();
+    
+      this.videoTL.from(this.video, 0.5, {scale: 0.75, y: 50})
+    
+      new ScrollMagic.Scene({
+        triggerElement: this.video,
+        duration: "95%",
+        triggerHook: 1
+      })
+        .setTween(this.videoTL)
+        .addTo(controller);
+    }
   }
 
   render() {

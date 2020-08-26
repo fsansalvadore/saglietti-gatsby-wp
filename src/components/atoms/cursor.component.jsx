@@ -67,8 +67,10 @@ const Cursor = () => {
         endY.current = clientY
     }, [])
 
-    useEventListener('mousemove', onMouseMove, document)
-
+    if(typeof window !== `undefined` && typeof document !== `undefined`) {
+        useEventListener('mousemove', onMouseMove, document)
+    }
+    
     React.useEffect(() => {
         if (isHover) {
           cursorRef.current.style.transform = `scale(2)`

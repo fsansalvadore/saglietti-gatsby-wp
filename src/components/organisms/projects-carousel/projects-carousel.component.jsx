@@ -25,19 +25,19 @@ const ProjectsCarousel = () => {
   )
 }
 
-export const query = graphql`
-  query CarouselQuery {
-    wordpress {
-      projects {
-        nodes {
-          id
-          title
-          date
-          slug
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query CarouselQuery {
+//     wordpress {
+//       projects {
+//         nodes {
+//           id
+//           title
+//           date
+//           slug
+//         }
+//       }
+//     }
+//   }
+// `
 
 export default ProjectsCarousel;

@@ -8,8 +8,7 @@ import ContactsInfoContainer from '../components/organisms/contacts-info-contain
 
 import Map from '../images/map_viaParma25.jpg'
 
-const Contatti = () => {
-  return (
+const Contatti = () => (
     <Layout>
       <div className="header-container">
         <ContactsInfoContainer />
@@ -28,6 +27,5 @@ const Contatti = () => {
       </div>
     </Layout>
   )
-}
 
 export default Contatti;
