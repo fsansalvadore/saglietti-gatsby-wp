@@ -13,23 +13,25 @@ import Showreel from '../../../assets/SAGLIETTI_Showreel.mp4'
 
 import '../../particles/styles/homepage.styles.scss';
 
-const VideoSectionStyled = styled.div`
-  transform-style: preserve-3d;
-`
 if(typeof window !== `undefined`) {
-gsap.registerPlugin(CSSRulePlugin, CustomEase);
-ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax);
+  gsap.registerPlugin(CSSRulePlugin, CustomEase)
+  ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
 }
+const VideoSectionStyled = styled.div`
+transform-style: preserve-3d;
+`
+
 class VideoSection extends Component {
   constructor(props){
-		super(props);
-
+    super(props);
+    
 		this.videoTL = new TimelineLite();
 		// this.TextRevealTL = new TimelineLite();
-
+    
 		this.video = null;
-	}
-
+  }
+  
+  
   componentDidMount() {
     // gsap
     if(typeof window !== `undefined`) {
