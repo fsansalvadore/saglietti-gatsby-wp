@@ -1,10 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Layout from '../components/layout'
-// import { gsap } from "gsap"
-// import Charming from '../components/particles/hooks/charming.min.js'
-// import TweenMax from '../components/particles/hooks/TweenMax.min.js'
-import LinkHover from '../components/particles/hooks/linkHoverImageFX'
 
 import '../components/particles/styles/projects.styles.scss'
 import ProjectsContainer from '../components/organisms/projects/projects-container/projects-container.component'

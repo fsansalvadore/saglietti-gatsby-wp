@@ -2,8 +2,11 @@ import React from 'react';
 import { graphql, Link } from 'gatsby'
 
 import './projects-carousel.styles.scss'
+import ArrowRightCircle from '../../atoms/arrow-right-circle.component';
 
-const ProjectsCarousel = () => {
+const ProjectsCarousel = ({data}) => {
+  console.log(data)
+
   return (
     <div className="projects-carousel">
       <div className="carousel-top">
@@ -19,25 +22,25 @@ const ProjectsCarousel = () => {
       </div>
       <Link to="/contatti" className="carousel-bottom">
         <p>Project Name</p>
-        <a href="/">Link</a>
+        <ArrowRightCircle />
       </Link>
     </div>
   )
 }
 
-// export const query = graphql`
-//   query CarouselQuery {
-//     wordpress {
-//       projects {
-//         nodes {
-//           id
-//           title
-//           date
-//           slug
-//         }
-//       }
-//     }
-//   }
-// `
+export const query = graphql`
+  query CarouselQuery {
+    wordpress {
+      projects {
+        nodes {
+          id
+          title
+          date
+          slug
+        }
+      }
+    }
+  }
+`
 
 export default ProjectsCarousel;

@@ -9,6 +9,7 @@ import { gsap } from "gsap";
 import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 import CustomEase from '../../particles/vendor/gsap/CustomEase'
 import TextRevealAnimation from '../../particles/hooks/animationTextReveal'
+import Showreel from '../../../assets/SAGLIETTI_Showreel.mp4'
 
 import '../../particles/styles/homepage.styles.scss';
 
@@ -17,9 +18,7 @@ const VideoSectionStyled = styled.div`
 `
 
 gsap.registerPlugin(CSSRulePlugin, CustomEase);
-if(typeof window !== `undefined`) {
 ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax);
-}
 
 class VideoSection extends Component {
   constructor(props){
@@ -32,20 +31,18 @@ class VideoSection extends Component {
 	}
 
   componentDidMount() {
-    if(typeof window !== `undefined`) {
-      // gsap
-      const controller = new ScrollMagic.Controller();
-    
-      this.videoTL.from(this.video, 0.5, {scale: 0.75, y: 50})
-    
-      new ScrollMagic.Scene({
-        triggerElement: this.video,
-        duration: "95%",
-        triggerHook: 1
-      })
-        .setTween(this.videoTL)
-        .addTo(controller);
-    }
+    // gsap
+    const videoController = new ScrollMagic.Controller();
+  
+    this.videoTL.fromTo(this.video, 0.5, {scale: 0.75, y: 50}, {scale: 1, y: 0})
+  
+    new ScrollMagic.Scene({
+      triggerElement: this.video,
+      duration: "95%",
+      triggerHook: 1
+    })
+      .setTween(this.videoTL)
+      .addTo(videoController);
   }
 
   render() {
@@ -67,7 +64,7 @@ class VideoSection extends Component {
                 autoPlay
               >
                 <source
-                  src={"SAGLIETTI_Showreel.mp4"}
+                  src={Showreel}
                   type="video/mp4"
                 />
               </video>
