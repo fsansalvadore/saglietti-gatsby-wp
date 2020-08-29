@@ -1,5 +1,6 @@
 :root {
   --line-color: rgba(0, 0, 0, 1);
+  --ease-1: cubic-bezier(.6,.01,-.05,0.9);
 }
 
 * {
@@ -22,9 +23,6 @@
   font-style: normal;
 }
 
-:root {
-  --ease-1: cubic-bezier(.6,.01,-.05,0.9);
-}
 html {
   background: #fff;
   font-family: 'FFMarkWebProLight', sans-serif;

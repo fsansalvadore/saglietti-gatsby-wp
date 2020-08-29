@@ -43,14 +43,15 @@ const MenuBtn = styled.a`
     width: 18px;
     height: 1px;
     background-color: #000;
+    transition: transform 0.5s cubic-bezier(.9,0,0,0.9);
   }
 
   span:first-of-type {
-    transform: translate3d(0, -4px, 0);
+    transform: ${ props => props.isOpen ? "translate3d(0, 0px, 0) rotate(45deg)" : "translate3d(0, -4px, 0) rotate(0deg)"};
   }
 
   span:last-of-type {
-    transform: translate3d(0, 4px, 0);
+    transform: ${ props => props.isOpen ? "translate3d(0, 0px, 0) rotate(-45deg)" : "translate3d(0, 4px, 0) rotate(0deg)"};
   }
 `
 
@@ -63,7 +64,7 @@ const Nav = () => {
         <Link fade to="/" style={{display: "flex", alignItems: "center"}}>
           <img src={logo} className="logo" alt="Saglietti"/>
         </Link>
-        <MenuBtn onClick={() => toggleMenu(!isOpen)}>
+        <MenuBtn onClick={() => toggleMenu(!isOpen)} isOpen={isOpen}>
           <span></span>
           <span></span>
         </MenuBtn>

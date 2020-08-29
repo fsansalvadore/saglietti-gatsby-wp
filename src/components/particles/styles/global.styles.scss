@@ -22,7 +22,11 @@ $desktop-width: 1024px;
 }
 
 * {
-  cursor: none !important;
+  cursor: auto !important;
+}
+
+a {
+  cursor: pointer !important;
 }
 
 .header-container {

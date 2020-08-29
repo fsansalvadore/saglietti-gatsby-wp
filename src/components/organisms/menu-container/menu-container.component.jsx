@@ -25,7 +25,7 @@ const MenuContainer = styled.div`
 const Menu = ({isOpen}) => {
   return(
     <MenuContainer isOpen={isOpen} classname="menu-container">
-      <MenuItems></MenuItems>
+      <MenuItems isOpen={isOpen}></MenuItems>
     </MenuContainer>
   )
 }

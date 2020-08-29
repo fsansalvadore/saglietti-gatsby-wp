@@ -3,13 +3,13 @@ import styled from 'styled-components'
 
 const CursorComponent = styled.div`
     body, a, a:hover, * {
-        cursor: none !important;
+        cursor: auto !important;
     }
 
     position: fixed;
     display: none;
-    height: 24px;
-    width: 24px;
+    height: 20px;
+    width: 20px;
     background-blend-mode: difference !important;
     border: 1px solid #000;
     border-radius: 50%;
@@ -24,7 +24,7 @@ const CursorComponent = styled.div`
 
     @media screen and (min-width: 1000px) {
         body, a, a:hover {
-          cursor: none;
+          cursor: auto;
         }
     
         display: block;
@@ -60,9 +60,9 @@ const Cursor = () => {
     }
 
     const onMouseMove = React.useCallback(({ clientX, clientY }) => {
-        cursorRef.current.style.opacity = '1';
-        cursorRef.current.style.top = (clientY - 12) + 'px'
-        cursorRef.current.style.left = (clientX - 12) + 'px'
+        cursorRef.current.style.opacity = '0.75';
+        cursorRef.current.style.top = (clientY - 10) + 'px'
+        cursorRef.current.style.left = (clientX - 10) + 'px'
         endX.current = clientX
         endY.current = clientY
     }, [])
@@ -71,7 +71,7 @@ const Cursor = () => {
     
     React.useEffect(() => {
         if (isHover) {
-          cursorRef.current.style.transform = `scale(2)`
+          cursorRef.current.style.transform = `scale(1.9)`
         } else {
           cursorRef.current.style.transform = 'scale(1)'
         }
@@ -82,7 +82,7 @@ const Cursor = () => {
           cursorRef.current.style.transform = `scale(0.5)`
         } else {
             if(isHover) {
-                cursorRef.current.style.transform = 'scale(2)'
+                cursorRef.current.style.transform = 'scale(1.9)'
             } else {
                 cursorRef.current.style.transform = 'scale(1)'
             }

@@ -45,8 +45,8 @@ const ContactsComponent = styled.div`
 
 const ContactsCTA = () => {
   return (
-    <ContactsComponent className="contacts-container">
-      <Link fade to="/contatti">Contattaci <span><img src={ArrowRightSVG} alt=""/></span></Link>
+    <ContactsComponent className="contacts-container TextRevealAnim">
+      <Link fade to="/contatti" className="TextRevealItem">Contattaci <span><img src={ArrowRightSVG} alt=""/></span></Link>
     </ContactsComponent>
   )
 }

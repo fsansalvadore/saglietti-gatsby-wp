@@ -1,8 +1,16 @@
 import React, {Component} from 'react'
 
+import { gsap, TweenMax } from "gsap";
 import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
-import { gsap } from "gsap";
+import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
+import { TweenLite, TimelineLite } from "gsap/all";
 import CustomEase from '../vendor/gsap/CustomEase'
+
+
+if(typeof window !== `undefined`) {
+    gsap.registerPlugin(CustomEase)
+    ScrollMagicPluginGsap(ScrollMagic, TimelineLite, TweenLite )
+  }
 
 class TextRevealAnimation extends Component {
     constructor(props) {
@@ -19,9 +27,9 @@ class TextRevealAnimation extends Component {
         if(typeof window !== `undefined`) {
             const TextRevealController = new ScrollMagic.Controller();
         
-            if (document.querySelectorAll(".TextRevealAnim").length !== 0) {
-                document.querySelectorAll(".TextRevealAnim").forEach(TR => {
-                let item = TR.querySelector('.TextRevealItem')
+            if (document.querySelectorAll(".TextRevealAnim").length !== 0 && document.querySelector(".TextRevealItem")) {
+                document.querySelectorAll(".TextRevealAnim").forEach(txtReveal => {
+                let item = txtReveal.querySelector('.TextRevealItem')
                 let TextRevealTL = gsap.timeline();
                 TextRevealTL.from(item, {
                     duration: 1.5,
@@ -32,7 +40,7 @@ class TextRevealAnimation extends Component {
                 })
         
                 new ScrollMagic.Scene({
-                    triggerElement: TR,
+                    triggerElement: txtReveal,
                     triggerHook: 0,
                     offset: -600,
                     reverse: false

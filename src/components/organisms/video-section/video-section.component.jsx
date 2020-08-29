@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
-import { TimelineLite } from "gsap/all";
+import { TweenLite, TimelineLite } from "gsap/all";
 
-import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
-import { TweenMax, TimelineMax } from "gsap"; // Also works with TweenLite and TimelineLite
-import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 import { gsap } from "gsap";
+import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
+import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 import CustomEase from '../../particles/vendor/gsap/CustomEase'
 import TextRevealAnimation from '../../particles/hooks/animationTextReveal'
@@ -15,7 +14,7 @@ import '../../particles/styles/homepage.styles.scss';
 
 if(typeof window !== `undefined`) {
   gsap.registerPlugin(CSSRulePlugin, CustomEase)
-  ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
+  ScrollMagicPluginGsap(ScrollMagic, TimelineLite, TweenLite)
 }
 const VideoSectionStyled = styled.div`
 transform-style: preserve-3d;
