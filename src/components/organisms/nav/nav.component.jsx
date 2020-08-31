@@ -61,7 +61,7 @@ const Nav = () => {
   return (
     <>
       <Navbar>
-        <Link fade to="/" style={{display: "flex", alignItems: "center"}}>
+        <Link to="/" style={{display: "flex", alignItems: "center"}}>
           <img src={logo} className="logo" alt="Saglietti"/>
         </Link>
         <MenuBtn onClick={() => toggleMenu(!isOpen)} isOpen={isOpen}>

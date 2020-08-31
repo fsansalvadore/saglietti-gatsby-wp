@@ -3,15 +3,14 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 import { gsap } from "gsap";
-import { TweenLite, TimelineLite, TweenMax } from "gsap/all";
+import { TweenLite, TimelineLite } from "gsap/all";
 
 import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
-import CSSRulePlugin from "../../../particles/vendor/gsap/CSSRulePlugin";
 import CustomEase from '../../../particles/vendor/gsap/CustomEase'
 
 if(typeof window !== `undefined`) {
-  gsap.registerPlugin(CSSRulePlugin, CustomEase, TweenMax)
+  gsap.registerPlugin( CustomEase )
   ScrollMagicPluginGsap(ScrollMagic, TweenLite, TimelineLite)
 }
 
@@ -98,7 +97,6 @@ const ProjectsList = ({data}) => {
   useEffect(() => {
     if(typeof window !== `undefined`) {
       const menuTL = gsap.timeline();
-      const before = CSSRulePlugin.getRule(".proj_content li.pseudo:before")
       menuTL.fromTo("h1", 0.7, {x: -30, opacity: 0}, {x: 0, opacity: 1, ease: "power4.out"})
       .fromTo(".prog_list-item a", 1, {translateY: 100, opacity: 0}, {
         translateY: 0,
@@ -119,7 +117,7 @@ const ProjectsList = ({data}) => {
           {
             data.wordpress.projects &&
             data.wordpress.projects.nodes.map(proj => (
-              <li key={proj.id} className="pseudo">
+              <li key={`${proj.id}-${proj.slug}-${Math.floor(Math.random() * (100 - 999) + 100)}`} className="pseudo">
                 <span className="divider"></span>
                 <div className="prog_list-item">
                   <Link
@@ -140,7 +138,7 @@ const ProjectsList = ({data}) => {
               <ul className="extra_proj-container">
                 {
                   data.wordpress.extra_projects.nodes.map(extra_proj => (
-                  <li key={extra_proj.title + "-" + extra_proj.date}>{extra_proj.title}</li>
+                  <li key={`${extra_proj.title}-${extra_proj.date}-${Math.floor(Math.random() * (100 - 999) + 100)}`}>{extra_proj.title}</li>
                   ))
                 }
               </ul>

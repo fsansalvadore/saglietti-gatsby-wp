@@ -178,7 +178,7 @@ const ProjectPage = (props) => {
                     <h2>Ambiti</h2>
                     <ul>
                       {custom_post_type_Project.ambiti.map(ambito => (
-                        <li>{ambito}</li>
+                        <li key={`${ambito}-${Math.floor(Math.random() * (100 - 999) + 100)}`}>{ambito}</li>
                       ))}
                     </ul>
                   </div>

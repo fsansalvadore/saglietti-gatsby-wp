@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import { gsap, TweenMax } from "gsap";
+import { gsap } from "gsap";
 import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 import { TweenLite, TimelineLite } from "gsap/all";
