@@ -60,7 +60,7 @@ const ProjectsContainer = styled.div`
 
       .divider {
         position: absolute;
-        width: 100%;
+        width: 0;
         height: 1px;
         background-color: #000;
         top: 0;
@@ -72,7 +72,7 @@ const ProjectsContainer = styled.div`
   
   .last_divider {
     position: absolute;
-    width: 100%;
+    width: 0;
     height: 1px;
     background-color: #000;
     bottom: 0;
@@ -106,6 +106,36 @@ const ProjectsList = ({data}) => {
       }, 0.3)
       .fromTo(".divider", 0.6, { width: "0%" }, { width: "100%", ease: CustomEase.create("custom", "M0,0 C0.698,0 0.374,1 1,1 "), stagger: 0.2}, 0)
       .fromTo(".last_divider", 0.6, { width: "0%" }, { width: "100%", ease: CustomEase.create("custom", "M0,0 C0.698,0 0.374,1 1,1 ")}, "<1.2")
+
+      const fadeInController = new ScrollMagic.Controller();
+
+      if(document.querySelectorAll(".fade-in").length !== 0) {
+
+
+        document.querySelectorAll(".fade-in").forEach(fadeInItem => {
+          let TextRevealTL = gsap.timeline();
+          TextRevealTL.fromTo(fadeInItem,
+            {
+              opacity: 0,
+              y: 50
+            },
+            {
+              duration: 1.5,
+              opacity: 1,
+              y: 0,
+              ease: CustomEase.create("custom", "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1"),
+          })
+
+          new ScrollMagic.Scene({
+              triggerElement: fadeInItem,
+              triggerHook: 0,
+              offset: -600,
+              reverse: false
+          })
+          .setTween(TextRevealTL)
+          .addTo(fadeInController);
+        });
+      }
     }
   })
 
@@ -138,7 +168,7 @@ const ProjectsList = ({data}) => {
               <ul className="extra_proj-container">
                 {
                   data.wordpress.extra_projects.nodes.map(extra_proj => (
-                  <li key={`${extra_proj.title}-${extra_proj.date}-${Math.floor(Math.random() * (100 - 999) + 100)}`}>{extra_proj.title}</li>
+                  <li key={`${extra_proj.title}-${extra_proj.date}-${Math.floor(Math.random() * (100 - 999) + 100)}`} className="fade-in">{extra_proj.title}</li>
                   ))
                 }
               </ul>

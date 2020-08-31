@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 
 // Components
 import Layout from '../components/layout'
@@ -6,8 +7,9 @@ import StudioHeader from '../components/molecules/studio-header/studio-header.co
 import TextRevealAnimation from '../components/particles/hooks/animationTextReveal'
 
 import '../components/particles/styles/global.styles.scss'
+import StudioPage from '../components/particles/studio/studio-page.component'
 
-const Studio = () => (
+const Studio = ({data}) => (
     <Layout>
       <StudioHeader>
         <div className="header-text-center">
@@ -17,7 +19,21 @@ const Studio = () => (
           </TextRevealAnimation>
         </div>
       </StudioHeader>
+      <StudioPage data={data}/>
     </Layout>
   )
+
+export const query = graphql`
+  query StudioQuery {
+    wordpress {
+      clients {
+        nodes {
+          id
+          title
+        }
+      }
+    }
+  }
+`
 
 export default Studio;

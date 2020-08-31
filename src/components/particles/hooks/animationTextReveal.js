@@ -47,6 +47,29 @@ class TextRevealAnimation extends Component {
                 .setTween(TextRevealTL)
                 .addTo(TextRevealController);
                 });
+
+                document.querySelectorAll(".fade-in").forEach(fadeInItem => {
+                    let TextRevealTL = gsap.timeline();
+                    TextRevealTL.fromTo(fadeInItem,1.5,
+                        {
+                            opacity: 0,
+                            y: 50
+                        },
+                        {
+                        opacity: 1,
+                        y: 0,
+                        ease: CustomEase.create("custom", "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1"),
+                    })
+            
+                    new ScrollMagic.Scene({
+                        triggerElement: fadeInItem,
+                        triggerHook: 0,
+                        offset: -600,
+                        reverse: false
+                    })
+                    .setTween(TextRevealTL)
+                    .addTo(TextRevealController);
+                    });
         }
     }
 

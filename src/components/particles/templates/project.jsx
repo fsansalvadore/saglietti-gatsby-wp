@@ -8,6 +8,19 @@ import ComponentParser from '../ComponentParser'
 
 import PrevNextProject from '../../molecules/prev-next-project/prev-next-project.component'
 import TextRevealAnimation from '../hooks/animationTextReveal'
+import { useEffect } from "react"
+
+import { gsap } from "gsap";
+import { TweenLite, TimelineLite } from "gsap/all";
+
+import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
+import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
+import CustomEase from '../../particles/vendor/gsap/CustomEase'
+
+if(typeof window !== `undefined`) {
+  gsap.registerPlugin( CustomEase )
+  ScrollMagicPluginGsap(ScrollMagic, TweenLite, TimelineLite)
+}
 
 const ProjectContainerComponent = styled.div`
   position: relative;
@@ -148,6 +161,38 @@ const ProjectPage = (props) => {
     prevPost = data.wordpress.projects.nodes[index - 1]
     nextPost = data.wordpress.projects.nodes[index + 1]
   }
+
+  useEffect(() => {
+    if(typeof window !== `undefined`) {
+      if(document.querySelectorAll(".fade-in").length !== 0) {
+        const fadeController = new ScrollMagic.Controller();
+
+        document.querySelectorAll(".fade-in").forEach(fadeInItem => {
+          let TextRevealTL = gsap.timeline();
+          TextRevealTL.fromTo(fadeInItem,
+            {
+              opacity: 0,
+              // y: 50
+            },
+            {
+              duration: 1,
+              opacity: 1,
+              // y: 0,
+              ease: CustomEase.create("custom", "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1"),
+          })
+
+          new ScrollMagic.Scene({
+              triggerElement: fadeInItem,
+              triggerHook: 0,
+              offset: -600,
+              reverse: false
+          })
+          .setTween(TextRevealTL)
+          .addTo(fadeController);
+        });
+      }
+    }
+  })
   
   return (
     <Layout>
@@ -157,7 +202,7 @@ const ProjectPage = (props) => {
             <TextRevealAnimation addClass="title">
               <h1 className="TextRevealItem">{custom_post_type_Project.titolo}</h1>
             </TextRevealAnimation>
-            <div className="proj_details-container">
+            <div className="proj_details-container fade-in">
               {
                 custom_post_type_Project.credits && custom_post_type_Project.credits.length > 0 &&
                   <div className="proj_details-block">

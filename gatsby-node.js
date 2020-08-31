@@ -143,20 +143,6 @@ const query = `
           ${projectCustomDetails}
         }
       }
-      pages {
-        nodes {
-          content
-          featuredImage {
-            node {
-              ${mediaFields}
-            }
-          }
-          ${seoFields}
-          status
-          uri
-          title
-        }
-      }
     }
   }
 `
