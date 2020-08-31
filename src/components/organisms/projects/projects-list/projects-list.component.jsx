@@ -30,6 +30,7 @@ const ProjectsContainer = styled.div`
     margin-bottom: 2rem;
   }
   ul, li {
+    position: relative;
     list-style-type: none;
     margin: 0;
     overflow: hidden;
@@ -58,8 +59,7 @@ const ProjectsContainer = styled.div`
         will-change: transform;
       }
 
-      &.pseudo::before {
-        content: '';
+      .divider {
         position: absolute;
         width: 100%;
         height: 1px;
@@ -67,17 +67,17 @@ const ProjectsContainer = styled.div`
         top: 0;
         right: 0;
       }
-
-      &.pseudo:last-of-type::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 1px;
-        background-color: #000;
-        bottom: 0;
-        right: 0;
-      }
     }
+
+  }
+  
+  .last_divider {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    bottom: 0;
+    right: 0;
   }
 
   h2 {
@@ -100,13 +100,14 @@ const ProjectsList = ({data}) => {
       const menuTL = gsap.timeline();
       const before = CSSRulePlugin.getRule(".proj_content li.pseudo:before")
       menuTL.fromTo("h1", 0.7, {x: -30, opacity: 0}, {x: 0, opacity: 1, ease: "power4.out"})
-      .fromTo(".prog_list-item a", 1, {y: 100, opacity: 0}, {
-        y: 0,
+      .fromTo(".prog_list-item a", 1, {translateY: 100, opacity: 0}, {
+        translateY: 0,
         opacity: 1,
         stagger: 0.2,
         ease: "power4.out"
       }, 0.3)
-      .to(before, {duration: 0.4, cssRule: { y: 100 }, ease: "power4.out"})
+      .fromTo(".divider", 0.6, { width: "0%" }, { width: "100%", ease: CustomEase.create("custom", "M0,0 C0.698,0 0.374,1 1,1 "), stagger: 0.2}, 0)
+      .fromTo(".last_divider", 0.6, { width: "0%" }, { width: "100%", ease: CustomEase.create("custom", "M0,0 C0.698,0 0.374,1 1,1 ")}, "<1.2")
     }
   })
 
@@ -119,6 +120,7 @@ const ProjectsList = ({data}) => {
             data.wordpress.projects &&
             data.wordpress.projects.nodes.map(proj => (
               <li key={proj.id} className="pseudo">
+                <span className="divider"></span>
                 <div className="prog_list-item">
                   <Link
                     to={`/progetti/${proj.slug}`}
@@ -129,6 +131,7 @@ const ProjectsList = ({data}) => {
               </li>
             ))
           }
+          <span className="last_divider"></span>
         </ul>
         {
           data.wordpress.extra_projects && (
