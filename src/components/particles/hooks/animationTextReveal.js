@@ -27,7 +27,6 @@ class TextRevealAnimation extends Component {
         if(typeof window !== `undefined`) {
             const TextRevealController = new ScrollMagic.Controller();
         
-            if (document.querySelectorAll(".TextRevealAnim").length !== 0 && document.querySelector(".TextRevealItem")) {
                 document.querySelectorAll(".TextRevealAnim").forEach(txtReveal => {
                 let item = txtReveal.querySelector('.TextRevealItem')
                 let TextRevealTL = gsap.timeline();
@@ -48,7 +47,6 @@ class TextRevealAnimation extends Component {
                 .setTween(TextRevealTL)
                 .addTo(TextRevealController);
                 });
-            };
         }
     }
 
