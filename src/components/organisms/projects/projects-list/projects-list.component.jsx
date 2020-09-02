@@ -3,10 +3,10 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 import { gsap } from "gsap";
-import { TweenLite, TimelineLite } from "gsap/all";
 
 import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
+import { TweenLite, TimelineLite } from "gsap/all";
 import CustomEase from '../../../particles/vendor/gsap/CustomEase'
 
 if(typeof window !== `undefined`) {
@@ -96,7 +96,7 @@ const ProjectsContainer = styled.div`
 const ProjectsList = ({data}) => {
   useEffect(() => {
     if(typeof window !== `undefined`) {
-      const menuTL = gsap.timeline();
+      const menuTL = new TimelineLite();
       menuTL.fromTo("h1", 0.7, {x: -30, opacity: 0}, {x: 0, opacity: 1, ease: "power4.out"})
       .fromTo(".prog_list-item a", 1, {translateY: 100, opacity: 0}, {
         translateY: 0,
@@ -113,7 +113,7 @@ const ProjectsList = ({data}) => {
 
 
         document.querySelectorAll(".fade-in").forEach(fadeInItem => {
-          let TextRevealTL = gsap.timeline();
+          let TextRevealTL = new TimelineLite();
           TextRevealTL.fromTo(fadeInItem,
             {
               opacity: 0,

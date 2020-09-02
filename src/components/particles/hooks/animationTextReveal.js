@@ -3,13 +3,13 @@ import React, {Component} from 'react'
 import { gsap } from "gsap";
 import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
-import { TweenLite, TimelineLite } from "gsap/all";
+import { TweenMax, TweenLite, TimelineLite } from "gsap/all";
 import CustomEase from '../vendor/gsap/CustomEase'
 
 
 if(typeof window !== `undefined`) {
     gsap.registerPlugin(CustomEase)
-    ScrollMagicPluginGsap(ScrollMagic, TimelineLite, TweenLite )
+    ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineLite, TweenLite )
   }
 
 class TextRevealAnimation extends Component {
@@ -29,14 +29,19 @@ class TextRevealAnimation extends Component {
         
                 document.querySelectorAll(".TextRevealAnim").forEach(txtReveal => {
                 let item = txtReveal.querySelector('.TextRevealItem')
-                let TextRevealTL = gsap.timeline();
-                TextRevealTL.from(item, {
-                    duration: 1.5,
+                let TextRevealTL = new TimelineLite();
+                const itemTween = TweenMax.fromTo(item, {
                     opacity: 0,
                     y: 50,
                     skewY: (this.state.skew ? 5 : 0),
+                }, {
+                    duration: 1.5,
+                    opacity: 1,
+                    y: 0,
+                    skewY: 0,
                     ease: CustomEase.create("custom", "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1"),
                 })
+                TextRevealTL.add(itemTween)
         
                 new ScrollMagic.Scene({
                     triggerElement: txtReveal,
@@ -49,8 +54,8 @@ class TextRevealAnimation extends Component {
                 });
 
                 document.querySelectorAll(".fade-in").forEach(fadeInItem => {
-                    let TextRevealTL = gsap.timeline();
-                    TextRevealTL.fromTo(fadeInItem,1.5,
+                    let TextRevealTL = new TimelineLite();
+                    const fadeInTween = TweenMax.fromTo(fadeInItem,1.5,
                         {
                             opacity: 0,
                             y: 50
@@ -60,6 +65,7 @@ class TextRevealAnimation extends Component {
                         y: 0,
                         ease: CustomEase.create("custom", "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1"),
                     })
+                    TextRevealTL.add(fadeInTween)
             
                     new ScrollMagic.Scene({
                         triggerElement: fadeInItem,

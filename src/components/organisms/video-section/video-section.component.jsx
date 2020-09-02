@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components'
-import { TweenLite, TimelineLite } from "gsap/all";
 
 import { gsap } from "gsap";
 import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
+import { TweenMax, TweenLite, TimelineLite } from "gsap/all";
 import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 import CustomEase from '../../particles/vendor/gsap/CustomEase'
 import TextRevealAnimation from '../../particles/hooks/animationTextReveal'
@@ -14,68 +14,59 @@ import '../../particles/styles/homepage.styles.scss';
 
 if(typeof window !== `undefined`) {
   gsap.registerPlugin(CSSRulePlugin, CustomEase)
-  ScrollMagicPluginGsap(ScrollMagic, TimelineLite, TweenLite)
+  ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineLite, TweenLite)
 }
 const VideoSectionStyled = styled.div`
 transform-style: preserve-3d;
 `
 
-class VideoSection extends Component {
-  constructor(props){
-    super(props);
-    
-		this.videoTL = new TimelineLite();
-		// this.TextRevealTL = new TimelineLite();
-    
-		this.video = null;
-  }
+const VideoSection = () => {
+  const videoRef = useRef(null)
   
-  
-  componentDidMount() {
+  useEffect(() => {
     // gsap
     if(typeof window !== `undefined`) {
+      const videoTL = new TimelineLite();
       const videoController = new ScrollMagic.Controller();
-    
-      this.videoTL.fromTo(this.video, 0.5, {scale: 0.75, y: 50}, {scale: 1, y: 0})
+      const videoTween = TweenMax.fromTo(videoRef.current, 0.5, {scale: 0.75, y: 50}, {scale: 1, y: 0})
+      videoTL.add(videoTween)
     
       new ScrollMagic.Scene({
-        triggerElement: this.video,
+        triggerElement: videoRef.current,
         duration: "95%",
         triggerHook: 1
       })
-        .setTween(this.videoTL)
+        .setTween(videoTL)
         .addTo(videoController);
     }
-  }
+  })
 
-  render() {
-    return (
-      <VideoSectionStyled className="video-section">
-        <div className="black-bg-container">
-          <TextRevealAnimation addClass="quote-anim" skew>
-            <div className="TextRevealItem">
-              Breve citazione stilosa oppure titoletto.
-            </div>
-          </TextRevealAnimation>
-          <div ref={video => this.video = video } className="video-container anim">
-            <video
-                className="video-player"
-                height="100%"
-                width="100%"
-                loop
-                muted
-                autoPlay
-              >
-                <source
-                  src={Showreel}
-                  type="video/mp4"
-                />
-              </video>
+  return (
+    <VideoSectionStyled className="video-section">
+      <div className="black-bg-container">
+        <TextRevealAnimation addClass="quote-anim" skew>
+          <div className="TextRevealItem">
+            Breve citazione stilosa oppure titoletto.
           </div>
+        </TextRevealAnimation>
+        <div ref={videoRef} className="video-container anim">
+          <video
+              className="video-player"
+              height="100%"
+              width="100%"
+              loop
+              muted
+              autoPlay
+            >
+              <source
+                src={Showreel}
+                type="video/mp4"
+              />
+            </video>
         </div>
-      </VideoSectionStyled>
-    );
-  };
+      </div>
+    </VideoSectionStyled>
+  );
 }
 
 export default VideoSection;

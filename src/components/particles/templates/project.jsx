@@ -168,7 +168,7 @@ const ProjectPage = (props) => {
         const fadeController = new ScrollMagic.Controller();
 
         document.querySelectorAll(".fade-in").forEach(fadeInItem => {
-          let TextRevealTL = gsap.timeline();
+          let TextRevealTL = new TimelineLite();
           TextRevealTL.fromTo(fadeInItem,
             {
               opacity: 0,

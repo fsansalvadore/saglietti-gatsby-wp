@@ -7,6 +7,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "apollo-boost": "^0.4.9",
+    "babel-plugin-styled-components": "^1.11.1",
     "framer-motion": "^2.6.5",
     "gatsby": "^2.24.52",
     "gatsby-image": "^2.4.16",
@@ -15,6 +16,7 @@
     "gatsby-plugin-react-helmet": "^3.3.10",
     "gatsby-plugin-sass": "^2.3.12",
     "gatsby-plugin-sharp": "^2.6.30",
+    "gatsby-plugin-styled-components": "^3.3.10",
     "gatsby-plugin-transition-link": "^1.20.2",
     "gatsby-source-filesystem": "^2.3.27",
     "gatsby-source-graphql": "^2.7.2",

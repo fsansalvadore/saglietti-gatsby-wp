@@ -6,17 +6,17 @@ import ArrowRightCircle from '../../atoms/arrow-right-circle.component';
 import ArrowLeftCircle from '../../atoms/arrow-left-circle.component';
 
 import { gsap } from "gsap";
-import { TweenLite, TimelineLite } from "gsap/all";
 
 import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
+import { TweenMax, TweenLite, TimelineLite } from "gsap/all";
 
 import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 import CustomEase from '../../particles/vendor/gsap/CustomEase'
 
 if(typeof window !== `undefined`) {
   gsap.registerPlugin(CSSRulePlugin, CustomEase)
-  ScrollMagicPluginGsap(ScrollMagic, TweenLite, TimelineLite)
+  ScrollMagicPluginGsap(ScrollMagic, TweenMax, TweenLite, TimelineLite)
 }
 
 
@@ -57,8 +57,10 @@ const ProjectsCarousel = () => {
     }
     setCurrentProject(data.wordpress.projects.nodes[count])
     if(typeof window !== `undefined`) {
-      const titleTL = gsap.timeline();
-      titleTL.fromTo(titleRef.current, 0.2, {y: 60}, {y: 0}).fromTo(".carousel-img", 1, {opacity: 0, scale: 1.2},{opacity: 1, scale: 1, ease: "power3.out"}, 0)
+      const titleTL = new TimelineLite();
+      const titleTween = TweenMax.fromTo(titleRef.current, 0.2, {y: 60}, {y: 0})
+      const carouselImgTween = TweenMax.fromTo(".carousel-img", 1, {opacity: 0, scale: 1.2},{opacity: 1, scale: 1, ease: "power3.out"}, 0)
+      titleTL.add(titleTween).add(carouselImgTween);
     }
   }, [outProject, data.wordpress.projects.nodes, count])
   

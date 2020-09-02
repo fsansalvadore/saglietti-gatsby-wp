@@ -2,10 +2,10 @@ import React, {useEffect} from 'react'
 import styled from 'styled-components'
 
 import { gsap } from "gsap";
-import { TweenLite, TimelineLite } from "gsap/all";
 
 import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
+import { TweenLite, TimelineLite } from "gsap/all";
 import CustomEase from '../../particles/vendor/gsap/CustomEase'
 
 if(typeof window !== `undefined`) {
@@ -147,10 +147,10 @@ const StudioPage = ({data}) => {
         if(typeof window !== `undefined`) {
             const studioController = new ScrollMagic.Controller();
 
-            const studioTL = gsap.timeline();
+            const studioTL = new TimelineLite();
             studioTL.fromTo(".bg_black", 1, {width: 0}, {width: "100%",ease: "power4.inOut"})
 
-            const studioScrollTL = gsap.timeline();
+            const studioScrollTL = new TimelineLite();
             studioScrollTL.fromTo(".bg_black.scroll", 1, {translateX: "-100%"}, {translateX: 0, ease: "power4.inOut"})
 
             new ScrollMagic.Scene({
