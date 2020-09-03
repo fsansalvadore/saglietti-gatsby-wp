@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
-const CircleLink = styled( Link )`
+const CircleLink = styled.a`
     width: 36px;
     height: 36px;
     border: 1px solid #000;
@@ -54,7 +53,7 @@ const SocialIcon = ({isFacebook, isInstagram, isLinkedin, size}) => {
         social.instagram.icon, social.linkedin.url, social.linkedin.icon])
 
     return (
-        <CircleLink to={current && current.url} className="social-link">
+        <CircleLink href={current && current.url} className="social-link" target="_blank">
             <svg
                 style={styles.svg}
                 width={`${size ? size + 'px' : '15px'}`}

@@ -2,12 +2,16 @@ import React, {useEffect, useRef} from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
+import projectHover from '../../../particles/hooks/projectHover'
+
 import { gsap } from "gsap";
 
 import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 import { TweenLite, TimelineLite } from "gsap/all";
 import CustomEase from '../../../particles/vendor/gsap/CustomEase'
+
+import './projects-list.styles.scss'
 
 if(typeof window !== `undefined`) {
   gsap.registerPlugin( CustomEase )
@@ -37,12 +41,12 @@ const ProjectsContainer = styled.div`
     a {
       display: inline-block;
       text-decoration: none;
-      font-size: 2rem;
+      font-size: 1.5rem;
       opacity: 0;
       letter-spacing: -0.05rem;
       margin: 0;
       line-height: 1.2rem;
-      padding: 15px 0 19px 0;
+      padding: 17px 0 19px 0;
 
       @media (max-width: 768px) {
         font-size: 1.6rem;
@@ -55,6 +59,7 @@ const ProjectsContainer = styled.div`
       position: relative;
 
       a {
+        width: 100%;
         will-change: transform;
         transition: opacity 0.2s ease;
       }
@@ -103,11 +108,11 @@ const ProjectsList = ({data}) => {
       .fromTo(".prog_list-item a", 1, {translateY: 100, opacity: 0}, {
         translateY: 0,
         opacity: 1,
-        stagger: 0.2,
+        stagger: 0.1,
         ease: "power4.out"
       }, 0.3)
-      .fromTo(".divider", 0.6, { width: "0%" }, { width: "100%", ease: CustomEase.create("custom", "M0,0 C0.698,0 0.374,1 1,1 "), stagger: 0.2}, 0)
-      .fromTo(".last_divider", 0.6, { width: "0%" }, { width: "100%", ease: CustomEase.create("custom", "M0,0 C0.698,0 0.374,1 1,1 ")}, "<1.2")
+      .fromTo(".divider", 0.6, { width: "0%" }, { width: "100%", ease: CustomEase.create("custom", "M0,0 C0.698,0 0.374,1 1,1 "), stagger: 0.1}, 0)
+      .fromTo(".last_divider", 0.6, { width: "0%" }, { width: "100%", ease: CustomEase.create("custom", "M0,0 C0.698,0 0.374,1 1,1 ")}, "-=0.9")
 
       const fadeInController = new ScrollMagic.Controller();
 
@@ -143,31 +148,35 @@ const ProjectsList = ({data}) => {
 
   const projectsRef = useRef(null)
 
-    useEffect(() => {
-        const projects = projectsRef.current.querySelectorAll("li")
+  useEffect(() => {
+      const projects = projectsRef.current.querySelectorAll("li")
 
-        projects.forEach(proj_li => (
-            proj_li.addEventListener('mouseover', () => {
-                projectsRef.current.querySelectorAll("li").forEach(
-                    li => (
-                        li.querySelector("a").style.opacity = "0.25",
-                        li.querySelector("span").style.opacity = "0.25",
-                        projectsRef.current.querySelector(".last_divider").style.opacity = "0.25"
-                      )
-                )
-                proj_li.querySelector("a").style.opacity = "1"
-            }),
-            proj_li.addEventListener('mouseout', () => {
-                projectsRef.current.querySelectorAll("li").forEach(
-                    li => (
-                      li.querySelector("a").style.opacity = "1",
-                      li.querySelector("span").style.opacity = "1",
-                      projectsRef.current.querySelector(".last_divider").style.opacity = "1"
-                    )
-                )
-            })
-        ))
-    })
+      projects.forEach(proj_li => {
+          proj_li.addEventListener('mouseover', () => {
+              projectsRef.current.querySelectorAll("li").forEach(
+                  li => {
+                      li.querySelector("a").style.opacity = "0.25"
+                      li.querySelector("span").style.opacity = "0.25"
+                      projectsRef.current.querySelector(".last_divider").style.opacity = "0.25"
+                  }
+              )
+              proj_li.querySelector("a").style.opacity = "1"
+          })
+          proj_li.addEventListener('mouseout', () => {
+              projectsRef.current.querySelectorAll("li").forEach(
+                  li => {
+                    li.querySelector("a").style.opacity = "1"
+                    li.querySelector("span").style.opacity = "1"
+                    projectsRef.current.querySelector(".last_divider").style.opacity = "1"
+                  }
+              )
+          })
+      })
+  })
+
+  useEffect(() => {
+    projectHover()
+  })
 
   return (
     <>
@@ -177,13 +186,17 @@ const ProjectsList = ({data}) => {
           {
             data.wordpress.projects &&
             data.wordpress.projects.nodes.map(proj => (
-              <li key={`${proj.id}-${proj.slug}-${Math.floor(Math.random() * (100 - 999) + 100)}`} className="pseudo">
+              <li
+                key={`${proj.id}-${proj.slug}-${Math.floor(Math.random() * (100 - 999) + 100)}`}
+                className="pseudo content"
+                data-fx="1"
+                data-img={proj.featuredImage.node.link}
+              >
                 <span className="divider"></span>
                 <div className="prog_list-item">
                   <Link
                     to={`/progetti/${proj.slug}`}
-                    className="block__title"
-                    data-img={proj.featuredImage.node.link}
+                    className="block__link"
                     >{proj.title}</Link>
                 </div>
               </li>

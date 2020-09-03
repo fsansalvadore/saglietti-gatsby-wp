@@ -19,19 +19,19 @@ const SocialIcons = () => {
     useEffect(() => {
         const links = socialIconsRef.current.querySelectorAll("a")
 
-        links.forEach(link => (
+        links.forEach(link => {
             link.addEventListener('mouseover', () => {
                 socialIconsRef.current.querySelectorAll("a").forEach(
                     l => l.style.opacity = "0.5"
                 )
                 link.style.opacity = "1"
-            }),
+            })
             link.addEventListener('mouseout', () => {
                 socialIconsRef.current.querySelectorAll("a").forEach(
                     l => l.style.opacity = "1"
                 )
             })
-        ))
+        })
     })
 
     return (

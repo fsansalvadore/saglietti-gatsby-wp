@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Link } from 'gatsby'
 // import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { gsap } from "gsap";
@@ -25,6 +25,8 @@ const NavLinks = styled.nav`
   span {
     width: 3%;
     height: 3px;
+    will-change: opacity, width;
+    transition: opacity 0.2s ease;
     
     hr {
       height: 0;
@@ -38,6 +40,8 @@ const NavLinks = styled.nav`
     margin: 2vh 6vw;
     overflow: hidden;
     padding: 10px 0;
+    will-change: opacity, width;
+    transition: opacity 0.2s ease;
     
     a {
       display: inline-block;
@@ -86,8 +90,34 @@ const MenuItems = ({isOpen}) => {
     }
   })
 
+  const menuLinksRef = useRef(null)
+
+  useEffect(() => {
+      const menuLinks = menuLinksRef.current.querySelectorAll(".menu-link")
+
+      menuLinks.forEach(menuLink => {
+          menuLink.addEventListener('mouseover', () => {
+              menuLinksRef.current.querySelectorAll(".menu-link").forEach(
+                  el => {
+                      el.style.opacity = "0.25"
+                      menuLinksRef.current.querySelectorAll("span").forEach(span => span.style.opacity = "0.25")
+                  }
+              )
+              menuLink.style.opacity = "1"
+          })
+          menuLink.addEventListener('mouseout', () => (
+              menuLinksRef.current.querySelectorAll(".menu-link").forEach(
+                  el => {
+                    el.style.opacity = "1"
+                    menuLinksRef.current.querySelectorAll("span").forEach(span => span.style.opacity = "1")
+                  }
+              )
+          ))
+      })
+  })
+
   return (
-    <NavLinks isOpen={isOpen}>
+    <NavLinks isOpen={isOpen} ref={menuLinksRef}>
       <div className="link-container menu-link">
         <Link to="/studio" className="">Studio</Link>
       </div>
