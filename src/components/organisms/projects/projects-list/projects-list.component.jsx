@@ -37,12 +37,12 @@ const ProjectsContainer = styled.div`
     a {
       display: inline-block;
       text-decoration: none;
-      font-size: 3rem;
+      font-size: 2rem;
       opacity: 0;
       letter-spacing: -0.05rem;
       margin: 0;
-      line-height: 2rem;
-      padding: 50px 0 60px 0;
+      line-height: 1.2rem;
+      padding: 15px 0 19px 0;
 
       @media (max-width: 768px) {
         font-size: 1.6rem;
