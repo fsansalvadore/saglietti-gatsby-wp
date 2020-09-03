@@ -33,9 +33,12 @@ const MenuBtn = styled.a`
   justify-content: center;
   pointer-events: auto;
   pointer: cursor;
+  will-change: transform;
+  transition: transform 0.2s ease;
 
   &:hover {
     cursor: pointer;
+    transform: scale(1.06) !important;
   }
 
   span {

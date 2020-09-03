@@ -10,9 +10,12 @@ const MenuBtnContainer = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  will-change: transform;
+  transition: transform 0.1s ease;
 
   &:hover {
     cursor: pointer;
+    transform: scale(1.1) !important;
   }
 
   span {

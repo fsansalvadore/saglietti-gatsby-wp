@@ -7,6 +7,12 @@ const ProjectsCarouselStyled = styled.div`
   height: 100vh;
   float: right;
   
+  .scroll-icon {
+    position: absolute;
+    bottom: 3rem;
+    left: -30vw;
+  }
+
   .carousel-top {
     position: relative;
     overflow: hidden;
@@ -79,7 +85,6 @@ const ProjectsCarouselStyled = styled.div`
         }
       }
     }
-
 
     .carousel-img {
       position: absolute;

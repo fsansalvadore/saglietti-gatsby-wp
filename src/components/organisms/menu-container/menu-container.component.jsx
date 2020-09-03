@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import MenuItems from '../../molecules/menu-items/menu-items.component';
+import SocialIcons from '../../molecules/SocialIcons/SocialIcons.component'
+import { Link } from 'gatsby'
 
 const MenuContainer = styled.div`
   position: fixed;
@@ -18,14 +20,87 @@ const MenuContainer = styled.div`
   opacity: ${({isOpen}) => isOpen ? 1 : 0};
   background-color: rgba(255, 255, 255, 0.9);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
   justify-content: center;
+  
+  @media (min-width: 900px) {
+    flex-direction: row;
+    align-items: center;
+  }
+`
+
+const MenuInfo = styled.div`
+  position: relative;
+  width: 80%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  p {
+    font-size: 0.7rem;
+    line-height: 160%;
+    margin: 0;
+  }
+  
+  div {
+    margin-top: 15px;
+  }
+  
+  .privacy-link a {
+    font-size: 0.8rem;
+  }
+
+  .no-mobile {
+    display: none;
+  }
+  
+  @media (min-width: 900px) {
+    position: absolute;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2rem auto;
+    text-align: left;
+
+    .no-mobile {
+      display: block;
+    }
+  }
 `
 
 const Menu = ({isOpen}) => {
   return(
     <MenuContainer isOpen={isOpen} classname="menu-container">
       <MenuItems isOpen={isOpen}></MenuItems>
+      <MenuInfo>
+        <div className="privacy-link no-mobile">
+          <Link to="/privacy-policy">Privacy Policy</Link>
+        </div>
+        <div>
+          <p>
+            Saglietti. Design — Digital<br/>
+            via Parma 52 10153 Torino, Italia<br/>
+            Mappa
+          </p>
+        </div>
+        <div className="no-mobile">
+          <p>
+            info@saglietti.it<br/>
+            P.I 03391740044<br/>
+            Copyright © 2019 Saglietti
+          </p>
+        </div>
+        <div className="footer-info">
+          <SocialIcons/>
+        </div>
+      </MenuInfo>
     </MenuContainer>
   )
 }

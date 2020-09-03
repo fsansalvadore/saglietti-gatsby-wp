@@ -21,8 +21,8 @@ if(typeof window !== `undefined`) {
 const ProjectsContainer = styled.div`
   width: 100%;
   max-width: 1200px;
-  margin: 250px auto 0 auto;
-  padding: 0 25% 200px 8.3%;
+  margin: 150px auto 0 auto;
+  padding: 0 2rem 80px 2rem;
   text-align: right;
 
   h1, h2 {
@@ -41,16 +41,12 @@ const ProjectsContainer = styled.div`
     a {
       display: inline-block;
       text-decoration: none;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       opacity: 0;
       letter-spacing: -0.05rem;
       margin: 0;
       line-height: 1.2rem;
-      padding: 17px 0 19px 0;
-
-      @media (max-width: 768px) {
-        font-size: 1.6rem;
-      }
+      padding: 12px 0 14px 0;
     }
   }
 
@@ -93,9 +89,19 @@ const ProjectsContainer = styled.div`
 
   .extra_proj-container {
     li {
-      font-size: 1rem;
+      font-size: 0.8rem;
       font-weight: 800;
       padding: 10px 0;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    margin: 200px auto 0 auto;
+    padding: 0 25% 200px 8.3%;
+
+    .proj_content li a {
+      font-size: 1.5rem;
+      padding: 17px 0 19px 0;
     }
   }
 `

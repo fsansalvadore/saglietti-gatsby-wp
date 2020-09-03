@@ -21,8 +21,10 @@ const NavLinks = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 0;
 
   span {
+    display: none;
     width: 3%;
     height: 3px;
     will-change: opacity, width;
@@ -33,6 +35,10 @@ const NavLinks = styled.nav`
       margin: 0;
       border-bottom: 3px solid #000;
       width: 100%;
+    }
+
+    @media (min-width: 900px) {
+      display: inline;
     }
   }
 
@@ -52,7 +58,8 @@ const NavLinks = styled.nav`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
+    margin-top: 100px;
     flex-direction: column;
 
     span {
@@ -61,10 +68,11 @@ const NavLinks = styled.nav`
     }
     
     .menu-link {
-      margin: 6vh 2vw;
+      margin: 0 2vw;
       
       a {
-        font-size: 8vw;
+        padding: 10px 6px;
+        font-size: 1.8rem;
       }
     }
   }

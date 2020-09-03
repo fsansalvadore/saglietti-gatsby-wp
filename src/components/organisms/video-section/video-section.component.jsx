@@ -17,7 +17,10 @@ if(typeof window !== `undefined`) {
   ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineLite, TweenLite)
 }
 const VideoSectionStyled = styled.div`
-transform-style: preserve-3d;
+.video-container {
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+}
 `
 
 const VideoSection = () => {
@@ -28,7 +31,7 @@ const VideoSection = () => {
     if(typeof window !== `undefined`) {
       const videoTL = new TimelineLite();
       const videoController = new ScrollMagic.Controller();
-      const videoTween = TweenMax.fromTo(videoRef.current, 0.5, {scale: 0.75, y: 50}, {scale: 1, y: 0})
+      const videoTween = TweenMax.fromTo(videoRef.current, 0.5, {scale: 0.7, y: 50}, {scale: 1, y: 0})
       videoTL.add(videoTween)
     
       new ScrollMagic.Scene({

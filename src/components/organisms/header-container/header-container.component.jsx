@@ -12,7 +12,7 @@ const HeaderContainer = () => {
   return (
     <motion.div className="header-container" exit={{ opacity: 0 }}>
       <HeaderLeft />
-      <VerticalLine initial={{x: "40vw"}} animate={{ x: 0 }} transition={{ duration: 0.8 }} style={{left: "60%"}}/>
+      <VerticalLine style={{left: "60%"}}/>
       <ProjectsCarousel />
     </motion.div>
   )

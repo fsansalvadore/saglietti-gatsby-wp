@@ -39,7 +39,6 @@ a {
     width: 60%;
     float: left;
     height: 100%;
-
   }
   
   .header-right {
@@ -160,6 +159,15 @@ a {
   100% {
     opacity: 1;
     transform: translate3d(0, 0px, 0);
+  }
+}
+
+@keyframes fadeIn {
+  0%{
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
