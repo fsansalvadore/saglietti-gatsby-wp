@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import  { Link } from 'gatsby'
 
 import Logo from '../../../images/Saglietti_logo.svg'
+import SocialIcons from '../../molecules/SocialIcons/SocialIcons.component'
 
 const FooterComponent = styled.footer`
   width: 100%;
@@ -54,6 +55,12 @@ const Footer = () => {
           <li><Link to="/progetti">Progetti</Link></li>
           <li><Link to="/contatti">Contatti</Link></li>
         </ul>
+      </div>
+      <div className="footer-info">
+        <Link to="/privacy-policy">Privacy Policy</Link>
+      </div>
+      <div className="footer-info">
+        <SocialIcons/>
       </div>
     </FooterComponent>
   )

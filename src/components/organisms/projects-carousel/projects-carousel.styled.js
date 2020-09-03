@@ -115,7 +115,7 @@ const ProjectsCarouselStyled = styled.div`
       padding: 4px 0;
       
       span {
-        transition: transform 0.3s ease;
+        transition: transform 0.12s ease;
         display: block;
       }
     }

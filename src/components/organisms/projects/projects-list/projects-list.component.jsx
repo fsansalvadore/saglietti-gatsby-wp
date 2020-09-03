@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useRef} from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
@@ -56,6 +56,7 @@ const ProjectsContainer = styled.div`
 
       a {
         will-change: transform;
+        transition: opacity 0.2s ease;
       }
 
       .divider {
@@ -65,6 +66,7 @@ const ProjectsContainer = styled.div`
         background-color: #000;
         top: 0;
         right: 0;
+        transition: opacity 0.2s ease;
       }
     }
 
@@ -139,11 +141,39 @@ const ProjectsList = ({data}) => {
     }
   })
 
+  const projectsRef = useRef(null)
+
+    useEffect(() => {
+        const projects = projectsRef.current.querySelectorAll("li")
+
+        projects.forEach(proj_li => (
+            proj_li.addEventListener('mouseover', () => {
+                projectsRef.current.querySelectorAll("li").forEach(
+                    li => (
+                        li.querySelector("a").style.opacity = "0.25",
+                        li.querySelector("span").style.opacity = "0.25",
+                        projectsRef.current.querySelector(".last_divider").style.opacity = "0.25"
+                      )
+                )
+                proj_li.querySelector("a").style.opacity = "1"
+            }),
+            proj_li.addEventListener('mouseout', () => {
+                projectsRef.current.querySelectorAll("li").forEach(
+                    li => (
+                      li.querySelector("a").style.opacity = "1",
+                      li.querySelector("span").style.opacity = "1",
+                      projectsRef.current.querySelector(".last_divider").style.opacity = "1"
+                    )
+                )
+            })
+        ))
+    })
+
   return (
     <>
       <ProjectsContainer>
         <h1>Progetti</h1>
-        <ul className="proj_content">
+        <ul className="proj_content" ref={projectsRef}>
           {
             data.wordpress.projects &&
             data.wordpress.projects.nodes.map(proj => (

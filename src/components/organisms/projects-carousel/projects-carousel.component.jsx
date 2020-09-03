@@ -59,7 +59,7 @@ const ProjectsCarousel = () => {
     if(typeof window !== `undefined`) {
       const titleTL = new TimelineLite();
       const titleTween = TweenMax.fromTo(titleRef.current, 0.2, {y: 60}, {y: 0})
-      const carouselImgTween = TweenMax.fromTo(".carousel-img", 1, {opacity: 0, scale: 1.2},{opacity: 1, scale: 1, ease: "power3.out"}, 0)
+      const carouselImgTween = TweenMax.fromTo(".carousel-img", 0.5, {opacity: 0, scale: 1.2},{opacity: 1, scale: 1, ease: "power3.out"}, 0)
       titleTL.add(titleTween).add(carouselImgTween);
     }
   }, [outProject, data.wordpress.projects.nodes, count])
@@ -75,7 +75,7 @@ const ProjectsCarousel = () => {
         setCount(count - 1)
       }
       bg_prev.current.style.backgroundImage = "none";
-    }, 200)
+    }, 100)
   }
 
   const nextProject = (e) => {
@@ -88,7 +88,7 @@ const ProjectsCarousel = () => {
       } else {
         setCount(count + 1)
       }
-    }, 200)
+    }, 100)
   }
 
   return (

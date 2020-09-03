@@ -71,9 +71,9 @@ const Cursor = () => {
     
     React.useEffect(() => {
         if (isHover) {
-          cursorRef.current.style.transform = `scale(1.9)`
+          cursorRef.current.style.transform = `scale(1.4)`
         } else {
-          cursorRef.current.style.transform = 'scale(1)'
+          cursorRef.current.style.transform = 'scale(0.8)'
         }
     }, [isHover])
 
@@ -82,9 +82,9 @@ const Cursor = () => {
           cursorRef.current.style.transform = `scale(0.5)`
         } else {
             if(isHover) {
-                cursorRef.current.style.transform = 'scale(1.9)'
+                cursorRef.current.style.transform = 'scale(1.4)'
             } else {
-                cursorRef.current.style.transform = 'scale(1)'
+                cursorRef.current.style.transform = 'scale(0.8)'
             }
         }
     }, [isClick, isHover])
