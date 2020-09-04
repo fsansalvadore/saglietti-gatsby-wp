@@ -114,7 +114,10 @@ const ProjectsCarousel = () => {
             </Link>
           </div>
         </div>
-        <div className="carousel-img" style={{backgroundImage: `url(${currentProject.featuredImage.node.link})`}}></div>
+        {
+          currentProject.featuredImage.node.link &&
+          <div className="carousel-img" style={{backgroundImage: `url(${currentProject.featuredImage.node.link})`}}></div>
+        }
       </div>
       <Link to={`/progetti/${currentProject.slug}`} className="carousel-bottom">
         <p><span ref={titleRef}>{currentProject && currentProject.title}</span></p>

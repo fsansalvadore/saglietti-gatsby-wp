@@ -14,6 +14,7 @@ const projectCustomDetails = `
     anno
     credits
     titolo
+    visitabile
   }
 `
 
