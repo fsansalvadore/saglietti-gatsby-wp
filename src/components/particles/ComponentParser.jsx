@@ -5,6 +5,7 @@ import { randomID } from '../helpers'
 import Paragraph from '../organisms/projects/paragraph/paragraph.component'
 // import Heading from '../organisms/projects/heading/heading.component'
 import SingleImage from '../organisms/projects/single-image/single-image.component'
+import VideoBlock from '../organisms/projects/video/video.component'
 import Gallery from '../organisms/projects/gallery/gallery.component'
 import Carousel from '../organisms/projects/carousel/carousel.component'
 // import MediaText from '../organisms/projects/media-text/media-text.component'
@@ -12,6 +13,7 @@ import Carousel from '../organisms/projects/carousel/carousel.component'
 const components = {
     "core/paragraph": Paragraph,
     "core/image": SingleImage,
+    "core/video": VideoBlock,
     "core/gallery": Gallery,
     // "core/media-text": MediaText,
     // "core/heading": Heading,

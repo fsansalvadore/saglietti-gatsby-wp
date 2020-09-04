@@ -10,13 +10,11 @@ const SliderBlock = styled.div`
     position: relative;
     display: block;
     width: 100%;
-    max-height: 300px;
     padding: 0 4rem;
     overflow: visible;
 
     .slick-slider,
     .slick-list {
-        max-height: 300px;
         overflow: visible;
     }
 

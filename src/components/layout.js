@@ -13,6 +13,7 @@ import Nav from "./organisms/nav/nav.component"
 import "./layout.css"
 import Footer from "./organisms/footer/footer.component"
 import Cursor from "./atoms/cursor.component"
+import CursorFollow from "./atoms/cursor-follow.component"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -25,16 +26,19 @@ const Layout = ({ children }) => {
     }
   `)
   const [cursorComp, setCursorComp] = useState(null)
+  const [cursorFollowComp, setCursorFollowComp] = useState(null)
 
   useEffect(() => {
     if ( typeof document !== `undefined` ) {
       setCursorComp(<Cursor/>)
+      setCursorFollowComp(<CursorFollow/>)
     }
   }, [])
 
   return (
     <>
       {cursorComp}
+      {cursorFollowComp}
       <Nav siteTitle={data.site.siteMetadata.title} />
       <main>{children}</main>
       <Footer />

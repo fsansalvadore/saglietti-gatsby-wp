@@ -2,11 +2,16 @@ import React, {useEffect} from 'react'
 import styled from 'styled-components'
 
 import { gsap } from "gsap";
-
 import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 import { TweenLite, TimelineLite } from "gsap/all";
 import CustomEase from '../../particles/vendor/gsap/CustomEase'
+
+// imgs
+import StudioImg from '../../../images/studio/studio-saglietti_studio.jpg'
+import Saglietti from '../../../images/studio/saglietti.jpg'
+import MethodImg from '../../../images/studio/studio-method.jpg'
+import ServiziImg from '../../../images/studio/studio-servizi.jpg'
 
 if(typeof window !== `undefined`) {
   gsap.registerPlugin( CustomEase )
@@ -16,14 +21,14 @@ if(typeof window !== `undefined`) {
 const Studio2 = styled.div`
     position: relative;
     width: 100%;
-    padding: 200px 6rem;
+    padding: 100px 2rem;
 
     p {
         color: #fff;
         font-size: 1.6rem;
         line-height: 140%;
+        font-weight: bold;
         width: 50%;
-        letter-spacing: -0.025rem;
     }
 
     .bg_black {
@@ -36,43 +41,116 @@ const Studio2 = styled.div`
         top: 0;
         bottom: 0;
         z-index: -1;
+        background-position: center;
+        background-size: cover;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+        }
+    }
+
+    @media (min-width: 1200px) {
+        padding: 200px 6rem;
     }
 `
 
 const Studio3 = styled.div`
     position: relative;
     width: 100%;
-    padding: 200px 6rem 200px 50%;
+    padding: 100px 2rem;
+    display: flex;
+    justify-content: center;
+    
+    .image_container {
+        position: relative;
+        margin: 0 3rem;
+        flex: 1;
 
-    h2 {
-        font-size: 0.8rem;
-        font-weight: 200;
-        font-family: 'FFMarkWebProLight';
+        .img_box {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+
+            .img_mask {
+                position: absolute;
+                display: none;
+                width: 100%;
+                top: -20px;
+                right: 0;
+                height: 120%;
+                z-index: 10;
+                background: #fff;
+            }
+
+            .img_content {
+                background-size: cover;
+                background-position: center;
+                width: 100%;
+                height: 100%;
+            }
+        }
     }
 
-    p {
-        font-size: 1.2rem;
-        line-height: 130%;
-        letter-spacing: -0.025rem;
+    .content_container {
+        flex: 1;
+        margin: 80px 0 0 0;
+
+        h2 {
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+    
+        p {
+            font-size: 1.2rem;
+            font-weight: bold;
+            line-height: 130%;
+            letter-spacing: -0.055rem;
+        }
+    
+        .clienti_container {
+            margin-top: 8rem;
+    
+            ul {
+                display: block;
+                margin: 0;
+            }
+    
+            li.fade-in {
+                display: block;
+            }
+    
+            li {
+                list-style: none;
+                display: flex;
+                align-items: center;
+                font-weight: bold;
+                margin-bottom: 15px;
+            }
+        }
+
     }
 
-    .clienti_container {
-        margin-top: 8rem;
+    .center_container {
+        flex-direction: column;
+    }
 
-        ul {
-            display: block;
-            margin: 0;
+    @media (min-width: 1200px) {
+        padding: 200px 6rem;
+
+        .content_container {
+            margin: 0 0 0 2.5%;
         }
-
-        li.fade-in {
-            display: block;
-        }
-
-        li {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
+        
+        .center_container {
+            flex-direction: row;
         }
     }
 `
@@ -80,12 +158,18 @@ const Studio3 = styled.div`
 const Studio4 = styled.div`
     position: relative;
     width: 100%;
-    padding: 200px 6rem;
+    padding: 100px 2rem;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     p {
         color: #fff;
         font-size: 1rem;
+        font-weight: bold;
+        line-height: 140%;
     }
 
     .bg_black {
@@ -101,10 +185,13 @@ const Studio4 = styled.div`
     }
 
     .metodo_container {
+        width: 100%;
+
         h2 {
             font-size: 0.8rem;
+            font-weight: bold;
             margin-bottom: 1.8rem;
-            font-family: 'FFMarkWebProLight';
+
         }
 
         ul {
@@ -116,6 +203,7 @@ const Studio4 = styled.div`
             list-style: none;
             display: flex;
             align-items: center;
+            font-weight: bold;
             margin-bottom: 15px;
             
             span {
@@ -125,6 +213,7 @@ const Studio4 = styled.div`
                 width: 30px;
                 height: 30px;
                 font-size: 0.7rem;
+                font-weight: bold;
                 margin-right: 15px;
                 border: 1px solid #fff;
                 border-radius: 50%;
@@ -136,10 +225,67 @@ const Studio4 = styled.div`
         }
     }
 
-    .obiettivo_container {
-        margin: 250px 4rem 0 50%; 
+    .image_container {
+        position: relative;
+        margin-right: 0;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+
+        .img_box {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+
+            .img_mask {
+                position: absolute;
+                display: none;
+                width: 100%;
+                top: -20px;
+                right: 0;
+                height: 110%;
+                z-index: 10;
+                background: #000;
+            }
+
+            .img_content {
+                background-size: cover;
+                background-position: center;
+                width: 100%;
+                height: 100%;
+            }
+        }
     }
 
+    .center_container.wide {
+        margin-top: 200px;
+        max-width: none;
+        flex-direction: column;
+    }
+
+    .obiettivo_container {
+        margin: 80px 0 0 0; 
+        flex: 1;
+
+        p {
+        }
+    }
+
+    @media (min-width: 1200px) {
+        padding: 200px 6rem;
+
+        .center_container.wide {
+            flex-direction: row;
+        }
+
+        .image_container {
+            margin-right: 5rem;
+        }
+
+        .obiettivo_container {
+            margin: 0; 
+        }
+    }
 `
 
 const StudioPage = ({data}) => {
@@ -149,10 +295,10 @@ const StudioPage = ({data}) => {
 
             const studioTL = new TimelineLite();
             studioTL.fromTo(".bg_black", 1, {width: 0}, {width: "100%",ease: "power4.inOut"})
-
+            
             const studioScrollTL = new TimelineLite();
             studioScrollTL.fromTo(".bg_black.scroll", 1, {translateX: "-100%"}, {translateX: 0, ease: "power4.inOut"})
-
+            
             new ScrollMagic.Scene({
                 triggerElement: ".bg_black.scroll",
                 triggerHook: 0,
@@ -163,68 +309,141 @@ const StudioPage = ({data}) => {
             .addTo(studioController);
         }
     })
+    
+    const imgAnimation = () => {
+        const imgController = new ScrollMagic.Controller();
+        const parallaxController = new ScrollMagic.Controller();
+
+        if (document.querySelectorAll(".img_box").length !== 0) {
+            document.querySelectorAll(".img_box").forEach(img => {
+                // let mask    = img.querySelector(".img_mask")
+                let content = img.querySelector(".img_content")
+                
+                let imgRevealTL = new TimelineLite();
+                imgRevealTL
+                .fromTo(img, 0.6, {opacity: 0}, {opacity: 1})
+                .fromTo(content, 1, {width: 0}, {width: "100%", ease: "power2.inOut"}, 0)
+                
+                new ScrollMagic.Scene({
+                    triggerElement: img,
+                    triggerHook: 1,
+                    offset: 0,
+                    reverse: false
+                })
+                .setTween(imgRevealTL)
+                .addTo(imgController);
+                
+                let imgParallaxTL = new TimelineLite();
+                imgParallaxTL.fromTo(content, 1, {scale: 1.4}, {scale: 1})
+                .fromTo(img, 1, {y: 100}, {y: -60}, 0)
+
+                new ScrollMagic.Scene({
+                    triggerElement: img,
+                    duration: "180%",
+                    triggerHook: 1
+                })
+                .setTween(imgParallaxTL)
+                .addTo(parallaxController);
+            })
+        }
+    }
+
+    useEffect(() => {
+        if(typeof window !== `undefined`) {
+            requestAnimationFrame(() => imgAnimation())
+        }
+    }, [])
 
     return (
         <>
             <Studio2>
                 <p className="fade-in">Creiamo progetti in grado di trasformare il brand in un racconto, con un unico obiettivo: creare valore.</p>
-                <div className="bg_black"></div>
+
+                <div className="bg_black" style={{ backgroundImage: `url(${StudioImg})`}}></div>
             </Studio2>
             <Studio3>
-                <h2 className="fade-in">Filosofia</h2>
-                <p className="fade-in">
-                    Il nostro design nasce da qui.
-                    <br/><br/>
-                    Mettendo in relazione <strong>Essenza</strong>, <strong>Espressione</strong> ed <strong>Emozione</strong> per stabilire connessioni armoniche con gli utenti.
-                    <br/><br/>
-                    Succede tutti i giorni, facciamo scorrere in ogni progetto più di 10 anni di know how, passione e contaminazione internazionale.
-                    <br/><br/>
-                    Noi lo chiamiamo Pensiero Circolare.
-                </p>
+                <div className="center_container">
+                    <div className="image_container">
+                        <div className="img_box">
+                            <div className="img_mask"></div>
+                            <div className="img_content" style={{backgroundImage: `url(${Saglietti})`}}></div>
+                        </div>
+                    </div>
+                    <div className="content_container">
+                        <h2 className="fade-in">Filosofia</h2>
+                        <p className="fade-in">
+                            Il nostro design nasce da qui.
+                            <br/><br/>
+                            Mettendo in relazione <strong>Essenza</strong>, <strong>Espressione</strong> ed <strong>Emozione</strong> per stabilire connessioni armoniche con gli utenti.
+                            <br/><br/>
+                            Succede tutti i giorni, facciamo scorrere in ogni progetto più di 10 anni di know how, passione e contaminazione internazionale.
+                            <br/><br/>
+                            Noi lo chiamiamo Pensiero Circolare.
+                        </p>
+                    </div>
+                </div>
             </Studio3>
             <Studio4>
-                <div className="metodo_container">
-                    <h2 className="fade-in">Metodo</h2>
-                    <ul>
-                        <li className="fade-in"><span>1</span> Riceviamo i need del cliente</li>
-                        <li className="fade-in"><span>2</span> Analizziamo i valori del brand</li>
-                        <li className="fade-in"><span>3</span> Creiamo un concetto</li>
-                    </ul>
-                    <p className="fade-in">Sono i tre step con i quali nascono tutti i nostri progetti.</p>
-                </div>
-                <div className="obiettivo_container">
-                    <h2 className="fade-in">L'obiettivo</h2>
-                    <p className="fade-in">
-                    Dare vita a una strategia di comunicazione completa, innovativa, in grado di offrire forte distintività e generare engagement.
-                    <br/><br/>
-                    Creiamo linguaggi di comunicazione per qualsiasi tipo di progetto, budget, media.<br/>
-                    Ma il nostro approccio al lavoro è sempre lo stesso: offrire al cliente non un collaboratore, ma un partner con cui condividere una visione. Un’intesa che ci porta a comprendere a fondo gli obiettivi e generare fiducia, massimizzando i risultati.
-                    <br/><br/>
-                    Mettiamo il nostro know-how e la nostra idea di design al servizio di tutti i settori:<br/>
-                    food &amp; beverage, fashion, technology, manifattura, interior design, istituzioni e organizzazioni culturali.
-                    </p>
-                </div>
+                    <div className="metodo_container">
+                        <h2 className="fade-in">Metodo</h2>
+                        <ul>
+                            <li className="fade-in"><span>1</span> Riceviamo i need del cliente</li>
+                            <li className="fade-in"><span>2</span> Analizziamo i valori del brand</li>
+                            <li className="fade-in"><span>3</span> Creiamo un concetto</li>
+                        </ul>
+                        <p className="fade-in">Sono i tre step con i quali nascono tutti i nostri progetti.</p>
+                    </div>
+                    <div className="center_container wide">
+                        <div className="image_container">
+                            <div className="img_box">
+                                <div className="img_mask"></div>
+                                <div className="img_content" style={{backgroundImage: `url(${MethodImg})`}}></div>
+                            </div>
+                        </div>
+                        <div className="obiettivo_container">
+                            <h2 className="fade-in">L'obiettivo</h2>
+                            <p className="fade-in">
+                            Dare vita a una strategia di comunicazione completa, innovativa, in grado di offrire forte distintività e generare engagement.
+                            <br/><br/>
+                            Creiamo linguaggi di comunicazione per qualsiasi tipo di progetto, budget, media.<br/>
+                            Ma il nostro approccio al lavoro è sempre lo stesso: offrire al cliente non un collaboratore, ma un partner con cui condividere una visione. Un’intesa che ci porta a comprendere a fondo gli obiettivi e generare fiducia, massimizzando i risultati.
+                            <br/><br/>
+                            Mettiamo il nostro know-how e la nostra idea di design al servizio di tutti i settori:<br/>
+                            food &amp; beverage, fashion, technology, manifattura, interior design, istituzioni e organizzazioni culturali.
+                            </p>
+                        </div>
+                    </div>
                 <div className="bg_black scroll"></div>
             </Studio4>
             <Studio3>
-                <div className="servizi_container">
-                    <h2 className="fade-in">Servizi</h2>
-                    <p className="fade-in">
-                    La qualità non è solo un punto d’arrivo.
-                    È la partenza e l’ispirazione.
-
-                    Una gamma di servizi ampia e strutturata. Uno standard qualitativo che quotidianamente accetta la sfida più importante: pensare avanti, sempre.
-                    </p>
-                </div>
-                <div className="clienti_container">
-                    <h2>Clienti</h2>
-                    <ul className="clients_list">
-                        {
-                        data.wordpress.clients.nodes.map(client => (
-                        <li className="fade-in" key={`${client.title}-${Math.floor(Math.random() * (100 - 999) + 100)}`}>{client.title}</li>
-                        ))
-                        }
-                    </ul>
+                <div className="center_container">
+                    <div className="content_container">
+                        <div className="servizi_container">
+                            <h2 className="fade-in">Servizi</h2>
+                            <p className="fade-in">
+                            La qualità non è solo un punto d’arrivo.<br/>
+                            È la partenza e l’ispirazione.
+                            <br/><br/>
+                            Una gamma di servizi ampia e strutturata. Uno standard qualitativo che quotidianamente accetta la sfida più importante: pensare avanti, sempre.
+                            </p>
+                        </div>
+                        <div className="clienti_container">
+                            <h2 className="fade-in">Clienti</h2>
+                            <ul className="clients_list fade-in">
+                                {
+                                data.wordpress.clients.nodes.map(client => (
+                                    <li key={`${client.title}-${Math.floor(Math.random() * (100 - 999) + 100)}`}><span className="fade-in">{client.title}</span></li>
+                                ))
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="image_container">
+                        <div className="img_box">
+                            <div className="img_mask"></div>
+                            <div className="img_content" style={{backgroundImage: `url(${ServiziImg})`}}></div>
+                        </div>
+                    </div>
                 </div>
             </Studio3>
         </>

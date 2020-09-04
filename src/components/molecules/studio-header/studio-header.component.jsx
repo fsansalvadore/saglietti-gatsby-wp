@@ -11,14 +11,26 @@ const StudioHeader = styled.header`
 
   .header-text-center {
     h1 {
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
 
     p {
-      font-size: 2.75rem;
-      letter-spacing: -0.15rem;
-      font-weight: 100;
+      font-size: 1.25rem;
+      letter-spacing: -0.01rem;
+      font-weight: bold;
       font-family: 'FFMarkWebProLight', sans-serif;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .header-text-center {
+      h1 {
+        font-size: 1.5rem;
+      }
+  
+      p {
+        font-size: 2.75rem;
+      }
     }
   }
 `

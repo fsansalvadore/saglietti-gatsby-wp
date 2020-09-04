@@ -22,6 +22,31 @@ const CursorComponent = styled.div`
     opacity: 0;
     transition: height 0.6s ease, width 0.6s ease, transform 0.1s ease, opacity 0.1s ease;
 
+    span.cursor_secondary {
+        position: absolute;
+        left: -11px;
+        top: -11px;
+        width: 40px;
+        height: 40px;
+        border: 1px solid #000;
+        border-radius: 50%;
+        opacity: 0;
+        transform: scale(0.7);
+        transition: all 0.6s ease 0.1s;
+
+        &.hover {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        &.clicked {
+            animation-name: clicked;
+            animation-fill-mode: forwards;
+            animation-duration: 0.4s;
+            animation-timing-function: ease;
+        }
+    }
+
     @media screen and (min-width: 1000px) {
         body, a, a:hover {
           cursor: auto;
@@ -37,6 +62,7 @@ const Cursor = () => {
     const [isClick, setIsClick] = useState(false);
     let endX = React.useRef(0)
     let endY = React.useRef(0)
+    let inner = ''
 
     function useEventListener(eventName, handler, element = document) {
         const savedHandler = React.useRef()
@@ -71,19 +97,24 @@ const Cursor = () => {
     
     React.useEffect(() => {
         if (isHover) {
-          cursorRef.current.style.transform = `scale(1.4)`
+          cursorRef.current.style.transform = `scale(1.2)`
+          cursorRef.current.querySelector('.cursor_secondary').classList.add("hover")
         } else {
-          cursorRef.current.style.transform = 'scale(0.8)'
+            cursorRef.current.style.transform = 'scale(0.8)'
+            cursorRef.current.querySelector('.cursor_secondary').classList.remove("hover")
         }
     }, [isHover])
-
+    
     React.useEffect(() => {
         if (isClick) {
-          cursorRef.current.style.transform = `scale(0.5)`
+            cursorRef.current.querySelector('.cursor_secondary').classList.add("clicked")
+            cursorRef.current.style.transform = `scale(0.8)`
         } else {
             if(isHover) {
-                cursorRef.current.style.transform = 'scale(1.4)'
+                cursorRef.current.querySelector('.cursor_secondary').classList.remove("clicked")
+                cursorRef.current.style.transform = 'scale(1.2)'
             } else {
+                cursorRef.current.querySelector('.cursor_secondary').classList.remove("clicked")
                 cursorRef.current.style.transform = 'scale(0.8)'
             }
         }
@@ -113,7 +144,13 @@ const Cursor = () => {
     })
     
     return (
-        <CursorComponent ref={cursorRef} />
+        <CursorComponent ref={cursorRef}>
+            <span className="cursor_secondary"></span>
+            {
+                inner &&
+                <span>{inner}</span>
+            }
+        </CursorComponent>
     )
 }
 

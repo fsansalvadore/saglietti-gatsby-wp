@@ -210,20 +210,6 @@ const ProjectsList = ({data}) => {
           }
           <span className="last_divider"></span>
         </ul>
-        {
-          data.wordpress.extra_projects && (
-            <div>
-              <h2>Extra</h2>
-              <ul className="extra_proj-container">
-                {
-                  data.wordpress.extra_projects.nodes.map(extra_proj => (
-                  <li key={`${extra_proj.title}-${extra_proj.date}-${Math.floor(Math.random() * (100 - 999) + 100)}`} className="fade-in">{extra_proj.title}</li>
-                  ))
-                }
-              </ul>
-            </div>
-          )
-        }
       </ProjectsContainer>
     </>
   )

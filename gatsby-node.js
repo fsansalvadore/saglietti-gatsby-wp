@@ -52,6 +52,26 @@ const imageBlocks = `
     }
   }
 ` 
+
+const videoBlocks = `
+  ... on WORDPRESS_CoreVideoBlock {
+    ${coreBlocksFields}
+    attributes {
+      id
+      src
+      caption
+      align
+      poster
+      playsInline
+      muted
+      loop
+      controls
+      className
+      autoplay
+    }
+  }
+` 
+
 const galleryBlocks = `
   ... on WORDPRESS_CoreGalleryBlock {
     ${coreBlocksFields}
@@ -132,6 +152,7 @@ const query = `
             ${paragraphBlocks}
             ${headingBlocks}
             ${imageBlocks}
+            ${videoBlocks}
             ${galleryBlocks}
             ${carouselBlocks}
           }
