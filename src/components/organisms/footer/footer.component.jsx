@@ -57,7 +57,7 @@ const Footer = () => {
         </ul>
       </div>
       <div className="footer-info">
-        <Link to="/privacy-policy">Privacy Policy</Link>
+        <Link to="/privacy">Privacy Policy</Link>
       </div>
       <div className="footer-info">
         <SocialIcons/>

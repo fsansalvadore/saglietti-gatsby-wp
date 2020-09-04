@@ -81,7 +81,7 @@ const Menu = ({isOpen}) => {
       <MenuItems isOpen={isOpen}></MenuItems>
       <MenuInfo>
         <div className="privacy-link no-mobile">
-          <Link to="/privacy-policy">Privacy Policy</Link>
+          <Link to="/privacy">Privacy Policy</Link>
         </div>
         <div>
           <p>
