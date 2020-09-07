@@ -144,6 +144,7 @@ const ProjectPage = (props) => {
     blocks,
     custom_post_type_Project,
     index,
+    title,
     featuredImage
   } = props.pageContext;
   const {data} = props;
@@ -200,14 +201,14 @@ const ProjectPage = (props) => {
         <div className="proj_info-container flex align-center">
           <div className="proj_info-block">
             <TextRevealAnimation addClass="title">
-              <h1 className="TextRevealItem">{custom_post_type_Project.titolo}</h1>
+              <h1 className="TextRevealItem">{title}</h1>
             </TextRevealAnimation>
             <div className="proj_details-container fade-in">
               {
                 custom_post_type_Project.credits && custom_post_type_Project.credits.length > 0 &&
                   <div className="proj_details-block">
                     <h2>Credits</h2>
-                    <p>{custom_post_type_Project.credits}</p>
+                    <p dangerouslySetInnerHTML={{__html: custom_post_type_Project.credits}} />
                   </div>
               }
               {
@@ -235,7 +236,7 @@ const ProjectPage = (props) => {
             <ArrowRight/>
             <Link to="/progetti/">Progetti</Link>
             <ArrowRight/>
-            <span>{custom_post_type_Project.titolo}</span>
+            <span>{title}</span>
           </div>
         </div>
         <VerticalLine initial={{x: "0"}} animate={{ x: 0 }} transition={{ duration: 0.8 }} style={{left: "40%"}} />

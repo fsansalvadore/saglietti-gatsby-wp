@@ -31,9 +31,21 @@ const Studio2 = styled.div`
         width: 50%;
     }
 
-    .bg_black {
+    .container_mask {
         position: absolute;
         width: 0;
+        height: 100%;
+        background-color: #fff;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 10;
+    }
+
+    .bg_black,
+    .container_img_bg {
+        position: absolute;
+        width: 100%;
         height: 100%;
         background-color: #000;
         left: 0;
@@ -71,7 +83,7 @@ const Studio3 = styled.div`
     
     .image_container {
         position: relative;
-        margin: 0 3rem;
+        margin: 0;
         flex: 1;
 
         .img_box {
@@ -142,9 +154,20 @@ const Studio3 = styled.div`
         flex-direction: column;
     }
 
+    .image_container.servizi {
+        margin-top: 80px;
+    }
+
     @media (min-width: 1200px) {
         padding: 200px 6rem;
 
+        .image_container {
+            margin: 0 3rem;
+
+            &.servizi {
+                margin: 0px;
+            }
+        }
         .content_container {
             margin: 0 0 0 2.5%;
         }
@@ -294,7 +317,7 @@ const StudioPage = ({data}) => {
             const studioController = new ScrollMagic.Controller();
 
             const studioTL = new TimelineLite();
-            studioTL.fromTo(".bg_black", 1, {width: 0}, {width: "100%",ease: "power4.inOut"})
+            studioTL.fromTo(".container_mask", 1.6, {width: "100%"}, {width: 0 ,ease: "power4.inOut"})
             
             const studioScrollTL = new TimelineLite();
             studioScrollTL.fromTo(".bg_black.scroll", 1, {translateX: "-100%"}, {translateX: 0, ease: "power4.inOut"})
@@ -359,7 +382,8 @@ const StudioPage = ({data}) => {
             <Studio2>
                 <p className="fade-in">Creiamo progetti in grado di trasformare il brand in un racconto, con un unico obiettivo: creare valore.</p>
 
-                <div className="bg_black" style={{ backgroundImage: `url(${StudioImg})`}}></div>
+                <div className="container_mask white"></div>
+                <div className="container_img_bg" style={{ backgroundImage: `url(${StudioImg})`}}></div>
             </Studio2>
             <Studio3>
                 <div className="center_container">
@@ -438,7 +462,7 @@ const StudioPage = ({data}) => {
                             </ul>
                         </div>
                     </div>
-                    <div className="image_container">
+                    <div className="image_container servizi">
                         <div className="img_box">
                             <div className="img_mask"></div>
                             <div className="img_content" style={{backgroundImage: `url(${ServiziImg})`}}></div>

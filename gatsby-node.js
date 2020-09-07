@@ -37,6 +37,11 @@ const headingBlocks = `
     ${coreBlocksFields}
   }
 ` 
+const freeformBlocks = `
+... on WORDPRESS_CoreFreeformBlock {
+    ${coreBlocksFields}
+  }
+` 
 const imageBlocks = `
   ... on WORDPRESS_CoreImageBlock {
     ${coreBlocksFields}
@@ -152,6 +157,7 @@ const query = `
           blocks {
             ${paragraphBlocks}
             ${headingBlocks}
+            ${freeformBlocks}
             ${imageBlocks}
             ${videoBlocks}
             ${galleryBlocks}

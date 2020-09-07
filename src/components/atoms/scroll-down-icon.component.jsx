@@ -25,6 +25,7 @@ const IconOuter = styled.div`
         width: 2px;
         height: 2px;
         background-color: #000;
+        border-radius: 50%;
     }
 `
 
