@@ -5,8 +5,9 @@ import ProjectsCarouselStyled from './projects-carousel.styled'
 import ArrowRightCircle from '../../atoms/arrow-right-circle.component';
 import ArrowLeftCircle from '../../atoms/arrow-left-circle.component';
 
-import { gsap } from "gsap";
+import fallbackImg from '../../../images/fallback.png'
 
+import { gsap } from "gsap";
 import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 import { TweenMax, TweenLite, TimelineLite } from "gsap/all";
@@ -54,7 +55,7 @@ const ProjectsCarousel = () => {
 
   useEffect(() => {
     if(outProject) {
-      bg_prev.current.style.backgroundImage = `url(${outProject.featuredImage.node.link})`;
+      bg_prev.current.style.backgroundImage = `url(${outProject.featuredImage ? outProject.featuredImage.node.link : fallbackImg})`;
     }
     setCurrentProject(data.wordpress.projects.nodes[count])
     if(typeof window !== `undefined`) {
@@ -100,9 +101,12 @@ const ProjectsCarousel = () => {
           <div className="info-left" >
             <p>{data.wordpress.projects.nodes.indexOf(currentProject) + 1} — {projLenght}</p>
             <p>
-              {currentProject.custom_post_type_Project.ambiti.map(ambito => (
-                <li key={`${ambito}-${Math.floor(Math.random() * (100 - 999) + 100)}`}>{ambito}</li>
-              ))}
+              {
+                currentProject.custom_post_type_Project.ambiti &&
+                currentProject.custom_post_type_Project.ambiti.map(ambito => (
+                  <li key={`${ambito}-${Math.floor(Math.random() * (100 - 999) + 100)}`}>{ambito}</li>
+                ))
+              }
             </p>
           </div>
           <div className="info-right">
@@ -115,7 +119,7 @@ const ProjectsCarousel = () => {
           </div>
         </div>
         {
-          currentProject.featuredImage.node.link &&
+          currentProject.featuredImage &&
           <div className="carousel-img" style={{backgroundImage: `url(${currentProject.featuredImage.node.link})`}}></div>
         }
       </div>

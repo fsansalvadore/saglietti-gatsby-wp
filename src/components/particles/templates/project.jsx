@@ -5,6 +5,7 @@ import ArrowRight from '../../atoms/svg/arrow-right.component'
 import Layout from "../../layout"
 import VerticalLine from '../../atoms/vertical-line.component'
 import ComponentParser from '../ComponentParser'
+import fallbackImg from '../../../images/fallback.png'
 
 import PrevNextProject from '../../molecules/prev-next-project/prev-next-project.component'
 import TextRevealAnimation from '../hooks/animationTextReveal'
@@ -12,7 +13,6 @@ import { useEffect } from "react"
 
 import { gsap } from "gsap";
 import { TweenLite, TimelineLite } from "gsap/all";
-
 import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 import CustomEase from '../../particles/vendor/gsap/CustomEase'
@@ -241,7 +241,7 @@ const ProjectPage = (props) => {
         <VerticalLine initial={{x: "0"}} animate={{ x: 0 }} transition={{ duration: 0.8 }} style={{left: "40%"}} />
         <div className="proj_content-container">
           <div className="proj_cover">
-            <div className="proj_cover-img" style={{backgroundImage: `url(${featuredImage.node.link})`}}></div>
+            <div className="proj_cover-img" style={{backgroundImage: `url(${featuredImage ? featuredImage.node.link : fallbackImg})`}}></div>
           </div>
           <ComponentParser content={blocks}/>
         </div>

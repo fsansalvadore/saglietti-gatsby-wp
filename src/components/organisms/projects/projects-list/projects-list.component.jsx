@@ -3,9 +3,9 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 import projectHover from '../../../particles/hooks/projectHover'
+import fallbackImg from '../../../../images/fallback.png'
 
 import { gsap } from "gsap";
-
 import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 import { TweenLite, TimelineLite } from "gsap/all";
@@ -196,7 +196,7 @@ const ProjectsList = ({data}) => {
                 key={`${proj.id}-${proj.slug}-${Math.floor(Math.random() * (100 - 999) + 100)}`}
                 className="pseudo content"
                 data-fx="1"
-                data-img={proj.featuredImage.node.link}
+                data-img={proj.featuredImage ? proj.featuredImage.node.link : fallbackImg}
               >
                 <span className="divider"></span>
                 <div className="prog_list-item">
