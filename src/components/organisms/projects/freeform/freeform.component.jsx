@@ -19,10 +19,6 @@ const FreeformStyled = styled.div`
 `
 
 const Freeform = ({name, originalContent}) => {
-    
-    console.log('From freeform component:')
-    console.log(name)
-
     return (
         <FreeformStyled>
             <Reveal effect="anim_enter">

@@ -7,6 +7,7 @@ import Heading from '../organisms/projects/heading/heading.component'
 import SingleImage from '../organisms/projects/single-image/single-image.component'
 import VideoBlock from '../organisms/projects/video/video.component'
 import Freeform from '../organisms/projects/freeform/freeform.component'
+import Spacer from '../organisms/projects/spacer/spacer.component'
 import Gallery from '../organisms/projects/gallery/gallery.component'
 import Carousel from '../organisms/projects/carousel/carousel.component'
 // import MediaText from '../organisms/projects/media-text/media-text.component'
@@ -17,6 +18,7 @@ const components = {
     "core/video": VideoBlock,
     "core/gallery": Gallery,
     "core/freeform": Freeform,
+    "core/spacer": Spacer,
     // "core/media-text": MediaText,
     "core/heading": Heading,
     "eedee/block-gutenslider": Carousel,

@@ -42,6 +42,11 @@ const freeformBlocks = `
     ${coreBlocksFields}
   }
 ` 
+const spacerBlocks = `
+... on WORDPRESS_CoreSpacerBlock {
+    ${coreBlocksFields}
+  }
+` 
 const imageBlocks = `
   ... on WORDPRESS_CoreImageBlock {
     ${coreBlocksFields}
@@ -158,6 +163,7 @@ const query = `
             ${paragraphBlocks}
             ${headingBlocks}
             ${freeformBlocks}
+            ${spacerBlocks}
             ${imageBlocks}
             ${videoBlocks}
             ${galleryBlocks}
