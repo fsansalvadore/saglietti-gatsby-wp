@@ -118,6 +118,7 @@ const ProjectContainerComponent = styled.div`
         width: 100%;
         height: 100%;
         background-position: center;
+        background-size: cover;
         background-color: #ddd;
         animation-name: coverReveal;
         animation-duration: 1.6s;

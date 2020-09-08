@@ -10,20 +10,24 @@ const SliderBlock = styled.div`
     position: relative;
     display: block;
     width: 100%;
-    padding: 0 4rem;
+    padding: 0;
     overflow: visible;
 
     .slick-slider,
     .slick-list {
         overflow: visible;
+        line-height: 0;
     }
-
+    
     .slick-slider {
         overflow: visible;
+            img {
+                cursor: ew-resize !important;
+            }
     }
 
     .slick-slide {
-        padding: 10px;
+        padding: 0px;
     }
     * {
         outline: none !important;
@@ -37,8 +41,8 @@ const Carousel = ({name, saveContent, dynamicContent, innerBlocks }) => {
         infinite: false,
         arrows: false,
         speed: 500,
-        slidesToShow: 2,
-        slidesToScroll: 2,
+        slidesToShow: 1.5,
+        slidesToScroll: 1,
         centerPadding: "70px",
         responsive: [
             {
