@@ -38,7 +38,9 @@ const ProjectsCarousel = () => {
               }
             }
             custom_post_type_Project {
+              anno
               ambiti
+              visitabile
             }
           }
         }
@@ -47,8 +49,12 @@ const ProjectsCarousel = () => {
   `)
 
   let [count, setCount] = useState(0);
-  const projLenght = data.wordpress.projects.nodes.length;
-  const [currentProject, setCurrentProject] = useState(data.wordpress.projects.nodes[0])
+  const featuredProjects = data.wordpress.projects.nodes
+                                            .filter(p => p.custom_post_type_Project.visitabile === true)
+                                            .sort((a, b) => (a.custom_post_type_Project.anno < b.custom_post_type_Project.anno) ? 1 : (a.custom_post_type_Project.anno === b.custom_post_type_Project.anno) ? ((a.title > b.title) ? 1 : -1) : -1 )
+                                            .slice(0, 10)
+  const projLenght = featuredProjects.length;
+  const [currentProject, setCurrentProject] = useState(featuredProjects[0])
   const [outProject, setOutProject] = useState(null)
   const titleRef = useRef(null)
   const bg_prev = useRef(null)
@@ -57,20 +63,20 @@ const ProjectsCarousel = () => {
     if(outProject) {
       bg_prev.current.style.backgroundImage = `url(${outProject.featuredImage ? outProject.featuredImage.node.link : fallbackImg})`;
     }
-    setCurrentProject(data.wordpress.projects.nodes[count])
+    setCurrentProject(featuredProjects[count])
     if(typeof window !== `undefined`) {
       const titleTL = new TimelineLite();
       const titleTween = TweenMax.fromTo(titleRef.current, 0.2, {y: 60}, {y: 0})
       const carouselImgTween = TweenMax.fromTo(".carousel-img", 0.5, {opacity: 0, scale: 1.2},{opacity: 1, scale: 1, ease: "power3.out"}, 0)
       titleTL.add(titleTween).add(carouselImgTween);
     }
-  }, [outProject, data.wordpress.projects.nodes, count])
+  }, [outProject, featuredProjects, count])
   
   const prevProject = (e) => {
     e.preventDefault();
     titleRef.current.style.transform = "translate3d(0, 30px, 0)"
     setTimeout(() => {
-      setOutProject(data.wordpress.projects.nodes[count])
+      setOutProject(featuredProjects[count])
       if (count === 0) {
         setCount(projLenght - 1)
       } else {
@@ -84,7 +90,7 @@ const ProjectsCarousel = () => {
     e.preventDefault();
     titleRef.current.style.transform = "translate3d(0, 30px, 0)"
     setTimeout(() => {
-      setOutProject(data.wordpress.projects.nodes[count])
+      setOutProject(featuredProjects[count])
       if (count === projLenght - 1) {
         setCount(0)
       } else {
@@ -99,7 +105,7 @@ const ProjectsCarousel = () => {
       <div className="carousel-top" ref={bg_prev}>
         <div className="carousel-info">
           <div className="info-left" >
-            <p>{data.wordpress.projects.nodes.indexOf(currentProject) + 1} — {projLenght}</p>
+            <p>{featuredProjects.indexOf(currentProject) + 1} — {projLenght}</p>
             <p>
               {
                 currentProject.custom_post_type_Project.ambiti &&

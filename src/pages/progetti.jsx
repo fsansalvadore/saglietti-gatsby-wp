@@ -26,6 +26,11 @@ export const query = graphql`
               uri
             }
           }
+          custom_post_type_Project {
+            ambiti
+            anno
+            visitabile
+          }
         }
       }
       extra_projects {

@@ -70,12 +70,13 @@ const CursorFollow = () => {
 
     const onMouseMove = React.useCallback(({ clientX, clientY }) => {
         setTimeout(() => {
-            cursorFollowRef.current.style.opacity = '0.75';
-            cursorFollowRef.current.style.top = (clientY - 0) + 'px'
-            cursorFollowRef.current.style.left = (clientX - 0) + 'px'
-            endFollowX.current = clientX
-            endFollowY.current = clientY
-            
+            if (cursorFollowRef.current) {
+                cursorFollowRef.current.style.opacity = '0.75';
+                cursorFollowRef.current.style.top = (clientY - 0) + 'px'
+                cursorFollowRef.current.style.left = (clientX - 0) + 'px'
+                endFollowX.current = clientX
+                endFollowY.current = clientY
+            }
         }, 150)
     }, [cursorFollowRef])
     

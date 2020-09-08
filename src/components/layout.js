@@ -8,6 +8,7 @@
 import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { motion, AnimatePresence } from "framer-motion"
 
 import Nav from "./organisms/nav/nav.component"
 import "./layout.css"
@@ -40,7 +41,15 @@ const Layout = ({ children }) => {
       {cursorComp}
       {cursorFollowComp}
       <Nav siteTitle={data.site.siteMetadata.title} />
-      <main>{children}</main>
+        <AnimatePresence exitBeforeEnter>
+          <motion.main
+              animate={{opacity:1}}
+              exit={{opacity:0}}
+              transition={{duration: 1}}  
+            >
+            {children}
+          </motion.main>
+        </AnimatePresence>
       <Footer />
     </>
   )

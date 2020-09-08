@@ -6,7 +6,7 @@ import Layout from "../../layout"
 import VerticalLine from '../../atoms/vertical-line.component'
 import ComponentParser from '../ComponentParser'
 import fallbackImg from '../../../images/fallback.png'
-
+import {motion} from 'framer-motion'
 import PrevNextProject from '../../molecules/prev-next-project/prev-next-project.component'
 import TextRevealAnimation from '../hooks/animationTextReveal'
 import { useEffect } from "react"

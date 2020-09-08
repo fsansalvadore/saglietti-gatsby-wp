@@ -26,10 +26,6 @@ const StyledVideoContainer = styled.figure`
 `
 
 const VideoBlock = ({ attributes }) => {
-    
-    console.log('Video attributes:')
-    console.log(attributes)
-
     return (
         <StyledVideoContainer size={attributes.className ? attributes.className : ''} align={attributes.align ? attributes.align : ''}>
             <Reveal effect="anim_enter">

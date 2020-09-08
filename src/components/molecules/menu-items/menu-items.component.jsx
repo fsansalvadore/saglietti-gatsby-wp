@@ -122,7 +122,7 @@ const MenuItems = ({isOpen}) => {
               )
           ))
       })
-  })
+  }, [menuLinksRef])
 
   return (
     <NavLinks isOpen={isOpen} ref={menuLinksRef}>
