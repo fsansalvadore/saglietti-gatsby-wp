@@ -12,7 +12,7 @@ const Contatti = () => (
     <Layout>
       <div className="header-container">
         <ContactsInfoContainer />
-        <VerticalLine initial={{x: "40vw"}} animate={{ x: 0 }} transition={{ duration: 0.8 }} style={{left: "60%"}} />
+        <VerticalLine style={{left: "60%"}} className="vertical_line"/>
         <div className="header-right sticky">
           <div className="header-right-top" style={{backgroundImage: `url(${Map})`}}>
 

@@ -6,7 +6,6 @@ import Layout from "../../layout"
 import VerticalLine from '../../atoms/vertical-line.component'
 import ComponentParser from '../ComponentParser'
 import fallbackImg from '../../../images/fallback.png'
-import {motion} from 'framer-motion'
 import PrevNextProject from '../../molecules/prev-next-project/prev-next-project.component'
 import TextRevealAnimation from '../hooks/animationTextReveal'
 import { useEffect } from "react"
@@ -27,14 +26,15 @@ const ProjectContainerComponent = styled.div`
   width: 100%;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   border-bottom: 1px solid #000;
 
   .proj_info-container {
-    position: sticky;
+    position: relative;
     top: 0;
     min-height: 600px;
     height: 100vh;
-    width: 40vw;
+    width: 100vw;
     padding: 1.45rem 2rem;
 
     .title {
@@ -105,7 +105,7 @@ const ProjectContainerComponent = styled.div`
 
   .proj_content-container {
     position: relative;
-    width: 60vw;
+    width: 100vw;
     min-height: 100vh;
     overflow: hidden;
 
@@ -136,6 +136,27 @@ const ProjectContainerComponent = styled.div`
     100% {
       height: 100%;
       background-size: 100% auto;
+    }
+  }
+
+  .vertical_line {
+    display: none;
+  }
+
+  @media (min-width: 900px) {
+    flex-direction: row;
+
+    .proj_info-container {
+      width: 40vw;
+      position: sticky;
+    }
+
+    .proj_content-container {
+      width: 60vw;
+    }
+
+    .vertical_line {
+      display: block;
     }
   }
 `
@@ -240,7 +261,7 @@ const ProjectPage = (props) => {
             <span>{title}</span>
           </div>
         </div>
-        <VerticalLine initial={{x: "0"}} animate={{ x: 0 }} transition={{ duration: 0.8 }} style={{left: "40%"}} />
+        <VerticalLine style={{left: "40%"}} className="vertical_line" />
         <div className="proj_content-container">
           <div className="proj_cover">
             <div className="proj_cover-img" style={{backgroundImage: `url(${featuredImage ? featuredImage.node.link : fallbackImg})`}}></div>

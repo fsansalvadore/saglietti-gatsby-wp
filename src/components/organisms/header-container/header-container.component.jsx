@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
 // Components
 import VerticalLine from '../../atoms/vertical-line.component'
@@ -10,11 +9,11 @@ import HeaderLeft from './header-left.component';
 
 const HeaderContainer = () => {
   return (
-    <motion.div className="header-container" exit={{ opacity: 0 }}>
+    <div className="header-container">
       <HeaderLeft />
-      <VerticalLine style={{left: "60%"}}/>
+      <VerticalLine style={{left: "60%"}} className="vertical_line"/>
       <ProjectsCarousel />
-    </motion.div>
+    </div>
   )
 }
 

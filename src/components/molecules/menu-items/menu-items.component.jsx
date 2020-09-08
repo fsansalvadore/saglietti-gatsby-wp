@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react'
 import { Link } from 'gatsby'
-// import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { gsap } from "gsap";
 import { TweenLite, TimelineLite } from "gsap/all";
 

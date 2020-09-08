@@ -43,9 +43,10 @@ const Layout = ({ children }) => {
       <Nav siteTitle={data.site.siteMetadata.title} />
         <AnimatePresence exitBeforeEnter>
           <motion.main
-              animate={{opacity:1}}
-              exit={{opacity:0}}
-              transition={{duration: 1}}  
+              initial={{opacity: 0}}
+              animate={{opacity: [0, 1]}}
+              exit={{opacity: [1, 0]}}
+              transition={{duration: 1, times: [0, 1]}}  
             >
             {children}
           </motion.main>

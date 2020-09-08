@@ -38,11 +38,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-transition-link",
-      options: {
-        }
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,

@@ -3,9 +3,9 @@ import styled from 'styled-components'
 const ProjectsCarouselStyled = styled.div`
   position: sticky;
   top: 0;
-  width: 40%;
+  width: 100%;
   height: 100vh;
-  float: right;
+  float: none;
   
   .scroll-icon {
     position: absolute;
@@ -124,6 +124,12 @@ const ProjectsCarouselStyled = styled.div`
         display: block;
       }
     }
+  }
+
+  @media (min-width: 900px) {
+    width: 40%;
+    height: 100vh;
+    float: right;
   }
 `
 
