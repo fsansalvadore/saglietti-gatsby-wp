@@ -28,7 +28,6 @@ const ProjectsCarouselStyled = styled.div`
     &::after {
       content: '';
       position: absolute;
-      top: 50%;
       left: 0;
       right:0;
       bottom: 0;
@@ -72,6 +71,7 @@ const ProjectsCarouselStyled = styled.div`
             width: 1px;
             height: 0;
             border-bottom: 1px solid #fff;
+            top: 50%;
             right: 5px;
           }
   
