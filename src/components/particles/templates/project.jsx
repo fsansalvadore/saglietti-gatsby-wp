@@ -172,17 +172,17 @@ const ProjectPage = (props) => {
   const {data} = props;
   let prevPost = null
   let nextPost = null
-  const postLength = data.wordpress.projects.nodes.length
-
+  const sortedProjects = data.wordpress.projects.nodes.filter(p => p.custom_post_type_Project.visitabile === true).sort((a, b) => (a.custom_post_type_Project.anno < b.custom_post_type_Project.anno) ? 1 : (a.custom_post_type_Project.anno === b.custom_post_type_Project.anno) ? ((a.title > b.title) ? 1 : -1) : -1 )
+  const postLength = sortedProjects.length
   if (index === postLength - 1) {
-    prevPost = data.wordpress.projects.nodes[index - 1]
-    nextPost = data.wordpress.projects.nodes[0]
+    prevPost = sortedProjects[index - 1]
+    nextPost = sortedProjects[0]
   } else if (index === 0) {
-    prevPost = data.wordpress.projects.nodes[postLength - 1]
-    nextPost = data.wordpress.projects.nodes[index + 1]
+    prevPost = sortedProjects[postLength - 1]
+    nextPost = sortedProjects[index + 1]
   } else {
-    prevPost = data.wordpress.projects.nodes[index - 1]
-    nextPost = data.wordpress.projects.nodes[index + 1]
+    prevPost = sortedProjects[index - 1]
+    nextPost = sortedProjects[index + 1]
   }
 
   useEffect(() => {
@@ -277,12 +277,16 @@ const ProjectPage = (props) => {
 export const query = graphql`
   query PrevNextQuery {
     wordpress {
-      projects {
+      projects(where: { status: PUBLISH }) {
         nodes {
           id
           title
           date
           slug
+          custom_post_type_Project {
+            anno
+            visitabile
+          }
         }
       }
     }

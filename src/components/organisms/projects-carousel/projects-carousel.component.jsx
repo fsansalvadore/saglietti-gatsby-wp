@@ -26,7 +26,7 @@ const ProjectsCarousel = () => {
   const data = useStaticQuery(graphql`
     query CarouselQuery {
       wordpress {
-        projects {
+        projects(where: { status: PUBLISH }) {
           nodes {
             id
             title
@@ -106,7 +106,7 @@ const ProjectsCarousel = () => {
         <div className="carousel-info">
           <div className="info-left" >
             <p>{featuredProjects.indexOf(currentProject) + 1} — {projLenght}</p>
-            <p>
+            <p className="proj_ambiti">
               {
                 currentProject.custom_post_type_Project.ambiti &&
                 currentProject.custom_post_type_Project.ambiti.map(ambito => (

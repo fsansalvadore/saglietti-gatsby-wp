@@ -32,9 +32,9 @@ const ProjectsCarouselStyled = styled.div`
       right:0;
       bottom: 0;
       width: 100%;
-      height: 30%;
+      height: 100%;
       z-index: 0;
-      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%);
+      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
     }
 
     p {
@@ -49,31 +49,34 @@ const ProjectsCarouselStyled = styled.div`
       justify-content: space-between;
       
       .info-left {
-        li {
-          position: relative;
-          display: inline-flex;
-          list-style: none;
-          padding: 0 10px;
-          margin: 0;
-          border-radius: 1px;
-          align-items: center;
-        }
+        .proj_ambiti {
 
-        li:first-of-type {
-          padding-left: 0;
-        }
-
-        li::after {
-          position: absolute;
-          content: '';
-          width: 1px;
-          height: 0;
-          border-bottom: 1px solid #fff;
-          right: 0;
-        }
-
-        li:last-of-type::after {
-          display: none;
+          li {
+            font-size: 0.9rem;
+            letter-spacing: -0.015rem;
+            position: relative;
+            display: inline-flex;
+            height: 100%;
+            list-style: none;
+            padding-right: 10px;
+            margin: 0;
+            border-radius: 1px;
+            align-items: center;
+          }
+  
+  
+          li::after {
+            position: absolute;
+            content: '';
+            width: 1px;
+            height: 0;
+            border-bottom: 1px solid #fff;
+            right: 5px;
+          }
+  
+          li:last-of-type::after {
+            display: none;
+          }
         }
       }
 

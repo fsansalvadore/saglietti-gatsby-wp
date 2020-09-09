@@ -14,7 +14,7 @@ const Progetti = ({data}) => (
 export const query = graphql`
   query ProjectsQuery {
     wordpress {
-      projects {
+      projects(first: 100, where: { status: PUBLISH }) {
         nodes {
           id
           title
@@ -31,19 +31,6 @@ export const query = graphql`
             anno
             visitabile
           }
-        }
-      }
-      extra_projects {
-        nodes {
-          featuredImage {
-            node {
-              link
-            }
-          }
-          id
-          date
-          slug
-          title
         }
       }
     }

@@ -163,7 +163,7 @@ const ProjectsContainer = styled.div`
     left: 80% !important;
   }
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 1100px) {
     h1, h2 {
       margin: 0 40% 2rem 0;
     }

@@ -192,7 +192,9 @@ exports.createPages = async ({ actions, graphql }) => {
       component: path.resolve(`./src/components/particles/templates/project.jsx`),
       context: {
         ...project,
-        index: data.wordpress.projects.nodes.indexOf(project),
+        index: data.wordpress.projects.nodes
+                                      .filter(p => p.custom_post_type_Project.visitabile === true)
+                                      .sort((a, b) => (a.custom_post_type_Project.anno < b.custom_post_type_Project.anno) ? 1 : (a.custom_post_type_Project.anno === b.custom_post_type_Project.anno) ? ((a.title > b.title) ? 1 : -1) : -1 ).indexOf(project),
         blocks: project.blocks,
         id: project.id,
         title: project.title
