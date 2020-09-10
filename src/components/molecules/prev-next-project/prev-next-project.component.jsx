@@ -23,6 +23,10 @@ const PrevNextProjectContainer = styled.div`
         span {
             margin: 0 10px;
             transition: all 0.3s ease;
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            min-height: 20px;
         }
     }
 
