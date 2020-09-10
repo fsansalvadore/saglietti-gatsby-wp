@@ -99,6 +99,7 @@ const ProjectsContainer = styled.div`
         padding: 0 1rem;
         display: flex;
         align-items: center;
+        justify-content: space-between;
 
         h3 {
           font-weight: normal;
