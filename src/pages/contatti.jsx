@@ -15,12 +15,16 @@ const Contatti = () => (
         <VerticalLine style={{left: "60%"}} className="vertical_line"/>
         <div className="header-right sticky">
           <div className="header-right-top" style={{backgroundImage: `url(${Map})`}}>
-
           </div>
           <div className="header-right-bottom">
             <p>
               via Parma 52<br/>
-              10153 Torino Italia
+              10153 Torino Italia<br/>
+            </p>
+          </div>
+          <div className="header-right-bottom">
+            <p>
+              <a href="tel:+393406450856">+39 340 645 0856</a>
             </p>
           </div>
         </div>

@@ -47,7 +47,8 @@ const Footer = () => {
       <div className="footer-info">
         <p>Copyright © {new Date().getFullYear()}</p>
         <p>P.I 03391740044</p>
-        <p>info@saglietti.it</p>
+        <p><a href="mailto:info@saglietti.it">info@saglietti.it</a></p>
+        <p><a href="tel:+393406450856">+39 340 645 0856</a></p>
       </div>
       <div className="footer-sitemap">
         <ul>

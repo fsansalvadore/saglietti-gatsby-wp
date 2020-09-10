@@ -17,9 +17,8 @@ const CONTACT_MUTATION = gql`
 `
 
 const ContactFormContainer = styled.div`
-  margin-left: 40%;
-  width: 60%;
-  letter-spacing: -0.03rem;
+  width: 100%;
+  letter-spacing: -0.015rem;
 
   h2 {
     font-weight: 400;
@@ -36,7 +35,7 @@ const ContactFormContainer = styled.div`
     font-size: 0.75rem !important;
     font-weight: bold;
     font-family: 'FFMarkWebProLight', sans-serif !important;
-    letter-spacing: -0.03rem;
+    letter-spacing: -0.015rem;
   }
   
   .MuiFormLabel-root.Mui-focused,
@@ -63,8 +62,16 @@ const ContactFormContainer = styled.div`
   .MuiSvgIcon-root {
     margin-left: -5px;
     transform: scale(0.65);
-  }
 
+  }
+  
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus, 
+  input:-webkit-autofill:active  {
+      -webkit-box-shadow: 0 0 0 30px white inset !important;
+  }
+  
   .form-disclaimer {
     margin-top: 6px;
     display: flex;
@@ -87,19 +94,21 @@ const ContactFormContainer = styled.div`
   }
   
   button {
-    margin-left: 50%;
+    float: right;
     font-weight: bold;
-    width: 50%;
-    letter-spacing: -0.03rem;
-    background: transparent;
+    letter-spacing: -0.015rem;
+    background: #000;
+    color: #fff;
+    padding: 10px 20px;
     border: none;
+    box-shadow: none;
+    border-radius: 0;
     display: flex;
     justify-content: space-between;
   }
 
   @media (max-width: 1200px) {
-    margin-left: 0;
-    width: 100%;
+    
   }
 ` 
 

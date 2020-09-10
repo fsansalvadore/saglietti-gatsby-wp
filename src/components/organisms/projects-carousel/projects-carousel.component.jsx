@@ -26,7 +26,7 @@ const ProjectsCarousel = () => {
   const data = useStaticQuery(graphql`
     query CarouselQuery {
       wordpress {
-        projects(where: { status: PUBLISH }) {
+        projects(first: 25, where: { status: PUBLISH }) {
           nodes {
             id
             title

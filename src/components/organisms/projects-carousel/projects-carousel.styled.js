@@ -58,7 +58,7 @@ const ProjectsCarouselStyled = styled.div`
             display: inline-flex;
             height: 100%;
             list-style: none;
-            padding-right: 10px;
+            padding-right: 12px;
             margin: 0;
             border-radius: 1px;
             align-items: center;
@@ -67,12 +67,10 @@ const ProjectsCarouselStyled = styled.div`
   
           li::after {
             position: absolute;
-            content: '';
+            content: '/';
+            font-size: 0.6rem;
             width: 1px;
-            height: 0;
-            border-bottom: 1px solid #fff;
-            top: 50%;
-            right: 5px;
+            right: 8px;
           }
   
           li:last-of-type::after {

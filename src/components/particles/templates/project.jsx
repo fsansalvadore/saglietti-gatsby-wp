@@ -277,7 +277,7 @@ const ProjectPage = (props) => {
 export const query = graphql`
   query PrevNextQuery {
     wordpress {
-      projects(where: { status: PUBLISH }) {
+      projects(first: 100, where: { status: PUBLISH }) {
         nodes {
           id
           title

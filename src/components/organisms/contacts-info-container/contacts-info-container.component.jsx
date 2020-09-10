@@ -26,7 +26,7 @@ const ContactsInfoContainer = () => {
           </div>
         </div>
       </div>
-      <hr className="header-text-center"/>
+      <hr className="line"/>
       <div className="header-text-center flex align-center h-screen">
         <ContactForm />
       </div>
