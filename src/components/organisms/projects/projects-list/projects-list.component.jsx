@@ -30,7 +30,7 @@ const ProjectsContainer = styled.div`
     font-weight: 200;
     font-size: 1rem;
     letter-spacing: -0.03rem;
-    margin: 0 20% 2rem 0;
+    margin: 0 20% 1rem 0;
     padding-right: 1rem;
     transform: tralsate3d(-60, 0, 0);
   }
@@ -47,7 +47,7 @@ const ProjectsContainer = styled.div`
     a {
       display: inline-block;
       text-decoration: none;
-      font-size: 1.2rem;
+      font-size: 1rem;
       opacity: 1;
       letter-spacing: -0.05rem;
       margin: 0;
@@ -85,23 +85,32 @@ const ProjectsContainer = styled.div`
 
     .block__link {
       display: flex;
+      align-items: center;
 
       &.no_link {
         cursor: not-allowed;
         pointer-events: none;
       }
 
-      & > div {
-        padding: 0 1rem;
-      }
-
       .proj_item-left {
         width: 80%;
         opacity: 0;
+        text-align: left;
+        padding: 0 1rem;
+        display: flex;
+        align-items: center;
+
+        h3 {
+          font-weight: normal;
+          font-size: inherit;
+          margin: 0;
+          padding: 0;
+          display: inline;
+        }
 
         .visible_arrow {
           display: inline;
-          float: left;
+          float: right;
 
           img {
             width: 12px;
@@ -115,21 +124,31 @@ const ProjectsContainer = styled.div`
         height: 100%;
         align-items: center;
         opacity: 0;
+        padding-left: 1rem;
 
         .proj_year {
-          font-size: 0.9rem;
-          min-width: 35px;
+          font-size: 1rem;
+          min-width: 45px;
           text-align: left;
         }
 
         .proj_ambiti {
           padding-left: 1rem;
           display: none;
-          font-size: 0.7rem;
+          font-size: 0.75rem;
           align-items: center;
 
           div {
-            padding: 0 6px;
+            position: relative;
+            padding: 0 12px;
+
+            &::after {
+              position: absolute;
+              content: '/';
+              font-size: 0.6rem;
+              width: 1px;
+              right: 4px;
+            }
           }
         }
       }
@@ -187,8 +206,8 @@ const ProjectsContainer = styled.div`
 
     .proj_content .block__link .proj_item-right .proj_ambiti {
       display: flex;
+      flex-wrap: wrap;
     }
-
   }
 `
 
@@ -249,10 +268,10 @@ const ProjectsList = ({data}) => {
         proj_li.addEventListener('mouseover', () => {
           projectsRef.current.querySelectorAll("li").forEach(
             li => {
-              li.querySelector("a").style.opacity = "0.25"
-              li.querySelector("span").style.opacity = "0.25"
-              document.querySelector(".vertical-line").style.opacity = "0.25"
-              projectsRef.current.querySelector(".last_divider").style.opacity = "0.25"
+              li.querySelector("a").style.opacity = "0.5"
+              li.querySelector("span").style.opacity = "0.5"
+              document.querySelector(".vertical-line").style.opacity = "0.5"
+              projectsRef.current.querySelector(".last_divider").style.opacity = "0.5"
             })
           proj_li.querySelector("a").style.opacity = "1"
         })
@@ -295,11 +314,11 @@ const ProjectsList = ({data}) => {
                   className={`block__link ${!proj.custom_post_type_Project.visitabile && 'no_link'}`}
                   >
                   <div className="proj_item-left prog_list-item">
+                    <h3>{proj.title}</h3>
                     {
                       proj.custom_post_type_Project.visitabile &&
                       <div className="visible_arrow"><img src={ArrowTopRight} alt="active link"/></div>
                     }
-                    {proj.title}
                   </div>
                   <div className="proj_item-right">
                     <div className="proj_year">
