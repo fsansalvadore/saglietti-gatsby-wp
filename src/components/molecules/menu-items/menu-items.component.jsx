@@ -58,7 +58,7 @@ const NavLinks = styled.nav`
   }
 
   @media (max-width: 900px) {
-    margin-top: 100px;
+    margin-top: 0px;
     flex-direction: column;
 
     span {

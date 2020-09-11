@@ -15,11 +15,15 @@ const Navbar = styled.div`
   height: 100px;
   position: fixed;
   z-index: 998;
-  padding: 1.45rem 2rem;
+  padding: 1.45rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   pointer-events: none;
+  
+  @media screen and (min-width: 900px) {
+    padding: 1.45rem 2rem;
+  }
 `
 
 const MenuBtn = styled.a`
