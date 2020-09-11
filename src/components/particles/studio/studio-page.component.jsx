@@ -63,7 +63,7 @@ const Studio2 = styled.div`
         }
     }
 
-    @media (min-width: 1200px) {
+    @media (min-width: 900px) {
         padding: 200px 6rem;
 
         p {
@@ -170,7 +170,7 @@ const Studio3 = styled.div`
         margin-top: 80px;
     }
 
-    @media (min-width: 1200px) {
+    @media (min-width: 900px) {
         padding: 200px 6rem;
 
         .image_container {
@@ -346,7 +346,7 @@ const Studio4 = styled.div`
         }
     }
 
-    @media (min-width: 1200px) {
+    @media (min-width: 900px) {
         padding: 200px 6rem;
 
         p {

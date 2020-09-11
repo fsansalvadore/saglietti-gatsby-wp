@@ -18,7 +18,6 @@ const StudioHeader = styled.header`
 
     p {
       font-size: 1.75rem;
-      letter-spacing: -0.01rem;
       font-weight: bold;
       font-family: 'FFMarkWebProLight', sans-serif;
     }
