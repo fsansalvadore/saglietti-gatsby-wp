@@ -30,6 +30,11 @@ export const query = graphql`
         nodes {
           id
           title
+          featuredImage {
+            node {
+              link
+            }
+          }
         }
       }
     }
