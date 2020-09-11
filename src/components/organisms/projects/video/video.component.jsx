@@ -31,6 +31,7 @@ const VideoBlock = ({ attributes }) => {
             <Reveal effect="anim_enter">
                 <video width="900" playsInline={attributes.playsInline} muted={attributes.muted} loop={attributes.loop} controls={attributes.controls} autoplay={attributes.autoplay}>
                     <source src={attributes.src} type="video/mp4" />
+                    <track src={attributes.caption} kind="subtitles" srclang="no" />
                     Your browser does not support HTML video.
                 </video>
             </Reveal>

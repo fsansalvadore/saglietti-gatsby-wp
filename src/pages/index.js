@@ -6,6 +6,8 @@ import Layout from "../components/layout"
 import HeaderContainer from '../components/organisms/header-container/header-container.component'
 import VideoSection from '../components/organisms/video-section/video-section.component';
 import ContactsCTA from "../components/molecules/contacts-cta/contacts-cta.component";
+import StudioCTA from '../components/molecules/studio-cta/studio-cta.component'
+import SpotifyMarquee from '../components/molecules/SpotifyMarquee/SpotifyMarquee.component'
 
 import '../components/particles/styles/homepage.styles.scss';
 
@@ -13,6 +15,8 @@ const IndexPage = () => (
   <Layout>    
     <HeaderContainer />
     <VideoSection />
+    <StudioCTA />
+    <SpotifyMarquee />
     <ContactsCTA />
   </Layout>
 )

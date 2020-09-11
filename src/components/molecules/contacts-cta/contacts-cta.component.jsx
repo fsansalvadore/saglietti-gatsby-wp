@@ -6,7 +6,7 @@ import ArrowRightSVG from '../../../images/icons/arrow-right.svg'
 
 const ContactsComponent = styled.div`
   width: 100%;
-  padding: 250px 5%;
+  padding: 150px 5%;
 
   a {
     width: 100%;
