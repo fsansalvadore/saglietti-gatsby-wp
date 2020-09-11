@@ -32,12 +32,12 @@ const SpotifyMarquee = () => {
     `)
     let marqueeContent = `Stiamo ascoltando: ${data.spotifyRecentTrack.track.name} — ${data.spotifyRecentTrack.track.artists.map(art => ` ${art.name}`)}`
     const [isPlaying, setIsPlaying] = useState(true)
-    const trackPreview = null
+    let trackPreview = null
     if(typeof window !== `undefined`) {
         trackPreview = new Audio(data.spotifyRecentTrack.track.preview_url)
         trackPreview.type = "audio/mp3"   
     }
-    
+
     for (let i = 0; i < 4; ++i) {
         marqueeContent += ` <span>🎵</span> ${marqueeContent}`
     }
