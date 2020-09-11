@@ -31,7 +31,7 @@ const ProjectsContainer = styled.div`
     font-size: 1rem;
     letter-spacing: -0.03rem;
     margin: 0 20% 1rem 0;
-    padding-right: 1rem;
+    padding-left: 1rem;
     transform: tralsate3d(-60, 0, 0);
   }
 
