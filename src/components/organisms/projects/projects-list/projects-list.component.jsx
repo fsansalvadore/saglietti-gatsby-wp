@@ -22,7 +22,7 @@ const ProjectsContainer = styled.div`
   width: 100%;
   margin: 0 auto;
   padding: 150px 0 0 0 ;
-  text-align: right;
+  text-align: left;
   position: relative;
 
   h1, h2 {
