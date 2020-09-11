@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const StudioHeader = styled.header`
   width: 100%;
-  height: 50vh;
+  height: 80vh;
   min-height: 400px;
   text-align: center;
   display: flex;
@@ -17,7 +17,7 @@ const StudioHeader = styled.header`
     }
 
     p {
-      font-size: 1.35rem;
+      font-size: 1.75rem;
       letter-spacing: -0.01rem;
       font-weight: bold;
       font-family: 'FFMarkWebProLight', sans-serif;
