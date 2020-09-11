@@ -19,7 +19,7 @@ const Studio2 = styled.div`
 
     p {
         color: #fff;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         line-height: 140%;
         font-weight: bold;
         width: 100%;
@@ -112,7 +112,7 @@ const Studio3 = styled.div`
 
     .content_container {
         flex: 1;
-        margin: 80px 0 0 0;
+        margin: 0;
 
         h2 {
             font-size: 0.8rem;
@@ -120,7 +120,7 @@ const Studio3 = styled.div`
         }
     
         p {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: bold;
             line-height: 130%;
             letter-spacing: -0.055rem;
@@ -235,7 +235,7 @@ const Studio4 = styled.div`
 
     p {
         color: #fff;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         font-weight: bold;
         line-height: 140%;
     }

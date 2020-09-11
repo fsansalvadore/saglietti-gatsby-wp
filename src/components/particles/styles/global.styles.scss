@@ -101,7 +101,7 @@ hr.line {
 }
 
 .header-text-center {
-  width: 70%;
+  width: calc(100% - 2rem);
   margin: 0 auto;
   
   &.h-screen {
@@ -211,6 +211,11 @@ hr.line {
   .vertical_line {
     display: block;
   }
+
+  .header-text-center {
+    width: 70%;
+  }
+
   .header-container {
     flex-direction: row;
 

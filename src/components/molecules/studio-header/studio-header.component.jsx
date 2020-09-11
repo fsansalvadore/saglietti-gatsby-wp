@@ -2,20 +2,22 @@ import styled from 'styled-components'
 
 const StudioHeader = styled.header`
   width: 100%;
-  height: 60vh;
-  min-height: 500px;
+  height: 50vh;
+  min-height: 400px;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
 
   .header-text-center {
+    margin-top: 60px;
+
     h1 {
       font-size: 1rem;
     }
 
     p {
-      font-size: 1.6rem;
+      font-size: 1.35rem;
       letter-spacing: -0.01rem;
       font-weight: bold;
       font-family: 'FFMarkWebProLight', sans-serif;
@@ -27,6 +29,8 @@ const StudioHeader = styled.header`
     min-height: 400px;
 
     .header-text-center {
+      margin-top: 0;
+
       h1 {
         font-size: 1.5rem;
       }
