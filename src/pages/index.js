@@ -16,8 +16,8 @@ const IndexPage = () => (
     <HeaderContainer />
     <VideoSection />
     <StudioCTA />
-    <SpotifyMarquee />
     <ContactsCTA />
+    <SpotifyMarquee />
   </Layout>
 )
 

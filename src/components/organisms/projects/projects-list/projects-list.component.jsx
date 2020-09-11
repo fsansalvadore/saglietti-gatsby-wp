@@ -186,6 +186,7 @@ const ProjectsContainer = styled.div`
   @media only screen and (min-width: 1100px) {
     h1, h2 {
       margin: 0 40% 2rem 0;
+      padding-left: 2rem;
     }
 
     .proj_content li a {
@@ -195,6 +196,7 @@ const ProjectsContainer = styled.div`
 
     .proj_content .block__link .proj_item-left {
       width: 60%;
+      padding: 0 1rem 0 2rem;
       
       .visible_arrow img {
         width: 15px;

@@ -6,9 +6,6 @@ import Layout from '../components/layout'
 const PrivacyContainer = styled.div`
   margin: 200px 2rem;
 
-  p {
-
-  }
   h2 {
     font-size: 1.6rem;
   }
