@@ -6,7 +6,7 @@ const StyledVideoContainer = styled.figure`
     position: relative;
     width: 100%;
     display: block;
-    padding: 1rem 4rem 0 4rem;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
