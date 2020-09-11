@@ -333,7 +333,7 @@ const Studio4 = styled.div`
     }
 
     .center_container.wide {
-        margin-top: 40px;
+        margin-top: 0;
         max-width: none;
         flex-direction: column;
     }
@@ -354,6 +354,7 @@ const Studio4 = styled.div`
         }
 
         .center_container.wide {
+            margin-top: 100px;
             flex-direction: row;
         }
 
