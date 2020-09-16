@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
 import styled from 'styled-components'
+import AIAP from '../../../images/AIAP-FIRMA-SOCIO-SENIOR.png'
 
 import { gsap } from "gsap";
 import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
@@ -16,7 +17,7 @@ if(typeof window !== `undefined`) {
 const StudioContent = styled.div`
     position: relative;
     width: 100%;
-    padding: 100px 1rem;
+    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,10 +35,15 @@ const StudioContent = styled.div`
     }
 
     p {
-        font-size: 1.25rem;
+        font-size: 1rem;
         font-weight: bold;
         line-height: 140%;
         letter-spacing: -0.012em;
+        margin: 0;
+
+        strong {
+            font-family: 'FFMarkWebProMedium', sans-serif;
+        }
     }
 
     .text-lg  {
@@ -46,7 +52,31 @@ const StudioContent = styled.div`
     }
 
     section {
-        margin: 2rem 0;
+        padding: 60px 1rem;
+    }
+
+    .studio_container.intro {
+        padding: 150px 1rem 3rem 1rem;
+    }
+
+    .studio_content-container {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid #000;
+    }
+
+    .studio_content-left {
+        border-top: 1px solid #000;
+        border-right: none;
+        width: 100%;
+    }
+    .studio_content-right {
+        flex: 1;
+        border-top: 1px solid #000;
+    }
+
+    .filosofia_container {
+        border-bottom: 1px solid #000;
     }
 
     .clienti_container {
@@ -93,7 +123,7 @@ const StudioContent = styled.div`
 
         ul {
             padding: 0;
-            margin: 0 0 3rem 0;
+            margin: 0 0 1rem 0;
         }
     
         li {
@@ -101,22 +131,16 @@ const StudioContent = styled.div`
             display: flex;
             align-items: flex-start;
             font-weight: bold;
-            font-size: 1.35rem;
+            font-size: 1rem;
             margin-bottom: 15px;
             
             span {
-                display: flex;
-                align-items: center;
-                justify-content: center;
                 width: 30px;
                 height: 30px;
                 min-width: 30px;
                 min-height: 30px;
-                font-size: 0.8rem;
                 font-weight: bold;
-                margin-right: 15px;
-                border: 2px solid #000;
-                border-radius: 50%;
+                margin-right: 10px;
                 
                 * {
                     line-height: 0;
@@ -125,21 +149,61 @@ const StudioContent = styled.div`
         }
     }
 
-    @media (min-width: 900px) {
-        padding: 150px 12rem 80px 2rem;
+    .servizi_container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
 
+        ul {
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        li {
+            list-style: none;
+            font-size: 1rem;
+            font-weight: bold;
+            line-height: 140%;
+            letter-spacing: -0.012em;
+        }
+
+        img {
+            max-height: 60px;
+            justify-self: flex-end;
+        }
+    }
+
+    @media (min-width: 900px) {
+        section {
+            padding: 2rem;
+        }
+
+        .studio_content-left {
+            width: 60vw;
+            border-right: 1px solid #000;
+        }
+
+        .studio_container.intro {
+            padding: 150px 20% 5rem 2rem;
+        }
+        
+        .studio_content-container {
+            flex-direction: row;
+        }
+        
         h2 {
             font-size: 0.8rem;
             font-weight: bold;
         }
     
         p {
-            font-size: 1.75rem;
+            font-size: 1.25rem;
             line-height: 130%;
         }
 
         .text-lg {
-            font-size: 3rem;
+            font-size: 2.8rem;
             line-height: 100%;
         }
 
@@ -150,7 +214,7 @@ const StudioContent = styled.div`
         }
 
         .metodo_container li {
-            font-size: 1.75rem;
+            font-size: 1.25rem;
             margin-bottom: 15px;
         }
     }
@@ -213,48 +277,62 @@ const StudioPage = ({data}) => {
     return (
         <>
             <StudioContent>
-                <section className="studio_container">
-                    <h1 className="fade-in">Studio</h1>
+                <header className="studio_container intro">
                     <p className="fade-in text-lg">Saglietti è uno studio di comunicazione specializzato in identità visiva, advertising, editoria ed exhibit design.<br/>
                     Creiamo progetti in grado di trasformare il brand in un racconto, con un unico obiettivo: creare valore.</p>
-                </section>
-                <section className="filosofia_container">
-                    <h2 className="fade-in">Filosofia</h2>
-                    <p className="fade-in">
-                        Il nostro design nasce da qui. Mettendo in relazione <strong>Essenza</strong>, <strong>Espressione</strong> ed <strong>Emozione</strong> per stabilire connessioni armoniche con gli utenti.
-                        <br/><br/>
-                        Succede tutti i giorni, facciamo scorrere in ogni progetto più di 10 anni di know how, passione e contaminazione internazionale. Noi lo chiamiamo Pensiero Circolare.
-                    </p>
-                </section>
-                <section className="metodo_container">
-                    <h2 className="fade-in">Metodo</h2>
-                    <ul>
-                        <li className="fade-in"><span>1</span> Riceviamo i need del cliente</li>
-                        <li className="fade-in"><span>2</span> Analizziamo i valori del brand</li>
-                        <li className="fade-in"><span>3</span> Creiamo un concetto</li>
-                    </ul>
-                    <p className="fade-in">Sono i tre step con i quali nascono tutti i nostri progetti.</p>
-                </section>
-                <section className="obiettivo_container">
-                    <h2 className="fade-in">L'obiettivo</h2>
-                    <p className="fade-in">
-                    Dare vita a una strategia di comunicazione completa, innovativa, in grado di offrire forte distintività e generare engagement.
-                    Creiamo linguaggi di comunicazione per qualsiasi tipo di progetto, budget, media.
-                    <br/><br/>
-                    Ma il nostro approccio al lavoro è sempre lo stesso: offrire al cliente non un collaboratore, ma un partner con cui condividere una visione. Un’intesa che ci porta a comprendere a fondo gli obiettivi e generare fiducia, massimizzando i risultati.
-                    <br/><br/>
-                    Mettiamo il nostro know-how e la nostra idea di design al servizio di tutti i settori: food &amp; beverage, fashion, technology, manifattura, interior design, istituzioni e organizzazioni culturali.
-                    </p>
-                </section>
-                <section className="servizi_container">
-                    <h2 className="fade-in">Servizi</h2>
-                    <p className="fade-in">
-                    La qualità non è solo un punto d’arrivo. È la partenza e l’ispirazione.
-                    Una gamma di servizi ampia e strutturata. Uno standard qualitativo che quotidianamente accetta la sfida più importante: pensare avanti, sempre.
-                    </p>
-                </section>
+                </header>
+                <div className="studio_content-container">
+                    <div className="studio_content-left">
+                        <section className="filosofia_container">
+                            <h2 className="">Filosofia</h2>
+                            <p className="">
+                                Il nostro design nasce da qui. Mettendo in relazione <strong>Essenza</strong>, <strong>Espressione</strong> ed <strong>Emozione</strong> per stabilire connessioni armoniche con gli utenti.
+                                Succede tutti i giorni, facciamo scorrere in ogni progetto più di 10 anni di know how, passione e contaminazione internazionale. Noi lo chiamiamo Pensiero Circolare.
+                            </p>
+                        </section>
+                        <section className="metodo_container">
+                            <h2 className="">Metodo</h2>
+                            <ul>
+                                <li className=""><span>1</span> Riceviamo i need del cliente.</li>
+                                <li className=""><span>2</span> Analizziamo i valori del brand.</li>
+                                <li className=""><span>3</span> Creiamo un concetto.</li>
+                            </ul>
+                            <p className="">Sono i tre step con i quali nascono tutti i nostri progetti.</p>
+                            <p className="">
+                            L'obiettivo? Dare vita a una strategia di comunicazione completa, innovativa, in grado di offrire forte distintività e generare engagement.
+                            <br/><br/>
+                            Creiamo linguaggi di comunicazione per qualsiasi tipo di progetto, budget, media.
+                            Ma il nostro approccio al lavoro è sempre lo stesso: offrire al cliente non un collaboratore, ma un partner con cui condividere una visione. Un’intesa che ci porta a comprendere a fondo gli obiettivi e generare fiducia, massimizzando i risultati.
+                            <br/><br/>
+                            Mettiamo il nostro know-how e la nostra idea di design al servizio di tutti i settori: food &amp; beverage, fashion, technology, manifattura, interior design, istituzioni e organizzazioni culturali.
+                            </p>
+                        </section>
+                    </div>
+                    <div className="studio_content-right">
+                        <section className="servizi_container">
+                            <h2 className="">Servizi</h2>
+                            <p className="">
+                            <strong>La qualità non è solo un punto d’arrivo. È la partenza e l’ispirazione.</strong><br/>
+                            Una gamma di servizi ampia e strutturata. Uno standard qualitativo che quotidianamente accetta la sfida più importante: pensare avanti, sempre.
+                            </p>
+                            <ul>
+                                <li className="fade-in">Art Direction</li>
+                                <li className="fade-in">Identità Visiva</li>
+                                <li className="fade-in">Progettazione Editoriale</li>
+                                <li className="fade-in">Grafica Ambientale</li>
+                                <li className="fade-in">Wayfinding</li>
+                                <li className="fade-in">Exhibition Design</li>
+                                <li className="fade-in">Packaging Design</li>
+                                <li className="fade-in">Digital Design + Development</li>
+                                <li className="fade-in">Motion Graphics</li>
+                            </ul>
+                            <img className="aiap fade-in" src={AIAP} alt="Associazione Italiana Design della Comunicazione Visiva"/>
+                        </section>
+
+                    </div>
+                </div>
                 <section className="clienti_container">
-                    <h2 className="fade-in">Clienti</h2>
+                    <h2 className="">Clienti</h2>
                     <ul className="clients_list fade-in">
                         {
                         data.wordpress.clients.nodes.map(client => (
