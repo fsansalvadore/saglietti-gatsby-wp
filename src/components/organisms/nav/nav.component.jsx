@@ -1,10 +1,12 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
 // import AniLink from "gatsby-plugin-transition-link/AniLink"
+import {motion} from 'framer-motion'
 
 import PropTypes from "prop-types"
 
 import logo from '../../../images/Saglietti_logo.svg';
+import tag from '../../../images/Saglietti_logo_tag.svg';
 import Menu from '../menu-container/menu-container.component';
 
 import styled from "styled-components";
@@ -21,6 +23,32 @@ const Navbar = styled.div`
   align-items: center;
   pointer-events: none;
   
+  .logo_link {
+    position: relative;
+    height: 20px;
+    overflow: hidden;
+    pointer-events: auto;
+
+    .logo_inner {
+      height: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      img {
+        display: block;
+      }
+      .logo {
+        height: 100%;
+      }
+  
+      .tag {
+        margin-top: 20px;
+        height: 100%;
+      }
+    }
+  }
+
   @media screen and (min-width: 900px) {
     padding: 1.45rem 2rem;
   }
@@ -68,8 +96,15 @@ const Nav = () => {
   return (
     <>
       <Navbar>
-        <Link to="/" style={{display: "flex", alignItems: "center"}}>
-          <img src={logo} className="logo" alt="Saglietti"/>
+        <Link className="logo_link" to="/" style={{display: "flex", alignItems: "center"}}>
+          <motion.div
+            className="logo_inner"
+            animate={{ translateY: [0, 0, -40, -40, 0, 0] }}
+            transition={{ repeat: Infinity, duration: 10, times: [0, 0.57, 0.58, 0.6, 0.61, 1], delay: 1 }}
+                >
+            <img src={logo} className="logo" alt="Saglietti"/>
+            <img src={tag} className="tag" alt="Saglietti"/>
+          </motion.div>
         </Link>
         <MenuBtn onClick={() => toggleMenu(!isOpen)} isOpen={isOpen}>
           <span></span>

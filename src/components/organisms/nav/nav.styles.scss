@@ -2,3 +2,12 @@
   pointer-events: auto;
   // cursor: pointer !important;
 }
+
+@keyframes logoAnim {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, -40px, 0);
+  }
+}
