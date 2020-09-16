@@ -172,7 +172,7 @@ const ProjectPage = (props) => {
   const {data} = props;
   let prevPost = null
   let nextPost = null
-  const sortedProjects = data.wordpress.projects.nodes.filter(p => p.custom_post_type_Project.visitabile === true).sort((a, b) => (a.custom_post_type_Project.anno < b.custom_post_type_Project.anno) ? 1 : (a.custom_post_type_Project.anno === b.custom_post_type_Project.anno) ? ((a.title > b.title) ? 1 : -1) : -1 )
+  const sortedProjects = data.wordpress.projects.nodes.filter(p => p.custom_post_type_Project.visitabile === true).sort((a, b) => (a.date < b.date) ? 1 : (a.date === b.date) ? ((a.title > b.title) ? 1 : -1) : -1 )
   const postLength = sortedProjects.length
   if (index === postLength - 1) {
     prevPost = sortedProjects[index - 1]

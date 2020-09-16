@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useCallback} from 'react';
+import React, {useState, useCallback} from 'react';
 import styled from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
 import CTP from '../../../images/click-to-play.svg'

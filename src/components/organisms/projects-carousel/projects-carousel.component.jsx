@@ -51,7 +51,7 @@ const ProjectsCarousel = () => {
   let [count, setCount] = useState(0);
   const featuredProjects = data.wordpress.projects.nodes
                                             .filter(p => p.custom_post_type_Project.visitabile === true)
-                                            .sort((a, b) => (a.custom_post_type_Project.anno < b.custom_post_type_Project.anno) ? 1 : (a.custom_post_type_Project.anno === b.custom_post_type_Project.anno) ? ((a.title > b.title) ? 1 : -1) : -1 )
+                                            .sort((a, b) => (a.date < b.date) ? 1 : (a.date === b.date) ? ((a.title > b.title) ? 1 : -1) : -1 )
                                             .slice(0, 10)
   const projLenght = featuredProjects.length;
   const [currentProject, setCurrentProject] = useState(featuredProjects[0])

@@ -297,13 +297,15 @@ const StudioPage = ({data}) => {
                                 <li className=""><span>2</span> Analizziamo i valori del brand.</li>
                                 <li className=""><span>3</span> Creiamo un concetto.</li>
                             </ul>
-                            <p className="">Sono i tre step con i quali nascono tutti i nostri progetti.</p>
-                            <p className="">
+                            <p className="fade-in">
+                            Sono i tre step con i quali nascono tutti i nostri progetti.<br/>
                             L'obiettivo? Dare vita a una strategia di comunicazione completa, innovativa, in grado di offrire forte distintività e generare engagement.
-                            <br/><br/>
+                            </p><br/>
+                            <p className="fade-in">
                             Creiamo linguaggi di comunicazione per qualsiasi tipo di progetto, budget, media.
                             Ma il nostro approccio al lavoro è sempre lo stesso: offrire al cliente non un collaboratore, ma un partner con cui condividere una visione. Un’intesa che ci porta a comprendere a fondo gli obiettivi e generare fiducia, massimizzando i risultati.
-                            <br/><br/>
+                            </p><br/>
+                            <p className="fade-in">
                             Mettiamo il nostro know-how e la nostra idea di design al servizio di tutti i settori: food &amp; beverage, fashion, technology, manifattura, interior design, istituzioni e organizzazioni culturali.
                             </p>
                         </section>

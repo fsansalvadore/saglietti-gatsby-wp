@@ -304,7 +304,7 @@ const ProjectsList = ({data}) => {
           {
             data.wordpress.projects &&
             data.wordpress.projects.nodes
-            .sort((a, b) => (a.custom_post_type_Project.anno < b.custom_post_type_Project.anno) ? 1 : (a.custom_post_type_Project.anno === b.custom_post_type_Project.anno) ? ((a.title > b.title) ? 1 : -1) : -1 )
+            .sort((a, b) => (a.date < b.date) ? 1 : (a.date === b.date) ? ((a.title > b.title) ? 1 : -1) : -1 )
             .map(proj => (
               <li
                 key={`${proj.id}-${proj.slug}-${Math.floor(Math.random() * (100 - 999) + 100)}`}
