@@ -10,7 +10,6 @@ const MarqueeContainer = styled.button`
     font-size: 1.45rem;
     font-weight: bold;
     border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
     background: transparent;
     display: flex;
     align-items: center;
@@ -30,14 +29,6 @@ const MarqueeContainer = styled.button`
         display: inline-flex;
         align-items: center;
         justify-content: center;
-
-        #marquee-msg {
-            position: absolute;
-            will-change: trasform;
-            animation: rotate360 6s linear both infinite; 
-            width: 70px;
-            height: 70px;
-        }
     }
 `
 
@@ -58,26 +49,25 @@ const SpotifyMarquee = () => {
     let marqueeContent = `Stiamo ascoltando: ${data.spotifyRecentTrack.track.name} — ${data.spotifyRecentTrack.track.artists.map(art => ` ${art.name}`)}`
     let trackPreview = null
     let [icon, setIcon] = useState("🎵")
-    let [msg, setMsg] = useState(CTP)
 
     if(typeof window !== `undefined`) {
         trackPreview = new Audio(data.spotifyRecentTrack.track.preview_url)
-        trackPreview.type = "audio/mp3"   
+        trackPreview.type = "audio/mp3"
+        console.log(data.spotifyRecentTrack.track.preview_url)
+        console.log(trackPreview)
     }
 
     for (let i = 0; i < 4; ++i) {
-        marqueeContent += ` <span>${icon}<img id="marquee-msg" src=${msg} alt=""/></span> ${marqueeContent}`
+        marqueeContent += ` <span>${icon}</span> ${marqueeContent}`
     }
     
     const pausePlay = useCallback(async () => {
         if(trackPreview.paused) {
             play()
-            setIcon("🔕")
-            setMsg(CTS)
+            setIcon("🎶")
         } else {
             pause()
             setIcon("🎵")
-            setMsg(CTP)
         }
     }, [])
 
@@ -93,7 +83,7 @@ const SpotifyMarquee = () => {
 
     return (
         <MarqueeContainer onClick={pausePlay}>
-                <marquee behavior="ALTERNATE" direction="left" dangerouslySetInnerHTML={{__html: marqueeContent}}></marquee>
+            <marquee behavior="ALTERNATE" direction="left" dangerouslySetInnerHTML={{__html: marqueeContent}}></marquee>
         </MarqueeContainer>
     );
 };

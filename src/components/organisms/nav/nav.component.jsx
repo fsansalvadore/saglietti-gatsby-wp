@@ -40,6 +40,10 @@ const Navbar = styled.div`
       }
       .logo {
         height: 100%;
+
+        &.last {
+          margin-top: 20px;
+        }
       }
   
       .tag {
@@ -99,11 +103,12 @@ const Nav = () => {
         <Link className="logo_link" to="/" style={{display: "flex", alignItems: "center"}}>
           <motion.div
             className="logo_inner"
-            animate={{ translateY: [0, 0, -40, -40, 0, 0] }}
+            animate={{ translateY: [0, 0, -40, -40, -80, -80] }}
             transition={{ repeat: Infinity, duration: 10, times: [0, 0.57, 0.58, 0.6, 0.61, 1], delay: 1 }}
                 >
             <img src={logo} className="logo" alt="Saglietti"/>
-            <img src={tag} className="tag" alt="Saglietti"/>
+            <img src={tag} className="tag" alt="Branding — Digital"/>
+            <img src={logo} className="logo last" alt="Saglietti"/>
           </motion.div>
         </Link>
         <MenuBtn onClick={() => toggleMenu(!isOpen)} isOpen={isOpen}>

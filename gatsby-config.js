@@ -27,9 +27,9 @@ module.exports = {
     {
       resolve: `gatsby-source-spotify`,
       options: {
-        clientId: `e482cad415d14b3fbda0dfa8277bd351`,
-        clientSecret: `3898c47ed0b44ae6b29dac09aab26662`,
-        refreshToken: `AQCj9QLoFKfwQaPyIBVqVP4ytFSZweKP2LSkWTCcTln5yFyxBboLZOrj5U8zXh8pinfkth9ZfQvueahWnyR1dr0mQO_G1z5SBQ72LShVKtre5BcPBk6hbczFb0zz4i8qcNQ`,
+        clientId: `c5a17a2977924848aeff445a33b26e78`,
+        clientSecret: `4a4170f189d945e791e93681f9eb27d5`,
+        refreshToken: `AQAvqQ81Gd-nys10lNMXL_i-MsKG5fAyej8BXtZ_QMSR0Fdg2DhK58scfC-mVEhFpFi3rmwimjG70GQ1X6_-HwiPpU_x00fRiqHH4fU0mbnMk2BVorzp0HlPpBwoa9WfwDM`,
        
         fetchPlaylists: true, // optional. Set to false to disable fetching of your playlists
         fetchRecent: true, // optional. Set to false to disable fetching of your recently played tracks
