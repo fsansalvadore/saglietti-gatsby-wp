@@ -14,7 +14,6 @@ import { TweenMax, TweenLite, TimelineLite } from "gsap/all";
 
 import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 import CustomEase from '../../particles/vendor/gsap/CustomEase'
-import ScrollDownIcon from '../../atoms/scroll-down-icon.component';
 
 if(typeof window !== `undefined`) {
   gsap.registerPlugin(CSSRulePlugin, CustomEase)
@@ -101,7 +100,6 @@ const ProjectsCarousel = () => {
 
   return (
     <ProjectsCarouselStyled className="projects-carousel">
-      <ScrollDownIcon />
       <div className="carousel-top" ref={bg_prev}>
         <div className="carousel-info">
           <div className="info-left" >

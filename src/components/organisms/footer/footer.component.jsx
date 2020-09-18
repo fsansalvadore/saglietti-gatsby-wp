@@ -77,7 +77,7 @@ const FooterComponent = styled.footer`
   }
 `
 
-const Footer = () => {
+const Footer = () => {  
   return (
     <FooterComponent>
       <div className="footer-logo">

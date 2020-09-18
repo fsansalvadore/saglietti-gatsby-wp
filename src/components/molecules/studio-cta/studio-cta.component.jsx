@@ -16,7 +16,7 @@ const StudioCtaContainer = styled.div`
     }
 
     p {
-        font-size: 1.75rem;
+        font-size: 1.45rem;
     }
 
     @media screen and (min-width: 900px) {
@@ -40,7 +40,7 @@ const LinkComponent = styled.div`
     justify-content: flex-start;
     align-items: flex-end;
     text-decoration: none;
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: bold;
     margin-right: 0;
 
@@ -65,6 +65,12 @@ const LinkComponent = styled.div`
         width: 50%;
         height: 50%;
       }
+    }
+  }
+
+  @media (min-width: 900px) {
+    a {
+      font-size: 1.3rem;
     }
   }
 `

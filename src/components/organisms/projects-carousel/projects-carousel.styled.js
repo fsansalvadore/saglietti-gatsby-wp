@@ -4,20 +4,14 @@ const ProjectsCarouselStyled = styled.div`
   position: sticky;
   top: 0;
   width: 100%;
-  height: 100vh;
+  height: 40vh;
   float: none;
-  
-  .scroll-icon {
-    position: absolute;
-    bottom: 3rem;
-    left: -30vw;
-  }
 
   .carousel-top {
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: 80%;
+    height: 70%;
     background-color: #000;
     display: flex;
     align-items: flex-end;
@@ -81,9 +75,11 @@ const ProjectsCarouselStyled = styled.div`
 
       .info-right {
         display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
 
-        span:first-of-type {
-          margin-right: 10px;
+        a span:last-of-type {
+          margin-left: 10px;
         }
       }
     }
@@ -107,10 +103,10 @@ const ProjectsCarouselStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 20%;
+    height: 30%;
     padding: 0 5%;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     letter-spacing: -0.06rem;
 
     p, a {
@@ -132,6 +128,14 @@ const ProjectsCarouselStyled = styled.div`
     width: 40%;
     height: 100vh;
     float: right;
+
+    .carousel-top {
+      height: 80%;
+    }
+    .carousel-bottom {
+      font-size: 1.5rem;
+      height: 20%;
+    }
   }
 `
 

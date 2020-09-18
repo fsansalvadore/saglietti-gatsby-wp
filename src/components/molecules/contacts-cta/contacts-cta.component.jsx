@@ -6,7 +6,7 @@ import ArrowRightSVG from '../../../images/icons/arrow-right.svg'
 
 const ContactsComponent = styled.div`
   width: 100%;
-  padding: 150px 5%;
+  padding: 100px 5%;
   border-top: 1px solid #000;
 
   a {
@@ -16,7 +16,7 @@ const ContactsComponent = styled.div`
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 1.4rem;
     font-weight: normal;
     margin-right: 0;
 
@@ -25,8 +25,10 @@ const ContactsComponent = styled.div`
     }
 
     span {
-      width: 42px;
-      height: 42px;
+      width: 30px;
+      height: 30px;
+      min-width: 30px;
+      min-height: 30px;
       border-radius: 50%;
       border: 1px solid #000;
       display: flex;
@@ -37,9 +39,19 @@ const ContactsComponent = styled.div`
   }
 
   @media (min-width: 900px) {
+    padding: 150px 5%;
+
     a {
       width: 33%;
       margin-right: 8.33%;
+      font-size: 2rem;
+
+      span {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        min-height: 42px;
+      }
     }
   }
 `

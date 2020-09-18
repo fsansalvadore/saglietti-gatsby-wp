@@ -85,7 +85,7 @@ const Menu = ({isOpen}) => {
         </div>
         <div>
           <p>
-            Saglietti. Design — Digital<br/>
+            Saglietti. Branding — Digital<br/>
             via Parma 52 10153 Torino, Italia<br/>
             <a href="https://www.google.com/maps/place/Saglietti+-+Studio+di+comunicazione+in+Torino/@45.0749314,7.6876913,16z/data=!4m5!3m4!1s0x47886d307559cf33:0xd92845c3e894e287!8m2!3d45.0758792!4d7.695027" target="_blank" rel="noreferrer">Mappa</a>
           </p>
@@ -94,7 +94,7 @@ const Menu = ({isOpen}) => {
           <p>
             info@saglietti.it<br/>
             P.I 03391740044<br/>
-            Copyright © 2019 Saglietti
+            Copyright © {new Date().getFullYear()} Saglietti
           </p>
         </div>
         <div className="footer-info">

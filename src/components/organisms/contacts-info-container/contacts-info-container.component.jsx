@@ -20,7 +20,7 @@ const ContactsInfoContainer = () => {
             <p>
               Mandaci il tuo portfolio insieme a una breve presentazione.<br/>
               Ti ricontatteremo appena possibile.<br/>
-              Al momento l'organico dello studio è al completo.
+              Al momento l'organico è al completo.
             </p>
             <a href="mailto:portfolio@saglietti.it" target="_blank" rel="noreferrer">portfolio@saglietti.it</a>
           </div>

@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 const MarqueeContainer = styled.button`
     padding: 10px 0;
     line-height: 140%;
-    font-size: 1.45rem;
+    font-size: 1rem;
     font-weight: bold;
     border: none;
     border-top: 1px solid #000;
@@ -20,29 +20,30 @@ const MarqueeContainer = styled.button`
 
     span {
         overflow: visible;
-        margin: 2rem;
+        margin: 1rem;
         padding: 0;
-        width: 60px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         display: inline-flex;
         align-items: center;
         justify-content: center;
+    }
+
+    @media (min-width: 900px) {
+        font-size: 1.45rem;
+
+        span {
+            margin: 2rem;
+            width: 60px;
+            height: 60px;
+        }
     }
 `
 
 const SpotifyMarquee = () => {
     const data = useStaticQuery(graphql`
         query SpotifyQuery {
-            spotifyRecentTrack {
-                track {
-                    artists {
-                    name
-                    }
-                    name
-                    preview_url
-                }
-            }
             allSpotifyRecentTrack {
                 nodes {
                     track {
@@ -55,11 +56,9 @@ const SpotifyMarquee = () => {
         }
     `)
     const tracksList = data.allSpotifyRecentTrack.nodes.filter(node => node.track.preview_url !== null)
-    console.log(tracksList)
     const time = new Date()
     const currentTrack = tracksList[Math.floor(((time.getHours() + 1) * tracksList.length) / 23) - 1];
     console.log(Math.floor(((time.getHours() + 5) * tracksList.length) / 23) - 1)
-    console.log(currentTrack)
     
     let trackPreview = null
     let [icon, setIcon] = useState("🎵")

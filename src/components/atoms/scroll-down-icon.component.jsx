@@ -15,6 +15,7 @@ const IconOuter = styled.div`
     animation-duration: 1.4s;
     animation-timing-function: ease;
     animation-delay: 0.1s;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.2);
     
     span {
         position: absolute;

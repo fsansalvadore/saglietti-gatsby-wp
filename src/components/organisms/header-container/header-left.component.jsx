@@ -13,7 +13,7 @@ const LinkComponent = styled.div`
     justify-content: flex-start;
     align-items: flex-end;
     text-decoration: none;
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: bold;
     margin-right: 0;
 
@@ -44,6 +44,7 @@ const LinkComponent = styled.div`
   @media (min-width: 900px) {
     a {
       margin-right: 8.33%;
+      font-size: 1.3rem;
     }
   }
 `

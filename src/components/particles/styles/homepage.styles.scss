@@ -14,7 +14,7 @@
   min-height: 250px;
   background-color: #000;
   text-align: center;
-  padding: 250px 0 40vw 0;
+  padding: 100px 0 60vw 0;
 
   .quote-anim {
     color: #fff;
@@ -24,11 +24,18 @@
   .video-container {
     position: absolute;
     width: 90%;
-    // max-width: 1400px;
-    // padding-bottom: 45%;
     background-color: transparent;
-    margin: 15vw auto 0 auto;
+    margin: 35vw auto 0 auto;
     left: 0;
     right: 0;
+  }
+}
+
+@media (min-width: 900px) {
+  .black-bg-container {
+    padding: 250px 0 40vw 0;
+  }
+  .video-container {
+    margin: 15vw auto 0 auto;
   }
 }
