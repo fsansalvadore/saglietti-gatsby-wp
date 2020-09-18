@@ -58,7 +58,6 @@ const SpotifyMarquee = () => {
     const tracksList = data.allSpotifyRecentTrack.nodes.filter(node => node.track.preview_url !== null)
     const time = new Date()
     const currentTrack = tracksList[Math.floor(((time.getHours() + 1) * tracksList.length) / 23) - 1];
-    console.log(Math.floor(((time.getHours() + 5) * tracksList.length) / 23) - 1)
     
     let trackPreview = null
     let [icon, setIcon] = useState("🎵")

@@ -38,13 +38,17 @@ const ScrollIconContainer = styled.div`
 `
 
 const HeaderContainer = () => {
-  let vh = null
+  let vh = 100
   if(typeof window !== `undefined`) {
+    vh = window.innerHeight * 0.01
+
     window.addEventListener('resize', () => {
       vh = window.innerHeight * 0.01
+      console.log("vh:")
+      console.log(vh)
     });
   }
-
+  
   return (
     <div className="header-container">
       <ScrollIconContainer vh={vh}>

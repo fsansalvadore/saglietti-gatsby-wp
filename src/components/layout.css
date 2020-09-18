@@ -29,6 +29,7 @@ html {
   overflow: auto !important;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  height: -webkit-fill-available;
 }
 body {
   margin: 0;
@@ -37,6 +38,8 @@ body {
   letter-spacing: -0.01%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 
 main {
