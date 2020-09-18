@@ -27,11 +27,11 @@ const paragraphBlocks = `
     ${coreBlocksFields}
   }
 `
-const mediaTextBlocks = `
-  ... on WORDPRESS_CoreMediaTextBlock {
-    ${coreBlocksFields}
-  }
-`
+// const mediaTextBlocks = `
+//   ... on WORDPRESS_CoreMediaTextBlock {
+//     ${coreBlocksFields}
+//   }
+// `
 const headingBlocks = `
 ... on WORDPRESS_CoreHeadingBlock {
     ${coreBlocksFields}
@@ -156,6 +156,15 @@ const query = `
           featuredImage {
             node {
               ${mediaFields}
+            }
+            localFile {
+              childImageSharp {
+                resolutions(width: 900, height: 900) {
+                  src
+                  width
+                  height
+                }
+              }
             }
           }
           ${seoFields}

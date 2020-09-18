@@ -9,6 +9,8 @@ import ComponentParser from '../ComponentParser'
 import fallbackImg from '../../../images/fallback.png'
 import PrevNextProject from '../../molecules/prev-next-project/prev-next-project.component'
 import TextRevealAnimation from '../hooks/animationTextReveal'
+import Img from 'gatsby-image'
+import BackgroundImage from 'gatsby-background-image'
 
 import { gsap } from "gsap";
 import { TweenLite, TimelineLite } from "gsap/all";
