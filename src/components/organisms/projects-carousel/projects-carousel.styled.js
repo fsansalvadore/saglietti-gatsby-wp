@@ -15,7 +15,7 @@ const ProjectsCarouselStyled = styled.div`
     background-color: #000;
     display: flex;
     align-items: flex-end;
-    padding: 5%;
+    padding: 1rem;
     background-position: center;
     background-size: cover;
 
@@ -104,7 +104,7 @@ const ProjectsCarouselStyled = styled.div`
     align-items: center;
     justify-content: space-between;
     height: 30%;
-    padding: 0 5%;
+    padding: 0 1rem;
     text-decoration: none;
     font-size: 1.15rem;
     letter-spacing: -0.06rem;
@@ -131,10 +131,12 @@ const ProjectsCarouselStyled = styled.div`
 
     .carousel-top {
       height: 80%;
+      padding: 2rem;
     }
     .carousel-bottom {
       font-size: 1.5rem;
       height: 20%;
+      padding: 0 2rem;
     }
   }
 `
