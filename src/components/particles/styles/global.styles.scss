@@ -92,6 +92,8 @@ p, h1, h2, h3, a, li, span {
   }
 
   @media (max-width: 900px) {
+    min-height: 190vh;
+    
     .header-left {
       height: 200vh;
     }

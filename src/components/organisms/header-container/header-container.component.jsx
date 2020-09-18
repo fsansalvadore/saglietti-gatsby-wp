@@ -11,7 +11,7 @@ import ScrollDownIcon from '../../atoms/scroll-down-icon.component';
 
 const ScrollIconContainer = styled.div`
   position: absolute;
-  height: 200vh;
+  height: 190vh;
   width: 100vw;
   left: 0;
   top: 0;
@@ -19,8 +19,8 @@ const ScrollIconContainer = styled.div`
 
   .scroll-icon-sticky {
     width: 100%;
-    height: 100vh;
-    height: ${props => `calc(${props.vh}) * 100`};
+    height: 95vh;
+    height: ${props => `calc(${props.vh}) * 95`};
     display: flex;
     justify-content: center;
     position: sticky;
