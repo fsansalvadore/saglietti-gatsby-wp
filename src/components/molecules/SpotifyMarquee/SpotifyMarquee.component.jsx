@@ -1,8 +1,6 @@
 import React, {useState, useCallback} from 'react';
 import styled from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
-import CTP from '../../../images/click-to-play.svg'
-import CTS from '../../../images/click-to-stop.svg'
 
 const MarqueeContainer = styled.button`
     padding: 10px 0;
@@ -70,19 +68,21 @@ const SpotifyMarquee = () => {
             setIcon("🎵")
         }
     }, [])
-
+    
     const play = useCallback(async () => {
         await trackPreview.load()
         await trackPreview.play()
+        await setIcon("🎶")
     }, [])
-
+    
     const pause = useCallback(async () => {
         await trackPreview.pause()
         trackPreview.currentTime = await 0
+        await setIcon("🎵")
     }, [])
 
     return (
-        <MarqueeContainer onClick={pausePlay}>
+        <MarqueeContainer onMouseEnter={play} onMouseLeave={pause}>
             <marquee behavior="ALTERNATE" direction="left" dangerouslySetInnerHTML={{__html: marqueeContent}}></marquee>
         </MarqueeContainer>
     );
