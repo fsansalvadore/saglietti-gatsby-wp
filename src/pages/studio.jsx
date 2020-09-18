@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-
+import { Helmet } from 'react-helmet'
 // Components
 import Layout from '../components/layout'
 
@@ -9,6 +9,9 @@ import StudioPage from '../components/particles/studio/studio-page.component'
 
 const Studio = ({data}) => (
     <Layout>
+      <Helmet>
+        <title>Studio • Saglietti</title>
+      </Helmet>
       <StudioPage data={data}/>
     </Layout>
   )

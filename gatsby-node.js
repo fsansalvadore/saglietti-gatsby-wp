@@ -197,7 +197,8 @@ exports.createPages = async ({ actions, graphql }) => {
                                       .sort((a, b) => (a.date < b.date) ? 1 : (a.date === b.date) ? ((a.title > b.title) ? 1 : -1) : -1 ).indexOf(project),
         blocks: project.blocks,
         id: project.id,
-        title: project.title
+        title: project.title,
+        seo: project.seo
       },
     })
   })

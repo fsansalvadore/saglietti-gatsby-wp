@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { graphql, Link } from "gatsby"
+import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import ArrowRight from '../../atoms/svg/arrow-right.component'
 import Layout from "../../layout"
@@ -8,7 +9,6 @@ import ComponentParser from '../ComponentParser'
 import fallbackImg from '../../../images/fallback.png'
 import PrevNextProject from '../../molecules/prev-next-project/prev-next-project.component'
 import TextRevealAnimation from '../hooks/animationTextReveal'
-import { useEffect } from "react"
 
 import { gsap } from "gsap";
 import { TweenLite, TimelineLite } from "gsap/all";
@@ -168,7 +168,8 @@ const ProjectPage = (props) => {
     custom_post_type_Project,
     index,
     title,
-    featuredImage
+    featuredImage,
+    seo
   } = props.pageContext;
   const {data} = props;
   let prevPost = null
@@ -231,6 +232,24 @@ const ProjectPage = (props) => {
   
   return (
     <Layout>
+      <Helmet>
+        <title>{title} • Saglietti</title>
+        <meta name="description" content={`${seo.metaDesc}`} />
+        <meta itemprop="image" content={`${featuredImage ? featuredImage.node.link : fallbackImg})`} />
+        <meta property="og:site_name" content={`${title} • Saglietti`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.saglietti.it/" />
+        <meta property="og:title" content={`${title} • Saglietti`} />
+        <meta property="og:image" content={`${featuredImage ? featuredImage.node.link : fallbackImg})`} />
+        <meta property="og:description" content={`${seo.metaDesc}`} />
+        <meta property="og:locale" content="it_IT" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="https://www.saglietti.it/" />
+        <meta name="twitter:title" content={`${title} • Saglietti`} />
+        <meta name="twitter:description" content={`${seo.metaDesc}`} />
+        <meta name="twitter:creator" content="@Francesco_Sansa" />
+        <meta name="twitter:image" content={`${featuredImage ? featuredImage.node.link : fallbackImg})`} />
+      </Helmet>
       <ProjectContainerComponent vh={vh}>
         <div className="proj_info-container flex align-center">
           <div className="proj_info-block">

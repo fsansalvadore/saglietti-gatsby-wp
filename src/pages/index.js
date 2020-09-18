@@ -1,6 +1,7 @@
 import React from "react"
 // import TransitionLink from 'gatsby-plugin-transition-link' 
 import Layout from "../components/layout"
+import { Helmet } from 'react-helmet'
 
 // Components
 import HeaderContainer from '../components/organisms/header-container/header-container.component'
@@ -12,7 +13,10 @@ import SpotifyMarquee from '../components/molecules/SpotifyMarquee/SpotifyMarque
 import '../components/particles/styles/homepage.styles.scss';
 
 const IndexPage = () => (
-  <Layout>    
+  <Layout>
+    <Helmet>
+        <title>Saglietti • Branding — Digital • Home Page</title>
+      </Helmet>
     <HeaderContainer />
     <VideoSection />
     <StudioCTA />
