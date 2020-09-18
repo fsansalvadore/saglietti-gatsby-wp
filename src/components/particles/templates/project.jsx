@@ -25,6 +25,7 @@ const ProjectContainerComponent = styled.div`
   position: relative;
   width: 100%;
   min-height: 100vh;
+  min-height: ${props => `calc(${props.vh}) * 100`};
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #000;
@@ -32,8 +33,8 @@ const ProjectContainerComponent = styled.div`
   .proj_info-container {
     position: relative;
     top: 0;
-    min-height: 600px;
-    height: 100vh;
+    min-height: 100vh;
+    min-height: ${props => `calc(${props.vh}) * 100`};
     width: 100vw;
     padding: 1.45rem 2rem;
 
@@ -185,6 +186,13 @@ const ProjectPage = (props) => {
     nextPost = sortedProjects[index + 1]
   }
 
+  let vh = null
+  if(typeof window !== `undefined`) {
+    window.addEventListener('resize', () => {
+      vh = window.innerHeight * 0.01
+    });
+  }
+
   useEffect(() => {
     if(typeof window !== `undefined`) {
       if(document.querySelectorAll(".fade-in").length !== 0) {
@@ -219,7 +227,7 @@ const ProjectPage = (props) => {
   
   return (
     <Layout>
-      <ProjectContainerComponent>
+      <ProjectContainerComponent vh={vh}>
         <div className="proj_info-container flex align-center">
           <div className="proj_info-block">
             <TextRevealAnimation addClass="title">

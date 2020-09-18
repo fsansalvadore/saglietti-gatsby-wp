@@ -20,6 +20,7 @@ const ScrollIconContainer = styled.div`
   .scroll-icon-sticky {
     width: 100%;
     height: 100vh;
+    height: ${props => `calc(${props.vh}) * 100`};
     display: flex;
     justify-content: center;
     position: sticky;
@@ -37,9 +38,16 @@ const ScrollIconContainer = styled.div`
 `
 
 const HeaderContainer = () => {
+  let vh = null
+  if(typeof window !== `undefined`) {
+    window.addEventListener('resize', () => {
+      vh = window.innerHeight * 0.01
+    });
+  }
+
   return (
     <div className="header-container">
-      <ScrollIconContainer>
+      <ScrollIconContainer vh={vh}>
         <div className="scroll-icon-sticky">
           <ScrollDownIcon />
         </div>
