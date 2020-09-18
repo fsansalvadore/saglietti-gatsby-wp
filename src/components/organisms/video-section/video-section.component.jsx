@@ -17,10 +17,10 @@ if(typeof window !== `undefined`) {
   ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineLite, TweenLite)
 }
 const VideoSectionStyled = styled.div`
-.video-container {
-  will-change: transform;
-  -webkit-backface-visibility: hidden;
-}
+  .video-container {
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+  }
 `
 
 const VideoSection = () => {

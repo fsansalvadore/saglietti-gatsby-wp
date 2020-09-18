@@ -47,7 +47,7 @@ const StudioContent = styled.div`
     }
 
     .text-lg  {
-        font-size: 1.75rem;
+        font-size: 1.35rem;
         line-height: 120%;
     }
 
@@ -56,7 +56,7 @@ const StudioContent = styled.div`
     }
 
     .studio_container.intro {
-        padding: 150px 1rem 3rem 1rem;
+        padding: 150px 1rem 5rem 1rem;
     }
 
     .studio_content-container {

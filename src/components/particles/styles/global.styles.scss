@@ -36,6 +36,7 @@ p, h1, h2, h3, a, li, span {
 .header-container {
   position: relative;
   width: 100%;
+  height: 200vh;
   min-height: 200vh;
   display: flex;
   flex-direction: column;
@@ -93,7 +94,7 @@ p, h1, h2, h3, a, li, span {
 
   @media (max-width: 900px) {
     min-height: 190vh;
-    
+
     .header-left {
       height: 200vh;
     }
