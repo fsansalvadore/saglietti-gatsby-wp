@@ -154,6 +154,7 @@ const StudioContent = styled.div`
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        justify-content: space-between;
 
         ul {
             padding: 0;
@@ -312,23 +313,25 @@ const StudioPage = ({data}) => {
                     </div>
                     <div className="studio_content-right">
                         <section className="servizi_container">
-                            <h2 className="">Servizi</h2>
-                            <p className="">
-                            <strong>La qualità non è solo un punto d’arrivo. È la partenza e l’ispirazione.</strong><br/>
-                            Una gamma di servizi ampia e strutturata. Uno standard qualitativo che quotidianamente accetta la sfida più importante: pensare avanti, sempre.
-                            </p>
-                            <ul>
-                                <li className="fade-in">Art Direction</li>
-                                <li className="fade-in">Identità Visiva</li>
-                                <li className="fade-in">Progettazione Editoriale</li>
-                                <li className="fade-in">Grafica Ambientale</li>
-                                <li className="fade-in">Wayfinding</li>
-                                <li className="fade-in">Exhibition Design</li>
-                                <li className="fade-in">Packaging Design</li>
-                                <li className="fade-in">Digital Design + Development</li>
-                                <li className="fade-in">Motion Graphics</li>
-                            </ul>
-                            <img className="aiap fade-in" src={AIAP} alt="Associazione Italiana Design della Comunicazione Visiva"/>
+                            <div>
+                                <h2 className="">Servizi</h2>
+                                <p className="">
+                                <strong>La qualità non è solo un punto d’arrivo. È la partenza e l’ispirazione.</strong><br/>
+                                Una gamma di servizi ampia e strutturata. Uno standard qualitativo che quotidianamente accetta la sfida più importante: pensare avanti, sempre.
+                                </p>
+                                <ul>
+                                    <li className="fade-in">Art Direction</li>
+                                    <li className="fade-in">Identità Visiva</li>
+                                    <li className="fade-in">Progettazione Editoriale</li>
+                                    <li className="fade-in">Grafica Ambientale</li>
+                                    <li className="fade-in">Wayfinding</li>
+                                    <li className="fade-in">Exhibition Design</li>
+                                    <li className="fade-in">Packaging Design</li>
+                                    <li className="fade-in">Digital Design + Development</li>
+                                    <li className="fade-in">Motion Graphics</li>
+                                </ul>
+                            </div>
+                            <img className="aiap" src={AIAP} alt="Associazione Italiana Design della Comunicazione Visiva"/>
                         </section>
 
                     </div>

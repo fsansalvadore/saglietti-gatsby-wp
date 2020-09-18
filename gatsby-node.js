@@ -157,15 +157,6 @@ const query = `
             node {
               ${mediaFields}
             }
-            localFile {
-              childImageSharp {
-                resolutions(width: 900, height: 900) {
-                  src
-                  width
-                  height
-                }
-              }
-            }
           }
           ${seoFields}
           blocks {
