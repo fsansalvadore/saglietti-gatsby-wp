@@ -1,8 +1,11 @@
 module.exports = {
   siteMetadata: {
     title: `Saglietti`,
+    titleTemplate: "%s · Branding — Digital",
     description: `Saglietti gatsby.`,
-    author: `@gatsbyjs`,
+    author: `@Francesco_Sansa`,
+    url: "https://www.saglietti.it/", // No trailing slash allowed!
+    image: "/images/snape.jpg", // Path to your image you placed in the 'static' folder
   },
   plugins: [
     // Simple config, passing URL
@@ -63,6 +66,6 @@ module.exports = {
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 }
