@@ -51,6 +51,7 @@ const SpotifyMarquee = () => {
     if(typeof window !== `undefined`) {
         trackPreview = new Audio(data.spotifyRecentTrack.track.preview_url)
         trackPreview.type = "audio/mp3"
+        trackPreview.load()
         console.log(data.spotifyRecentTrack.track.preview_url)
         console.log(trackPreview)
     }
@@ -82,7 +83,7 @@ const SpotifyMarquee = () => {
     }, [])
 
     return (
-        <MarqueeContainer onMouseEnter={play} onMouseLeave={pause}>
+        <MarqueeContainer onMouseEnter={play} onMouseLeave={pause} onClick={pausePlay}>
             <marquee behavior="ALTERNATE" direction="left" dangerouslySetInnerHTML={{__html: marqueeContent}}></marquee>
         </MarqueeContainer>
     );
