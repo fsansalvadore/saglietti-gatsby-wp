@@ -25,7 +25,7 @@ const ProjectContainerComponent = styled.div`
   position: relative;
   width: 100%;
   min-height: 90vh;
-  min-height: ${props => `calc(${props.vh}) * 90`};
+  min-height: ${props => props.vh ? `calc(var(--vh, 1vh) * 100)` : '90vh'};
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #000;
@@ -34,7 +34,7 @@ const ProjectContainerComponent = styled.div`
     position: relative;
     top: 0;
     min-height: 90vh;
-    min-height: ${props => `calc(${props.vh}) * 90`};
+    min-height: ${props => `calc(var(--vh, 1vh) * 100)`};
     width: 100vw;
     padding: 1.45rem 2rem;
 
@@ -188,8 +188,12 @@ const ProjectPage = (props) => {
 
   let vh = null
   if(typeof window !== `undefined`) {
+    vh = window.innerHeight * 0.01
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+
     window.addEventListener('resize', () => {
       vh = window.innerHeight * 0.01
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
     });
   }
 
