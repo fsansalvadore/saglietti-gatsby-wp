@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 import ArrowRightSVG from '../../../images/icons/arrow-right.svg'
 
 const StudioCtaContainer = styled.div`
-    padding: 100px 1rem 60px 1rem;
+    padding: 200px 1rem 150px 1rem;
     text-align: center;
     display: flex;
     align-items: center;
@@ -20,7 +20,7 @@ const StudioCtaContainer = styled.div`
     }
 
     @media screen and (min-width: 900px) {
-        padding: 200px 6rem 150px 6rem;
+        padding: 300px 6rem 250px 6rem;
 
         p {
             font-size: 2.35rem;
