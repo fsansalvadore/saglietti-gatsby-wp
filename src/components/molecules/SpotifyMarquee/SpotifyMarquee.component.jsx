@@ -7,6 +7,7 @@ const MarqueeContainer = styled.button`
     line-height: 140%;
     font-size: 1.45rem;
     font-weight: bold;
+    border: none;
     border-top: 1px solid #000;
     background: transparent;
     display: flex;
@@ -35,27 +36,41 @@ const SpotifyMarquee = () => {
         query SpotifyQuery {
             spotifyRecentTrack {
                 track {
-                  artists {
+                    artists {
                     name
-                  }
-                  name
-                  preview_url
+                    }
+                    name
+                    preview_url
                 }
-              }
+            }
+            allSpotifyRecentTrack {
+                nodes {
+                    track {
+                        name
+                        preview_url
+                        artistString
+                    }
+                }
+            }
         }
     `)
-    let marqueeContent = `Stiamo ascoltando: ${data.spotifyRecentTrack.track.name} — ${data.spotifyRecentTrack.track.artists.map(art => ` ${art.name}`)}`
+    const tracksList = data.allSpotifyRecentTrack.nodes.filter(node => node.track.preview_url !== null)
+    console.log(tracksList)
+    const time = new Date()
+    const currentTrack = tracksList[Math.floor(((time.getHours() + 1) * tracksList.length) / 23) - 1];
+    console.log(Math.floor(((time.getHours() + 5) * tracksList.length) / 23) - 1)
+    console.log(currentTrack)
+    
     let trackPreview = null
     let [icon, setIcon] = useState("🎵")
-
+    let marqueeContent = `Stiamo ascoltando: ${currentTrack.track.name} — ${currentTrack.track.artistString}`
+    
     if(typeof window !== `undefined`) {
-        trackPreview = new Audio(data.spotifyRecentTrack.track.preview_url)
+        trackPreview = new Audio(currentTrack.track.preview_url)
         trackPreview.type = "audio/mp3"
         trackPreview.load()
-        console.log(data.spotifyRecentTrack.track.preview_url)
-        console.log(trackPreview)
     }
-
+    
     for (let i = 0; i < 4; ++i) {
         marqueeContent += ` <span>${icon}</span> ${marqueeContent}`
     }
