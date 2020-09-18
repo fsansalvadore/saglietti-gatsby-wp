@@ -16,6 +16,7 @@ const ScrollIconContainer = styled.div`
   left: 0;
   top: 0;
   z-index: 10;
+  pointer-events: none;
 
   .scroll-icon-sticky {
     width: 100%;

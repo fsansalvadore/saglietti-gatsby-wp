@@ -15,6 +15,7 @@ import "./layout.css"
 import Footer from "./organisms/footer/footer.component"
 import Cursor from "./atoms/cursor.component"
 import CursorFollow from "./atoms/cursor-follow.component"
+import GenericMetadata from './particles/meta/GenericMetadata'
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -38,6 +39,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <GenericMetadata/>
       {cursorComp}
       {cursorFollowComp}
       <Nav siteTitle={data.site.siteMetadata.title} />
