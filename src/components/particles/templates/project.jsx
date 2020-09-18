@@ -33,8 +33,8 @@ const ProjectContainerComponent = styled.div`
   .proj_info-container {
     position: relative;
     top: 0;
-    min-height: 90vh;
-    min-height: ${props => `calc(var(--vh, 1vh) * 100)`};
+    height: calc(var(--vh, 1vh) * 100);
+    min-height: calc(var(--vh, 1vh) * 100);
     width: 100vw;
     padding: 1.45rem 2rem;
 
