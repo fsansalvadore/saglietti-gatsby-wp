@@ -38,7 +38,7 @@ const StudioContent = styled.div`
         font-size: 1rem;
         font-weight: bold;
         line-height: 140%;
-        letter-spacing: -0.012em;
+        letter-spacing: -0.032em;
         margin: 0;
 
         strong {
@@ -166,7 +166,7 @@ const StudioContent = styled.div`
             font-size: 1rem;
             font-weight: bold;
             line-height: 140%;
-            letter-spacing: -0.012em;
+            letter-spacing: -0.022em;
         }
 
         img {

@@ -174,6 +174,11 @@ const query = `
           uri
           id
           title
+          tags {
+            nodes {
+              name
+            }
+          }
           ${projectCustomDetails}
         }
       }

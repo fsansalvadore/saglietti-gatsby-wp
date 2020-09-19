@@ -166,12 +166,14 @@ const ProjectContainerComponent = styled.div`
 
 const ProjectPage = (props) => {
   const {
+    slug,
     blocks,
     custom_post_type_Project,
     index,
     title,
     featuredImage,
-    seo
+    seo,
+    tags
   } = props.pageContext;
   const {data} = props;
   let prevPost = null
@@ -210,12 +212,10 @@ const ProjectPage = (props) => {
           TextRevealTL.fromTo(fadeInItem,
             {
               opacity: 0,
-              // y: 50
             },
             {
               duration: 1,
               opacity: 1,
-              // y: 0,
               ease: CustomEase.create("custom", "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1"),
           })
 
@@ -237,19 +237,19 @@ const ProjectPage = (props) => {
       <Helmet>
         <title>{title} • Saglietti</title>
         <meta name="description" content={`${seo.metaDesc}`} />
+        <meta name="keywords" content={tags ? (tags.nodes.map(tag => tag.name ? ` ${tag.name}` : "")) : "saglietti, portfolio, studio di design, progetti di design"} />
         <meta itemprop="image" content={`${featuredImage ? featuredImage.node.link : fallbackImg})`} />
         <meta property="og:site_name" content={`${title} • Saglietti`} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.saglietti.it/" />
+        <meta property="og:url" content={`https://www.saglietti.it/progetti/${slug}`} />
         <meta property="og:title" content={`${title} • Saglietti`} />
         <meta property="og:image" content={`${featuredImage ? featuredImage.node.link : fallbackImg})`} />
         <meta property="og:description" content={`${seo.metaDesc}`} />
         <meta property="og:locale" content="it_IT" />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="https://www.saglietti.it/" />
+        <meta name="twitter:site" content={`https://www.saglietti.it/progetti/${slug}`} />
         <meta name="twitter:title" content={`${title} • Saglietti`} />
         <meta name="twitter:description" content={`${seo.metaDesc}`} />
-        <meta name="twitter:creator" content="@Francesco_Sansa" />
         <meta name="twitter:image" content={`${featuredImage ? featuredImage.node.link : fallbackImg})`} />
       </Helmet>
       <ProjectContainerComponent vh={vh}>

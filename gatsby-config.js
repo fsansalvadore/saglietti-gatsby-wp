@@ -1,12 +1,12 @@
 module.exports = {
   siteMetadata: {
     title: `Saglietti`,
-    titleTemplate: "%s · Branding — Digital",
-    description: `Saglietti gatsby.`,
+    titleTemplate: "%s • Branding — Digital",
+    description: `Saglietti è uno studio di comunicazione specializzato in identità visiva, adv, editoria ed exhibit design. La nostra missione: creare valore.`,
     author: `@Francesco_Sansa`,
     url: "https://www.saglietti.it/", // No trailing slash allowed!
     image: "/images/snape.jpg", // Path to your image you placed in the 'static' folder
-    twitterUsername: "@occlumency",
+    twitterUsername: "@Francesco_Sansa",
   },
   plugins: [
     // Simple config, passing URL

@@ -79,7 +79,10 @@ const StudioCTA = () => {
     return (
         <StudioCtaContainer className="fade-in">
             <h3>Studio</h3>
-            <p>Testo che contenga qualche keyword accalappia SEO e che introduca lo pagina studio.</p>
+            <p>
+              Ogni design che produciamo è come il nostro studio.<br/>
+              Nasce per essere avanti.
+            </p>
             <LinkComponent className="contacts-container TextRevealAnim">
                 <Link to="/studio" className="TextRevealItem">Approfondisci <span><img src={ArrowRightSVG} alt=""/></span></Link>
             </LinkComponent>

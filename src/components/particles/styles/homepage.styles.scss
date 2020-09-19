@@ -16,9 +16,14 @@
   text-align: center;
   padding: 100px 1rem 45vw 1rem;
 
-  .quote-anim {
+  .quote-anim p {
     color: #fff;
     font-size: 1.3rem;
+    line-height: 150%;
+
+    br {
+      display: none;
+    }
   }
 
   .video-container {
@@ -37,6 +42,14 @@
     
     .video-container {
       margin: 15vw auto 0 auto;
+    }
+
+    .quote-anim p {
+      font-size: 1.6rem;
+
+      br {
+        display: inline-block;
+      }
     }
   }
 }

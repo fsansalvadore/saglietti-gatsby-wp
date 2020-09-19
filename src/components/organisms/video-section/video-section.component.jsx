@@ -49,7 +49,10 @@ const VideoSection = () => {
       <div className="black-bg-container">
         <TextRevealAnimation addClass="quote-anim" skew>
           <div className="TextRevealItem">
-            Breve citazione stilosa oppure titoletto.
+            <p className="text">
+          Creiamo connessioni armoniche con gli utenti <br/>
+mettendo in relazione Essenza, Espressione ed Emozione.
+            </p>
           </div>
         </TextRevealAnimation>
         <div ref={videoRef} className="video-container anim">
