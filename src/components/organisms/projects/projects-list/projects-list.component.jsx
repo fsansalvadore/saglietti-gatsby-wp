@@ -32,22 +32,23 @@ const ProjectsContainer = styled.div`
     font-size: 1rem;
     letter-spacing: -0.03rem;
     display: inline-block;
-    margin: 0 0 1rem 0;
+    margin: 0 0 4.4rem 0;
     padding-left: 1rem;
     transform: tralsate3d(-60, 0, 0);
   }
 
   .search-form, form {
     display: inline-block;
-    left: 60%;
+    left: 1rem;
+    top: 190px;
   }
 
   .search-form {
     position: absolute;
-    margin-left: 1rem;
+    margin-left: 0;
     
     form {
-      width: 300px;
+      width: calc(80vw - 2rem);
       display: flex;
       align-items: center;
 
@@ -60,14 +61,16 @@ const ProjectsContainer = styled.div`
       input {
         width: 100%;
         padding: 6px;
-        font-size: 0.8rem;
+        font-size: 16px;
         font-weight: bold;
         letter-spacing: -0.02;
         border-radius: 0;
         border: 1px solid #000;
+        color: #000;
 
         &:focus {
           outline: none;
+          font-size: 16px;
         }
       }
     }
@@ -231,6 +234,21 @@ const ProjectsContainer = styled.div`
     h1, h2 {
       margin: 0 0 2rem 0;
       padding-left: 2rem;
+    }
+
+    .search-form, form {
+      display: inline-block;
+      left: 60%;
+      top: 150px;
+    }
+
+    
+    .search-form {
+      margin-left: 1rem;
+      
+      form {
+        width: calc(30vw - 2rem);
+      }
     }
 
     .proj_content li a {
