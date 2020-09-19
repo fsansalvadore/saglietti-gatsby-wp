@@ -49,10 +49,14 @@ const LinkComponent = styled.div`
   }
 `
 
+const HeaderLeftContainer = styled.div`
+
+`
+
 
 const HeaderLeft = () => {
   return (
-    <div className="header-left">
+    <HeaderLeftContainer className="header-left">
       <div className="header-text-center flex align-center h-screen fade-in">
         <h1>Saglietti è uno studio di comunicazione specializzato in identità visiva, advertising, editoria ed exhibit design.</h1>
       </div>
@@ -64,7 +68,7 @@ const HeaderLeft = () => {
           </LinkComponent>
         </div>
       </div>
-    </div>
+    </HeaderLeftContainer>
   )
 }
 

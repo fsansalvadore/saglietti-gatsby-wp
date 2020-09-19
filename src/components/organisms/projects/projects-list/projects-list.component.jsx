@@ -40,7 +40,7 @@ const ProjectsContainer = styled.div`
   .search-form, form {
     display: inline-block;
     left: 1rem;
-    top: 190px;
+    top: 187px;
   }
 
   .search-form {
@@ -61,12 +61,16 @@ const ProjectsContainer = styled.div`
       input {
         width: 100%;
         padding: 6px;
+        margin: 0;
         font-size: 16px;
         font-weight: bold;
         letter-spacing: -0.02;
         border-radius: 0;
         border: 1px solid #000;
         color: #000;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
 
         &:focus {
           outline: none;
