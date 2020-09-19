@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import VerticalLine from '../../../atoms/vertical-line.component'
@@ -20,6 +20,7 @@ if(typeof window !== `undefined`) {
 
 const ProjectsContainer = styled.div`
   width: 100%;
+  min-height: 90vh;
   margin: 0 auto;
   padding: 150px 0 0 0 ;
   text-align: left;
@@ -30,10 +31,49 @@ const ProjectsContainer = styled.div`
     font-weight: 200;
     font-size: 1rem;
     letter-spacing: -0.03rem;
-    margin: 0 20% 1rem 0;
+    display: inline-block;
+    margin: 0 0 1rem 0;
     padding-left: 1rem;
     transform: tralsate3d(-60, 0, 0);
   }
+
+  .search-form, form {
+    display: inline-block;
+    left: 60%;
+  }
+
+  .search-form {
+    position: absolute;
+    margin-left: 1rem;
+    
+    form {
+      width: 300px;
+      display: flex;
+      align-items: center;
+
+      .search-icon {
+        position: absolute;
+        right: 0.5rem;
+        padding-top: 1px;
+      }
+
+      input {
+        width: 100%;
+        padding: 6px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        letter-spacing: -0.02;
+        border-radius: 0;
+        border: 1px solid #000;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .s
 
   li.pseudo.content {
     overflow: hidden;
@@ -101,6 +141,10 @@ const ProjectsContainer = styled.div`
         align-items: center;
         justify-content: space-between;
 
+        p.not-found {
+          margin-top: 1rem;
+          font-weight: bold;
+        }
         h3 {
           font-weight: normal;
           font-size: inherit;
@@ -185,7 +229,7 @@ const ProjectsContainer = styled.div`
 
   @media only screen and (min-width: 1100px) {
     h1, h2 {
-      margin: 0 40% 2rem 0;
+      margin: 0 0 2rem 0;
       padding-left: 2rem;
     }
 
@@ -215,10 +259,21 @@ const ProjectsContainer = styled.div`
 `
 
 const ProjectsList = ({data}) => {
+  const [projects, setProjects] = useState(null)
+  const [term, setTerm] = useState("")
+
+  console.log(data.wordpress.projects.nodes[0])
+  useEffect(() => {
+    if(data.wordpress.projects) {
+      setProjects(data.wordpress.projects.nodes
+              .filter(item => item.title.toLowerCase().includes(term.toLowerCase()) || item.custom_post_type_Project.ambiti.join().toLowerCase().includes(term.toLowerCase()) || item.custom_post_type_Project.anno.toString().includes(term) || !term)
+              .sort((a, b) => (a.date < b.date) ? 1 : (a.date === b.date) ? ((a.title > b.title) ? 1 : -1) : -1 ))
+    }
+  }, [setProjects, term])
   useEffect(() => {
     if(typeof window !== `undefined`) {
       const menuTL = new TimelineLite();
-      menuTL.fromTo("h1", 1, {translateX: -60, opacity: 0}, {translateX: 0, opacity: 1, ease: "power4.out"})
+      menuTL.fromTo("h1", 1, {opacity: 0}, {opacity: 1, ease: "power4.out"})
       .fromTo(".proj_item-left, .proj_item-right", 1, {translateY: 100, opacity: 0}, {
         translateY: 0,
         opacity: 1,
@@ -300,12 +355,26 @@ const ProjectsList = ({data}) => {
       <ProjectsContainer>
         <VerticalLine style={{left: "60%"}} className="vertical-line"/>
         <h1>Progetti</h1>
+        <div className="search-form">
+          <form>
+            <i className="search-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.6743 15.3094L11.291 11.9261M13.1188 7.53158C13.1188 10.968 10.333 13.7538 6.89657 13.7538C3.46012 13.7538 0.674316 10.968 0.674316 7.53158C0.674316 4.09512 3.46012 1.30933 6.89657 1.30933C10.333 1.30933 13.1188 4.09512 13.1188 7.53158Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+            </i>
+            <input
+              type="text"
+              onChange={e => setTerm(e.target.value)}
+              value={term}
+              placeholder="Cerca per titolo o ambito"
+            />
+          </form>
+        </div>
         <ul className="proj_content" ref={projectsRef}>
           {
-            data.wordpress.projects &&
-            data.wordpress.projects.nodes
-            .sort((a, b) => (a.date < b.date) ? 1 : (a.date === b.date) ? ((a.title > b.title) ? 1 : -1) : -1 )
-            .map(proj => (
+            projects && projects.length > 0 ?
+            projects.map(proj => (
               <li
                 key={`${proj.id}-${proj.slug}-${Math.floor(Math.random() * (100 - 999) + 100)}`}
                 className="pseudo content"
@@ -339,7 +408,16 @@ const ProjectsList = ({data}) => {
                 </Link>
                 <span className="divider"></span>
               </li>
-            ))
+            )) : (
+              <li className="pseudo content">
+                <span className="divider"></span>
+                  <Link to="/progetti" className="block__link no_link">
+                    <div className="proj_item-left prog_list-item">
+                      <p className="not-found">Nessun progetto trovato</p>
+                    </div>
+                  </Link>
+                </li>
+              )
           }
           <span className="last_divider"></span>
         </ul>
