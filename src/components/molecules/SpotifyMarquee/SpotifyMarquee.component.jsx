@@ -83,16 +83,16 @@ const SpotifyMarquee = () => {
         }
     }, [])
     
-    const play = useCallback(async () => {
-        await trackPreview.load()
-        await trackPreview.play()
-        await setIcon("🎶")
+    const play = useCallback(() => {
+        trackPreview.load()
+        trackPreview.play()
+        setIcon("🎶")
     }, [])
     
-    const pause = useCallback(async () => {
-        await trackPreview.pause()
-        trackPreview.currentTime = await 0
-        await setIcon("🎵")
+    const pause = useCallback(() => {
+        trackPreview.pause()
+        trackPreview.currentTime = 0
+        setIcon("🎵")
     }, [])
 
     return (
