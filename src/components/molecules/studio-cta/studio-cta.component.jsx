@@ -80,8 +80,7 @@ const StudioCTA = () => {
         <StudioCtaContainer className="fade-in">
             <h3>Studio</h3>
             <p>
-              Ogni design che produciamo è come il nostro studio.<br/>
-              Nasce per essere avanti.
+            Costruiamo linguaggi estetici in grado di trasformare il contatto con l’utente in una narrazione emotiva.
             </p>
             <LinkComponent className="contacts-container TextRevealAnim">
                 <Link to="/studio" className="TextRevealItem">Approfondisci <span><img src={ArrowRightSVG} alt=""/></span></Link>

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const MarqueeContainer = styled.button`
-    padding: 10px 0;
+    padding: 0;
     line-height: 140%;
     font-size: 1rem;
     font-weight: bold;
@@ -16,14 +16,18 @@ const MarqueeContainer = styled.button`
 
     marquee {
         overflow: visible;
+        padding: 3rem 0;
     }
 
     span {
         overflow: visible;
-        margin: 1rem;
+        margin: 0.25rem 1rem;
         padding: 0;
-        width: 40px;
-        height: 40px;
+        width: 6px;
+        height: 6px;
+        max-width: 6px;
+        max-height: 6px;
+        background-color: #000;
         border-radius: 50%;
         display: inline-flex;
         align-items: center;
@@ -34,9 +38,11 @@ const MarqueeContainer = styled.button`
         font-size: 1.45rem;
 
         span {
-            margin: 2rem;
-            width: 60px;
-            height: 60px;
+            margin: 0.3rem 2rem;
+            width: 10px;
+            height: 10px;
+            max-width: 10px;
+            max-height: 10px;
         }
     }
 `
@@ -60,7 +66,6 @@ const SpotifyMarquee = () => {
     const currentTrack = tracksList[Math.floor(((time.getHours() + 1) * tracksList.length) / 23) - 1];
     
     let trackPreview = null
-    let [icon, setIcon] = useState("🎵")
     let marqueeContent = `Stiamo ascoltando: ${currentTrack.track.name} — ${currentTrack.track.artistString}`
     
     if(typeof window !== `undefined`) {
@@ -70,29 +75,25 @@ const SpotifyMarquee = () => {
     }
     
     for (let i = 0; i < 4; ++i) {
-        marqueeContent += ` <span>${icon}</span> ${marqueeContent}`
+        marqueeContent += ` <span></span> ${marqueeContent}`
     }
     
     const pausePlay = useCallback(async () => {
         if(trackPreview.paused) {
             play()
-            setIcon("🎶")
         } else {
             pause()
-            setIcon("🎵")
         }
     }, [])
     
     const play = useCallback(async () => {
         await trackPreview.load()
         await trackPreview.play()
-        await setIcon("🎶")
     }, [])
     
     const pause = useCallback(async () => {
         await trackPreview.pause()
         trackPreview.currentTime = await 0
-        await setIcon("🎵")
     }, [])
 
     return (

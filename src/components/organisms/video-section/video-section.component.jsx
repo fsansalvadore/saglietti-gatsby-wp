@@ -50,8 +50,8 @@ const VideoSection = () => {
         <TextRevealAnimation addClass="quote-anim" skew>
           <div className="TextRevealItem">
             <p className="text">
-          Creiamo connessioni armoniche con gli utenti <br/>
-mettendo in relazione Essenza, Espressione ed Emozione.
+            Il nostro lavoro si nutre costantemente di ispirazione.<br/>
+Per questo non smettiamo mai di cercarla. Ovunque.
             </p>
           </div>
         </TextRevealAnimation>
