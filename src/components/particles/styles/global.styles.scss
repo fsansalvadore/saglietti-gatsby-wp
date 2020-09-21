@@ -120,10 +120,16 @@ hr.line {
   h1, p {
     font-family: 'FFMarkWebProLight', sans-serif;
     font-size: 1.75rem;
-    line-height: 110%;
+    line-height: 120%;
     font-weight: normal;
     letter-spacing: -0.05rem;
     text-rendering: optimizeLegibility;
+  }
+}
+
+.contacts-container {
+  .header-text-center p {
+    line-height: 130%;
   }
 }
 

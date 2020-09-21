@@ -47,7 +47,9 @@ const StudioContent = styled.div`
     }
 
     .text-lg  {
-        font-size: 1.35rem;
+        font-family: 'FFMarkWebProMedium', sans-serif;
+        font-size: 1.6rem;
+        font-weight: normal;
         line-height: 120%;
     }
 
@@ -135,16 +137,24 @@ const StudioContent = styled.div`
             margin-bottom: 15px;
             
             span {
+                font-family: 'FFMarkWebProMedium', sans-serif;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 width: 30px;
                 height: 30px;
                 min-width: 30px;
                 min-height: 30px;
+                font-size: 0.7rem;
                 font-weight: bold;
-                margin-right: 10px;
+                margin-right: 15px;
+                border: 1px solid #000;
+                border-radius: 50%;
                 
                 * {
                     line-height: 0;
                 }
+
             }
         }
     }
@@ -200,12 +210,12 @@ const StudioContent = styled.div`
     
         p {
             font-size: 1.25rem;
-            line-height: 130%;
+            line-height: 140%;
         }
 
         .text-lg {
-            font-size: 2.8rem;
-            line-height: 100%;
+            font-size: 2.9rem;
+            line-height: 110%;
         }
 
         .clienti_container {
@@ -316,8 +326,7 @@ const StudioPage = ({data}) => {
                             <div>
                                 <h2 className="">Servizi</h2>
                                 <p className="">
-                                <strong>La qualità non è solo un punto d’arrivo. È la partenza e l’ispirazione.</strong><br/>
-                                Una gamma di servizi ampia e strutturata. Uno standard qualitativo che quotidianamente accetta la sfida più importante: pensare avanti, sempre.
+                                <strong>La qualità non è solo un punto d’arrivo. È la partenza e l’ispirazione.</strong> Una gamma di servizi ampia e strutturata. Uno standard qualitativo che quotidianamente accetta la sfida più importante: pensare avanti, sempre.
                                 </p>
                                 <ul>
                                     <li className="fade-in">Art Direction</li>

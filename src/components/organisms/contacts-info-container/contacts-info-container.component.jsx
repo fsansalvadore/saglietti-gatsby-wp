@@ -3,7 +3,7 @@ import ContactForm from '../contact-form/contact-form.component'
 
 const ContactsInfoContainer = () => {
   return (
-    <div className="header-left">
+    <div className="header-left contacts-container">
       <div className="header-text-center flex align-center h-screen">
         <div className="flex">
           <div className="text-block half">
@@ -13,14 +13,13 @@ const ContactsInfoContainer = () => {
               Siamo pronti ad ascoltare le tue esigenze e quelle del tuo brand.<br/>
               Sarà un piacere incontrarti.
             </p>
-            <a href="mailto:alessandro@saglietti.it" target="_blank" rel="noreferrer">alessandro@saglietti.it</a>
+            <a href="mailto:info@saglietti.it" target="_blank" rel="noreferrer">info@saglietti.it</a>
           </div>
           <div className="text-block half">
             <h2>Internship.</h2>
             <p>
               Mandaci il tuo portfolio insieme a una breve presentazione.<br/>
-              Ti ricontatteremo appena possibile.<br/>
-              Al momento l'organico è al completo.
+              Ti ricontatteremo appena possibile. Al momento l'organico è al completo.
             </p>
             <a href="mailto:portfolio@saglietti.it" target="_blank" rel="noreferrer">portfolio@saglietti.it</a>
           </div>
