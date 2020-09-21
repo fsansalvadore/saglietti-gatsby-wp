@@ -54,19 +54,19 @@ const ProjectsContainer = styled.div`
 
       .search-icon {
         position: absolute;
-        right: 0.5rem;
+        right: 0;
         padding-top: 1px;
       }
 
       input {
         width: 100%;
-        padding: 6px;
+        padding: 6px 0;
         margin: 0;
         font-size: 16px;
         font-weight: bold;
         letter-spacing: -0.02;
         border-radius: 0;
-        border: 1px solid #000;
+        border: none;
         color: #000;
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -99,7 +99,6 @@ const ProjectsContainer = styled.div`
       letter-spacing: -0.05rem;
       margin: 0;
       line-height: 1.2rem;
-      padding: 12px 0 14px 0;
     }
   }
 
@@ -143,7 +142,7 @@ const ProjectsContainer = styled.div`
         width: 80%;
         opacity: 0;
         text-align: left;
-        padding: 0 1rem;
+        padding: 12px 1rem 14px 1rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -182,13 +181,15 @@ const ProjectsContainer = styled.div`
           font-size: 1rem;
           min-width: 45px;
           text-align: left;
+          margin-right: 0;
         }
 
         .proj_ambiti {
-          padding-left: 1rem;
+          padding: 12px 0 14px 0rem;
           display: none;
           font-size: 0.75rem;
           align-items: center;
+          border-left: 1px solid #000;
 
           div {
             position: relative;
@@ -251,13 +252,16 @@ const ProjectsContainer = styled.div`
       margin-left: 1rem;
       
       form {
-        width: calc(30vw - 2rem);
+        width: calc(40vw - 3rem);
+
+        .search-icon {
+          right: 0.8rem;
+        }
       }
     }
 
     .proj_content li a {
       font-size: 1.5rem;
-      padding: 17px 0 19px 0;
     }
 
     .proj_content .block__link .proj_item-left {
@@ -276,6 +280,11 @@ const ProjectsContainer = styled.div`
     .proj_content .block__link .proj_item-right .proj_ambiti {
       display: flex;
       flex-wrap: wrap;
+      padding: 17px 0 19px 0.5rem;
+    }
+
+    .proj_content .block__link .proj_item-right .proj_year {
+      margin-right: 1rem;
     }
   }
 `
@@ -291,7 +300,7 @@ const ProjectsList = ({data}) => {
               .filter(item => item.title.toLowerCase().includes(term.toLowerCase()) || item.custom_post_type_Project.ambiti.join().toLowerCase().includes(term.toLowerCase()) || item.custom_post_type_Project.anno.toString().includes(term) || !term)
               .sort((a, b) => (a.date < b.date) ? 1 : (a.date === b.date) ? ((a.title > b.title) ? 1 : -1) : -1 ))
     }
-  }, [setProjects, term])
+  }, [setProjects, term, data.wordpress.projects])
   useEffect(() => {
     if(typeof window !== `undefined`) {
       const menuTL = new TimelineLite();
