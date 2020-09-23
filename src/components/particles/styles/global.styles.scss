@@ -267,3 +267,17 @@ hr.line {
     }
   }
 }
+
+body .cooky.react-cookie-banner {
+  position: fixed !important;
+  width: 100vw;
+  background-color: #fff !important;
+
+  .cookie-message {
+    color: #000 !important;
+  }
+
+  .close-button {
+    cursor: pointer !important;
+  }
+}
