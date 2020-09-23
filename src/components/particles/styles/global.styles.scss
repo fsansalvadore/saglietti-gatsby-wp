@@ -46,7 +46,6 @@ p, h1, h2, h3, a, li, span {
     width: 100vw;
     float: none;
     height: calc(var(--vh, 1vh) * 200);
-    max-height: calc(var(--vh, 1vh) * 200);
   }
   
   .header-right {
