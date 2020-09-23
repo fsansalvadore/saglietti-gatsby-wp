@@ -45,7 +45,7 @@ const MenuInfo = styled.div`
   justify-content: space-between;
   
   p {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     line-height: 160%;
     margin: 0;
   }
