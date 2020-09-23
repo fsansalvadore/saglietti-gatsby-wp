@@ -10,7 +10,7 @@ const ContactsComponent = styled.div`
   border-top: 1px solid #000;
 
   a {
-    font-family: 'ff-real-text-pro', sans-serif;
+    font-family: 'ff-real-headline-pro-2', sans-serif;
     width: 100%;
     float: right;
     display: flex;

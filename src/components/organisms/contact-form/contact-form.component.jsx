@@ -33,8 +33,8 @@ const ContactFormContainer = styled.div`
   .MuiFormLabel-root, p {
     color: #000;
     font-size: 0.75rem !important;
-    font-weight: bold;
-    font-family: 'ff-real-text-pro', sans-serif !important;
+    font-weight: 300;
+    font-family: 'ff-real-headline-pro-2', sans-serif !important;
     letter-spacing: 0;
   }
   
@@ -95,7 +95,7 @@ const ContactFormContainer = styled.div`
   
   button {
     float: right;
-    font-weight: bold;
+    font-weight: 300;
     letter-spacing: 0;
     background: #000;
     color: #fff;
