@@ -5,8 +5,9 @@ import { useStaticQuery, graphql } from 'gatsby'
 const MarqueeContainer = styled.button`
     padding: 0;
     line-height: 140%;
+    font-family: 'ff-real-text-pro', sans-serif;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 200;
     border: none;
     border-top: 1px solid #000;
     background: transparent;

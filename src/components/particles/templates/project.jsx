@@ -44,9 +44,9 @@ const ProjectContainerComponent = styled.div`
       margin-bottom: 1.45rem;
 
       h1 {
-        font-family: 'FFMarkWebProLight';
+        font-family: 'ff-real-text-pro';
         font-weight: 200;
-        letter-spacing: -0.06rem;
+        letter-spacing: 0;
         margin: 0;
       }
     }
@@ -61,7 +61,7 @@ const ProjectContainerComponent = styled.div`
       .proj_details-block {
         width: 25%;
         margin-right: 10px;       
-        font-family: 'FFMarkWebProLight';
+        font-family: 'ff-real-text-pro';
         font-size: 0.7rem;
         line-height: 1rem;
 

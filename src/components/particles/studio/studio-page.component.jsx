@@ -25,7 +25,7 @@ const StudioContent = styled.div`
 
     h1 {
         font-size: 1rem;
-        font-family: 'FFMarkWebProLight', sans-serif;
+        font-family: 'ff-real-headline-pro', sans-serif;
         font-weight: 200;
     }
 
@@ -36,18 +36,18 @@ const StudioContent = styled.div`
 
     p {
         font-size: 1rem;
-        font-weight: bold;
+        font-weight: 400;
         line-height: 140%;
         letter-spacing: -0.032em;
         margin: 0;
 
         strong {
-            font-family: 'FFMarkWebProMedium', sans-serif;
+            font-family: 'ff-real-text-pro', sans-serif;
         }
     }
 
     .text-lg  {
-        font-family: 'FFMarkWebProMedium', sans-serif;
+        font-family: 'ff-real-headline-pro', sans-serif;
         font-size: 1.6rem;
         font-weight: normal;
         line-height: 120%;
@@ -102,7 +102,7 @@ const StudioContent = styled.div`
                 list-style: none;
                 display: flex;
                 align-items: center;
-                font-weight: bold;
+                font-weight: 400;
             }
         }
     }
@@ -132,12 +132,12 @@ const StudioContent = styled.div`
             list-style: none;
             display: flex;
             align-items: flex-start;
-            font-weight: bold;
+            font-weight: 400;
             font-size: 1rem;
             margin-bottom: 15px;
             
             span {
-                font-family: 'FFMarkWebProMedium', sans-serif;
+                font-family: 'ff-real-headline-pro', sans-serif;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -174,7 +174,7 @@ const StudioContent = styled.div`
         li {
             list-style: none;
             font-size: 1rem;
-            font-weight: bold;
+            font-weight: 400;
             line-height: 140%;
             letter-spacing: -0.022em;
         }

@@ -31,6 +31,7 @@ const GenericMetadata = () => {
             <meta name="robots" content="NOODP" />
             <meta name="msnbot" content="NOODP" />
             <meta name="googlebot" content="NOODP" />
+            <link rel="stylesheet" href="https://use.typekit.net/jcw6zqi.css" />
         </Helmet>
     )
 }

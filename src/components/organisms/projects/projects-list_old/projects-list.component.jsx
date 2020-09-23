@@ -26,7 +26,7 @@ const ProjectsContainer = styled.div`
   text-align: right;
 
   h1, h2 {
-    font-family: 'FFMarkWebProLight';
+    font-family: 'ff-real-text-pro';
     font-weight: 200;
     font-size: 1rem;
     letter-spacing: -0.03rem;

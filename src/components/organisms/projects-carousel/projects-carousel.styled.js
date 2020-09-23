@@ -47,6 +47,7 @@ const ProjectsCarouselStyled = styled.div`
 
           li {
             font-size: 0.9rem;
+            font-weight: 200;
             letter-spacing: -0.015rem;
             position: relative;
             display: inline-flex;

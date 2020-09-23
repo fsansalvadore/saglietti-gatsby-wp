@@ -27,7 +27,7 @@ const ProjectsContainer = styled.div`
   position: relative;
 
   h1, h2 {
-    font-family: 'FFMarkWebProLight';
+    font-family: 'ff-real-text-pro';
     font-weight: 200;
     font-size: 1rem;
     letter-spacing: -0.03rem;
@@ -193,14 +193,17 @@ const ProjectsContainer = styled.div`
 
           div {
             position: relative;
-            padding: 0 12px;
+            padding: 0 10px;
 
-            &::after {
+            &::before {
               position: absolute;
               content: '/';
               font-size: 0.6rem;
               width: 1px;
-              right: 4px;
+              left: -2px;
+            }
+            &:first-of-type::before {
+              display: none;
             }
           }
         }

@@ -1,3 +1,5 @@
+@import url(https://use.typekit.net/jcw6zqi.css);
+
 :root {
   --line-color: rgba(0, 0, 0, 1);
   --ease-1: cubic-bezier(.6,.01,-.05,0.9);
@@ -7,25 +9,25 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'FFMarkWebProLight';
+  font-family: 'ff-real-text-pro', sans-serif;
 }
 
-@font-face {
-  font-family: 'FFMarkWebProMedium';
-  src: url('../webFonts/FFMarkWebProMedium/font.woff2') format('woff2'), url('../webFonts/FFMarkWebProMedium/font.woff') format('woff');
+/* @font-face {
+  font-family: 'ff-real-text-pro';
+  src: url('../webFonts/ff-real-text-pro/font.woff2') format('woff2'), url('../webFonts/ff-real-text-pro/font.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
-  font-family: 'FFMarkWebProLight';
-  src: url('../webFonts/FFMarkWebProLight/font.woff2') format('woff2'), url('../webFonts/FFMarkWebProLight/font.woff') format('woff');
+  font-family: 'ff-real-text-pro';
+  src: url('../webFonts/ff-real-text-pro/font.woff2') format('woff2'), url('../webFonts/ff-real-text-pro/font.woff') format('woff');
   font-weight: 400;
   font-style: normal;
-}
+} */
 
 html {
   background: #fff;
-  font-family: 'FFMarkWebProLight', sans-serif;
+  font-family: 'ff-real-text-pro', sans-serif;
   overflow: auto !important;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -35,7 +37,7 @@ body {
   margin: 0;
   font-size: 16px;
   line-height: 140%;
-  letter-spacing: -0.01%;
+  letter-spacing: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
@@ -244,7 +246,7 @@ html {
 }
 body {
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: 'FFMarkWebProLight', sans-serif;
+  font-family: 'ff-real-text-pro', sans-serif;
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -274,7 +276,7 @@ h1 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'FFMarkWebProMedium', Helvetica Neue,sans-serif;
+  font-family: 'ff-real-headline-pro', Helvetica Neue,sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 2.25rem;
@@ -290,7 +292,7 @@ h2 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'FFMarkWebProMedium', Helvetica Neue,sans-serif;
+  font-family: 'ff-real-headline-pro', Helvetica Neue,sans-serif;
   text-rendering: optimizeLegibility;
   font-size: 0.8rem;
   font-weight: bold;
@@ -306,7 +308,7 @@ h3 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'FFMarkWebProMedium', Helvetica Neue,sans-serif;
+  font-family: 'ff-real-headline-pro', Helvetica Neue,sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1.38316rem;
@@ -322,7 +324,7 @@ h4 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'FFMarkWebProMedium', Helvetica Neue,sans-serif;
+  font-family: 'ff-real-headline-pro', Helvetica Neue,sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1rem;
@@ -338,7 +340,7 @@ h5 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'FFMarkWebProMedium', Helvetica Neue,sans-serif;
+  font-family: 'ff-real-headline-pro', Helvetica Neue,sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 0.85028rem;
@@ -354,7 +356,7 @@ h6 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'FFMarkWebProMedium', Helvetica Neue,sans-serif;
+  font-family: 'ff-real-headline-pro', Helvetica Neue,sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 0.78405rem;

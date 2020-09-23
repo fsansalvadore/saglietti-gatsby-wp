@@ -14,7 +14,7 @@ const LinkComponent = styled.div`
     align-items: flex-end;
     text-decoration: none;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 400;
     margin-right: 0;
 
     &:hover span {

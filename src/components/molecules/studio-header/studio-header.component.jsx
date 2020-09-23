@@ -19,7 +19,7 @@ const StudioHeader = styled.header`
     p {
       font-size: 1.75rem;
       font-weight: bold;
-      font-family: 'FFMarkWebProLight', sans-serif;
+      font-family: 'ff-real-text-pro', sans-serif;
     }
   }
 

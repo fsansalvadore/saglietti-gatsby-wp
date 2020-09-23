@@ -34,7 +34,7 @@ const ContactFormContainer = styled.div`
     color: #000;
     font-size: 0.75rem !important;
     font-weight: bold;
-    font-family: 'FFMarkWebProLight', sans-serif !important;
+    font-family: 'ff-real-text-pro', sans-serif !important;
     letter-spacing: -0.015rem;
   }
   

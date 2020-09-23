@@ -11,7 +11,7 @@ const StudioCtaContainer = styled.div`
     flex-direction: column;
 
     h3 {
-        font-family: 'FFMarkWebProLight';
+        font-family: 'ff-real-text-pro';
         font-weight: normal;
     }
 
@@ -41,7 +41,7 @@ const LinkComponent = styled.div`
     align-items: flex-end;
     text-decoration: none;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 400;
     margin-right: 0;
 
     &:hover span {
