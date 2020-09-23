@@ -61,12 +61,12 @@ const ProjectContainerComponent = styled.div`
       .proj_details-block {
         width: 25%;
         margin-right: 10px;       
-        font-family: 'ff-real-text-pro';
+        font-family: 'ff-real-headline-pro-2';
         font-size: 0.7rem;
         line-height: 1rem;
 
         h2 {
-          font-weight: 200;
+          font-weight: 400;
           font-size: inherit;
           margin-bottom: 0;
           line-height: inherit;
@@ -260,13 +260,6 @@ const ProjectPage = (props) => {
             </TextRevealAnimation>
             <div className="proj_details-container fade-in">
               {
-                custom_post_type_Project.credits && custom_post_type_Project.credits.length > 0 &&
-                  <div className="proj_details-block">
-                    <h2>Credits</h2>
-                    <p dangerouslySetInnerHTML={{__html: custom_post_type_Project.credits}} />
-                  </div>
-              }
-              {
                 custom_post_type_Project.anno && custom_post_type_Project.anno.length !== null &&
                   <div className="proj_details-block">
                     <h2>Anno</h2>
@@ -280,8 +273,15 @@ const ProjectPage = (props) => {
                     <ul>
                       {custom_post_type_Project.ambiti.map(ambito => (
                         <li key={`${ambito}-${Math.floor(Math.random() * (100 - 999) + 100)}`}>{ambito}</li>
-                      ))}
+                        ))}
                     </ul>
+                  </div>
+              }
+              {
+                custom_post_type_Project.credits && custom_post_type_Project.credits.length > 0 &&
+                  <div className="proj_details-block">
+                    <h2>Credits</h2>
+                    <p dangerouslySetInnerHTML={{__html: custom_post_type_Project.credits}} />
                   </div>
               }
             </div>

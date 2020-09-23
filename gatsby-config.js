@@ -74,18 +74,18 @@ module.exports = {
         // Add any options here
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: `Saglietti-it`,
-    //     short_name: `starter`,
-    //     start_url: `/`,
-    //     background_color: `#ffffff`,
-    //     theme_color: `#000000`,
-    //     icon: `src/images/favicon.svg`, // This path is relative to the root of the site.
-    //     // crossOrigin: `use-credentials`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Saglietti-it`,
+        short_name: `starter`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#000000`,
+        icon: `src/images/favicon.svg`, // This path is relative to the root of the site.
+        // crossOrigin: `use-credentials`,
+      },
+    },
     // // this (optional) plugin enables Progressive Web App + Offline functionality
     // // To learn more, visit: https://gatsby.dev/offline
     // 'gatsby-plugin-offline'
