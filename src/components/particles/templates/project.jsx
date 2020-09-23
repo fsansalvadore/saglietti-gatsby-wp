@@ -98,7 +98,7 @@ const ProjectContainerComponent = styled.div`
       text-decoration: none;
       font-size: 0.7rem;
       font-weight: 200;
-      letter-spacing: -0.02rem;
+      letter-spacing: 0;
     }
 
     svg {

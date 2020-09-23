@@ -30,7 +30,7 @@ const ProjectsContainer = styled.div`
     font-family: 'ff-real-text-pro';
     font-weight: 200;
     font-size: 1rem;
-    letter-spacing: -0.03rem;
+    letter-spacing: 0;
     display: inline-block;
     margin: 0 0 4.4rem 0;
     padding-left: 1rem;
@@ -64,7 +64,7 @@ const ProjectsContainer = styled.div`
         margin: 0;
         font-size: 16px;
         font-weight: bold;
-        letter-spacing: -0.02;
+        letter-spacing: 0;
         border-radius: 0;
         border: none;
         color: #000;
@@ -96,7 +96,7 @@ const ProjectsContainer = styled.div`
       text-decoration: none;
       font-size: 1rem;
       opacity: 1;
-      letter-spacing: -0.05rem;
+      letter-spacing: 0;
       margin: 0;
       line-height: 1.2rem;
     }

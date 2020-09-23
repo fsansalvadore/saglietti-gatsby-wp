@@ -14,7 +14,7 @@ const FreeformStyled = styled.div`
         max-width: 700px;
         line-height: 1.4rem;
         font-weight: 800;
-        letter-spacing: -0.01rem;
+        letter-spacing: 0;
     }
 `
 

@@ -48,7 +48,7 @@ const ProjectsCarouselStyled = styled.div`
           li {
             font-size: 0.9rem;
             font-weight: 200;
-            letter-spacing: -0.015rem;
+            letter-spacing: 0;
             position: relative;
             display: inline-flex;
             height: 100%;
@@ -108,7 +108,7 @@ const ProjectsCarouselStyled = styled.div`
     padding: 0 1rem;
     text-decoration: none;
     font-size: 1.15rem;
-    letter-spacing: -0.06rem;
+    letter-spacing: 0;
 
     p, a {
       margin: 0;

@@ -20,7 +20,7 @@ const StudioCtaContainer = styled.div`
     }
 
     @media screen and (min-width: 900px) {
-        padding: 300px 6rem 250px 6rem;
+        padding: 300px 10% 250px 10%;
 
         p {
             font-size: 2.35rem;
@@ -41,7 +41,8 @@ const LinkComponent = styled.div`
     align-items: flex-end;
     text-decoration: none;
     font-size: 1rem;
-    font-weight: 400;
+    font-family: 'ff-real-headline-pro-2', sans-serif;
+    font-weight: 300;
     margin-right: 0;
 
     &:hover span {

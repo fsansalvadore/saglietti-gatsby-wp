@@ -29,7 +29,7 @@ const ProjectsContainer = styled.div`
     font-family: 'ff-real-text-pro';
     font-weight: 200;
     font-size: 1rem;
-    letter-spacing: -0.03rem;
+    letter-spacing: 0;
     margin-bottom: 2rem;
   }
   ul, li {
@@ -43,7 +43,7 @@ const ProjectsContainer = styled.div`
       text-decoration: none;
       font-size: 1.2rem;
       opacity: 0;
-      letter-spacing: -0.05rem;
+      letter-spacing: 0;
       margin: 0;
       line-height: 1.2rem;
       padding: 12px 0 14px 0;

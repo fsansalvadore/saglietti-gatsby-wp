@@ -7,7 +7,7 @@ const MarqueeContainer = styled.button`
     line-height: 140%;
     font-family: 'ff-real-text-pro', sans-serif;
     font-size: 1rem;
-    font-weight: 200;
+    font-weight: 300;
     border: none;
     border-top: 1px solid #000;
     background: transparent;

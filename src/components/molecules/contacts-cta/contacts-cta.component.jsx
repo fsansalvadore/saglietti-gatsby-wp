@@ -18,7 +18,7 @@ const ContactsComponent = styled.div`
     align-items: center;
     text-decoration: none;
     font-size: 1.4rem;
-    font-weight: normal;
+    font-weight: 300;
     margin-right: 0;
 
     &:hover span {

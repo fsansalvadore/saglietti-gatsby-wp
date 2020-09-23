@@ -9,25 +9,25 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'ff-real-text-pro', sans-serif;
+  font-family: 'ff-real-headline-pro-2', sans-serif;
 }
 
 /* @font-face {
-  font-family: 'ff-real-text-pro';
-  src: url('../webFonts/ff-real-text-pro/font.woff2') format('woff2'), url('../webFonts/ff-real-text-pro/font.woff') format('woff');
+  font-family: 'ff-real-headline-pro-2';
+  src: url('../webFonts/ff-real-headline-pro-2/font.woff2') format('woff2'), url('../webFonts/ff-real-headline-pro-2/font.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
-  font-family: 'ff-real-text-pro';
-  src: url('../webFonts/ff-real-text-pro/font.woff2') format('woff2'), url('../webFonts/ff-real-text-pro/font.woff') format('woff');
+  font-family: 'ff-real-headline-pro-2';
+  src: url('../webFonts/ff-real-headline-pro-2/font.woff2') format('woff2'), url('../webFonts/ff-real-headline-pro-2/font.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 } */
 
 html {
   background: #fff;
-  font-family: 'ff-real-text-pro', sans-serif;
+  font-family: 'ff-real-headline-pro-2', sans-serif;
   overflow: auto !important;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -107,7 +107,7 @@ dfn {
 }
 h1 {
   font-size: 2em;
-  letter-spacing: -0.04rem;
+  letter-spacing: 0;
   margin: 0.67em 0;
 }
 mark {
@@ -160,7 +160,7 @@ textarea {
   margin: 0;
 }
 optgroup {
-  font-weight: 700;
+  font-weight: 800;
 }
 button,
 input {
@@ -246,8 +246,8 @@ html {
 }
 body {
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: 'ff-real-text-pro', sans-serif;
-  font-weight: normal;
+  font-family: 'ff-real-headline-pro-2', sans-serif;
+  font-weight: 300;
   word-wrap: break-word;
   font-kerning: normal;
   -moz-font-feature-settings: "kern", "liga", "clig", "calt";
@@ -647,7 +647,7 @@ code:before,
 code:after,
 tt:before,
 tt:after {
-  letter-spacing: -0.2em;
+  letter-spacing: 0;
   content: " ";
 }
 pre code:before,

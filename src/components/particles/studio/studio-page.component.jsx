@@ -36,13 +36,13 @@ const StudioContent = styled.div`
 
     p {
         font-size: 1rem;
-        font-weight: 400;
+        font-weight: 300;
         line-height: 140%;
-        letter-spacing: -0.032em;
+        letter-spacing: 0;
         margin: 0;
 
         strong {
-            font-family: 'ff-real-text-pro', sans-serif;
+            font-weight: 400;
         }
     }
 
@@ -102,7 +102,7 @@ const StudioContent = styled.div`
                 list-style: none;
                 display: flex;
                 align-items: center;
-                font-weight: 400;
+                font-weight: 300;
             }
         }
     }
@@ -132,7 +132,7 @@ const StudioContent = styled.div`
             list-style: none;
             display: flex;
             align-items: flex-start;
-            font-weight: 400;
+            font-weight: 300;
             font-size: 1rem;
             margin-bottom: 15px;
             
@@ -176,7 +176,7 @@ const StudioContent = styled.div`
             font-size: 1rem;
             font-weight: 400;
             line-height: 140%;
-            letter-spacing: -0.022em;
+            letter-spacing: 0;
         }
 
         img {

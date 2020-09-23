@@ -18,7 +18,7 @@ const CONTACT_MUTATION = gql`
 
 const ContactFormContainer = styled.div`
   width: 100%;
-  letter-spacing: -0.015rem;
+  letter-spacing: 0;
 
   h2 {
     font-weight: 400;
@@ -35,7 +35,7 @@ const ContactFormContainer = styled.div`
     font-size: 0.75rem !important;
     font-weight: bold;
     font-family: 'ff-real-text-pro', sans-serif !important;
-    letter-spacing: -0.015rem;
+    letter-spacing: 0;
   }
   
   .MuiFormLabel-root.Mui-focused,
@@ -96,7 +96,7 @@ const ContactFormContainer = styled.div`
   button {
     float: right;
     font-weight: bold;
-    letter-spacing: -0.015rem;
+    letter-spacing: 0;
     background: #000;
     color: #fff;
     padding: 10px 20px;

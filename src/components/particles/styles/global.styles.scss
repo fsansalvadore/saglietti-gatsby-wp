@@ -84,7 +84,7 @@ p, h1, h2, h3, a, li, span {
       padding: 0 5%;
       text-decoration: none;
       font-size: 1.5rem;
-      letter-spacing: -0.02rem;
+      letter-spacing: 0;
   
       p, a {
         margin: 0;
@@ -118,7 +118,7 @@ hr.line {
   }
 
   h1, p {
-    font-family: 'ff-real-text-pro', sans-serif;
+    font-family: 'ff-real-headline-pro', sans-serif;
     font-size: 1.75rem;
     line-height: 120%;
     font-weight: normal;
