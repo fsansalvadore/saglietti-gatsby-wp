@@ -33,6 +33,7 @@ html {
   -webkit-text-size-adjust: 100%;
   height: -webkit-fill-available;
 }
+
 body {
   margin: 0;
   font-size: 16px;
@@ -47,6 +48,7 @@ body {
 main {
   min-height: 70vh;
 }
+
 .fade-out {
   opacity: 0;
   transition: opacity 0.2s;
