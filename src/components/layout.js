@@ -17,6 +17,7 @@ import Cursor from "./atoms/cursor.component"
 import CursorFollow from "./atoms/cursor-follow.component"
 import GenericMetadata from './particles/meta/GenericMetadata'
 import CookieComponent from './molecules/CookieComponent.component'
+import Loading from "../components/molecules/Loading/Loading.component";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -28,6 +29,7 @@ const Layout = ({ children }) => {
       }
     }
   `)
+  const [isLoading, setIsLoading] = useState(true);
   const [cursorComp, setCursorComp] = useState(null)
   const [cursorFollowComp, setCursorFollowComp] = useState(null)
 
@@ -35,6 +37,7 @@ const Layout = ({ children }) => {
     if ( typeof document !== `undefined` ) {
       setCursorComp(<Cursor/>)
       setCursorFollowComp(<CursorFollow/>)
+      setIsLoading(false)
     }
   }, [])
 
@@ -43,6 +46,7 @@ const Layout = ({ children }) => {
       <GenericMetadata/>
       {cursorComp}
       {cursorFollowComp}
+      <Loading isLoading={isLoading}/>
       <Nav siteTitle={data.site.siteMetadata.title} />
         <AnimatePresence exitBeforeEnter>
           <motion.main
