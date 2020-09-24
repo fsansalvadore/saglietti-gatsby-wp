@@ -142,7 +142,7 @@ const ProjectsContainer = styled.div`
         width: 80%;
         opacity: 0;
         text-align: left;
-        padding: 12px 1rem 14px 1rem;
+        padding: 14px 1rem 14px 1rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -176,6 +176,7 @@ const ProjectsContainer = styled.div`
         align-items: center;
         opacity: 0;
         padding-left: 1rem;
+        font-family: 'ff-real-text-pro';
 
         .proj_year {
           font-size: 1rem;
@@ -185,7 +186,7 @@ const ProjectsContainer = styled.div`
         }
 
         .proj_ambiti {
-          padding: 12px 0 14px 0rem;
+          padding: 14px 0 14px 0rem;
           display: none;
           font-size: 0.75rem;
           align-items: center;
@@ -283,7 +284,7 @@ const ProjectsContainer = styled.div`
     .proj_content .block__link .proj_item-right .proj_ambiti {
       display: flex;
       flex-wrap: wrap;
-      padding: 17px 0 19px 0.5rem;
+      padding: 19px 0 19px 0.5rem;
     }
 
     .proj_content .block__link .proj_item-right .proj_year {
