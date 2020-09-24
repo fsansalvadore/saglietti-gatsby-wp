@@ -176,13 +176,14 @@ const ProjectsContainer = styled.div`
         align-items: center;
         opacity: 0;
         padding-left: 1rem;
-        font-family: 'ff-real-text-pro';
 
         .proj_year {
+          font-family: 'ff-real-headline-pro', sans-serif !important;
           font-size: 1rem;
           min-width: 45px;
           text-align: left;
           margin-right: 0;
+          font-weight: 400;
         }
 
         .proj_ambiti {
@@ -191,8 +192,10 @@ const ProjectsContainer = styled.div`
           font-size: 0.75rem;
           align-items: center;
           border-left: 1px solid #000;
-
+          
           div {
+            font-weight: 400;
+            font-family: 'ff-real-headline-pro';
             position: relative;
             padding: 0 10px;
 
@@ -317,7 +320,7 @@ const ProjectsList = ({data}) => {
       }, 0.3)
       .fromTo(".divider", 0.6, { opacity: 0 }, { opacity: 1, ease: CustomEase.create("custom", "M0,0 C0.698,0 0.374,1 1,1 "), stagger: 0.04}, 0)
       .fromTo(".last_divider", 0.6, { opacity: 0 }, { opacity: 1, ease: CustomEase.create("custom", "M0,0 C0.698,0 0.374,1 1,1 ")}, "-=0.9")
-      .fromTo(".pseudo.content", 0.2, {overflow: "hidden"}, {overflow: "visible"}, ">")
+      .fromTo(".pseudo.content", 0.2, {overflow: "hidden"}, {overflow: "visible"}, 0)
 
       const fadeInController = new ScrollMagic.Controller();
 
