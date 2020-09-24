@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { Link } from 'gatsby'
 import gql from 'graphql-tag'
-import {Mutation} from 'react-apollo'
-import { TextField, Checkbox} from '@material-ui/core'
+import { Mutation } from 'react-apollo'
+import { TextField, Checkbox } from '@material-ui/core'
 import styled from 'styled-components'
 
 import FormErrorComponent from '../../atoms/form-error.component'

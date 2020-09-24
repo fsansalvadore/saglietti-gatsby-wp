@@ -21,14 +21,11 @@ const StyledImageContainer = styled.figure`
 `
 
 const SingleImage = ({ attributes }) => {
-    
-    // console.log('attributes:')
-    // console.log(attributes)
 
     return (
         <StyledImageContainer size={attributes.className ? attributes.className : ''} align={attributes.align ? attributes.align : ''}>
             <Reveal effect="anim_enter">
-            <img src={attributes.url} alt={attributes.title}/>
+            <img src={attributes.url} alt={attributes.alt ? attributes.alt : ""}/>
             {
                 attributes.caption && attributes.caption.length > 0 &&
                 <figcaption>{attributes.caption}</figcaption>

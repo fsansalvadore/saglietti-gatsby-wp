@@ -52,13 +52,10 @@ const imageBlocks = `
     ${coreBlocksFields}
     attributes {
       ... on WORDPRESS_CoreImageBlockAttributes {
-        id
-        url
-        title
+        alt
         caption
         className
-        align
-        alt
+        url
       }
     }
   }
