@@ -1,20 +1,10 @@
-import React, { useState } from "react"
+import React from "react"
 import { Link } from 'gatsby'
-import gql from 'graphql-tag'
-import { Mutation } from 'react-apollo'
 import { TextField, Checkbox } from '@material-ui/core'
 import styled from 'styled-components'
 
 import FormErrorComponent from '../../atoms/form-error.component'
 
-const CONTACT_MUTATION = gql`
- mutation CreateSubmissionMutation($clientMutationId: String!, $email: String!, $nome: String!, $messaggio: String!){
-  createSubmission(input: {clientMutationId: $clientMutationId, email: $email, nome: $nome, messaggio: $messaggio}) {
-    data
-    success
-  }
- }
-`
 
 const ContactFormContainer = styled.div`
   width: 100%;
@@ -112,83 +102,103 @@ const ContactFormContainer = styled.div`
   }
 ` 
 
-const ContactForm = () => {
+const encode = (data) => {
+  return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+}
+
+class ContactForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      email: "",
+      message: "", 
+      feedback: "",
+      error: false,
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit = e => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...this.state })
+    })
+      .then(() => {
+        this.setState({feedback: "Messaggio inviato"})
+        alert("Success!")
+      })
+      .catch(error => {
+        this.setState({feedback: error})
+        alert(error)
+      });
+
+    e.preventDefault();
+  };
+
+  handleChange = e => this.setState({ [e.target.name]: e.target.value });
+
+  render() {
+    const { name, email, message, feedback } = this.state;
+
+    return (
+      <ContactFormContainer>
+        <h2>Lasciaci un messaggio</h2>
+        <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+          <input type="text" name="name" />
+          <input type="email" name="email" />
+          <textarea name="message"></textarea>
+        </form>
+        <form onSubmit={this.handleSubmit}>
+            <input type="hidden" name="form-name" value="contact" />
+            
+            <TextField type="email" label="Email" name="email" value={email} required
+              onChange={this.handleChange}
+            />
   
-  const [emailValue, setEmailValue] = useState('')
-  const [nomeValue, setNomeValue] = useState('')
-  const [messaggioValue, setMessaggioValue] = useState('')
+            <br /><br />
   
-  return (
-    <Mutation mutation={CONTACT_MUTATION}>
-      {(createSubmission, { loading, error, data }) => (
-        <ContactFormContainer>
-          <h2>Lasciaci un messaggio</h2>
-          <form  noValidate autoComplete="off"
-            onSubmit={async event => {
-              event.preventDefault()
-              createSubmission({
-                variables: {
-                  clientMutationId: 'Contatti',
-                  email: emailValue,
-                  nome: nomeValue,
-                  messaggio: messaggioValue
-                }
-              })
-            }}
-          >
-            {/* <label htmlFor='emailInput'>Email: </label> */}
-              <TextField id='emailInput' label="Email" value={emailValue} required
-                onChange={event => {
-                  setEmailValue(event.target.value)
-                }}
-              />
-
-              <br /><br />
-
-              {/* <label htmlFor='nomeInput'>Nome: </label> */}
-              <TextField id='nomeInput' label="Nome" value={nomeValue} required
-                onChange={event => {
-                  setNomeValue(event.target.value)
-                }}
-              />
-
-              <br /><br />
-
-              {/* <label htmlFor='messaggioInput'>Messaggio: </label> */}
-              <TextField id='messaggioInput' label="Messaggio" value={messaggioValue} required
-                onChange={event => {
-                  setMessaggioValue(event.target.value)
-                }}
-              >
-              </TextField>
-              <div className="form-disclaimer">
-                <div className="privacy-check">
-                  <Checkbox
-                    value="checkedA"
-                    inputProps={{ 'aria-label': 'Checkbox A' }}
-                  /> <p>Ho letto e accettato l’<Link to="/privacy">informativa sulla privacy</Link>.*</p>
-                </div>
-                <div className="required-label">
-                  <p>* Campi obbligatori</p>
-                </div>
+            <TextField type="text" label="Nome" name="name" value={name} required
+              onChange={this.handleChange}
+            />
+  
+            <br /><br />
+  
+            <TextField label="Messaggio" name="message" value={message} required
+              onChange={this.handleChange}
+            >
+            </TextField>
+            <div className="form-disclaimer">
+              <div className="privacy-check">
+                <Checkbox
+                  value="checkedA"
+                  required
+                  inputProps={{ 'aria-label': 'Checkbox A' }}
+                /> <p>Ho letto e accettato l’<Link to="/privacy">informativa sulla privacy</Link>.*</p>
               </div>
-
-              <br /><br />
-
-              <button type="submit">Invia messaggio</button>
-          </form>
-          
-          <FormErrorComponent>
-            {loading && <p>Attendi un attimo...</p>}
-            {error && (
-              <p>Accerti di aver compilato tutti i campi.</p>
-            )}
-            {data && <p>Messaggio inviato.</p>}
-          </FormErrorComponent>
-        </ContactFormContainer>
-      )}
-    </Mutation>
-  )
+              <div className="required-label">
+                <p>* Campi obbligatori</p>
+              </div>
+            </div>
+  
+            <br /><br />
+  
+            <button type="submit">Invia messaggio</button>
+        </form>
+        
+        <FormErrorComponent>
+          {feedback && (
+            <p>{feedback}</p>
+          )}
+        </FormErrorComponent>
+      </ContactFormContainer>
+    )
+  }
 }
 
 export default ContactForm
