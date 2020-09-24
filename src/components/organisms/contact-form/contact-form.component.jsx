@@ -115,8 +115,9 @@ class ContactForm extends React.Component {
       name: "",
       email: "",
       message: "", 
+      btn: "Invia messaggio",
       feedback: "",
-      error: false,
+      loading: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -124,18 +125,17 @@ class ContactForm extends React.Component {
   }
 
   handleSubmit = e => {
+    this.setState({loading: true})
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", ...this.state })
     })
       .then(() => {
-        this.setState({feedback: "Messaggio inviato"})
-        alert("Success!")
+        this.setState({feedback: "Messaggio inviato", loading: false})
       })
       .catch(error => {
-        this.setState({feedback: error})
-        alert(error)
+        this.setState({feedback: error, loading: false})
       });
 
     e.preventDefault();
@@ -144,7 +144,7 @@ class ContactForm extends React.Component {
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    const { name, email, message, feedback } = this.state;
+    const { name, email, message, btn, feedback, loading } = this.state;
 
     return (
       <ContactFormContainer>
@@ -188,7 +188,10 @@ class ContactForm extends React.Component {
   
             <br /><br />
   
-            <button type="submit">Invia messaggio</button>
+            <button type="submit">{
+              loading ? "loading"
+              : feedback ? feedback : btn
+              }</button>
         </form>
         
         <FormErrorComponent>

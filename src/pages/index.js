@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Layout from "../components/layout"
 import { Helmet } from 'react-helmet'
 
@@ -7,23 +7,33 @@ import HeaderContainer from '../components/organisms/header-container/header-con
 
 import '../components/particles/styles/homepage.styles.scss';
 import loadable from '@loadable/component'
+import Loading from "../components/molecules/Loading/Loading.component";
 
 const VideoSection = loadable(() => import('../components/organisms/video-section/video-section.component'))
 const StudioCTA = loadable(() => import('../components/molecules/studio-cta/studio-cta.component'))
 const ContactsCTA = loadable(() => import('../components/molecules/contacts-cta/contacts-cta.component'))
 const SpotifyMarquee = loadable(() => import('../components/molecules/SpotifyMarquee/SpotifyMarquee.component'))
 
-const IndexPage = () => (
-  <Layout>
-    <Helmet>
+const IndexPage = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => (
+    setIsLoading(false)
+  ), [])
+
+  return(
+    <Layout>
+      <Helmet>
         <title>Saglietti • Branding — Digital • Home Page</title>
       </Helmet>
-    <HeaderContainer />
-    <VideoSection />
-    <StudioCTA />
-    <ContactsCTA />
-    <SpotifyMarquee />
-  </Layout>
-)
+      <Loading isLoading={isLoading}/>
+      <HeaderContainer />
+      <VideoSection />
+      <StudioCTA />
+      <ContactsCTA />
+      <SpotifyMarquee />
+    </Layout>
+  )
+}
 
 export default IndexPage
