@@ -43,7 +43,6 @@ const Layout = ({ children }) => {
       <GenericMetadata/>
       {cursorComp}
       {cursorFollowComp}
-      <CookieComponent />
       <Nav siteTitle={data.site.siteMetadata.title} />
         <AnimatePresence exitBeforeEnter>
           <motion.main
@@ -56,6 +55,7 @@ const Layout = ({ children }) => {
           </motion.main>
         </AnimatePresence>
       <Footer />
+      <CookieComponent />
     </>
   )
 }
