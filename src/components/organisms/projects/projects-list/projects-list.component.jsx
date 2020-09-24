@@ -405,7 +405,7 @@ const ProjectsList = ({data}) => {
               type="text"
               onChange={e => setTerm(e.target.value)}
               value={term}
-              placeholder="Cerca per titolo o ambito"
+              placeholder="Cerca per titolo, anno o ambito"
             />
           </form>
         </div>
