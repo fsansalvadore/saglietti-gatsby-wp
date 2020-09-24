@@ -2,11 +2,12 @@ import React from "react"
 import { Link } from 'gatsby'
 import { TextField, Checkbox } from '@material-ui/core'
 import styled from 'styled-components'
-
+import { motion } from 'framer-motion'
 import FormErrorComponent from '../../atoms/form-error.component'
 
 
 const ContactFormContainer = styled.div`
+  position: relative;
   width: 100%;
   letter-spacing: 0;
 
@@ -209,7 +210,13 @@ class ContactForm extends React.Component {
         
         <FormErrorComponent>
           {feedback && (
-            <p>{feedback}</p>
+            <motion.p
+              initial={{y: 10, opacity: 0}}
+              animate={{y: 0, opacity: 1}}
+              transition={{ ease: [0, 0, 0, 1], duration: 0.5 }}
+            >
+                {feedback}
+            </motion.p>
           )}
         </FormErrorComponent>
       </ContactFormContainer>

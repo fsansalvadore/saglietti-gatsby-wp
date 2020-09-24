@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 const FormErrorComponent = styled.div`
-  margin-top: -0.75rem;
+  position: absolute;
+  bottom: -0.75rem;
   
   * {
     font-weight: 800;
