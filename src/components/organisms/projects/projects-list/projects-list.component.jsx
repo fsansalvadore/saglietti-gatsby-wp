@@ -320,7 +320,7 @@ const ProjectsList = ({data}) => {
       }, 0.3)
       .fromTo(".divider", 0.6, { opacity: 0 }, { opacity: 1, ease: CustomEase.create("custom", "M0,0 C0.698,0 0.374,1 1,1 "), stagger: 0.04}, 0)
       .fromTo(".last_divider", 0.6, { opacity: 0 }, { opacity: 1, ease: CustomEase.create("custom", "M0,0 C0.698,0 0.374,1 1,1 ")}, "-=0.9")
-      .fromTo(".pseudo.content", 0.2, {overflow: "hidden"}, {overflow: "visible"}, 0)
+      .fromTo(".pseudo.content", 0.2, {overflow: "hidden"}, {overflow: "visible"}, "-=1")
 
       const fadeInController = new ScrollMagic.Controller();
 
