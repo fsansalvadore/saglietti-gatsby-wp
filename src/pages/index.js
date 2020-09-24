@@ -19,7 +19,6 @@ const IndexPage = () => {
       <Helmet>
         <title>Saglietti • Branding — Digital • Home Page</title>
       </Helmet>
-      
       <HeaderContainer />
       <VideoSection />
       <StudioCTA />

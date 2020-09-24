@@ -24,7 +24,7 @@ const ContactFormContainer = styled.div`
     color: #000;
     font-size: 0.75rem !important;
     font-weight: 800;
-    font-family: 'ff-real-headline-pro-2', sans-serif !important;
+    font-family: 'ff-real-headline-pro-2', sans-serif;
     letter-spacing: 0.03rem;
   }
   
@@ -94,6 +94,7 @@ const ContactFormContainer = styled.div`
     box-shadow: none;
     border-radius: 0;
     display: flex;
+    pointer-event: auto;
     justify-content: space-between;
   }
 
@@ -132,7 +133,22 @@ class ContactForm extends React.Component {
       body: encode({ "form-name": "contact", ...this.state })
     })
       .then(() => {
-        this.setState({feedback: "Messaggio inviato", loading: false})
+        this.setState(
+          {
+            feedback: "Messaggio inviato 👍",
+            loading: false,
+            name: "",
+            message: "",
+            email: ""
+          }
+        )
+        setTimeout(() => {
+          this.setState(
+            {
+              feedback: "",
+            }
+          )
+        }, 3000);
       })
       .catch(error => {
         this.setState({feedback: error, loading: false})
@@ -149,13 +165,8 @@ class ContactForm extends React.Component {
     return (
       <ContactFormContainer>
         <h2>Lasciaci un messaggio</h2>
-        <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-          <input type="text" name="name" />
-          <input type="email" name="email" />
-          <textarea name="message"></textarea>
-        </form>
-        <form onSubmit={this.handleSubmit}>
-            <input type="hidden" name="form-name" value="contact" />
+        <form onSubmit={this.handleSubmit} name="contact" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="contact" netlify-honeypot="bot-field" hidden/>
             
             <TextField type="email" label="Email" name="email" value={email} required
               onChange={this.handleChange}
@@ -187,11 +198,13 @@ class ContactForm extends React.Component {
             </div>
   
             <br /><br />
-  
-            <button type="submit">{
-              loading ? "loading"
-              : feedback ? feedback : btn
-              }</button>
+            <button type="submit">
+              {
+                // check if loading or success
+                loading ? "loading"
+                : btn
+              }
+            </button>
         </form>
         
         <FormErrorComponent>

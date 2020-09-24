@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 const FormErrorComponent = styled.div`
-  display: block;
-  padding: 10px;
-  letter-spacing: 0;
-  text-align: center;
+  margin-top: -0.75rem;
   
   * {
+    font-weight: 800;
+    font-family: 'ff-real-text-pro', sans-serif !important;
     font-size: 1rem !important;
+    letter-spacing: -0.01rem !important;
   }
 `
 
