@@ -13,7 +13,7 @@ const ContactsInfoContainer = () => {
               Siamo pronti ad ascoltare le tue esigenze e quelle del tuo brand.<br/>
               Sarà un piacere incontrarti.
             </p>
-            <a href="mailto:info@saglietti.it" target="_blank" rel="noreferrer">info@saglietti.it</a>
+            <a href="mailto:alessandro@saglietti.it" target="_blank" rel="noreferrer">alessandro@saglietti.it</a>
           </div>
           <div className="text-block half">
             <h2>Internship.</h2>

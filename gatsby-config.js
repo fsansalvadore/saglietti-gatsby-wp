@@ -106,8 +106,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Saglietti-it`,
-        short_name: `starter`,
+        name: `Saglietti Studio`,
+        short_name: `Saglietti`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#000000`,
