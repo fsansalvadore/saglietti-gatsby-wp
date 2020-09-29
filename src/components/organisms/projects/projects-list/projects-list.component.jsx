@@ -300,7 +300,6 @@ const ProjectsList = ({data}) => {
   const [projects, setProjects] = useState(null)
   const [term, setTerm] = useState("")
 
-  console.log(data.wordpress.projects.nodes[0])
   useEffect(() => {
     if(data.wordpress.projects) {
       setProjects(data.wordpress.projects.nodes
@@ -308,6 +307,7 @@ const ProjectsList = ({data}) => {
               .sort((a, b) => (a.date < b.date) ? 1 : (a.date === b.date) ? ((a.title > b.title) ? 1 : -1) : -1 ))
     }
   }, [setProjects, term, data.wordpress.projects])
+  
   useEffect(() => {
     if(typeof window !== `undefined`) {
       const menuTL = new TimelineLite();
