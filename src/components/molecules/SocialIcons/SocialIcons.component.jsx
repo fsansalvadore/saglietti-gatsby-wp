@@ -39,6 +39,7 @@ const SocialIcons = () => {
             <SocialIcon isFacebook/>
             <SocialIcon isInstagram/>
             <SocialIcon isLinkedin/>
+            <SocialIcon isSpotify/>
         </SocialIconsContainer>
     )
 }

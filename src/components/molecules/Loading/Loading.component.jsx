@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import AnimatedLogo from '../../atoms/AnimatedLogo/AnimatedLogo.component'
 
@@ -18,11 +18,23 @@ const LoadingContainer = styled.div`
     align-items: center;
     justify-content: center;
     pointer-events: none;
+    
+    * {
+        pointer-events: none;
+    }
 `
 
 const Loading = ({isLoading}) => {
+    const loaderRef = useRef(null) 
+    useEffect(() => {
+        if(!isLoading) {
+            setTimeout(() => {
+                loaderRef.current.style.display = "none"
+            }, 1000)
+        }
+    }, [isLoading])
     return (
-        <LoadingContainer isLoading={isLoading}>
+        <LoadingContainer isLoading={isLoading} ref={loaderRef}>
             <AnimatedLogo />
         </LoadingContainer>
     )

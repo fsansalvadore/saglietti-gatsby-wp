@@ -13,7 +13,7 @@ const CircleLink = styled.a`
     justify-content: center;
 ` 
 
-const SocialIcon = ({isFacebook, isInstagram, isLinkedin, size}) => {
+const SocialIcon = ({isFacebook, isInstagram, isLinkedin, isSpotify, size}) => {
     const [current, setCurrent] = useState(null)
 
     const social = {
@@ -28,6 +28,10 @@ const SocialIcon = ({isFacebook, isInstagram, isLinkedin, size}) => {
         linkedin: {
             url: "https://www.linkedin.com/company/alessandro-saglietti-communication-design/",
             icon: "M157.995 858.344H311.979V395.667H157.995V858.344V858.344ZM322.005 252.989C321.323 207.677 288.683 172.989 235.989 172.989C183.296 172.989 148.651 207.635 148.651 252.989C148.651 296.979 181.973 332.989 233.984 332.989H234.667C288.683 332.989 322.005 296.979 322.005 252.989V252.989ZM712.021 858.344H866.005V593C866.005 451.005 790.016 385 688.683 385C606.037 385 569.344 430.995 549.333 462.995H550.656V395.667H396.672C396.672 395.667 398.677 439.016 396.672 858.344H550.656V599.699C550.656 586.344 551.339 572.349 555.307 562.365C566.656 535.016 591.957 506.344 634.624 506.344C689.963 506.344 711.979 548.328 711.979 611.005V858.344H712.021ZM1024 193V833C1024 938.984 937.984 1025 832 1025H192C86.016 1025 0 938.984 0 833V193C0 87.016 86.016 1 192 1H832C937.984 1 1024 87.016 1024 193Z"
+        },
+        spotify: {
+            url: "https://open.spotify.com/playlist/0hNDQKqhxuzJYBnVCCqTIo?si=htx4CqQ3Q3OxZSfpPuObrA",
+            icon: "M512 0C229.24 0 0 229.24 0 512C0 794.76 229.24 1024 512 1024C794.76 1024 1024 794.76 1024 512C1024 229.24 794.76 0 512 0ZM719.88 753.32V753.36C711.22 753.36 705.84 750.68 697.78 745.94C568.96 668.28 419.08 665.04 271.02 695.38C262.96 697.48 252.42 700.76 246.44 700.76C226.38 700.76 213.8 684.84 213.8 668.12C213.8 646.82 226.38 636.72 241.92 633.44C411 596.1 583.8 599.4 731.18 687.54C743.76 695.6 751.24 702.82 751.24 721.58C751.24 740.26 736.56 753.32 719.88 753.32ZM775.46 617.94H775.42C764.66 617.94 757.46 613.2 750 609.28C620.94 532.9 428.6 502.1 257.42 548.56C247.52 551.24 242.14 553.94 232.84 553.94C210.74 553.94 192.82 535.98 192.82 513.92C192.82 491.86 203.58 477.18 224.82 471.22C282.2 455.1 340.84 443.1 426.72 443.1C560.7 443.1 690.14 476.34 792.16 537.06C808.88 546.96 815.5 559.8 815.5 577.72C815.28 599.94 797.96 617.94 775.46 617.94ZM839.46 460.62L839.42 460.58C828.66 460.58 822.06 457.9 812.76 452.52C665.82 364.8 402.94 343.76 232.88 391.26C225.42 393.3 216.12 396.6 206.22 396.6C178.96 396.6 158.14 375.3 158.14 347.88C158.14 319.84 175.5 303.98 194.06 298.6C266.72 277.3 348.08 267.24 436.66 267.24C587.36 267.24 745.32 298.6 860.72 365.92C876.84 375.22 887.34 388.02 887.34 412.56C887.34 440.62 864.6 460.62 839.46 460.62Z"
         },
     }
 
@@ -48,9 +52,11 @@ const SocialIcon = ({isFacebook, isInstagram, isLinkedin, size}) => {
             setCurrent({url: social.instagram.url, icon: social.instagram.icon})
         } else if (isLinkedin) {
             setCurrent({url: social.linkedin.url, icon: social.linkedin.icon})
+        } else if (isSpotify) {
+            setCurrent({url: social.spotify.url, icon: social.spotify.icon})
         }
-    }, [isFacebook, isInstagram, isLinkedin, social.facebook.url, social.facebook.icon, social.instagram.url,
-        social.instagram.icon, social.linkedin.url, social.linkedin.icon])
+    }, [isFacebook, isInstagram, isLinkedin, isSpotify, social.facebook.url, social.facebook.icon, social.instagram.url,
+        social.instagram.icon, social.linkedin.url, social.linkedin.icon, social.spotify.url, social.spotify.icon])
 
     return (
         <CircleLink href={current && current.url} className="social-link" target="_blank">

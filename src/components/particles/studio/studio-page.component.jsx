@@ -289,8 +289,7 @@ const StudioPage = ({data}) => {
         <>
             <StudioContent>
                 <header className="studio_container intro">
-                    <p className="fade-in text-lg">Saglietti è uno studio di comunicazione specializzato in identità visiva, advertising, editoria ed exhibit design.<br/>
-                    Creiamo progetti in grado di trasformare il brand in un racconto, con un unico obiettivo: creare valore.</p>
+                    <p className="fade-in text-lg">Costruiamo i brand con idee semplici e rilevanti. Il nostro mantra è l’essenzialità. La applichiamo in ogni parte del progetto: concept, messaggio, design, colore. Perché eliminando il superfluo, rimanga tutto ciò che conta.</p>
                 </header>
                 <div className="studio_content-container">
                     <div className="studio_content-left">
@@ -347,11 +346,11 @@ const StudioPage = ({data}) => {
                 </div>
                 <section className="clienti_container">
                     <h2 className="">Clienti</h2>
-                    <ul className="clients_list fade-in">
+                    <ul className="clients_list">
                         {
                         data.wordpress.clients.nodes.map(client => (
                             <li key={`${client.title}-${Math.floor(Math.random() * (100 - 999) + 100)}`}>
-                                <span className="fade-in">
+                                <span className="">
                                     {
                                         client.featuredImage &&
                                         <img src={client.featuredImage.node.link} alt={client.title}/>                                            }
