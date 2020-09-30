@@ -345,7 +345,7 @@ const StudioPage = ({data}) => {
                     </div>
                 </div>
                 <section className="clienti_container">
-                    <h2 className="">Clienti</h2>
+                    <h2 className="">Clienti e collaborazioni</h2>
                     <ul className="clients_list">
                         {
                         data.wordpress.clients.nodes.map(client => (
