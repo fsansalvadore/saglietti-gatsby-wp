@@ -19,6 +19,9 @@ const LoadingContainer = styled.div`
     justify-content: center;
     pointer-events: none;
     
+    .logo-anim {
+        align-items: center;
+    }
     * {
         pointer-events: none;
     }
