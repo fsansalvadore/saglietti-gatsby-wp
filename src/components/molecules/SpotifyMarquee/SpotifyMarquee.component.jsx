@@ -67,15 +67,12 @@ const SpotifyMarquee = () => {
     const currentTrack = tracksList[Math.floor((time.getHours() * tracksList.length) / 23)];
 
     let trackPreview = null
-    let marqueeContent = ``
+    let marqueeContent = `Stiamo ascoltando: ${currentTrack.track.name} — ${currentTrack.track.artistString}`
     
     if(typeof window !== `undefined`) {
-        if(currentTrack) {
-            marqueeContent = `Stiamo ascoltando: ${currentTrack.track.name} — ${currentTrack.track.artistString}`
-            trackPreview = new Audio(currentTrack.track.preview_url)
-            trackPreview.type = "audio/mp3"
-            trackPreview.load()
-        }
+        trackPreview = new Audio(currentTrack.track.preview_url)
+        trackPreview.type = "audio/mp3"
+        trackPreview.load()
     }
     
     for (let i = 0; i < 4; ++i) {
