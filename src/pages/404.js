@@ -67,8 +67,8 @@ const LinkComponent = styled.div`
 const NotFoundPage = () => (
   <Layout>
     <NotFound>
-      <h1>Pagina non trovata</h1>
-      <p>La pagina che cerchi potrebbe essere momentaneamente irragiungibile o potrebbe non esistere.</p>
+      <h1>404</h1>
+      <p>Quello che stai cercando potrebbe essere momentaneamente irragiungibile o non esistere.</p>
       <div className="link-block">
         <LinkComponent className="contacts-container TextRevealAnim">
           <Link to="/" className="TextRevealItem">Torna alla Home Page <span><img src={ArrowRightSVG} alt="Saglietti.it"/></span></Link>
