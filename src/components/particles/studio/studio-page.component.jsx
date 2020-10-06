@@ -220,7 +220,7 @@ const StudioContent = styled.div`
 
         .clienti_container {
             .clients_list {
-                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
             }
         }
 
@@ -234,7 +234,7 @@ const StudioContent = styled.div`
     @media (min-width: 768px) and (max-width: 1200px) {
         .clienti_container {
             .clients_list {
-                grid-template-columns: 1fr 1fr 1fr 1fr;
+                grid-template-columns: 1fr 1fr 1fr;
             }
         }
     }
