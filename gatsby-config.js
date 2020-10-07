@@ -6,7 +6,7 @@ module.exports = {
     author: `@Francesco_Sansa`,
     url: "https://www.saglietti.it", // No trailing slash allowed!
     siteUrl: `https://www.saglietti.it`,
-    image: "/images/snape.jpg", // Path to your image you placed in the 'static' folder
+    image: "/images/Saglietti_1200X623.png", // Path to your image you placed in the 'static' folder
     twitterUsername: "@Francesco_Sansa",
   },
   plugins: [
