@@ -30,6 +30,21 @@ const FooterComponent = styled.footer`
       margin: 0 0 0.5rem 0;
     }
 
+    ul {
+      margin: 0;
+    }
+    li {
+      list-style: none;
+
+      a {
+        text-decoration: none !important;
+        
+        &:hover {
+          text-decoration: underline !important;
+        }
+      }
+    }
+
   }
   .flex-end {
     display: flex;
@@ -49,6 +64,10 @@ const FooterComponent = styled.footer`
 
       a {
         text-decoration: none;
+
+        &:hover {
+          text-decoration: underline !important;
+        }
       }
     }
   }
@@ -97,7 +116,10 @@ const Footer = () => {
         </ul>
       </div>
       <div className="footer-info">
-        <Link to="/privacy">Privacy Policy</Link>
+      <ul>
+          <li><Link to="https://mailchi.mp/d97bcb417e36/newsletter" target="_blank">Newsletter</Link></li>
+          <li><Link to="/privacy">Privacy Policy</Link></li>
+        </ul>
       </div>
       <div className="footer-info flex-end">
         <SocialIcons/>
