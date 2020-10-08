@@ -117,9 +117,8 @@ const Footer = () => {
       </div>
       <div className="footer-info">
       <ul>
-          <li><Link to="https://mailchi.mp/d97bcb417e36/newsletter" target="_blank">Newsletter</Link></li>
-          <li><Link to="/privacy">Privacy Policy</Link></li>
-        </ul>
+        <li><Link to="/privacy">Privacy Policy</Link></li>
+      </ul>
       </div>
       <div className="footer-info flex-end">
         <SocialIcons/>
