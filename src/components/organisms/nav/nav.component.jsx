@@ -13,7 +13,7 @@ const Navbar = styled.div`
   z-index: 998;
   padding: 1.45rem 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   pointer-events: none;
   
@@ -68,11 +68,11 @@ const Nav = () => {
   return (
     <>
       <Navbar>
-        <Link to="/" style={{display: "flex", alignItems: "center"}}>
+        {/* <Link to="/" style={{display: "flex", alignItems: "center"}}>
           <div className="logo_link">
             <AnimatedLogo />
           </div>
-        </Link>
+        </Link> */}
         <MenuBtn onClick={() => toggleMenu(!isOpen)} isOpen={isOpen}>
           <span></span>
           <span></span>

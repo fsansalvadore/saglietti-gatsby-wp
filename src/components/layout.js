@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import { motion, AnimatePresence } from "framer-motion"
 
 import Nav from "./organisms/nav/nav.component"
+import NavLogo from "./organisms/nav/NavLogo.component"
 import "./layout.css"
 import Footer from "./organisms/footer/footer.component"
 import Cursor from "./atoms/cursor.component"
@@ -40,6 +41,7 @@ const Layout = ({ children }) => {
       {cursorComp}
       {cursorFollowComp}
       <Loading isLoading={isLoading}/>
+      <NavLogo />
       <Nav siteTitle={data.site.siteMetadata.title} />
         <AnimatePresence exitBeforeEnter>
           <motion.main
