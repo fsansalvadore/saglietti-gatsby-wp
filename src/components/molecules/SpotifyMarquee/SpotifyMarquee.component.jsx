@@ -51,18 +51,27 @@ const MarqueeContainer = styled.button`
 const SpotifyMarquee = () => {
     const data = useStaticQuery(graphql`
         query SpotifyQuery {
-            allSpotifyRecentTrack {
+            allSpotifyTopTrack {
                 nodes {
-                    track {
                         name
                         preview_url
                         artistString
-                    }
                 }
             }
         }
     `)
-    const tracksList = data.allSpotifyRecentTrack.nodes.filter(node => node.track.preview_url !== null)
+    // query SpotifyQuery {
+    //     allSpotifyRecentTrack {
+    //         nodes {
+    //             track {
+    //                 name
+    //                 preview_url
+    //                 artistString
+    //             }
+    //         }
+    //     }
+    // }
+    const tracksList = data.allSpotifyTopTrack.nodes.filter(node => node.preview_url !== null)
     const time = new Date()
     const currentTrack = tracksList[Math.floor((time.getHours() * tracksList.length) / 24)];
     console.log(Math.floor((time.getHours() * tracksList.length) / 24))
@@ -72,8 +81,8 @@ const SpotifyMarquee = () => {
     
     if(typeof window !== `undefined`) {
         if(currentTrack) {
-            marqueeContent = `Stiamo ascoltando: ${currentTrack.track.name} — ${currentTrack.track.artistString}`
-            trackPreview = new Audio(currentTrack.track.preview_url)
+            marqueeContent = `Stiamo ascoltando: ${currentTrack.name} — ${currentTrack.artistString}`
+            trackPreview = new Audio(currentTrack.preview_url)
             trackPreview.type = "audio/mp3"
             trackPreview.load()
         } else {
