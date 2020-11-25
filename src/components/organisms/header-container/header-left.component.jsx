@@ -2,6 +2,10 @@ import React from 'react'
 import { Link } from 'gatsby'
 import ArrowRightSVG from '../../../images/icons/arrow-right.svg'
 import styled from 'styled-components'
+import LocomotiveScroll from 'locomotive-scroll';
+import "../../particles/styles/locomotive-scroll.css"
+
+const scroll = new LocomotiveScroll();
 
 const LinkComponent = styled.div`
   width: 100%;
@@ -53,16 +57,15 @@ const HeaderLeftContainer = styled.div`
 
 `
 
-
 const HeaderLeft = () => {
   return (
     <HeaderLeftContainer className="header-left">
       <div className="header-text-center flex align-center h-screen fade-in">
-        <h1>Saglietti è uno studio di comunicazione specializzato in identità visiva, advertising, editoria ed exhibit design.</h1>
+        <h1 data-scroll data-scroll-speed="1">Saglietti è uno studio di comunicazione specializzato in identità visiva, advertising, editoria ed exhibit design.</h1>
       </div>
       <div className="header-text-center flex align-center h-screen fade-in">
         <div>
-          <p>Creiamo progetti in grado di trasformare il brand in un racconto, con un unico obiettivo: <strong>creare valore</strong>.</p>
+          <p data-scroll data-scroll-speed="2">Creiamo progetti in grado di trasformare il brand in un racconto, con un unico obiettivo: <strong>creare valore</strong>.</p>
           <LinkComponent className="contacts-container TextRevealAnim">
             <Link to="/progetti" className="TextRevealItem">Scopri tutti i progetti <span><img src={ArrowRightSVG} alt=""/></span></Link>
           </LinkComponent>

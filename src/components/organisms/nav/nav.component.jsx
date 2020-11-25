@@ -1,10 +1,10 @@
 import React, { useState } from "react"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import Menu from '../menu-container/menu-container.component';
 import styled from "styled-components";
 import './nav.styles.scss';
-import AnimatedLogo from "../../atoms/AnimatedLogo/AnimatedLogo.component";
+// import AnimatedLogo from "../../atoms/AnimatedLogo/AnimatedLogo.component";
 
 const Navbar = styled.div`
   width: 100vw;

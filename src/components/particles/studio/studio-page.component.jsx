@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import styled from 'styled-components'
 import AIAP from '../../../images/AIAP-FIRMA-SOCIO-SENIOR.png'
+import LocomotiveScroll from 'locomotive-scroll';
 
 import { gsap } from "gsap";
 import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
@@ -250,9 +251,15 @@ const StudioContent = styled.div`
 
 
 const StudioPage = ({data}) => {
-
+    const scrollRef = React.createRef();
+    useEffect(() => {
+  
+        
+    }, [])
+    
     useEffect(() => {
         if(typeof window !== `undefined`) {
+        const scroll = new LocomotiveScroll();
           const fadeInController = new ScrollMagic.Controller();
     
           if(document.querySelectorAll(".fade-in").length !== 0) {
@@ -287,11 +294,11 @@ const StudioPage = ({data}) => {
 
     return (
         <>
-            <StudioContent>
-                <header className="studio_container intro">
+            <StudioContent data-scroll-container>
+                <header className="studio_container intro" data-scroll-section>
                     <p className="fade-in text-lg">Costruiamo i brand con idee semplici e rilevanti. Il nostro mantra è l’essenzialità. La applichiamo in ogni parte del progetto: concept, messaggio, design, colore. Perché eliminando il superfluo, rimanga tutto ciò che conta.</p>
                 </header>
-                <div className="studio_content-container">
+                <div className="studio_content-container" ref={scrollRef} data-scroll-section>
                     <div className="studio_content-left">
                         <section className="filosofia_container">
                             <h2 className="">Filosofia</h2>
@@ -320,7 +327,7 @@ const StudioPage = ({data}) => {
                             </p>
                         </section>
                     </div>
-                    <div className="studio_content-right">
+                    <div className="studio_content-right" data-scroll-section>
                         <section className="servizi_container">
                             <div>
                                 <h2 className="">Servizi</h2>
@@ -344,7 +351,7 @@ const StudioPage = ({data}) => {
 
                     </div>
                 </div>
-                <section className="clienti_container">
+                <section className="clienti_container" data-scroll-section>
                     <h2 className="">Clienti e collaborazioni</h2>
                     <ul className="clients_list">
                         {

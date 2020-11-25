@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components'
+import LocomotiveScroll from 'locomotive-scroll';
 
 import { gsap } from "gsap";
 import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
@@ -23,7 +24,7 @@ const VideoSectionStyled = styled.div`
   }
 `
 
-const VideoSection = () => {
+const VideoSection = ({...otherProps}) => {
   const videoRef = useRef(null)
   
   useEffect(() => {
@@ -45,7 +46,7 @@ const VideoSection = () => {
   })
 
   return (
-    <VideoSectionStyled className="video-section">
+    <VideoSectionStyled className="video-section" {...otherProps}>
       <div className="black-bg-container">
         <TextRevealAnimation addClass="quote-anim" skew>
           <div className="TextRevealItem">

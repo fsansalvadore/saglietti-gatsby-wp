@@ -38,7 +38,7 @@ const ScrollIconContainer = styled.div`
   }
 `
 
-const HeaderContainer = () => {
+const HeaderContainer = ({...otherProps}) => {
   let vh = null
   if(typeof window !== `undefined`) {
     vh = window.innerHeight * 0.01
@@ -51,7 +51,7 @@ const HeaderContainer = () => {
   }
   
   return (
-    <div className="header-container">
+    <div className="header-container" {...otherProps}>
       <ScrollIconContainer vh>
         <div className="scroll-icon-sticky">
           <ScrollDownIcon />
