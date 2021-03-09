@@ -60,22 +60,9 @@ const SpotifyMarquee = () => {
             }
         }
     `)
-    // query SpotifyQuery {
-    //     allSpotifyRecentTrack {
-    //         nodes {
-    //             track {
-    //                 name
-    //                 preview_url
-    //                 artistString
-    //             }
-    //         }
-    //     }
-    // }
     const tracksList = data.allSpotifyTopTrack.nodes.filter(node => node.preview_url !== null)
     const time = new Date()
     const currentTrack = tracksList[Math.floor((time.getHours() * tracksList.length) / 24)];
-    console.log(Math.floor((time.getHours() * tracksList.length) / 24))
-    console.log(tracksList)
     let trackPreview = null
     let marqueeContent = ``
     

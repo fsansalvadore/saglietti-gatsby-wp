@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby'
+import BackgroundImage from 'gatsby-background-image'
 
 import ProjectsCarouselStyled from './projects-carousel.styled'
 import ArrowRightCircle from '../../atoms/arrow-right-circle.component';
@@ -34,6 +35,14 @@ const ProjectsCarousel = () => {
             featuredImage {
               node {
                 link
+                sourceUrl
+                imageFile {
+                  childImageSharp {
+                    fixed(width: 1500, quality: 90) {
+                      ...GatsbyImageSharpFixed
+                    }
+                  }
+                }
               }
             }
             custom_post_type_Project {
@@ -69,7 +78,7 @@ const ProjectsCarousel = () => {
       const carouselImgTween = TweenMax.fromTo(".carousel-img", 0.5, {opacity: 0, scale: 1.2},{opacity: 1, scale: 1, ease: "power3.out"}, 0)
       titleTL.add(titleTween).add(carouselImgTween);
     }
-  }, [outProject, featuredProjects, count])
+  }, [outProject, featuredProjects, count, setCurrentProject])
   
   const prevProject = (e) => {
     e.preventDefault();
@@ -123,8 +132,18 @@ const ProjectsCarousel = () => {
           </div>
         </div>
         {
-          currentProject.featuredImage &&
-          <div className="carousel-img" style={{backgroundImage: `url(${currentProject.featuredImage.node.link})`}}></div>
+          currentProject.featuredImage
+          ? currentProject.featuredImage.node.imageFile && !currentProject.featuredImage.node.sourceUrl.includes(".gif")
+          ? <BackgroundImage
+            className="carousel-img"
+            // style={{backgroundImage: `url(${currentProject.featuredImage.node.link})`}}
+            fixed={currentProject.featuredImage.node.imageFile.childImageSharp.fixed}
+          />
+          : <div
+            className="carousel-img"
+            style={{backgroundImage: `url(${currentProject.featuredImage.node.link})`}}
+          />
+          : null
         }
       </div>
       <Link to={`/progetti/${currentProject.slug}`} className="carousel-bottom">

@@ -1,11 +1,11 @@
 const path = require(`path`)
+const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 
 const mediaFields = `
-  id
+  sourceUrl
   altText
-  title(format: RENDERED)
+  title
   link
-  uri
 `
 
 const projectCustomDetails = `
@@ -183,10 +183,45 @@ const query = `
   }
 `
 
+exports.createResolvers = async (
+  {
+    actions,
+    cache,
+    createNodeId,
+    createResolvers,
+    store,
+    reporter,
+  },
+) => {
+  const { createNode } = actions
+
+  await createResolvers({
+    WORDPRESS_MediaItem: {
+      imageFile: {
+        type: "File",
+        async resolve(source) {
+          let sourceUrl = source.sourceUrl
+
+          if (source.mediaItemUrl !== undefined) {
+            sourceUrl = source.mediaItemUrl
+          }
+
+          return await createRemoteFileNode({
+            url: encodeURI(sourceUrl),
+            store,
+            cache,
+            createNode,
+            createNodeId,
+            reporter,
+          })
+        },
+      },
+    },
+  })
+}
+
 exports.createPages = async ({ actions, graphql }) => {
-  const { data } = await graphql(`
-    ${query}
-  `)
+  const { data } = await graphql(`${query}`)
 
   data.wordpress.projects.nodes.forEach(project => {
     actions.createPage({

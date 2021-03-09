@@ -86,9 +86,9 @@ const ProjectsCarouselStyled = styled.div`
     }
 
     .carousel-img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
+      position: absolute !important;
+      width: 100% !important;
+      height: 100% !important;
       left: 0;
       right: 0;
       top: 0;

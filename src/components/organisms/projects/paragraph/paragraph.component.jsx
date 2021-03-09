@@ -4,11 +4,7 @@ import Reveal from 'react-reveal/Reveal';
 
 import ParagraphStyled from './paragraph.styled'
 
-const Paragraph = ({name, originalContent}) => {
-    
-    // console.log('From paragraph component:')
-    // console.log(name)
-
+const Paragraph = ({ originalContent }) => {
     return (
         <ParagraphStyled>
             <Reveal effect="anim_enter">

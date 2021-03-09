@@ -10,7 +10,6 @@ import Freeform from '../organisms/projects/freeform/freeform.component'
 import Spacer from '../organisms/projects/spacer/spacer.component'
 import Gallery from '../organisms/projects/gallery/gallery.component'
 import Carousel from '../organisms/projects/carousel/carousel.component'
-// import MediaText from '../organisms/projects/media-text/media-text.component'
 
 const components = {
     "core/paragraph": Paragraph,
@@ -30,12 +29,9 @@ const isEmpty = obj => {
 
 const ComponentParser = props => {
     let { content } = props
-    // console.log("Props:")
-    // console.log(props)
 
     if(!content) return null
-    // console.log("Contenuto:")
-    // console.log(typeof content)
+
     const filteredComponents = content.filter(component => component.name !== null)
 
     if (filteredComponents && filteredComponents.length > 0) {
@@ -44,8 +40,6 @@ const ComponentParser = props => {
             if (!component) return null
 
             const Component = components[component.name]
-            // console.log("Block:")
-            // console.log(component.name)
 
             if (!Component) return null
 

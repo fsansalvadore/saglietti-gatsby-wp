@@ -9,8 +9,7 @@ import ComponentParser from '../ComponentParser'
 import fallbackImg from '../../../images/fallback.png'
 import PrevNextProject from '../../molecules/prev-next-project/prev-next-project.component'
 import TextRevealAnimation from '../hooks/animationTextReveal'
-// import Img from 'gatsby-image'
-// import BackgroundImage from 'gatsby-background-image'
+import BackgroundImage from 'gatsby-background-image'
 
 import { gsap } from "gsap";
 import { TweenLite, TimelineLite } from "gsap/all";
@@ -118,8 +117,8 @@ const ProjectContainerComponent = styled.div`
       height: 50vh;
       
       .proj_cover-img {
-        width: 100%;
-        height: 100%;
+        width: 100% !important;
+        height: 100% !important;
         background-position: center;
         background-size: cover;
         background-color: #ddd;
@@ -297,7 +296,23 @@ const ProjectPage = (props) => {
         <VerticalLine style={{left: "40%"}} className="vertical_line" />
         <div className="proj_content-container">
           <div className="proj_cover">
-            <div className="proj_cover-img" style={{backgroundImage: `url(${featuredImage ? featuredImage.node.link : fallbackImg})`}}></div>
+            {/* <div className="proj_cover-img" style={{backgroundImage: `url(${featuredImage ? featuredImage.node.link : fallbackImg})`}}></div> */}
+            {
+              featuredImage
+              ? featuredImage.node.imageFile && !featuredImage.node.sourceUrl.includes(".gif")
+              ? <BackgroundImage
+                className="proj_cover-img"
+                fixed={featuredImage.node.imageFile.childImageSharp.fixed}
+              />
+              : <div
+                className="proj_cover-img"
+                style={{backgroundImage: `url(${featuredImage.node.sourceUrl})`}}
+              />
+              : <div
+                className="proj_cover-img"
+                style={{backgroundImage: `url(${fallbackImg})`}}
+              />
+            }
           </div>
           <ComponentParser content={blocks}/>
         </div>
@@ -319,6 +334,18 @@ export const query = graphql`
           custom_post_type_Project {
             anno
             visitabile
+          }
+          featuredImage {
+            node {
+              sourceUrl
+              imageFile {
+                childImageSharp {
+                  fixed(width: 1500, quality: 90) {
+                    ...GatsbyImageSharpFixed
+                  }
+                }
+              }
+            }
           }
         }
       }
