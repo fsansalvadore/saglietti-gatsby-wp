@@ -29,8 +29,22 @@ a {
   cursor: pointer !important;
 }
 
-p, h1, h2, h3, a, li, span {
+p,
+h1,
+h2,
+h3,
+a,
+li,
+span {
   -webkit-font-smoothing: antialiased;
+}
+
+.tw-block {
+  display: block;
+}
+
+.tw-mb-20 {
+  margin-bottom: 20px;
 }
 
 .header-container {
@@ -47,13 +61,13 @@ p, h1, h2, h3, a, li, span {
     float: none;
     height: calc(var(--vh, 1vh) * 200);
   }
-  
+
   .header-right {
     position: relative;
     width: 100vw;
     height: 100vh;
     float: none;
-    
+
     &.sticky {
       position: relative;
       top: 0;
@@ -72,13 +86,13 @@ p, h1, h2, h3, a, li, span {
       padding: 5%;
       background-position: center;
       background-size: cover;
-  
+
       p {
         margin-bottom: 0.3rem;
         color: #fff;
       }
     }
-  
+
     .header-right-bottom {
       border-top: 1px solid #000;
       display: flex;
@@ -89,8 +103,9 @@ p, h1, h2, h3, a, li, span {
       text-decoration: none;
       font-size: 1.5rem;
       letter-spacing: 0;
-  
-      p, a {
+
+      p,
+      a {
         margin: 0;
       }
     }
@@ -116,13 +131,14 @@ hr.line {
 .header-text-center {
   width: calc(100% - 2rem);
   margin: 0 auto;
-  
+
   &.h-screen {
     height: 50%;
   }
 
-  h1, p {
-    font-family: 'ff-real-headline-pro-2', sans-serif;
+  h1,
+  p {
+    font-family: "ff-real-headline-pro-2", sans-serif;
     font-size: 1.75rem;
     line-height: 120%;
     font-weight: 300;
@@ -139,7 +155,8 @@ hr.line {
 
 @media (min-width: 900px) {
   .header-text-center {
-    h1, p {
+    h1,
+    p {
       font-size: 2.2rem;
     }
   }
@@ -197,7 +214,7 @@ hr.line {
 }
 
 @keyframes animEnter {
-  0%{
+  0% {
     opacity: 0;
     transform: translate3d(0, 30px, 0);
   }
@@ -208,7 +225,7 @@ hr.line {
 }
 
 @keyframes fadeIn {
-  0%{
+  0% {
     opacity: 0;
   }
   100% {
@@ -217,7 +234,7 @@ hr.line {
 }
 
 @keyframes rotate360 {
-  0%{
+  0% {
     transform: rotate(0deg);
   }
   100% {
@@ -226,7 +243,7 @@ hr.line {
 }
 
 @keyframes Clicked {
-  0%{
+  0% {
     transform: scale(1);
   }
   50% {
@@ -260,7 +277,7 @@ hr.line {
       width: 60%;
       float: left;
     }
-    
+
     .header-right {
       width: 40%;
       float: right;
