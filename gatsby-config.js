@@ -59,9 +59,9 @@ module.exports = {
       resolve: `gatsby-plugin-gdpr-cookies`,
       options: {
         googleAnalytics: {
-          trackingId: 'UA-178906465-1', // leave empty if you want to disable the tracker
-          cookieName: 'gatsby-gdpr-google-analytics', // default
-          anonymize: true // default
+          trackingId: "UA-178906465-1", // leave empty if you want to disable the tracker
+          cookieName: "gatsby-gdpr-google-analytics", // default
+          anonymize: true, // default
         },
         // googleTagManager: {
         //   trackingId: 'YOUR_GOOGLE_TAG_MANAGER_TRACKING_ID', // leave empty if you want to disable the tracker
@@ -73,7 +73,7 @@ module.exports = {
         //   cookieName: 'gatsby-gdpr-facebook-pixel', // default
         // },
         // defines the environments where the tracking should be available  - default is ["production"]
-        environments: ['production', 'development']
+        environments: ["production", "development"],
       },
     },
     `gatsby-plugin-react-helmet`,
@@ -94,7 +94,7 @@ module.exports = {
         //         siteUrl
         //       }
         //     }
-  
+
         //     allSitePage {
         //       nodes {
         //         path
@@ -113,7 +113,7 @@ module.exports = {
         //       priority: 0.7,
         //     }
         //   })
-      }
+      },
     },
     {
       resolve: `gatsby-source-spotify`,
@@ -121,19 +121,19 @@ module.exports = {
         clientId: `c5a17a2977924848aeff445a33b26e78`,
         clientSecret: `4a4170f189d945e791e93681f9eb27d5`,
         refreshToken: `AQAvqQ81Gd-nys10lNMXL_i-MsKG5fAyej8BXtZ_QMSR0Fdg2DhK58scfC-mVEhFpFi3rmwimjG70GQ1X6_-HwiPpU_x00fRiqHH4fU0mbnMk2BVorzp0HlPpBwoa9WfwDM`,
-       
+
         fetchPlaylists: true, // optional. Set to false to disable fetching of your playlists
         fetchRecent: true, // optional. Set to false to disable fetching of your recently played tracks
-        timeRanges: ['short_term', 'medium_term', 'long_term'], // optional. Set time ranges to be fetched
+        timeRanges: ["short_term", "medium_term", "long_term"], // optional. Set time ranges to be fetched
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images/`
+        path: `${__dirname}/src/images/`,
         // path: path.join(__dirname, `src`, `images`),
-      }
+      },
     },
     {
       resolve: `gatsby-plugin-styled-components`,
