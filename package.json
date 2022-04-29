@@ -48,7 +48,8 @@
     "scrollmagic-plugin-gsap": "^1.0.4",
     "scrollmagic-with-ssr": "^1.0.2",
     "slick-carousel": "^1.8.1",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "url-loader": "^4.1.1"
   },
   "devDependencies": {
     "prettier": "2.0.5"
