@@ -36,17 +36,17 @@ const headingBlocks = `
 ... on WORDPRESS_CoreHeadingBlock {
     ${coreBlocksFields}
   }
-` 
+`
 const freeformBlocks = `
 ... on WORDPRESS_CoreFreeformBlock {
     ${coreBlocksFields}
   }
-` 
+`
 const spacerBlocks = `
 ... on WORDPRESS_CoreSpacerBlock {
     ${coreBlocksFields}
   }
-` 
+`
 const imageBlocks = `
   ... on WORDPRESS_CoreImageBlock {
     ${coreBlocksFields}
@@ -59,7 +59,7 @@ const imageBlocks = `
       }
     }
   }
-` 
+`
 
 const videoBlocks = `
   ... on WORDPRESS_CoreVideoBlock {
@@ -78,7 +78,7 @@ const videoBlocks = `
       autoplay
     }
   }
-` 
+`
 
 const galleryBlocks = `
   ... on WORDPRESS_CoreGalleryBlock {
@@ -183,16 +183,14 @@ const query = `
   }
 `
 
-exports.createResolvers = async (
-  {
-    actions,
-    cache,
-    createNodeId,
-    createResolvers,
-    store,
-    reporter,
-  },
-) => {
+exports.createResolvers = async ({
+  actions,
+  cache,
+  createNodeId,
+  createResolvers,
+  store,
+  reporter,
+}) => {
   const { createNode } = actions
 
   await createResolvers({
@@ -221,21 +219,36 @@ exports.createResolvers = async (
 }
 
 exports.createPages = async ({ actions, graphql }) => {
-  const { data } = await graphql(`${query}`)
+  const { data } = await graphql(
+    `
+      ${query}
+    `
+  )
 
-  data.wordpress.projects.nodes.forEach(project => {
+  data.wordpress?.projects?.nodes?.forEach(project => {
     actions.createPage({
       path: `/progetti/${project.slug}`,
-      component: path.resolve(`./src/components/particles/templates/project.jsx`),
+      component: path.resolve(
+        `./src/components/particles/templates/project.jsx`
+      ),
       context: {
         ...project,
-        index: data.wordpress.projects.nodes
-                                      .filter(p => p.custom_post_type_Project.visitabile === true)
-                                      .sort((a, b) => (a.date < b.date) ? 1 : (a.date === b.date) ? ((a.title > b.title) ? 1 : -1) : -1 ).indexOf(project),
+        index: data.wordpress?.projects?.nodes
+          ?.filter(p => p.custom_post_type_Project.visitabile === true)
+          .sort((a, b) =>
+            a.date < b.date
+              ? 1
+              : a.date === b.date
+              ? a.title > b.title
+                ? 1
+                : -1
+              : -1
+          )
+          .indexOf(project),
         blocks: project.blocks,
         id: project.id,
         title: project.title,
-        seo: project.seo
+        seo: project.seo,
       },
     })
   })
