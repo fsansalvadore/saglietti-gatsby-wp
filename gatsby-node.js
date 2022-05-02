@@ -136,10 +136,56 @@ const seoFields = `
   }
 `
 
+// const query = `
+//   query PublishedProjects {
+//     wordpress {
+//       projects(first: 100, where: { status: PUBLISH }) {
+//         nodes {
+//           categories {
+//             nodes {
+//               name
+//               slug
+//               termTaxonomyId
+//             }
+//           }
+//           content
+//           date
+//           featuredImage {
+//             node {
+//               ${mediaFields}
+//             }
+//           }
+//           ${seoFields}
+//           blocks {
+//             ${paragraphBlocks}
+//             ${headingBlocks}
+//             ${freeformBlocks}
+//             ${spacerBlocks}
+//             ${imageBlocks}
+//             ${videoBlocks}
+//             ${galleryBlocks}
+//             ${carouselBlocks}
+//           }
+//           status
+//           slug
+//           uri
+//           id
+//           title
+//           tags {
+//             nodes {
+//               name
+//             }
+//           }
+//           ${projectCustomDetails}
+//         }
+//       }
+//     }
+//   }
+// `
 const query = `
-  query {
+  query PublishedProjects {
     wordpress {
-      projects(first: 100, where: { status: PUBLISH }) {
+      projects(where: { status: PUBLISH }) {
         nodes {
           categories {
             nodes {
@@ -156,16 +202,6 @@ const query = `
             }
           }
           ${seoFields}
-          blocks {
-            ${paragraphBlocks}
-            ${headingBlocks}
-            ${freeformBlocks}
-            ${spacerBlocks}
-            ${imageBlocks}
-            ${videoBlocks}
-            ${galleryBlocks}
-            ${carouselBlocks}
-          }
           status
           slug
           uri
@@ -218,38 +254,50 @@ exports.createResolvers = async ({
   })
 }
 
-exports.createPages = async ({ actions, graphql }) => {
-  const { data } = await graphql(
-    `
-      ${query}
-    `
-  )
+exports.createPages = async ({ actions, graphql, reporter }) => {
+  // const { data } = await graphql(
+  //   `
+  //     ${query}
+  //   `
+  // )
+  const result = await graphql(`
+    ${query}
+  `)
 
-  data.wordpress?.projects?.nodes?.forEach(project => {
-    actions.createPage({
-      path: `/progetti/${project.slug}`,
-      component: path.resolve(
-        `./src/components/particles/templates/project.jsx`
-      ),
-      context: {
-        ...project,
-        index: data.wordpress?.projects?.nodes
-          ?.filter(p => p.custom_post_type_Project.visitabile === true)
-          .sort((a, b) =>
-            a.date < b.date
-              ? 1
-              : a.date === b.date
-              ? a.title > b.title
+  // Handle errors
+  if (result.errors) {
+    reporter.error("There was an error fetching posts", result.errors)
+  }
+
+  const wordpress = result?.data?.wordpress
+
+  if (wordpress?.nodes?.length) {
+    wordpress?.projects?.nodes?.forEach(project => {
+      actions.createPage({
+        path: `/progetti/${project.slug}`,
+        component: path.resolve(
+          `./src/components/particles/templates/project.jsx`
+        ),
+        context: {
+          ...project,
+          index: wordpress?.projects?.nodes
+            ?.filter(p => p.custom_post_type_Project.visitabile === true)
+            .sort((a, b) =>
+              a.date < b.date
                 ? 1
+                : a.date === b.date
+                ? a.title > b.title
+                  ? 1
+                  : -1
                 : -1
-              : -1
-          )
-          .indexOf(project),
-        blocks: project.blocks,
-        id: project.id,
-        title: project.title,
-        seo: project.seo,
-      },
+            )
+            .indexOf(project),
+          blocks: project.blocks,
+          id: project.id,
+          title: project.title,
+          seo: project.seo,
+        },
+      })
     })
-  })
+  }
 }
