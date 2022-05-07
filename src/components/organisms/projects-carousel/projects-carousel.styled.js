@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 const ProjectsCarouselStyled = styled.div`
   position: sticky;
@@ -20,15 +20,19 @@ const ProjectsCarouselStyled = styled.div`
     background-size: cover;
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
-      right:0;
+      right: 0;
       bottom: 0;
       width: 100%;
       height: 100%;
       z-index: 0;
-      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
+      background-image: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.75) 0%,
+        rgba(0, 0, 0, 0) 100%
+      );
     }
 
     p {
@@ -41,10 +45,9 @@ const ProjectsCarouselStyled = styled.div`
       width: 100%;
       display: flex;
       justify-content: space-between;
-      
+
       .info-left {
         .proj_ambiti {
-
           li {
             font-size: 0.9rem;
             font-weight: 200;
@@ -58,16 +61,15 @@ const ProjectsCarouselStyled = styled.div`
             border-radius: 1px;
             align-items: center;
           }
-  
-  
+
           li::after {
             position: absolute;
-            content: '/';
+            content: "/";
             font-size: 0.6rem;
             width: 1px;
             right: 8px;
           }
-  
+
           li:last-of-type::after {
             display: none;
           }
@@ -110,14 +112,19 @@ const ProjectsCarouselStyled = styled.div`
     font-size: 1.15rem;
     letter-spacing: 0;
 
-    p, a {
+    &:hover {
+      cursor: pointer;
+    }
+
+    p,
+    a {
       margin: 0;
     }
-    
+
     p {
       overflow: hidden;
       padding: 4px 0;
-      
+
       span {
         transition: transform 0.12s ease;
         display: block;

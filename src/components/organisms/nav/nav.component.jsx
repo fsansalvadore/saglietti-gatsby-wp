@@ -1,10 +1,9 @@
 import React, { useState } from "react"
-import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import Menu from '../menu-container/menu-container.component';
-import styled from "styled-components";
-import './nav.styles.scss';
-import AnimatedLogo from "../../atoms/AnimatedLogo/AnimatedLogo.component";
+import Menu from "../menu-container/menu-container.component"
+import styled from "styled-components"
+import "./nav.styles.scss"
+// import AnimatedLogo from "../../atoms/AnimatedLogo/AnimatedLogo.component";
 
 const Navbar = styled.div`
   width: 100vw;
@@ -16,9 +15,8 @@ const Navbar = styled.div`
   justify-content: flex-end;
   align-items: center;
   pointer-events: none;
-  
+
   .logo_link {
-    
   }
 
   @media screen and (min-width: 900px) {
@@ -50,21 +48,27 @@ const MenuBtn = styled.a`
     width: 18px;
     height: 1px;
     background-color: #000;
-    transition: transform 0.5s cubic-bezier(.9,0,0,0.9);
+    transition: transform 0.5s cubic-bezier(0.9, 0, 0, 0.9);
   }
 
   span:first-of-type {
-    transform: ${ props => props.isOpen ? "translate3d(0, 0px, 0) rotate(45deg)" : "translate3d(0, -4px, 0) rotate(0deg)"};
+    transform: ${props =>
+      props.isOpen
+        ? "translate3d(0, 0px, 0) rotate(45deg)"
+        : "translate3d(0, -4px, 0) rotate(0deg)"};
   }
 
   span:last-of-type {
-    transform: ${ props => props.isOpen ? "translate3d(0, 0px, 0) rotate(-45deg)" : "translate3d(0, 4px, 0) rotate(0deg)"};
+    transform: ${props =>
+      props.isOpen
+        ? "translate3d(0, 0px, 0) rotate(-45deg)"
+        : "translate3d(0, 4px, 0) rotate(0deg)"};
   }
 `
 
 const Nav = () => {
   const [isOpen, toggleMenu] = useState(false)
-  
+
   return (
     <>
       <Navbar>
@@ -78,7 +82,7 @@ const Nav = () => {
           <span></span>
         </MenuBtn>
       </Navbar>
-      <Menu isOpen={isOpen}/>
+      <Menu isOpen={isOpen} />
     </>
   )
 }
@@ -91,4 +95,4 @@ Nav.defaultProps = {
   siteTitle: `Saglietti`,
 }
 
-export default Nav;
+export default Nav
