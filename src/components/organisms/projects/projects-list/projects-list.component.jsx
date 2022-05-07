@@ -1,20 +1,20 @@
-import React, {useEffect, useRef, useState} from 'react'
-import { Link } from 'gatsby'
-import styled from 'styled-components'
-import VerticalLine from '../../../atoms/vertical-line.component'
-import projectHover from '../../../particles/hooks/projectHover'
-import fallbackImg from '../../../../images/fallback.png'
-import ArrowTopRight from '../../../../images/icons/arrow-top-right.svg'
-import { gsap } from "gsap";
-import * as ScrollMagic from "scrollmagic-with-ssr"; // Or use scrollmagic-with-ssr to avoid server rendering problems
-import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
-import { TweenLite, TimelineLite } from "gsap/all";
-import CustomEase from '../../../particles/vendor/gsap/CustomEase'
+import React, { useEffect, useRef, useState } from "react"
+import { Link } from "gatsby"
+import styled from "styled-components"
+import VerticalLine from "../../../atoms/vertical-line.component"
+import projectHover from "../../../particles/hooks/projectHover"
+import fallbackImg from "../../../../images/fallback.png"
+import ArrowTopRight from "../../../../images/icons/arrow-top-right.svg"
+import { gsap } from "gsap"
+import * as ScrollMagic from "scrollmagic-with-ssr" // Or use scrollmagic-with-ssr to avoid server rendering problems
+import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
+import { TweenLite, TimelineLite } from "gsap/all"
+import CustomEase from "../../../particles/vendor/gsap/CustomEase"
 
-import './projects-list.styles.scss'
+import "./projects-list.styles.scss"
 
-if(typeof window !== `undefined`) {
-  gsap.registerPlugin( CustomEase )
+if (typeof window !== `undefined`) {
+  gsap.registerPlugin(CustomEase)
   ScrollMagicPluginGsap(ScrollMagic, TweenLite, TimelineLite)
 }
 
@@ -22,12 +22,13 @@ const ProjectsContainer = styled.div`
   width: 100%;
   min-height: 90vh;
   margin: 0 auto;
-  padding: 150px 0 0 0 ;
+  padding: 150px 0 0 0;
   text-align: left;
   position: relative;
 
-  h1, h2 {
-    font-family: 'ff-real-text-pro';
+  h1,
+  h2 {
+    font-family: "ff-real-text-pro";
     font-weight: 200;
     font-size: 1rem;
     letter-spacing: 0;
@@ -37,7 +38,8 @@ const ProjectsContainer = styled.div`
     transform: tralsate3d(-60, 0, 0);
   }
 
-  .search-form, form {
+  .search-form,
+  form {
     display: inline-block;
     left: 1rem;
     top: 187px;
@@ -46,7 +48,7 @@ const ProjectsContainer = styled.div`
   .search-form {
     position: absolute;
     margin-left: 0;
-    
+
     form {
       width: calc(80vw - 2rem);
       display: flex;
@@ -80,13 +82,12 @@ const ProjectsContainer = styled.div`
     }
   }
 
-  .s
-
-  li.pseudo.content {
+  .s li.pseudo.content {
     overflow: hidden;
   }
 
-  ul, li {
+  ul,
+  li {
     position: relative;
     list-style-type: none;
     margin: 0;
@@ -111,7 +112,7 @@ const ProjectsContainer = styled.div`
         will-change: transform;
         transition: opacity 0.2s ease;
         cursor: pointer !important;
-        
+
         * {
           cursor: pointer !important;
         }
@@ -178,7 +179,7 @@ const ProjectsContainer = styled.div`
         padding-left: 1rem;
 
         .proj_year {
-          font-family: 'ff-real-headline-pro', sans-serif !important;
+          font-family: "ff-real-headline-pro", sans-serif !important;
           font-size: 1rem;
           min-width: 45px;
           text-align: left;
@@ -192,16 +193,16 @@ const ProjectsContainer = styled.div`
           font-size: 0.75rem;
           align-items: center;
           border-left: 1px solid #000;
-          
+
           div {
             font-weight: 400;
-            font-family: 'ff-real-headline-pro';
+            font-family: "ff-real-headline-pro";
             position: relative;
             padding: 0 10px;
 
             &::before {
               position: absolute;
-              content: '/';
+              content: "/";
               font-size: 0.6rem;
               width: 1px;
               left: -2px;
@@ -213,9 +214,8 @@ const ProjectsContainer = styled.div`
         }
       }
     }
-
   }
-  
+
   .last_divider {
     position: absolute;
     width: 0;
@@ -243,21 +243,22 @@ const ProjectsContainer = styled.div`
   }
 
   @media only screen and (min-width: 1100px) {
-    h1, h2 {
+    h1,
+    h2 {
       margin: 0 0 2rem 0;
       padding-left: 2rem;
     }
 
-    .search-form, form {
+    .search-form,
+    form {
       display: inline-block;
       left: 60%;
       top: 150px;
     }
 
-    
     .search-form {
       margin-left: 1rem;
-      
+
       form {
         width: calc(40vw - 3rem);
 
@@ -274,7 +275,7 @@ const ProjectsContainer = styled.div`
     .proj_content .block__link .proj_item-left {
       width: 60%;
       padding: 0 1rem 0 2rem;
-      
+
       .visible_arrow img {
         width: 15px;
       }
@@ -296,60 +297,114 @@ const ProjectsContainer = styled.div`
   }
 `
 
-const ProjectsList = ({data}) => {
+const ProjectsList = ({ data }) => {
   const [projects, setProjects] = useState(null)
   const [term, setTerm] = useState("")
 
   useEffect(() => {
-    if(data.wordpress.projects) {
-      setProjects(data.wordpress.projects.nodes
-              .filter(item => item.title.toLowerCase().includes(term.toLowerCase()) || item.custom_post_type_Project.ambiti.join().toLowerCase().includes(term.toLowerCase()) || item.custom_post_type_Project.anno.toString().includes(term) || !term)
-              .sort((a, b) => (a.date < b.date) ? 1 : (a.date === b.date) ? ((a.title > b.title) ? 1 : -1) : -1 ))
+    if (data.wordpress.projects) {
+      setProjects(
+        data.wordpress.projects.nodes
+          .filter(
+            item =>
+              item.title.toLowerCase().includes(term.toLowerCase()) ||
+              item.custom_post_type_Project.ambiti
+                .join()
+                .toLowerCase()
+                .includes(term.toLowerCase()) ||
+              item.custom_post_type_Project.anno.toString().includes(term) ||
+              !term
+          )
+          .sort((a, b) =>
+            a.date < b.date
+              ? 1
+              : a.date === b.date
+              ? a.title > b.title
+                ? 1
+                : -1
+              : -1
+          )
+      )
     }
   }, [setProjects, term, data.wordpress.projects])
-  
+
   useEffect(() => {
-    if(typeof window !== `undefined`) {
-      const menuTL = new TimelineLite();
-      menuTL.fromTo("h1", 1, {opacity: 0}, {opacity: 1, ease: "power4.out"})
-      .fromTo(".proj_item-left, .proj_item-right", 1, {translateY: 100, opacity: 0}, {
-        translateY: 0,
-        opacity: 1,
-        stagger: 0.04,
-        ease: "power4.out"
-      }, 0.3)
-      .fromTo(".divider", 0.6, { opacity: 0 }, { opacity: 1, ease: CustomEase.create("custom", "M0,0 C0.698,0 0.374,1 1,1 "), stagger: 0.04}, 0)
-      .fromTo(".last_divider", 0.6, { opacity: 0 }, { opacity: 1, ease: CustomEase.create("custom", "M0,0 C0.698,0 0.374,1 1,1 ")}, "-=0.9")
-      .fromTo(".pseudo.content", 0.2, {overflow: "hidden"}, {overflow: "visible"}, "-=1")
+    if (typeof window !== `undefined`) {
+      const menuTL = new TimelineLite()
+      menuTL
+        .fromTo("h1", 1, { opacity: 0 }, { opacity: 1, ease: "power4.out" })
+        .fromTo(
+          ".proj_item-left, .proj_item-right",
+          1,
+          { translateY: 100, opacity: 0 },
+          {
+            translateY: 0,
+            opacity: 1,
+            stagger: 0.04,
+            ease: "power4.out",
+          },
+          0.3
+        )
+        .fromTo(
+          ".divider",
+          0.6,
+          { opacity: 0 },
+          {
+            opacity: 1,
+            ease: CustomEase.create("custom", "M0,0 C0.698,0 0.374,1 1,1 "),
+            stagger: 0.04,
+          },
+          0
+        )
+        .fromTo(
+          ".last_divider",
+          0.6,
+          { opacity: 0 },
+          {
+            opacity: 1,
+            ease: CustomEase.create("custom", "M0,0 C0.698,0 0.374,1 1,1 "),
+          },
+          "-=0.9"
+        )
+        .fromTo(
+          ".pseudo.content",
+          0.2,
+          { overflow: "hidden" },
+          { overflow: "visible" },
+          "-=1"
+        )
 
-      const fadeInController = new ScrollMagic.Controller();
+      const fadeInController = new ScrollMagic.Controller()
 
-      if(document.querySelectorAll(".fade-in").length !== 0) {
-
-
+      if (document.querySelectorAll(".fade-in").length !== 0) {
         document.querySelectorAll(".fade-in").forEach(fadeInItem => {
-          let TextRevealTL = new TimelineLite();
-          TextRevealTL.fromTo(fadeInItem,
+          let TextRevealTL = new TimelineLite()
+          TextRevealTL.fromTo(
+            fadeInItem,
             {
               opacity: 0,
-              y: 50
+              y: 50,
             },
             {
               duration: 1.5,
               opacity: 1,
               y: 0,
-              ease: CustomEase.create("custom", "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1"),
-          })
+              ease: CustomEase.create(
+                "custom",
+                "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1"
+              ),
+            }
+          )
 
           new ScrollMagic.Scene({
-              triggerElement: fadeInItem,
-              triggerHook: 0,
-              offset: -600,
-              reverse: false
+            triggerElement: fadeInItem,
+            triggerHook: 0,
+            offset: -600,
+            reverse: false,
           })
-          .setTween(TextRevealTL)
-          .addTo(fadeInController);
-        });
+            .setTween(TextRevealTL)
+            .addTo(fadeInController)
+        })
       }
     }
   })
@@ -357,29 +412,29 @@ const ProjectsList = ({data}) => {
   const projectsRef = useRef(null)
 
   useEffect(() => {
-    if(projectsRef) {
+    if (projectsRef) {
       const projects = projectsRef.current.querySelectorAll("li")
 
       projects.forEach(proj_li => {
-        proj_li.addEventListener('mouseover', () => {
-          projectsRef.current.querySelectorAll("li").forEach(
-            li => {
-              li.querySelector("a").style.opacity = "0.5"
-              li.querySelector("span").style.opacity = "0.5"
-              document.querySelector(".vertical-line").style.opacity = "0.5"
-              projectsRef.current.querySelector(".last_divider").style.opacity = "0.5"
-            })
+        proj_li.addEventListener("mouseover", () => {
+          projectsRef.current.querySelectorAll("li").forEach(li => {
+            li.querySelector("a").style.opacity = "0.5"
+            li.querySelector("span").style.opacity = "0.5"
+            document.querySelector(".vertical-line").style.opacity = "0.5"
+            projectsRef.current.querySelector(".last_divider").style.opacity =
+              "0.5"
+          })
           proj_li.querySelector("a").style.opacity = "1"
         })
-        proj_li.addEventListener('mouseout', () => {
-          projectsRef.current.querySelectorAll("li").forEach(
-            li => {
-              li.querySelector("a").style.opacity = "1"
-              li.querySelector("span").style.opacity = "1"
-              document.querySelector(".vertical-line").style.opacity = "1"
-          projectsRef.current.querySelector(".last_divider").style.opacity = "1"
+        proj_li.addEventListener("mouseout", () => {
+          projectsRef.current.querySelectorAll("li").forEach(li => {
+            li.querySelector("a").style.opacity = "1"
+            li.querySelector("span").style.opacity = "1"
+            document.querySelector(".vertical-line").style.opacity = "1"
+            projectsRef.current.querySelector(".last_divider").style.opacity =
+              "1"
+          })
         })
-      })
       })
     }
   }, [projectsRef])
@@ -391,15 +446,25 @@ const ProjectsList = ({data}) => {
   return (
     <>
       <ProjectsContainer>
-        <VerticalLine style={{left: "60%"}} className="vertical-line"/>
+        <VerticalLine style={{ left: "60%" }} className="vertical-line" />
         <h1>Progetti</h1>
         <div className="search-form">
           <form>
             <i className="search-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M14.6743 15.3094L11.291 11.9261M13.1188 7.53158C13.1188 10.968 10.333 13.7538 6.89657 13.7538C3.46012 13.7538 0.674316 10.968 0.674316 7.53158C0.674316 4.09512 3.46012 1.30933 6.89657 1.30933C10.333 1.30933 13.1188 4.09512 13.1188 7.53158Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14.6743 15.3094L11.291 11.9261M13.1188 7.53158C13.1188 10.968 10.333 13.7538 6.89657 13.7538C3.46012 13.7538 0.674316 10.968 0.674316 7.53158C0.674316 4.09512 3.46012 1.30933 6.89657 1.30933C10.333 1.30933 13.1188 4.09512 13.1188 7.53158Z"
+                  stroke="black"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
             </i>
             <input
               type="text"
@@ -410,53 +475,66 @@ const ProjectsList = ({data}) => {
           </form>
         </div>
         <ul className="proj_content" ref={projectsRef}>
-          {
-            projects && projects.length > 0 ?
+          {projects && projects.length > 0 ? (
             projects.map(proj => (
               <li
-                key={`${proj.id}-${proj.slug}-${Math.floor(Math.random() * (100 - 999) + 100)}`}
+                key={`${proj.id}-${proj.slug}-${Math.floor(
+                  Math.random() * (100 - 999) + 100
+                )}`}
                 className="pseudo content"
                 data-fx="1"
-                data-img={proj.featuredImage ? proj.featuredImage.node.link : fallbackImg}
+                data-img={
+                  proj.featuredImage
+                    ? proj.featuredImage.node.link
+                    : fallbackImg
+                }
               >
                 <Link
                   to={`/progetti/${proj.slug}`}
-                  className={`block__link ${!proj.custom_post_type_Project.visitabile && 'no_link'}`}
-                  >
+                  className={`block__link ${
+                    !proj.custom_post_type_Project.visitabile && "no_link"
+                  }`}
+                >
                   <div className="proj_item-left prog_list-item">
                     <h3>{proj.title}</h3>
-                    {
-                      proj.custom_post_type_Project.visitabile &&
-                      <div className="visible_arrow"><img src={ArrowTopRight} alt="active link"/></div>
-                    }
+                    {proj.custom_post_type_Project.visitabile && (
+                      <div className="visible_arrow">
+                        <img src={ArrowTopRight} alt="active link" />
+                      </div>
+                    )}
                   </div>
                   <div className="proj_item-right">
                     <div className="proj_year">
-                      {proj.custom_post_type_Project.anno && proj.custom_post_type_Project.anno}
+                      {proj.custom_post_type_Project.anno &&
+                        proj.custom_post_type_Project.anno}
                     </div>
                     <div className="proj_ambiti">
-                      {
-                        proj.custom_post_type_Project.ambiti &&
+                      {proj.custom_post_type_Project.ambiti &&
                         proj.custom_post_type_Project.ambiti.map(ambito => (
-                          <div key={`${ambito}-${Math.floor(Math.random() * (100 - 999) + 100)}`}>{ambito}</div>
-                        ))
-                      }
+                          <div
+                            key={`${ambito}-${Math.floor(
+                              Math.random() * (100 - 999) + 100
+                            )}`}
+                          >
+                            {ambito}
+                          </div>
+                        ))}
                     </div>
                   </div>
                 </Link>
                 <span className="divider"></span>
               </li>
-            )) : (
-              <li className="pseudo content">
-                <span className="divider"></span>
-                  <Link to="/progetti" className="block__link no_link">
-                    <div className="proj_item-left prog_list-item">
-                      <p className="not-found">Nessun progetto trovato</p>
-                    </div>
-                  </Link>
-                </li>
-              )
-          }
+            ))
+          ) : (
+            <li className="pseudo content">
+              <span className="divider"></span>
+              <Link to="/progetti" className="block__link no_link">
+                <div className="proj_item-left prog_list-item">
+                  <p className="not-found">Nessun progetto trovato</p>
+                </div>
+              </Link>
+            </li>
+          )}
           <span className="last_divider"></span>
         </ul>
       </ProjectsContainer>
