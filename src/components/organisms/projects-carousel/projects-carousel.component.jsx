@@ -44,7 +44,7 @@ const ProjectsCarousel = () => {
                 }
               }
             }
-            customPostTypeProject {
+            custom_post_type_Project {
               anno
               ambiti
               visitabile
@@ -57,7 +57,7 @@ const ProjectsCarousel = () => {
 
   let [count, setCount] = useState(0)
   const featuredProjects = data.wordpress.projects.nodes
-    .filter(p => p.customPostTypeProject.visitabile === true)
+    .filter(p => p.custom_post_type_Project.visitabile === true)
     .sort((a, b) =>
       a.date < b.date
         ? 1
@@ -138,8 +138,8 @@ const ProjectsCarousel = () => {
               {featuredProjects.indexOf(currentProject) + 1} — {projLenght}
             </p>
             <p className="proj_ambiti">
-              {currentProject.customPostTypeProject.ambiti &&
-                currentProject.customPostTypeProject.ambiti.map(ambito => (
+              {currentProject.custom_post_type_Project.ambiti &&
+                currentProject.custom_post_type_Project.ambiti.map(ambito => (
                   <li
                     key={`${ambito}-${Math.floor(
                       Math.random() * (100 - 999) + 100

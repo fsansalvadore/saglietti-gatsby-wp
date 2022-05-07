@@ -170,7 +170,7 @@ const ProjectPage = props => {
   const {
     slug,
     blocks,
-    customPostTypeProject,
+    custom_post_type_Project,
     index,
     title,
     featuredImage,
@@ -181,7 +181,7 @@ const ProjectPage = props => {
   let prevPost = null
   let nextPost = null
   const sortedProjects = data.wordpress.projects.nodes
-    .filter(p => p.customPostTypeProject.visitabile === true)
+    .filter(p => p.custom_post_type_Project.visitabile === true)
     .sort((a, b) =>
       a.date < b.date
         ? 1
@@ -298,19 +298,19 @@ const ProjectPage = props => {
               <h1 className="TextRevealItem">{title}</h1>
             </TextRevealAnimation>
             <div className="proj_details-container fade-in">
-              {customPostTypeProject.anno &&
-                customPostTypeProject.anno.length !== null && (
+              {custom_post_type_Project.anno &&
+                custom_post_type_Project.anno.length !== null && (
                   <div className="proj_details-block">
                     <h2>Anno</h2>
-                    <p>{customPostTypeProject.anno}</p>
+                    <p>{custom_post_type_Project.anno}</p>
                   </div>
                 )}
-              {customPostTypeProject.ambiti &&
-                customPostTypeProject.ambiti.length > 0 && (
+              {custom_post_type_Project.ambiti &&
+                custom_post_type_Project.ambiti.length > 0 && (
                   <div className="proj_details-block">
                     <h2>Ambiti</h2>
                     <ul>
-                      {customPostTypeProject.ambiti.map(ambito => (
+                      {custom_post_type_Project.ambiti.map(ambito => (
                         <li
                           key={`${ambito}-${Math.floor(
                             Math.random() * (100 - 999) + 100
@@ -322,13 +322,13 @@ const ProjectPage = props => {
                     </ul>
                   </div>
                 )}
-              {customPostTypeProject.credits &&
-                customPostTypeProject.credits.length > 0 && (
+              {custom_post_type_Project.credits &&
+                custom_post_type_Project.credits.length > 0 && (
                   <div className="proj_details-block">
                     <h2>Credits</h2>
                     <p
                       dangerouslySetInnerHTML={{
-                        __html: customPostTypeProject.credits,
+                        __html: custom_post_type_Project.credits,
                       }}
                     />
                   </div>
@@ -386,7 +386,7 @@ export const query = graphql`
           title
           date
           slug
-          customPostTypeProject {
+          custom_post_type_Project {
             anno
             visitabile
           }

@@ -308,11 +308,11 @@ const ProjectsList = ({ data }) => {
           .filter(
             item =>
               item.title.toLowerCase().includes(term.toLowerCase()) ||
-              item.customPostTypeProject.ambiti
+              item.custom_post_type_Project.ambiti
                 .join()
                 .toLowerCase()
                 .includes(term.toLowerCase()) ||
-              item.customPostTypeProject.anno.toString().includes(term) ||
+              item.custom_post_type_Project.anno.toString().includes(term) ||
               !term
           )
           .sort((a, b) =>
@@ -492,12 +492,12 @@ const ProjectsList = ({ data }) => {
                 <Link
                   to={`/progetti/${proj.slug}`}
                   className={`block__link ${
-                    !proj.customPostTypeProject.visitabile && "no_link"
+                    !proj.custom_post_type_Project.visitabile && "no_link"
                   }`}
                 >
                   <div className="proj_item-left prog_list-item">
                     <h3>{proj.title}</h3>
-                    {proj.customPostTypeProject.visitabile && (
+                    {proj.custom_post_type_Project.visitabile && (
                       <div className="visible_arrow">
                         <img src={ArrowTopRight} alt="active link" />
                       </div>
@@ -505,12 +505,12 @@ const ProjectsList = ({ data }) => {
                   </div>
                   <div className="proj_item-right">
                     <div className="proj_year">
-                      {proj.customPostTypeProject.anno &&
-                        proj.customPostTypeProject.anno}
+                      {proj.custom_post_type_Project.anno &&
+                        proj.custom_post_type_Project.anno}
                     </div>
                     <div className="proj_ambiti">
-                      {proj.customPostTypeProject.ambiti &&
-                        proj.customPostTypeProject.ambiti.map(ambito => (
+                      {proj.custom_post_type_Project.ambiti &&
+                        proj.custom_post_type_Project.ambiti.map(ambito => (
                           <div
                             key={`${ambito}-${Math.floor(
                               Math.random() * (100 - 999) + 100

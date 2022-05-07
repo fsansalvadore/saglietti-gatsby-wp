@@ -9,7 +9,7 @@ const mediaFields = `
 `
 
 const projectCustomDetails = `
-  customPostTypeProject {
+  custom_post_type_Project {
     ambiti
     anno
     credits
@@ -140,44 +140,42 @@ const query = `
   query PublishedProjects {
     wordpress {
       projects(first: 100, where: { status: PUBLISH }) {
-        edges {
-          node {
-            categories {
-              nodes {
-                name
-                slug
-              }
+        nodes {
+          categories {
+            nodes {
+              name
+              slug
             }
-            content
-            date
-            featuredImage {
-              node {
-                ${mediaFields}
-              }
-            }
-            ${seoFields}
-            blocks {
-              ${paragraphBlocks}
-              ${headingBlocks}
-              ${freeformBlocks}
-              ${spacerBlocks}
-              ${imageBlocks}
-              ${videoBlocks}
-              ${galleryBlocks}
-              ${carouselBlocks}
-            }
-            status
-            slug
-            uri
-            id
-            title
-            tags {
-              nodes {
-                name
-              }
-            }
-            ${projectCustomDetails}
           }
+          content
+          date
+          featuredImage {
+            node {
+              ${mediaFields}
+            }
+          }
+          ${seoFields}
+          blocks {
+            ${paragraphBlocks}
+            ${headingBlocks}
+            ${freeformBlocks}
+            ${spacerBlocks}
+            ${imageBlocks}
+            ${videoBlocks}
+            ${galleryBlocks}
+            ${carouselBlocks}
+          }
+          status
+          slug
+          uri
+          id
+          title
+          tags {
+            nodes {
+              name
+            }
+          }
+          ${projectCustomDetails}
         }
       }
     }
@@ -235,8 +233,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const wordpress = result?.data?.wordpress
 
-  if (wordpress?.edges?.length) {
-    wordpress?.projects?.edges.forEach(({ node: project }) => {
+  if (wordpress?.nodes?.length) {
+    wordpress?.projects?.nodes.forEach(project => {
       actions.createPage({
         path: `/progetti/${project.slug}`,
         // component: path.resolve(
@@ -246,7 +244,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         context: {
           ...project,
           index: wordpress?.projects?.nodes
-            ?.filter(p => p.customPostTypeProject.visitabile === true)
+            ?.filter(p => p.custom_post_type_Project.visitabile === true)
             .sort((a, b) =>
               a.date < b.date
                 ? 1

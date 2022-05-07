@@ -30,7 +30,7 @@ export const query = graphql`
               uri
             }
           }
-          customPostTypeProject {
+          custom_post_type_Project {
             ambiti
             anno
             visitabile
