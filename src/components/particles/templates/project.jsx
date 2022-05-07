@@ -253,7 +253,7 @@ const ProjectPage = props => {
     <Layout>
       <Helmet>
         <title>{title} • Saglietti</title>
-        <meta name="description" content={`${seo.metaDesc}`} />
+        <meta name="description" content={`${seo?.metaDesc}`} />
         <meta
           name="keywords"
           content={
@@ -277,7 +277,7 @@ const ProjectPage = props => {
           property="og:image"
           content={`${featuredImage ? featuredImage.node.link : fallbackImg})`}
         />
-        <meta property="og:description" content={`${seo.metaDesc}`} />
+        <meta property="og:description" content={`${seo?.metaDesc}`} />
         <meta property="og:locale" content="it_IT" />
         <meta name="twitter:card" content="summary" />
         <meta
@@ -285,7 +285,7 @@ const ProjectPage = props => {
           content={`https://www.saglietti.it/progetti/${slug}`}
         />
         <meta name="twitter:title" content={`${title} • Saglietti`} />
-        <meta name="twitter:description" content={`${seo.metaDesc}`} />
+        <meta name="twitter:description" content={`${seo?.metaDesc}`} />
         <meta
           name="twitter:image"
           content={`${featuredImage ? featuredImage.node.link : fallbackImg})`}

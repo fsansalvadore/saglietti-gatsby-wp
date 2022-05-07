@@ -154,7 +154,6 @@ const query = `
               ${mediaFields}
             }
           }
-          ${seoFields}
           blocks {
             ${paragraphBlocks}
             ${headingBlocks}
@@ -223,7 +222,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   `)
 
   const template = path.resolve(
-    `src/components/particles/templates/project.jsx`
+    `./src/components/particles/templates/project.jsx`
   )
 
   // Handle errors
