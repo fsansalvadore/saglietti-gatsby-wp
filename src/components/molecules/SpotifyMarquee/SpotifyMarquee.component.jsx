@@ -51,7 +51,10 @@ const MarqueeContainer = styled.button`
 const SpotifyMarquee = () => {
   const data = useStaticQuery(graphql`
     query SpotifyQuery {
-      allSpotifyTopTrack {
+      allSpotifyTopTrack(
+        filter: { time_range: { eq: "short_term" } }
+        sort: { fields: order }
+      ) {
         nodes {
           name
           preview_url

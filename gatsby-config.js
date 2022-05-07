@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Saglietti`,
@@ -118,9 +122,9 @@ module.exports = {
     {
       resolve: `gatsby-source-spotify`,
       options: {
-        clientId: `c5a17a2977924848aeff445a33b26e78`,
-        clientSecret: `4a4170f189d945e791e93681f9eb27d5`,
-        refreshToken: `AQAvqQ81Gd-nys10lNMXL_i-MsKG5fAyej8BXtZ_QMSR0Fdg2DhK58scfC-mVEhFpFi3rmwimjG70GQ1X6_-HwiPpU_x00fRiqHH4fU0mbnMk2BVorzp0HlPpBwoa9WfwDM`,
+        clientId: process.env.SPOTIFY_CLIENT_ID,
+        clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+        refreshToken: process.env.SPOTIFY_REFRESH_TOKEN,
 
         fetchPlaylists: true, // optional. Set to false to disable fetching of your playlists
         fetchRecent: true, // optional. Set to false to disable fetching of your recently played tracks
