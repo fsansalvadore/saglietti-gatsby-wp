@@ -167,7 +167,7 @@ const ProjectsCarousel = () => {
               // style={{backgroundImage: `url(${currentProject.featuredImage.node.link})`}}
               fixed={
                 currentProject.featuredImage.node.imageFile.childImageSharp
-                  .fixed
+                  ?.fixed
               }
             />
           ) : (

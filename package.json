@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "saglietti-studio",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "Saglietti - Design Studio in Torino",
+  "version": "1.0.0",
+  "author": "Francesco Sansalvadore <hello@fsansalvadore.com>",
   "dependencies": {
     "@loadable/component": "^5.15.2",
     "@material-ui/core": "^4.12.4",

@@ -154,6 +154,7 @@ const query = `
               ${mediaFields}
             }
           }
+          ${seoFields}
           blocks {
             ${paragraphBlocks}
             ${headingBlocks}
@@ -221,10 +222,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     ${query}
   `)
 
-  const template = path.resolve(
-    `./src/components/particles/templates/project.jsx`
-  )
-
   // Handle errors
   if (result.errors) {
     reporter.error("There was an error fetching posts", result.errors)
@@ -232,34 +229,31 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const wordpress = result?.data?.wordpress
 
-  if (wordpress?.nodes?.length) {
-    wordpress?.projects?.nodes.forEach(project => {
-      actions.createPage({
-        path: `/progetti/${project.slug}`,
-        // component: path.resolve(
-        //   `./src/components/particles/templates/project.jsx`
-        // ),
-        component: template,
-        context: {
-          ...project,
-          index: wordpress?.projects?.nodes
-            ?.filter(p => p.custom_post_type_Project.visitabile === true)
-            .sort((a, b) =>
-              a.date < b.date
+  wordpress?.projects?.nodes?.forEach(project => {
+    actions.createPage({
+      path: `/progetti/${project.slug}`,
+      component: path.resolve(
+        `./src/components/particles/templates/project.jsx`
+      ),
+      context: {
+        ...project,
+        index: wordpress?.projects?.nodes
+          ?.filter(p => p.custom_post_type_Project.visitabile === true)
+          .sort((a, b) =>
+            a.date < b.date
+              ? 1
+              : a.date === b.date
+              ? a.title > b.title
                 ? 1
-                : a.date === b.date
-                ? a.title > b.title
-                  ? 1
-                  : -1
                 : -1
-            )
-            .indexOf(project),
-          blocks: project.blocks,
-          id: project.id,
-          title: project.title,
-          seo: project.seo,
-        },
-      })
+              : -1
+          )
+          .indexOf(project),
+        blocks: project.blocks,
+        id: project.id,
+        title: project.title,
+        seo: project.seo,
+      },
     })
-  }
+  })
 }
