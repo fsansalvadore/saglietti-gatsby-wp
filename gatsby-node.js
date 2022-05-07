@@ -9,7 +9,7 @@ const mediaFields = `
 `
 
 const projectCustomDetails = `
-  custom_post_type_Project {
+  customPostTypeProject {
     ambiti
     anno
     credits
@@ -136,83 +136,48 @@ const seoFields = `
   }
 `
 
-// const query = `
-//   query PublishedProjects {
-//     wordpress {
-//       projects(first: 100, where: { status: PUBLISH }) {
-//         nodes {
-//           categories {
-//             nodes {
-//               name
-//               slug
-//               termTaxonomyId
-//             }
-//           }
-//           content
-//           date
-//           featuredImage {
-//             node {
-//               ${mediaFields}
-//             }
-//           }
-//           ${seoFields}
-//           blocks {
-//             ${paragraphBlocks}
-//             ${headingBlocks}
-//             ${freeformBlocks}
-//             ${spacerBlocks}
-//             ${imageBlocks}
-//             ${videoBlocks}
-//             ${galleryBlocks}
-//             ${carouselBlocks}
-//           }
-//           status
-//           slug
-//           uri
-//           id
-//           title
-//           tags {
-//             nodes {
-//               name
-//             }
-//           }
-//           ${projectCustomDetails}
-//         }
-//       }
-//     }
-//   }
-// `
 const query = `
   query PublishedProjects {
     wordpress {
-      projects(where: { status: PUBLISH }) {
-        nodes {
-          categories {
-            nodes {
-              name
-              slug
-              termTaxonomyId
+      projects(first: 100, where: { status: PUBLISH }) {
+        edges {
+          node {
+            categories {
+              nodes {
+                name
+                slug
+              }
             }
-          }
-          content
-          date
-          featuredImage {
-            node {
-              ${mediaFields}
+            content
+            date
+            featuredImage {
+              node {
+                ${mediaFields}
+              }
             }
-          }
-          ${seoFields}
-          status
-          slug
-          uri
-          id
-          title
-          tags {
-            nodes {
-              name
+            ${seoFields}
+            blocks {
+              ${paragraphBlocks}
+              ${headingBlocks}
+              ${freeformBlocks}
+              ${spacerBlocks}
+              ${imageBlocks}
+              ${videoBlocks}
+              ${galleryBlocks}
+              ${carouselBlocks}
             }
+            status
+            slug
+            uri
+            id
+            title
+            tags {
+              nodes {
+                name
+              }
+            }
+            ${projectCustomDetails}
           }
-          ${projectCustomDetails}
         }
       }
     }
@@ -255,14 +220,13 @@ exports.createResolvers = async ({
 }
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
-  // const { data } = await graphql(
-  //   `
-  //     ${query}
-  //   `
-  // )
   const result = await graphql(`
     ${query}
   `)
+
+  const template = path.resolve(
+    `src/components/particles/templates/project.jsx`
+  )
 
   // Handle errors
   if (result.errors) {
@@ -271,17 +235,18 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const wordpress = result?.data?.wordpress
 
-  if (wordpress?.nodes?.length) {
-    wordpress?.projects?.nodes?.forEach(project => {
+  if (wordpress?.edges?.length) {
+    wordpress?.projects?.edges.forEach(({ node: project }) => {
       actions.createPage({
         path: `/progetti/${project.slug}`,
-        component: path.resolve(
-          `./src/components/particles/templates/project.jsx`
-        ),
+        // component: path.resolve(
+        //   `./src/components/particles/templates/project.jsx`
+        // ),
+        component: template,
         context: {
           ...project,
           index: wordpress?.projects?.nodes
-            ?.filter(p => p.custom_post_type_Project.visitabile === true)
+            ?.filter(p => p.customPostTypeProject.visitabile === true)
             .sort((a, b) =>
               a.date < b.date
                 ? 1
