@@ -124,6 +124,7 @@ const ProjectsCarouselStyled = styled.div`
     p {
       overflow: hidden;
       padding: 4px 0;
+      pointer-events: none;
 
       span {
         transition: transform 0.12s ease;
