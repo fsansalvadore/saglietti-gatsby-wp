@@ -119,18 +119,18 @@ module.exports = {
         //   })
       },
     },
-    {
-      resolve: `gatsby-source-spotify`,
-      options: {
-        clientId: process.env.SPOTIFY_CLIENT_ID,
-        clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-        refreshToken: process.env.SPOTIFY_REFRESH_TOKEN,
+    // {
+    //   resolve: `gatsby-source-spotify`,
+    //   options: {
+    //     clientId: process.env.SPOTIFY_CLIENT_ID,
+    //     clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+    //     refreshToken: process.env.SPOTIFY_REFRESH_TOKEN,
 
-        fetchPlaylists: true, // optional. Set to false to disable fetching of your playlists
-        fetchRecent: true, // optional. Set to false to disable fetching of your recently played tracks
-        timeRanges: ["short_term", "medium_term", "long_term"], // optional. Set time ranges to be fetched
-      },
-    },
+    //     fetchPlaylists: true, // optional. Set to false to disable fetching of your playlists
+    //     fetchRecent: true, // optional. Set to false to disable fetching of your recently played tracks
+    //     timeRanges: ["short_term", "medium_term", "long_term"], // optional. Set time ranges to be fetched
+    //   },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
