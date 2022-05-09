@@ -31,7 +31,7 @@ const IndexPage = () => {
       <VideoSection />
       <StudioCTA />
       <ContactsCTA />
-      <SpotifyMarquee />
+      {/* <SpotifyMarquee /> */}
     </Layout>
   )
 }
