@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import MenuItems from '../../molecules/menu-items/menu-items.component';
-import SocialIcons from '../../molecules/SocialIcons/SocialIcons.component'
-import { Link } from 'gatsby'
+import React from "react"
+import styled from "styled-components"
+import MenuItems from "../../molecules/menu-items/menu-items.component"
+import SocialIcons from "../../molecules/SocialIcons/SocialIcons.component"
+import { Link } from "gatsby"
 
 const MenuContainer = styled.div`
   position: fixed;
@@ -13,17 +13,18 @@ const MenuContainer = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  pointer-events: ${({isOpen}) => isOpen ? "auto" : "none"};
-  transition: opacity 0.5s cubic-bezier(.42,.05,.2,.98);
-  backdrop-filter: ${({isOpen}) => isOpen ? "blur(6px)" : "blur(0)"};
-  -webkit-backdrop-filter: ${({isOpen}) => isOpen ? "blur(6px)" : "blur(0)"};
-  opacity: ${({isOpen}) => isOpen ? 1 : 0};
+  pointer-events: ${({ isOpen }) => (isOpen ? "auto" : "none")};
+  transition: opacity 0.5s cubic-bezier(0.42, 0.05, 0.2, 0.98);
+  backdrop-filter: ${({ isOpen }) => (isOpen ? "blur(6px)" : "blur(0)")};
+  -webkit-backdrop-filter: ${({ isOpen }) =>
+    isOpen ? "blur(6px)" : "blur(0)"};
+  opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
   background-color: rgba(255, 255, 255, 0.9);
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   justify-content: center;
-  
+
   @media (min-width: 900px) {
     flex-direction: row;
     align-items: center;
@@ -43,17 +44,17 @@ const MenuInfo = styled.div`
   text-align: center;
   flex-direction: column;
   justify-content: space-between;
-  
+
   p {
     font-size: 0.9rem;
     line-height: 160%;
     margin: 0;
   }
-  
+
   div {
     margin-top: 15px;
   }
-  
+
   .privacy-link a {
     font-size: 0.8rem;
   }
@@ -61,7 +62,7 @@ const MenuInfo = styled.div`
   .no-mobile {
     display: none;
   }
-  
+
   @media (min-width: 900px) {
     position: absolute;
     flex-direction: row;
@@ -75,8 +76,8 @@ const MenuInfo = styled.div`
   }
 `
 
-const Menu = ({isOpen}) => {
-  return(
+const Menu = ({ isOpen }) => {
+  return (
     <MenuContainer isOpen={isOpen} classname="menu-container">
       <MenuItems isOpen={isOpen}></MenuItems>
       <MenuInfo>
@@ -85,24 +86,34 @@ const Menu = ({isOpen}) => {
         </div>
         <div>
           <p>
-            Saglietti. Branding — Digital<br/>
-            via Parma 52 10153 Torino, Italia<br/>
-            <a href="https://www.google.com/maps/place/Saglietti+-+Studio+di+comunicazione+in+Torino/@45.0749314,7.6876913,16z/data=!4m5!3m4!1s0x47886d307559cf33:0xd92845c3e894e287!8m2!3d45.0758792!4d7.695027" target="_blank" rel="noreferrer">Mappa</a>
+            Saglietti. Branding — Digital
+            <br />
+            Corso Regio Parco, 36 — 10153 Torino, Italia
+            <br />
+            <a
+              href="https://www.google.com/maps/place/Saglietti+-+Studio+di+comunicazione+in+Torino/@45.0749314,7.6876913,16z/data=!4m5!3m4!1s0x47886d307559cf33:0xd92845c3e894e287!8m2!3d45.0758792!4d7.695027"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Mappa
+            </a>
           </p>
         </div>
         <div className="no-mobile">
           <p>
-            info@saglietti.it<br/>
-            P.I 03391740044<br/>
+            info@saglietti.it
+            <br />
+            P.I 03391740044
+            <br />
             Copyright © {new Date().getFullYear()} Saglietti
           </p>
         </div>
         <div className="footer-info">
-          <SocialIcons/>
+          <SocialIcons />
         </div>
       </MenuInfo>
     </MenuContainer>
   )
 }
 
-export default Menu;
+export default Menu
