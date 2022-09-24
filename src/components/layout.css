@@ -2,14 +2,14 @@
 
 :root {
   --line-color: rgba(0, 0, 0, 1);
-  --ease-1: cubic-bezier(.6,.01,-.05,0.9);
+  --ease-1: cubic-bezier(0.6, 0.01, -0.05, 0.9);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'ff-real-headline-pro-2', sans-serif;
+  font-family: "ff-real-headline-pro-2", sans-serif;
 }
 
 /* @font-face {
@@ -27,7 +27,7 @@
 
 html {
   background: #fff;
-  font-family: 'ff-real-headline-pro-2', sans-serif;
+  font-family: "ff-real-headline-pro-2", sans-serif;
   overflow: auto !important;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -249,7 +249,7 @@ html {
 }
 body {
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: 'ff-real-headline-pro-2', sans-serif;
+  font-family: "ff-real-headline-pro-2", sans-serif;
   font-weight: 300;
   word-wrap: break-word;
   font-kerning: normal;
@@ -279,7 +279,7 @@ h1 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'ff-real-headline-pro', Helvetica Neue,sans-serif;
+  font-family: "ff-real-headline-pro", Helvetica Neue, sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 2.25rem;
@@ -295,7 +295,7 @@ h2 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'ff-real-headline-pro', Helvetica Neue,sans-serif;
+  font-family: "ff-real-headline-pro", Helvetica Neue, sans-serif;
   text-rendering: optimizeLegibility;
   font-size: 0.8rem;
   font-weight: bold;
@@ -311,7 +311,7 @@ h3 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'ff-real-headline-pro', Helvetica Neue,sans-serif;
+  font-family: "ff-real-headline-pro", Helvetica Neue, sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1.38316rem;
@@ -327,7 +327,7 @@ h4 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'ff-real-headline-pro', Helvetica Neue,sans-serif;
+  font-family: "ff-real-headline-pro", Helvetica Neue, sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1rem;
@@ -343,7 +343,7 @@ h5 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'ff-real-headline-pro', Helvetica Neue,sans-serif;
+  font-family: "ff-real-headline-pro", Helvetica Neue, sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 0.85028rem;
@@ -359,7 +359,7 @@ h6 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'ff-real-headline-pro', Helvetica Neue,sans-serif;
+  font-family: "ff-real-headline-pro", Helvetica Neue, sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 0.78405rem;
@@ -664,4 +664,3 @@ pre tt:after {
     font-size: 100%;
   }
 }
-

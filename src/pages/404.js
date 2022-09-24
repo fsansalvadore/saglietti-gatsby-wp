@@ -1,8 +1,8 @@
 import React from "react"
-import styled from 'styled-components'
+import styled from "styled-components"
 import Layout from "../components/layout"
-import { Link } from 'gatsby'
-import ArrowRightSVG from '../images/icons/arrow-right.svg'
+import { Link } from "gatsby"
+import ArrowRightSVG from "../images/icons/arrow-right.svg"
 
 const NotFound = styled.div`
   width: 100vw;
@@ -12,7 +12,7 @@ const NotFound = styled.div`
   .link-block {
     margin-top: 1rem;
   }
-  
+
   @media (min-width: 900px) {
     padding: 200px 6rem 100px 40%;
   }
@@ -68,13 +68,26 @@ const NotFoundPage = () => (
   <Layout>
     <NotFound>
       <h1>404</h1>
-      <p>Quello che stai cercando potrebbe essere momentaneamente irragiungibile o non esistere.</p>
+      <p>
+        Quello che stai cercando potrebbe essere momentaneamente irragiungibile
+        o non esistere.
+      </p>
       <div className="link-block">
         <LinkComponent className="contacts-container TextRevealAnim">
-          <Link to="/" className="TextRevealItem">Torna alla Home Page <span><img src={ArrowRightSVG} alt="Saglietti.it"/></span></Link>
+          <Link to="/" className="TextRevealItem">
+            Torna alla Home Page{" "}
+            <span>
+              <img src={ArrowRightSVG} alt="Saglietti.it" />
+            </span>
+          </Link>
         </LinkComponent>
         <LinkComponent className="contacts-container TextRevealAnim">
-          <Link to="/progetti" className="TextRevealItem">Scopri tutti i progetti <span><img src={ArrowRightSVG} alt="Progetti"/></span></Link>
+          <Link to="/progetti" className="TextRevealItem">
+            Scopri tutti i progetti{" "}
+            <span>
+              <img src={ArrowRightSVG} alt="Progetti" />
+            </span>
+          </Link>
         </LinkComponent>
       </div>
     </NotFound>

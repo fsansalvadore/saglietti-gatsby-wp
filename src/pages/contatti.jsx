@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import VerticalLine from "../components/atoms/vertical-line.component"
 import "../components/particles/styles/global.styles.scss"
 import ContactsInfoContainer from "../components/organisms/contacts-info-container/contacts-info-container.component"
-import Map from "../images/map_viaParma25.jpg"
+import Map from "../images/map_corsoRegioParco36.png"
 
 const Contatti = () => (
   <Layout>

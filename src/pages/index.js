@@ -17,9 +17,9 @@ const StudioCTA = loadable(() =>
 const ContactsCTA = loadable(() =>
   import("../components/molecules/contacts-cta/contacts-cta.component")
 )
-const SpotifyMarquee = loadable(() =>
-  import("../components/molecules/SpotifyMarquee/SpotifyMarquee.component")
-)
+// const SpotifyMarquee = loadable(() =>
+//   import("../components/molecules/SpotifyMarquee/SpotifyMarquee.component")
+// )
 
 const IndexPage = () => {
   return (

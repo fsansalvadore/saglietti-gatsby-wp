@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from "styled-components";
+import React from "react"
+import styled from "styled-components"
 
 const MenuBtnContainer = styled.button`
   position: relative;
@@ -43,4 +43,4 @@ const MenuBtn = () => {
   )
 }
 
-export default MenuBtn;
+export default MenuBtn
