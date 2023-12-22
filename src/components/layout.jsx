@@ -11,7 +11,7 @@ import Cursor from "./atoms/cursor.component"
 import CursorFollow from "./atoms/cursor-follow.component"
 import GenericMetadata from "./particles/meta/GenericMetadata"
 import CookieComponent from "./molecules/CookieComponent.component"
-import Loading from "../components/molecules/Loading/Loading.component"
+import Loading from "./molecules/Loading/Loading.component"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -43,7 +43,7 @@ const Layout = ({ children }) => {
       <Loading isLoading={isLoading} />
       <NavLogo />
       <Nav siteTitle={data.site.siteMetadata.title} />
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence mode="wait">
         <motion.main
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 1] }}

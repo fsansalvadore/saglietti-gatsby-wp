@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import BackgroundImage from "gatsby-background-image"
+// import BackgroundImage from "gatsby-background-image"
 
 import ProjectsCarouselStyled from "./projects-carousel.styled"
 import ArrowRightCircle from "../../atoms/arrow-right-circle.component"
@@ -62,10 +62,10 @@ const ProjectsCarousel = () => {
       a.date < b.date
         ? 1
         : a.date === b.date
-        ? a.title > b.title
-          ? 1
-          : -1
-        : -1
+          ? a.title > b.title
+            ? 1
+            : -1
+          : -1,
     )
     .slice(0, 10)
   const projLenght = featuredProjects.length
@@ -89,14 +89,14 @@ const ProjectsCarousel = () => {
         titleRef.current,
         0.2,
         { y: 60 },
-        { y: 0 }
+        { y: 0 },
       )
       const carouselImgTween = TweenMax.fromTo(
         ".carousel-img",
         0.5,
         { opacity: 0, scale: 1.2 },
         { opacity: 1, scale: 1, ease: "power3.out" },
-        0
+        0,
       )
       titleTL.add(titleTween).add(carouselImgTween)
     }
@@ -142,7 +142,7 @@ const ProjectsCarousel = () => {
                 currentProject.custom_post_type_Project.ambiti.map(ambito => (
                   <li
                     key={`${ambito}-${Math.floor(
-                      Math.random() * (100 - 999) + 100
+                      Math.random() * (100 - 999) + 100,
                     )}`}
                   >
                     {ambito}
@@ -161,16 +161,16 @@ const ProjectsCarousel = () => {
         </div>
         {currentProject.featuredImage ? (
           currentProject.featuredImage.node.imageFile &&
-          !currentProject.featuredImage.node.sourceUrl.includes(".gif") ? (
-            <BackgroundImage
-              className="carousel-img"
-              // style={{backgroundImage: `url(${currentProject.featuredImage.node.link})`}}
-              fixed={
-                currentProject.featuredImage.node.imageFile.childImageSharp
-                  ?.fixed
-              }
-            />
-          ) : (
+          !currentProject.featuredImage.node.sourceUrl.includes(
+            ".gif",
+          ) ? //   className="carousel-img" // <BackgroundImage
+          //   // style={{backgroundImage: `url(${currentProject.featuredImage.node.link})`}}
+          //   fixed={
+          //     currentProject.featuredImage.node.imageFile.childImageSharp
+          //       ?.fixed
+          //   }
+          // />
+          null : (
             <div
               className="carousel-img"
               style={{

@@ -8,18 +8,15 @@ import HeaderContainer from "../components/organisms/header-container/header-con
 import "../components/particles/styles/homepage.styles.scss"
 import loadable from "@loadable/component"
 
-const VideoSection = loadable(() =>
-  import("../components/organisms/video-section/video-section.component")
+const VideoSection = loadable(
+  () => import("../components/organisms/video-section/video-section.component"),
 )
-const StudioCTA = loadable(() =>
-  import("../components/molecules/studio-cta/studio-cta.component")
+const StudioCTA = loadable(
+  () => import("../components/molecules/studio-cta/studio-cta.component"),
 )
-const ContactsCTA = loadable(() =>
-  import("../components/molecules/contacts-cta/contacts-cta.component")
+const ContactsCTA = loadable(
+  () => import("../components/molecules/contacts-cta/contacts-cta.component"),
 )
-// const SpotifyMarquee = loadable(() =>
-//   import("../components/molecules/SpotifyMarquee/SpotifyMarquee.component")
-// )
 
 const IndexPage = () => {
   return (
@@ -31,7 +28,6 @@ const IndexPage = () => {
       <VideoSection />
       <StudioCTA />
       <ContactsCTA />
-      {/* <SpotifyMarquee /> */}
     </Layout>
   )
 }
