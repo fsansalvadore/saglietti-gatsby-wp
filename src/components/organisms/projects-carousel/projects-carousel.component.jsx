@@ -163,8 +163,7 @@ const ProjectsCarousel = () => {
           currentProject.featuredImage.node.imageFile &&
           !currentProject.featuredImage.node.sourceUrl.includes(
             ".gif",
-          ) ? //   className="carousel-img" // <BackgroundImage
-          //   // style={{backgroundImage: `url(${currentProject.featuredImage.node.link})`}}
+          ) ? //   // style={{backgroundImage: `url(${currentProject.featuredImage.node.link})`}} //   className="carousel-img" // <BackgroundImage
           //   fixed={
           //     currentProject.featuredImage.node.imageFile.childImageSharp
           //       ?.fixed

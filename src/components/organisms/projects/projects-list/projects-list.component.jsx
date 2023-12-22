@@ -313,17 +313,17 @@ const ProjectsList = ({ data }) => {
                 .toLowerCase()
                 .includes(term.toLowerCase()) ||
               item.custom_post_type_Project.anno.toString().includes(term) ||
-              !term
+              !term,
           )
           .sort((a, b) =>
             a.date < b.date
               ? 1
               : a.date === b.date
-              ? a.title > b.title
-                ? 1
-                : -1
-              : -1
-          )
+                ? a.title > b.title
+                  ? 1
+                  : -1
+                : -1,
+          ),
       )
     }
   }, [setProjects, term, data.wordpress.projects])
@@ -343,7 +343,7 @@ const ProjectsList = ({ data }) => {
             stagger: 0.04,
             ease: "power4.out",
           },
-          0.3
+          0.3,
         )
         .fromTo(
           ".divider",
@@ -354,7 +354,7 @@ const ProjectsList = ({ data }) => {
             ease: CustomEase.create("custom", "M0,0 C0.698,0 0.374,1 1,1 "),
             stagger: 0.04,
           },
-          0
+          0,
         )
         .fromTo(
           ".last_divider",
@@ -364,14 +364,14 @@ const ProjectsList = ({ data }) => {
             opacity: 1,
             ease: CustomEase.create("custom", "M0,0 C0.698,0 0.374,1 1,1 "),
           },
-          "-=0.9"
+          "-=0.9",
         )
         .fromTo(
           ".pseudo.content",
           0.2,
           { overflow: "hidden" },
           { overflow: "visible" },
-          "-=1"
+          "-=1",
         )
 
       const fadeInController = new ScrollMagic.Controller()
@@ -391,9 +391,9 @@ const ProjectsList = ({ data }) => {
               y: 0,
               ease: CustomEase.create(
                 "custom",
-                "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1"
+                "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1",
               ),
-            }
+            },
           )
 
           new ScrollMagic.Scene({
@@ -479,7 +479,7 @@ const ProjectsList = ({ data }) => {
             projects.map(proj => (
               <li
                 key={`${proj.id}-${proj.slug}-${Math.floor(
-                  Math.random() * (100 - 999) + 100
+                  Math.random() * (100 - 999) + 100,
                 )}`}
                 className="pseudo content"
                 data-fx="1"
@@ -513,7 +513,7 @@ const ProjectsList = ({ data }) => {
                         proj.custom_post_type_Project.ambiti.map(ambito => (
                           <div
                             key={`${ambito}-${Math.floor(
-                              Math.random() * (100 - 999) + 100
+                              Math.random() * (100 - 999) + 100,
                             )}`}
                           >
                             {ambito}

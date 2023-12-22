@@ -233,7 +233,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     actions.createPage({
       path: `/progetti/${project.slug}`,
       component: path.resolve(
-        `./src/components/particles/templates/project.jsx`
+        `./src/components/particles/templates/project.jsx`,
       ),
       context: {
         ...project,
@@ -243,10 +243,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             a.date < b.date
               ? 1
               : a.date === b.date
-              ? a.title > b.title
-                ? 1
-                : -1
-              : -1
+                ? a.title > b.title
+                  ? 1
+                  : -1
+                : -1,
           )
           .indexOf(project),
         blocks: project.blocks,

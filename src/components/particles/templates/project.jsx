@@ -352,8 +352,7 @@ const ProjectPage = props => {
               featuredImage.node.imageFile &&
               !featuredImage.node.sourceUrl.includes(
                 ".gif",
-              ) ? // <BackgroundImage
-              //   className="proj_cover-img"
+              ) ? //   className="proj_cover-img" // <BackgroundImage
               //   fixed={featuredImage.node.imageFile.childImageSharp.fixed}
               // />
               null : (

@@ -264,9 +264,9 @@ const StudioPage = ({ data }) => {
               y: 0,
               ease: CustomEase.create(
                 "custom",
-                "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1"
+                "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1",
               ),
-            }
+            },
           )
 
           new ScrollMagic.Scene({
@@ -384,7 +384,7 @@ const StudioPage = ({ data }) => {
             {data.wordpress.clients.nodes.map(client => (
               <li
                 key={`${client.title}-${Math.floor(
-                  Math.random() * (100 - 999) + 100
+                  Math.random() * (100 - 999) + 100,
                 )}`}
               >
                 <span className="">
