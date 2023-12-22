@@ -7,6 +7,7 @@ import * as ScrollMagic from "scrollmagic-with-ssr" // Or use scrollmagic-with-s
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
 import { TweenLite, TimelineLite } from "gsap/all"
 import CustomEase from "../../particles/vendor/gsap/CustomEase"
+import Img from "gatsby-image"
 
 if (typeof window !== `undefined`) {
   gsap.registerPlugin(CustomEase)
@@ -107,14 +108,6 @@ const StudioContent = styled.div`
   }
 
   .metodo_container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-
-    & > div {
-      width: 100%;
-    }
-
     h2 {
       font-size: 0.8rem;
       font-weight: bold;
@@ -245,6 +238,8 @@ const StudioContent = styled.div`
 `
 
 const StudioPage = ({ data }) => {
+  console.log("data", data)
+  const page = data.wordpress.pages.nodes.find(page => page.slug === "studio")
   useEffect(() => {
     if (typeof window !== `undefined`) {
       const fadeInController = new ScrollMagic.Controller()
@@ -284,15 +279,64 @@ const StudioPage = ({ data }) => {
 
   return (
     <>
-      <StudioContent>
+      <StudioContent className="bg-[#F3E1C2]">
         <header className="studio_container intro">
+          <h1 className="sr-only">Studio Saglietti</h1>
           <p className="fade-in text-lg">
-            Costruiamo i brand con idee semplici e rilevanti. Il nostro mantra è
-            l’essenzialità. La applichiamo in ogni parte del progetto: concept,
-            messaggio, design, colore. Perché eliminando il superfluo, rimanga
+            Costruiamo brand con idee semplici e rilevanti. Il nostro mantra è
+            l'essenzialità, che applichiamo in ogni parte del progetto: concept,
+            messaggio, design e colore. Perché, eliminando il superfluo, rimanga
             tutto ciò che conta.
           </p>
         </header>
+        <figure className="w-full aspect-video relative border-t border-b border-black">
+          <img
+            src={page.featuredImage.node.sourceUrl}
+            alt="Studio Saglietti"
+            className="absolute object-cover object-center inset-0 w-full h-full"
+          />
+        </figure>
+        <section className="metodo_container flex flex-col md:flex-row">
+          <div className="w-full md:!w-1/3">
+            <h2 className="">Metodo</h2>
+          </div>
+          <div className="w-full md:flex-1 flex flex-col">
+            <ul>
+              <li className="">
+                <span>1</span> Riceviamo i need del cliente.
+              </li>
+              <li className="">
+                <span>2</span> Analizziamo i valori del brand.
+              </li>
+              <li className="">
+                <span>3</span> Creiamo un concetto.
+              </li>
+            </ul>
+            <p className="fade-in">
+              Sono i tre step con i quali nascono tutti i nostri progetti.
+              <br />
+              L'obiettivo? Dare vita a una strategia di comunicazione completa,
+              innovativa, in grado di offrire forte distintività e generare
+              engagement.
+            </p>
+            <br />
+            <p className="fade-in">
+              Creiamo linguaggi di comunicazione per qualsiasi tipo di progetto,
+              budget, media. Ma il nostro approccio al lavoro è sempre lo
+              stesso: offrire al cliente non un collaboratore, ma un partner con
+              cui condividere una visione. Un’intesa che ci porta a comprendere
+              a fondo gli obiettivi e generare fiducia, massimizzando i
+              risultati.
+            </p>
+            <br />
+            <p className="fade-in">
+              Mettiamo il nostro know-how e la nostra idea di design al servizio
+              di tutti i settori: food &amp; beverage, fashion, technology,
+              manifattura, interior design, istituzioni e organizzazioni
+              culturali.
+            </p>
+          </div>
+        </section>
         <div className="studio_content-container">
           <div className="studio_content-left">
             <section className="filosofia_container">
@@ -305,43 +349,6 @@ const StudioPage = ({ data }) => {
                 ogni progetto più di 10 anni di know how, passione e
                 contaminazione internazionale. Noi lo chiamiamo Pensiero
                 Circolare.
-              </p>
-            </section>
-            <section className="metodo_container">
-              <h2 className="">Metodo</h2>
-              <ul>
-                <li className="">
-                  <span>1</span> Riceviamo i need del cliente.
-                </li>
-                <li className="">
-                  <span>2</span> Analizziamo i valori del brand.
-                </li>
-                <li className="">
-                  <span>3</span> Creiamo un concetto.
-                </li>
-              </ul>
-              <p className="fade-in">
-                Sono i tre step con i quali nascono tutti i nostri progetti.
-                <br />
-                L'obiettivo? Dare vita a una strategia di comunicazione
-                completa, innovativa, in grado di offrire forte distintività e
-                generare engagement.
-              </p>
-              <br />
-              <p className="fade-in">
-                Creiamo linguaggi di comunicazione per qualsiasi tipo di
-                progetto, budget, media. Ma il nostro approccio al lavoro è
-                sempre lo stesso: offrire al cliente non un collaboratore, ma un
-                partner con cui condividere una visione. Un’intesa che ci porta
-                a comprendere a fondo gli obiettivi e generare fiducia,
-                massimizzando i risultati.
-              </p>
-              <br />
-              <p className="fade-in">
-                Mettiamo il nostro know-how e la nostra idea di design al
-                servizio di tutti i settori: food &amp; beverage, fashion,
-                technology, manifattura, interior design, istituzioni e
-                organizzazioni culturali.
               </p>
             </section>
           </div>
