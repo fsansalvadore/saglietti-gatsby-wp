@@ -25,7 +25,7 @@ const StudioContent = styled.div`
 
   h1 {
     font-size: 1rem;
-    font-family: "ff-real-headline-pro", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 200;
   }
 
@@ -47,7 +47,7 @@ const StudioContent = styled.div`
   }
 
   .text-lg {
-    font-family: "ff-real-headline-pro", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.6rem;
     font-weight: normal;
     line-height: 120%;
@@ -128,7 +128,7 @@ const StudioContent = styled.div`
       margin-bottom: 15px;
 
       span {
-        font-family: "ff-real-headline-pro", sans-serif;
+        font-family: "Inter", sans-serif;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -289,13 +289,34 @@ const StudioPage = ({ data }) => {
             tutto ciò che conta.
           </p>
         </header>
-        <figure className="w-full aspect-video relative border-t border-b border-black">
-          <img
-            src={page.featuredImage.node.sourceUrl}
-            alt="Studio Saglietti"
-            className="absolute object-cover object-center inset-0 w-full h-full"
-          />
-        </figure>
+        <div className="w-full flex flex-col sm:grid sm:grid-cols-4 p-8 gap-4">
+          <figure className="w-full aspect-video relative border-t border-b border-black">
+            <Img
+              src={page.featuredImage?.node?.sourceUrl}
+              alt="Studio Saglietti"
+              className="absolute object-cover object-center inset-0 w-full h-full"
+            />
+          </figure>
+          <div className="col-span-2 col-start-3">
+            <p className="fade-in">
+              Con la nostra esperienza, sviluppiamo ogni progetto con passione e
+              contaminazione internazionale collaborando con professionisti come
+              strategist, designer, copywriter, sviluppatori e videomakers
+              attenti a realizzare progetti ricercati e unici.
+            </p>
+            <div>
+              <p>Hanno collaborato con noi +</p>
+              <p>
+                Marzia Anania, Gaia Bonessa, Chiara Bourlot, Sofia Calvo, Evan
+                Cigna, Marta Doria, Francesca De Bortoli, Federica Favretti,
+                Rachele Fasoli, Ester Galletto, Gloria Geri, Alessia Leonetti,
+                Erika Lo Bianco, Alessia Mastrorilli, Laura Notarpietro, Elisa
+                Peroglio Carus, Gaia Perenno, Fabrizio Primo, Sara Sartini, Luca
+                Sommadossi, Andrea Vinci, Stefano Vitti
+              </p>
+            </div>
+          </div>
+        </div>
         <section className="metodo_container flex flex-col md:flex-row">
           <div className="w-full md:!w-1/3">
             <h2 className="">Metodo</h2>

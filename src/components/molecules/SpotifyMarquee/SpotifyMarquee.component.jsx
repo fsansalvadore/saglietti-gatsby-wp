@@ -5,7 +5,7 @@
 // const MarqueeContainer = styled.button`
 //   padding: 0;
 //   line-height: 140%;
-//   font-family: "ff-real-text-pro", sans-serif;
+//   font-family: "Inter", sans-serif;
 //   font-size: 1rem;
 //   font-weight: 300;
 //   border: none;

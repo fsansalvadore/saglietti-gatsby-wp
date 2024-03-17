@@ -28,7 +28,7 @@ const ProjectsContainer = styled.div`
 
   h1,
   h2 {
-    font-family: "ff-real-text-pro";
+    font-family: "Inter";
     font-weight: 200;
     font-size: 1rem;
     letter-spacing: 0;
@@ -179,7 +179,7 @@ const ProjectsContainer = styled.div`
         padding-left: 1rem;
 
         .proj_year {
-          font-family: "ff-real-headline-pro", sans-serif !important;
+          font-family: "Inter", sans-serif !important;
           font-size: 1rem;
           min-width: 45px;
           text-align: left;
@@ -196,7 +196,7 @@ const ProjectsContainer = styled.div`
 
           div {
             font-weight: 400;
-            font-family: "ff-real-headline-pro";
+            font-family: "Inter";
             position: relative;
             padding: 0 10px;
 

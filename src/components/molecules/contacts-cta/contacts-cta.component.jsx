@@ -1,8 +1,8 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React from "react"
+import { Link } from "gatsby"
 // import TransitionLink from 'gatsby-plugin-transition-link'
-import styled from 'styled-components'
-import ArrowRightSVG from '../../../images/icons/arrow-right.svg'
+import styled from "styled-components"
+import ArrowRightSVG from "../../../images/icons/arrow-right.svg"
 
 const ContactsComponent = styled.div`
   width: 100%;
@@ -10,7 +10,7 @@ const ContactsComponent = styled.div`
   border-top: 1px solid #000;
 
   a {
-    font-family: 'ff-real-headline-pro-2', sans-serif;
+    font-family: "Inter-2", sans-serif;
     width: 100%;
     float: right;
     display: flex;
@@ -60,9 +60,14 @@ const ContactsComponent = styled.div`
 const ContactsCTA = () => {
   return (
     <ContactsComponent className="contacts-container TextRevealAnim">
-      <Link to="/contatti" className="TextRevealItem">Contattaci <span><img src={ArrowRightSVG} alt=""/></span></Link>
+      <Link to="/contatti" className="TextRevealItem">
+        Contattaci{" "}
+        <span>
+          <img src={ArrowRightSVG} alt="" />
+        </span>
+      </Link>
     </ContactsComponent>
   )
 }
 
-export default ContactsCTA;
+export default ContactsCTA

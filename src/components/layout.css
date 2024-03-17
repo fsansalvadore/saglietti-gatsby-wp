@@ -6,28 +6,15 @@
 }
 
 * {
+  @apply font-sans;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "ff-real-headline-pro-2", sans-serif;
 }
-
-/* @font-face {
-  font-family: 'ff-real-headline-pro-2';
-  src: url('../webFonts/ff-real-headline-pro-2/font.woff2') format('woff2'), url('../webFonts/ff-real-headline-pro-2/font.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'ff-real-headline-pro-2';
-  src: url('../webFonts/ff-real-headline-pro-2/font.woff2') format('woff2'), url('../webFonts/ff-real-headline-pro-2/font.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-} */
 
 html {
   background: #fff;
-  font-family: "ff-real-headline-pro-2", sans-serif;
+  font-family: "Inter", sans-serif;
   overflow: auto !important;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -251,7 +238,7 @@ html {
 }
 body {
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: "ff-real-headline-pro-2", sans-serif;
+  font-family: "Inter-2", sans-serif;
   font-weight: 300;
   word-wrap: break-word;
   font-kerning: normal;
@@ -282,7 +269,7 @@ h1 {
   margin-bottom: 1.45rem;
   color: inherit;
   font-family:
-    "ff-real-headline-pro",
+    "Inter",
     Helvetica Neue,
     sans-serif;
   font-weight: bold;
@@ -301,7 +288,7 @@ h2 {
   margin-bottom: 1.45rem;
   color: inherit;
   font-family:
-    "ff-real-headline-pro",
+    "Inter",
     Helvetica Neue,
     sans-serif;
   text-rendering: optimizeLegibility;
@@ -320,7 +307,7 @@ h3 {
   margin-bottom: 1.45rem;
   color: inherit;
   font-family:
-    "ff-real-headline-pro",
+    "Inter",
     Helvetica Neue,
     sans-serif;
   font-weight: bold;
@@ -339,7 +326,7 @@ h4 {
   margin-bottom: 1.45rem;
   color: inherit;
   font-family:
-    "ff-real-headline-pro",
+    "Inter",
     Helvetica Neue,
     sans-serif;
   font-weight: bold;
@@ -358,7 +345,7 @@ h5 {
   margin-bottom: 1.45rem;
   color: inherit;
   font-family:
-    "ff-real-headline-pro",
+    "Inter",
     Helvetica Neue,
     sans-serif;
   font-weight: bold;
@@ -377,7 +364,7 @@ h6 {
   margin-bottom: 1.45rem;
   color: inherit;
   font-family:
-    "ff-real-headline-pro",
+    "Inter",
     Helvetica Neue,
     sans-serif;
   font-weight: bold;

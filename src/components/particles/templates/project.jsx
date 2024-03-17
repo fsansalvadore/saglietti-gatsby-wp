@@ -43,7 +43,7 @@ const ProjectContainerComponent = styled.div`
       margin-bottom: 1.45rem;
 
       h1 {
-        font-family: "ff-real-text-pro";
+        font-family: "Inter";
         font-weight: 200;
         letter-spacing: 0;
         margin: 0;
@@ -60,7 +60,7 @@ const ProjectContainerComponent = styled.div`
       .proj_details-block {
         width: 25%;
         margin-right: 10px;
-        font-family: "ff-real-headline-pro-2";
+        font-family: "Inter-2";
         font-size: 0.7rem;
         line-height: 1rem;
 
@@ -350,11 +350,7 @@ const ProjectPage = props => {
             {/* <div className="proj_cover-img" style={{backgroundImage: `url(${featuredImage ? featuredImage.node.link : fallbackImg})`}}></div> */}
             {featuredImage ? (
               featuredImage.node.imageFile &&
-              !featuredImage.node.sourceUrl.includes(
-                ".gif",
-              ) ? //   className="proj_cover-img" // <BackgroundImage
-              //   fixed={featuredImage.node.imageFile.childImageSharp.fixed}
-              // />
+              !featuredImage.node.sourceUrl.includes(".gif") ? // /> //   fixed={featuredImage.node.imageFile.childImageSharp.fixed} //   className="proj_cover-img" // <BackgroundImage
               null : (
                 <div
                   className="proj_cover-img"

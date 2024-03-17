@@ -1,32 +1,32 @@
-import React from 'react';
-import styled from 'styled-components'
-import { Link } from 'gatsby'
-import ArrowRightSVG from '../../../images/icons/arrow-right.svg'
+import React from "react"
+import styled from "styled-components"
+import { Link } from "gatsby"
+import ArrowRightSVG from "../../../images/icons/arrow-right.svg"
 
 const StudioCtaContainer = styled.div`
-    padding: 200px 1rem 150px 1rem;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  padding: 200px 1rem 150px 1rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 
-    h3 {
-        font-family: 'ff-real-text-pro';
-        font-weight: normal;
-    }
+  h3 {
+    font-family: "Inter";
+    font-weight: normal;
+  }
+
+  p {
+    font-size: 1.45rem;
+  }
+
+  @media screen and (min-width: 900px) {
+    padding: 300px 10% 250px 10%;
 
     p {
-        font-size: 1.45rem;
+      font-size: 2.35rem;
+      padding-bottom: 1rem;
     }
-
-    @media screen and (min-width: 900px) {
-        padding: 300px 10% 250px 10%;
-
-        p {
-            font-size: 2.35rem;
-            padding-bottom: 1rem;
-        }
-    }
+  }
 `
 
 const LinkComponent = styled.div`
@@ -41,7 +41,7 @@ const LinkComponent = styled.div`
     align-items: flex-end;
     text-decoration: none;
     font-size: 1rem;
-    font-family: 'ff-real-headline-pro-2', sans-serif;
+    font-family: "Inter-2", sans-serif;
     font-weight: 300;
     margin-right: 0;
 
@@ -77,17 +77,23 @@ const LinkComponent = styled.div`
 `
 
 const StudioCTA = () => {
-    return (
-        <StudioCtaContainer className="fade-in">
-            <h3>Studio</h3>
-            <p>
-            Costruiamo linguaggi estetici in grado di trasformare il contatto con l’utente in una narrazione emotiva.
-            </p>
-            <LinkComponent className="contacts-container TextRevealAnim">
-                <Link to="/studio" className="TextRevealItem">Approfondisci <span><img src={ArrowRightSVG} alt=""/></span></Link>
-            </LinkComponent>
-        </StudioCtaContainer>
-    );
-};
+  return (
+    <StudioCtaContainer className="fade-in">
+      <h3>Studio</h3>
+      <p>
+        Costruiamo linguaggi estetici in grado di trasformare il contatto con
+        l’utente in una narrazione emotiva.
+      </p>
+      <LinkComponent className="contacts-container TextRevealAnim">
+        <Link to="/studio" className="TextRevealItem">
+          Approfondisci{" "}
+          <span>
+            <img src={ArrowRightSVG} alt="" />
+          </span>
+        </Link>
+      </LinkComponent>
+    </StudioCtaContainer>
+  )
+}
 
-export default StudioCTA;
+export default StudioCTA

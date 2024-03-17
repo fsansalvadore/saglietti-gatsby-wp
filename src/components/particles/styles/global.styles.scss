@@ -29,6 +29,10 @@ a {
   cursor: pointer !important;
 }
 
+body {
+  @apply font-sans;
+}
+
 p,
 h1,
 h2,
@@ -138,7 +142,7 @@ hr.line {
 
   h1,
   p {
-    font-family: "ff-real-headline-pro-2", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.75rem;
     line-height: 120%;
     font-weight: 300;
