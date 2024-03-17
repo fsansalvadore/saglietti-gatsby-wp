@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import styled from "styled-components"
+import ABOUT_1 from "../../../images/studio/saglietti-about-1.jpeg"
 import AIAP from "../../../images/AIAP-FIRMA-SOCIO-SENIOR.png"
 
 import { gsap } from "gsap"
@@ -8,6 +9,7 @@ import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
 import { TweenLite, TimelineLite } from "gsap/all"
 import CustomEase from "../../particles/vendor/gsap/CustomEase"
 import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 if (typeof window !== `undefined`) {
   gsap.registerPlugin(CustomEase)
@@ -283,18 +285,18 @@ const StudioPage = ({ data }) => {
         <header className="studio_container intro">
           <h1 className="sr-only">Studio Saglietti</h1>
           <p className="fade-in text-lg">
-            Costruiamo brand con idee semplici e rilevanti. Il nostro mantra è
-            l'essenzialità, che applichiamo in ogni parte del progetto: concept,
-            messaggio, design e colore. Perché, eliminando il superfluo, rimanga
-            tutto ciò che conta.
+            Costruiamo <i>brand</i> con idee semplici e rilevanti. Il nostro
+            mantra è l'essenzialità, che applichiamo in ogni parte del progetto:
+            <i>concept</i>, <i>messaggio</i>, <i>design</i> e <i>colore</i>.
+            Perché, eliminando il superfluo, rimanga tutto ciò che conta.
           </p>
         </header>
-        <div className="w-full flex flex-col sm:grid sm:grid-cols-4 p-8 gap-4">
-          <figure className="w-full aspect-video relative border-t border-b border-black">
-            <Img
-              src={page.featuredImage?.node?.sourceUrl}
+        <div className="w-full flex flex-col sm:!grid sm:grid-cols-4 p-4 sm:p-8 gap-4">
+          <figure className="w-full sm:!col-span-2 lg:!col-span-1 h-auto relative border-t border-b border-black">
+            <img
+              src={ABOUT_1}
               alt="Studio Saglietti"
-              className="absolute object-cover object-center inset-0 w-full h-full"
+              className="absolute object-cover object-center inset-0 w-full h-auto"
             />
           </figure>
           <div className="col-span-2 col-start-3">

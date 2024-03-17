@@ -60,7 +60,7 @@ const ProjectContainerComponent = styled.div`
       .proj_details-block {
         width: 25%;
         margin-right: 10px;
-        font-family: "Inter-2";
+        font-family: "Inter";
         font-size: 0.7rem;
         line-height: 1rem;
 
@@ -350,8 +350,7 @@ const ProjectPage = props => {
             {/* <div className="proj_cover-img" style={{backgroundImage: `url(${featuredImage ? featuredImage.node.link : fallbackImg})`}}></div> */}
             {featuredImage ? (
               featuredImage.node.imageFile &&
-              !featuredImage.node.sourceUrl.includes(".gif") ? // /> //   fixed={featuredImage.node.imageFile.childImageSharp.fixed} //   className="proj_cover-img" // <BackgroundImage
-              null : (
+              !featuredImage.node.sourceUrl.includes(".gif") ? null : ( // /> //   fixed={featuredImage.node.imageFile.childImageSharp.fixed} //   className="proj_cover-img" // <BackgroundImage
                 <div
                   className="proj_cover-img"
                   style={{

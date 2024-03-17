@@ -41,7 +41,7 @@ const LinkComponent = styled.div`
     align-items: flex-end;
     text-decoration: none;
     font-size: 1rem;
-    font-family: "Inter-2", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 300;
     margin-right: 0;
 

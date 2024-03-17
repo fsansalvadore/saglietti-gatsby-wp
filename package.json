@@ -30,6 +30,7 @@
     "gatsby-image": "^2.11.0",
     "gatsby-plugin-gdpr-cookies": "github:andrezimpel/gatsby-plugin-gdpr-cookies",
     "gatsby-plugin-google-analytics": "^5.13.0",
+    "gatsby-plugin-image": "^3.13.1",
     "gatsby-plugin-manifest": "^5.13.0",
     "gatsby-plugin-react-helmet": "^6.13.0",
     "gatsby-plugin-sass": "^6.13.0",

@@ -33,6 +33,11 @@ body {
   @apply font-sans;
 }
 
+.text-serif,
+i {
+  @apply font-serif;
+}
+
 p,
 h1,
 h2,
