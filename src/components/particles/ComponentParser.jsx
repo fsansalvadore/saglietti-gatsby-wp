@@ -33,7 +33,7 @@ const ComponentParser = props => {
   if (!content) return null
 
   const filteredComponents = content.filter(
-    component => component.name !== null
+    component => component.name !== null,
   )
 
   if (filteredComponents && filteredComponents.length > 0) {

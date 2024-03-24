@@ -29,6 +29,15 @@ a {
   cursor: pointer !important;
 }
 
+body {
+  @apply font-sans;
+}
+
+.text-serif,
+i {
+  @apply font-serif;
+}
+
 p,
 h1,
 h2,
@@ -138,7 +147,7 @@ hr.line {
 
   h1,
   p {
-    font-family: "ff-real-headline-pro-2", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.75rem;
     line-height: 120%;
     font-weight: 300;
@@ -284,17 +293,3 @@ hr.line {
     }
   }
 }
-
-// body .cooky.react-cookie-banner {
-//   position: fixed !important;
-//   width: 100vw;
-//   background-color: #fff !important;
-
-//   .cookie-message {
-//     color: #000 !important;
-//   }
-
-//   .close-button {
-//     cursor: pointer !important;
-//   }
-// }

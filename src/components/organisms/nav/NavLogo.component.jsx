@@ -1,8 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
-import styled from "styled-components";
-import './nav.styles.scss';
-import AnimatedLogo from "../../atoms/AnimatedLogo/AnimatedLogo.component";
+import styled from "styled-components"
+import "./nav.styles.scss"
+import AnimatedLogo from "../../atoms/AnimatedLogo/AnimatedLogo.component"
 
 const NavLogoLink = styled(Link)`
   width: 100vw;
@@ -15,9 +15,8 @@ const NavLogoLink = styled(Link)`
   align-items: center;
   pointer-events: none;
   mix-blend-mode: difference;
-  
+
   .logo_link {
-    
   }
 
   @media screen and (min-width: 900px) {
@@ -26,14 +25,13 @@ const NavLogoLink = styled(Link)`
 `
 
 const NavLogo = () => {
-  
   return (
-      <NavLogoLink to="/" style={{display: "flex", alignItems: "center"}}>
-        <div className="logo_link">
-            <AnimatedLogo/>
-        </div>
-      </NavLogoLink>
+    <NavLogoLink to="/" style={{ display: "flex", alignItems: "center" }}>
+      <div className="logo_link">
+        <AnimatedLogo />
+      </div>
+    </NavLogoLink>
   )
 }
 
-export default NavLogo;
+export default NavLogo

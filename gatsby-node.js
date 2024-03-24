@@ -1,6 +1,19 @@
 const path = require(`path`)
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        "@components": path.resolve(__dirname, "src/components"),
+        "@images": path.resolve(__dirname, "src/images"),
+        "@pages": path.resolve(__dirname, "src/pages"),
+        "@styles": path.resolve(__dirname, "src/styles"),
+      },
+    },
+  })
+}
+
 const mediaFields = `
   sourceUrl
   altText
@@ -233,7 +246,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     actions.createPage({
       path: `/progetti/${project.slug}`,
       component: path.resolve(
-        `./src/components/particles/templates/project.jsx`
+        `./src/components/particles/templates/project.jsx`,
       ),
       context: {
         ...project,
@@ -243,10 +256,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             a.date < b.date
               ? 1
               : a.date === b.date
-              ? a.title > b.title
-                ? 1
-                : -1
-              : -1
+                ? a.title > b.title
+                  ? 1
+                  : -1
+                : -1,
           )
           .indexOf(project),
         blocks: project.blocks,

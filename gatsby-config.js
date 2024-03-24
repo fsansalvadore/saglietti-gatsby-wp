@@ -82,6 +82,7 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
+    "gatsby-plugin-postcss",
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-sitemap`,
@@ -157,8 +158,5 @@ module.exports = {
         // crossOrigin: `use-credentials`,
       },
     },
-    // // this (optional) plugin enables Progressive Web App + Offline functionality
-    // // To learn more, visit: https://gatsby.dev/offline
-    // 'gatsby-plugin-offline'
   ],
 }

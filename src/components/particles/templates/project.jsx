@@ -9,7 +9,7 @@ import ComponentParser from "../ComponentParser"
 import fallbackImg from "../../../images/fallback.png"
 import PrevNextProject from "../../molecules/prev-next-project/prev-next-project.component"
 import TextRevealAnimation from "../hooks/animationTextReveal"
-import BackgroundImage from "gatsby-background-image"
+// import BackgroundImage from "gatsby-background-image"
 
 import { gsap } from "gsap"
 import { TweenLite, TimelineLite } from "gsap/all"
@@ -43,7 +43,7 @@ const ProjectContainerComponent = styled.div`
       margin-bottom: 1.45rem;
 
       h1 {
-        font-family: "ff-real-text-pro";
+        font-family: "Inter";
         font-weight: 200;
         letter-spacing: 0;
         margin: 0;
@@ -60,7 +60,7 @@ const ProjectContainerComponent = styled.div`
       .proj_details-block {
         width: 25%;
         margin-right: 10px;
-        font-family: "ff-real-headline-pro-2";
+        font-family: "Inter";
         font-size: 0.7rem;
         line-height: 1rem;
 
@@ -187,10 +187,10 @@ const ProjectPage = props => {
       a.date < b.date
         ? 1
         : a.date === b.date
-        ? a.title > b.title
-          ? 1
-          : -1
-        : -1
+          ? a.title > b.title
+            ? 1
+            : -1
+          : -1,
     )
   const postLength = sortedProjects.length
   if (index === postLength - 1) {
@@ -232,9 +232,9 @@ const ProjectPage = props => {
               opacity: 1,
               ease: CustomEase.create(
                 "custom",
-                "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1"
+                "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1",
               ),
-            }
+            },
           )
 
           new ScrollMagic.Scene({
@@ -314,7 +314,7 @@ const ProjectPage = props => {
                       {custom_post_type_Project.ambiti.map(ambito => (
                         <li
                           key={`${ambito}-${Math.floor(
-                            Math.random() * (100 - 999) + 100
+                            Math.random() * (100 - 999) + 100,
                           )}`}
                         >
                           {ambito}
@@ -350,12 +350,7 @@ const ProjectPage = props => {
             {/* <div className="proj_cover-img" style={{backgroundImage: `url(${featuredImage ? featuredImage.node.link : fallbackImg})`}}></div> */}
             {featuredImage ? (
               featuredImage.node.imageFile &&
-              !featuredImage.node.sourceUrl.includes(".gif") ? (
-                <BackgroundImage
-                  className="proj_cover-img"
-                  fixed={featuredImage.node.imageFile.childImageSharp.fixed}
-                />
-              ) : (
+              !featuredImage.node.sourceUrl.includes(".gif") ? null : ( // /> //   fixed={featuredImage.node.imageFile.childImageSharp.fixed} //   className="proj_cover-img" // <BackgroundImage
                 <div
                   className="proj_cover-img"
                   style={{

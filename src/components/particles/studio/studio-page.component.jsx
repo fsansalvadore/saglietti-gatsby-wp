@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import styled from "styled-components"
+import ABOUT_1 from "../../../images/studio/saglietti-about-1.jpeg"
 import AIAP from "../../../images/AIAP-FIRMA-SOCIO-SENIOR.png"
 
 import { gsap } from "gsap"
@@ -7,6 +8,8 @@ import * as ScrollMagic from "scrollmagic-with-ssr" // Or use scrollmagic-with-s
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
 import { TweenLite, TimelineLite } from "gsap/all"
 import CustomEase from "../../particles/vendor/gsap/CustomEase"
+import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 if (typeof window !== `undefined`) {
   gsap.registerPlugin(CustomEase)
@@ -24,7 +27,7 @@ const StudioContent = styled.div`
 
   h1 {
     font-size: 1rem;
-    font-family: "ff-real-headline-pro", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 200;
   }
 
@@ -46,7 +49,7 @@ const StudioContent = styled.div`
   }
 
   .text-lg {
-    font-family: "ff-real-headline-pro", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.6rem;
     font-weight: normal;
     line-height: 120%;
@@ -107,14 +110,6 @@ const StudioContent = styled.div`
   }
 
   .metodo_container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-
-    & > div {
-      width: 100%;
-    }
-
     h2 {
       font-size: 0.8rem;
       font-weight: bold;
@@ -135,7 +130,7 @@ const StudioContent = styled.div`
       margin-bottom: 15px;
 
       span {
-        font-family: "ff-real-headline-pro", sans-serif;
+        font-family: "Inter", sans-serif;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -245,6 +240,8 @@ const StudioContent = styled.div`
 `
 
 const StudioPage = ({ data }) => {
+  console.log("data", data)
+  const page = data.wordpress.pages.nodes.find(page => page.slug === "studio")
   useEffect(() => {
     if (typeof window !== `undefined`) {
       const fadeInController = new ScrollMagic.Controller()
@@ -264,9 +261,9 @@ const StudioPage = ({ data }) => {
               y: 0,
               ease: CustomEase.create(
                 "custom",
-                "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1"
+                "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1",
               ),
-            }
+            },
           )
 
           new ScrollMagic.Scene({
@@ -284,15 +281,85 @@ const StudioPage = ({ data }) => {
 
   return (
     <>
-      <StudioContent>
+      <StudioContent className="bg-[#F3E1C2]">
         <header className="studio_container intro">
+          <h1 className="sr-only">Studio Saglietti</h1>
           <p className="fade-in text-lg">
-            Costruiamo i brand con idee semplici e rilevanti. Il nostro mantra è
-            l’essenzialità. La applichiamo in ogni parte del progetto: concept,
-            messaggio, design, colore. Perché eliminando il superfluo, rimanga
-            tutto ciò che conta.
+            Costruiamo <i>brand</i> con idee semplici e rilevanti. Il nostro
+            mantra è l'essenzialità, che applichiamo in ogni parte del progetto:
+            <i>concept</i>, <i>messaggio</i>, <i>design</i> e <i>colore</i>.
+            Perché, eliminando il superfluo, rimanga tutto ciò che conta.
           </p>
         </header>
+        <div className="w-full flex flex-col sm:!grid sm:grid-cols-4 p-4 sm:p-8 gap-4">
+          <figure className="w-full sm:!col-span-2 lg:!col-span-1 h-auto relative border-t border-b border-black">
+            <img
+              src={ABOUT_1}
+              alt="Studio Saglietti"
+              className="absolute object-cover object-center inset-0 w-full h-auto"
+            />
+          </figure>
+          <div className="col-span-2 col-start-3">
+            <p className="fade-in">
+              Con la nostra esperienza, sviluppiamo ogni progetto con passione e
+              contaminazione internazionale collaborando con professionisti come
+              strategist, designer, copywriter, sviluppatori e videomakers
+              attenti a realizzare progetti ricercati e unici.
+            </p>
+            <div>
+              <p>Hanno collaborato con noi +</p>
+              <p>
+                Marzia Anania, Gaia Bonessa, Chiara Bourlot, Sofia Calvo, Evan
+                Cigna, Marta Doria, Francesca De Bortoli, Federica Favretti,
+                Rachele Fasoli, Ester Galletto, Gloria Geri, Alessia Leonetti,
+                Erika Lo Bianco, Alessia Mastrorilli, Laura Notarpietro, Elisa
+                Peroglio Carus, Gaia Perenno, Fabrizio Primo, Sara Sartini, Luca
+                Sommadossi, Andrea Vinci, Stefano Vitti
+              </p>
+            </div>
+          </div>
+        </div>
+        <section className="metodo_container flex flex-col md:flex-row">
+          <div className="w-full md:!w-1/3">
+            <h2 className="">Metodo</h2>
+          </div>
+          <div className="w-full md:flex-1 flex flex-col">
+            <ul>
+              <li className="">
+                <span>1</span> Riceviamo i need del cliente.
+              </li>
+              <li className="">
+                <span>2</span> Analizziamo i valori del brand.
+              </li>
+              <li className="">
+                <span>3</span> Creiamo un concetto.
+              </li>
+            </ul>
+            <p className="fade-in">
+              Sono i tre step con i quali nascono tutti i nostri progetti.
+              <br />
+              L'obiettivo? Dare vita a una strategia di comunicazione completa,
+              innovativa, in grado di offrire forte distintività e generare
+              engagement.
+            </p>
+            <br />
+            <p className="fade-in">
+              Creiamo linguaggi di comunicazione per qualsiasi tipo di progetto,
+              budget, media. Ma il nostro approccio al lavoro è sempre lo
+              stesso: offrire al cliente non un collaboratore, ma un partner con
+              cui condividere una visione. Un’intesa che ci porta a comprendere
+              a fondo gli obiettivi e generare fiducia, massimizzando i
+              risultati.
+            </p>
+            <br />
+            <p className="fade-in">
+              Mettiamo il nostro know-how e la nostra idea di design al servizio
+              di tutti i settori: food &amp; beverage, fashion, technology,
+              manifattura, interior design, istituzioni e organizzazioni
+              culturali.
+            </p>
+          </div>
+        </section>
         <div className="studio_content-container">
           <div className="studio_content-left">
             <section className="filosofia_container">
@@ -305,43 +372,6 @@ const StudioPage = ({ data }) => {
                 ogni progetto più di 10 anni di know how, passione e
                 contaminazione internazionale. Noi lo chiamiamo Pensiero
                 Circolare.
-              </p>
-            </section>
-            <section className="metodo_container">
-              <h2 className="">Metodo</h2>
-              <ul>
-                <li className="">
-                  <span>1</span> Riceviamo i need del cliente.
-                </li>
-                <li className="">
-                  <span>2</span> Analizziamo i valori del brand.
-                </li>
-                <li className="">
-                  <span>3</span> Creiamo un concetto.
-                </li>
-              </ul>
-              <p className="fade-in">
-                Sono i tre step con i quali nascono tutti i nostri progetti.
-                <br />
-                L'obiettivo? Dare vita a una strategia di comunicazione
-                completa, innovativa, in grado di offrire forte distintività e
-                generare engagement.
-              </p>
-              <br />
-              <p className="fade-in">
-                Creiamo linguaggi di comunicazione per qualsiasi tipo di
-                progetto, budget, media. Ma il nostro approccio al lavoro è
-                sempre lo stesso: offrire al cliente non un collaboratore, ma un
-                partner con cui condividere una visione. Un’intesa che ci porta
-                a comprendere a fondo gli obiettivi e generare fiducia,
-                massimizzando i risultati.
-              </p>
-              <br />
-              <p className="fade-in">
-                Mettiamo il nostro know-how e la nostra idea di design al
-                servizio di tutti i settori: food &amp; beverage, fashion,
-                technology, manifattura, interior design, istituzioni e
-                organizzazioni culturali.
               </p>
             </section>
           </div>
@@ -384,7 +414,7 @@ const StudioPage = ({ data }) => {
             {data.wordpress.clients.nodes.map(client => (
               <li
                 key={`${client.title}-${Math.floor(
-                  Math.random() * (100 - 999) + 100
+                  Math.random() * (100 - 999) + 100,
                 )}`}
               >
                 <span className="">

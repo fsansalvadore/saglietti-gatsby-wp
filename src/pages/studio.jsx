@@ -19,6 +19,16 @@ const Studio = ({ data }) => (
 export const query = graphql`
   query StudioQuery {
     wordpress {
+      pages {
+        nodes {
+          slug
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
+        }
+      }
       clients {
         nodes {
           id
