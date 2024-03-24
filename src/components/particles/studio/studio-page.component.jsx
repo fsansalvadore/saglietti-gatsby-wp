@@ -299,16 +299,17 @@ const StudioPage = ({ data }) => {
               className="absolute object-cover object-center inset-0 w-full h-auto"
             />
           </figure>
-          <div className="col-span-2 col-start-3">
+          <div className="flex flex-col gap-4 col-span-2 col-start-3">
             <p className="fade-in">
               Con la nostra esperienza, sviluppiamo ogni progetto con passione e
               contaminazione internazionale collaborando con professionisti come
-              strategist, designer, copywriter, sviluppatori e videomakers
-              attenti a realizzare progetti ricercati e unici.
+              <i>strategist</i>, <i>designer</i>, <i>copywriter</i>,{" "}
+              <i>sviluppatori</i> e <i>videomakers</i> attenti a realizzare
+              progetti ricercati e unici.
             </p>
-            <div>
-              <p>Hanno collaborato con noi +</p>
-              <p>
+            <div className="flex flex-col gap-2">
+              <p className="font-bold">Hanno collaborato con noi +</p>
+              <p className="text-sm">
                 Marzia Anania, Gaia Bonessa, Chiara Bourlot, Sofia Calvo, Evan
                 Cigna, Marta Doria, Francesca De Bortoli, Federica Favretti,
                 Rachele Fasoli, Ester Galletto, Gloria Geri, Alessia Leonetti,
