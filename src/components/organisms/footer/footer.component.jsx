@@ -10,7 +10,6 @@ const FooterComponent = styled.footer`
   padding: 50px 1rem;
   display: flex;
   flex-direction: column;
-  border-top: 1px solid var(--line-color);
   text-align: center;
   align-items: center;
 
@@ -98,7 +97,7 @@ const FooterComponent = styled.footer`
 
 const Footer = () => {
   return (
-    <FooterComponent>
+    <FooterComponent className="mt-8">
       <div className="footer-logo">
         <img src={Logo} alt="Saglietti" />
       </div>
