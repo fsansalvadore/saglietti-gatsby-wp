@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Reveal from "react-awesome-reveal"
+import { Fade } from "react-awesome-reveal"
 
 const StyledImageContainer = styled.figure`
   position: relative;
@@ -27,12 +27,12 @@ const SingleImage = ({ attributes }) => {
       size={attributes.className ? attributes.className : ""}
       align={attributes.align ? attributes.align : ""}
     >
-      <Reveal effect="anim_enter">
+      <Fade triggerOnce>
         <img src={attributes.url} alt={attributes.alt ? attributes.alt : ""} />
         {attributes.caption && attributes.caption.length > 0 && (
           <figcaption>{attributes.caption}</figcaption>
         )}
-      </Reveal>
+      </Fade>
     </StyledImageContainer>
   )
 }

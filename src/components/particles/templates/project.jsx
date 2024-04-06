@@ -9,7 +9,12 @@ import ComponentParser from "../ComponentParser"
 import fallbackImg from "../../../images/fallback.png"
 import PrevNextProject from "../../molecules/prev-next-project/prev-next-project.component"
 import TextRevealAnimation from "../hooks/animationTextReveal"
-// import BackgroundImage from "gatsby-background-image"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../../Accordion"
 
 import { gsap } from "gsap"
 import { TweenLite, TimelineLite } from "gsap/all"
@@ -25,8 +30,8 @@ if (typeof window !== `undefined`) {
 const ProjectContainerComponent = styled.div`
   position: relative;
   width: 100%;
-  min-height: 90vh;
-  min-height: ${props => (props.vh ? `calc(var(--vh, 1vh) * 100)` : "90vh")};
+  /* min-height: 90vh;
+  min-height: ${props => (props.vh ? `calc(var(--vh, 1vh) * 100)` : "90vh")}; */
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #000;
@@ -34,8 +39,9 @@ const ProjectContainerComponent = styled.div`
   .proj_info-container {
     position: relative;
     top: 0;
-    height: calc(var(--vh, 1vh) * 100);
-    min-height: calc(var(--vh, 1vh) * 100);
+    height: 100%;
+    /* height: calc(var(--vh, 1vh) * 100); */
+    /* min-height: calc(var(--vh, 1vh) * 100); */
     width: 100vw;
     padding: 1.45rem 2rem;
 
@@ -293,56 +299,62 @@ const ProjectPage = props => {
         />
       </Helmet>
       <ProjectContainerComponent vh={vh}>
-        <div className="proj_info-container flex align-center">
-          <div className="proj_info-block">
-            <TextRevealAnimation addClass="title">
-              <h1 className="TextRevealItem">{title}</h1>
-            </TextRevealAnimation>
-            <div className="proj_details-container fade-in">
-              {custom_post_type_Project.anno &&
-                custom_post_type_Project.anno.length !== null && (
-                  <div className="proj_details-block">
-                    <h2>Anno</h2>
-                    <p>{custom_post_type_Project.anno}</p>
+        <div className="proj_info-container !pt-[110px]">
+          <div className="proj_info-block flex-1">
+            <Accordion type="single" collapsible>
+              <AccordionItem value="title" className="w-full">
+                <AccordionTrigger className="justify-between">
+                  <h1 className="text-left text-xl m-0">{title}</h1>
+                </AccordionTrigger>
+                <AccordionContent className="!text-sm">
+                  <div className="flex flex-col gap-2 fade-in mt-4">
+                    {custom_post_type_Project.anno &&
+                      custom_post_type_Project.anno.length !== null && (
+                        <div className="proj_details-block">
+                          <h2 className="!m-0">Anno</h2>
+                          <p>{custom_post_type_Project.anno}</p>
+                        </div>
+                      )}
+                    {custom_post_type_Project.ambiti &&
+                      custom_post_type_Project.ambiti.length > 0 && (
+                        <div className="proj_details-block">
+                          <h2 className="!m-0">Ambiti</h2>
+                          <ul className="!m-0">
+                            {custom_post_type_Project.ambiti.map(ambito => (
+                              <li
+                                key={`${ambito}-${Math.floor(
+                                  Math.random() * (100 - 999) + 100,
+                                )}`}
+                              >
+                                {ambito}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    {custom_post_type_Project.credits &&
+                      custom_post_type_Project.credits.length > 0 && (
+                        <div className="proj_details-block">
+                          <h2 className="!m-0">Credits</h2>
+                          <p
+                            dangerouslySetInnerHTML={{
+                              __html: custom_post_type_Project.credits,
+                            }}
+                          />
+                        </div>
+                      )}
                   </div>
-                )}
-              {custom_post_type_Project.ambiti &&
-                custom_post_type_Project.ambiti.length > 0 && (
-                  <div className="proj_details-block">
-                    <h2>Ambiti</h2>
-                    <ul>
-                      {custom_post_type_Project.ambiti.map(ambito => (
-                        <li
-                          key={`${ambito}-${Math.floor(
-                            Math.random() * (100 - 999) + 100,
-                          )}`}
-                        >
-                          {ambito}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              {custom_post_type_Project.credits &&
-                custom_post_type_Project.credits.length > 0 && (
-                  <div className="proj_details-block">
-                    <h2>Credits</h2>
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: custom_post_type_Project.credits,
-                      }}
-                    />
-                  </div>
-                )}
-            </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
-          <div className="proj_breadbrumbs">
+          {/* <div className="proj_breadbrumbs">
             <Link to="/">Home</Link>
             <ArrowRight />
             <Link to="/progetti/">Progetti</Link>
             <ArrowRight />
             <span>{title}</span>
-          </div>
+          </div> */}
         </div>
         <VerticalLine style={{ left: "40%" }} className="vertical_line" />
         <div className="proj_content-container">

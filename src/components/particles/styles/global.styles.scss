@@ -208,30 +208,30 @@ hr.line {
   }
 }
 
-@media (max-width: 1200px) {
-  .flex {
-    flex-direction: column;
-    justify-content: center;
-  }
-}
+// @media (max-width: 1200px) {
+//   .flex {
+//     flex-direction: column;
+//     justify-content: center;
+//   }
+// }
 
-.proj_content-container .react-reveal.anim_enter {
-  animation-name: animEnter;
-  animation-fill-mode: forwards;
-  animation-duration: 0.5s;
-  animation-delay: 0.3s;
-}
+// .proj_content-container .react-reveal.anim_enter {
+//   animation-name: animEnter;
+//   animation-fill-mode: forwards;
+//   animation-duration: 0.5s;
+//   animation-delay: 0.3s;
+// }
 
-@keyframes animEnter {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 30px, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0px, 0);
-  }
-}
+// @keyframes animEnter {
+//   0% {
+//     opacity: 0;
+//     transform: translate3d(0, 30px, 0);
+//   }
+//   100% {
+//     opacity: 1;
+//     transform: translate3d(0, 0px, 0);
+//   }
+// }
 
 @keyframes fadeIn {
   0% {
