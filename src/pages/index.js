@@ -21,7 +21,6 @@ const ContactsCTA = loadable(
 )
 
 const IndexPage = ({ data }) => {
-  console.log("data index", data)
   return (
     <Layout>
       <Helmet>

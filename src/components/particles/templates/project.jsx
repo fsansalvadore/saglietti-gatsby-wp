@@ -186,7 +186,7 @@ const ProjectPage = props => {
   const { data } = props
   let prevPost = null
   let nextPost = null
-  console.log("seo", seo)
+
   const sortedProjects = data.wordpress.projects.nodes
     .filter(p => p.custom_post_type_Project.visitabile === true)
     .sort((a, b) =>
