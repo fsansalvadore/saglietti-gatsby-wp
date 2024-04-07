@@ -52,10 +52,6 @@ const MenuInfo = styled.div`
     margin: 0;
   }
 
-  div {
-    margin-top: 15px;
-  }
-
   .privacy-link a {
     font-size: 0.8rem;
   }
@@ -89,7 +85,9 @@ const Menu = ({ isOpen }) => {
           <p>
             Saglietti. Branding — Digital
             <br />
-            Corso Regio Parco, 36 — 10153 Torino, Italia
+            IT 10153 Torino TO
+            <br />
+            Corso Regio Parco 36C
             <br />
             <a
               href="https://www.google.com/maps/place/Saglietti+-+Studio+di+comunicazione+in+Torino/@45.0749314,7.6876913,16z/data=!4m5!3m4!1s0x47886d307559cf33:0xd92845c3e894e287!8m2!3d45.0758792!4d7.695027"
@@ -102,14 +100,14 @@ const Menu = ({ isOpen }) => {
         </div>
         <div className="no-mobile">
           <p>
-            info@saglietti.it
+            <a href="mailto:info@saglietti.it">info@saglietti.it</a>
             <br />
-            P.I 03391740044
+            VAT 03391740044
             <br />
             Copyright © {new Date().getFullYear()} Saglietti
           </p>
         </div>
-        <div className="footer-info">
+        <div>
           <SocialIcons />
         </div>
       </MenuInfo>
