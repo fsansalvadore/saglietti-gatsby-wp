@@ -12,14 +12,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.block {
-  text-transform: lowercase;
-  padding: 0 4rem 20vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .block__title {
   position: relative;
   font-size: 1rem;

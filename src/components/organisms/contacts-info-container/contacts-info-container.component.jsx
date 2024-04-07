@@ -1,54 +1,24 @@
 import React from "react"
-import ContactForm from "../contact-form/contact-form.component"
 
 const ContactsInfoContainer = () => {
   return (
-    <div className="header-left contacts-container">
-      <div className="header-text-center flex align-center h-screen">
-        <div className="flex">
-          <div className="text-block half">
-            <h2>New Business.</h2>
-            <p>
-              Ogni nuovo progetto lancia una sfida. La tua qual è?
-              <br />
-              Siamo pronti ad ascoltare le tue esigenze e quelle del tuo brand.
-              <br />
-              Sarà un piacere incontrarti.
-            </p>
-            <a
-              href="mailto:alessandro@saglietti.it"
-              target="_blank"
-              rel="noreferrer"
-              className="tw-block tw-mb-20"
-            >
-              alessandro@saglietti.it
-            </a>
-            <a
-              href="mailto:alessandrosaglietti@pec.it"
-              target="_blank"
-              rel="noreferrer"
-              className="tw-block tw-mb-20"
-            >
-              alessandrosaglietti@pec.it
-            </a>
-          </div>
-          <div className="text-block half">
-            <h2>Internship.</h2>
-            <p>
-              Mandaci il tuo portfolio insieme a una breve presentazione.
-              <br />
-              Ti ricontatteremo appena possibile. Al momento l'organico è al
-              completo.
-            </p>
+    <div className="header-left border-b lg:border-b-0 lg:border-r">
+      <div className="w-full h-full p-4 sm:p-8 flex flex-col gap-8">
+        <div className="flex-1">
+          <p className="text-4xl lg:text-5xl">
+            Vuoi contattarci o <i>lavorare insieme</i> al tuo progetto?
+            <br />
+            <i>Scrivici!</i>
+          </p>
+        </div>
+        <div className="text-block">
+          <p>
+            Per tirocini curricolari o stage invia CV e portfolio a{" "}
             <a href="mailto:info@saglietti.it" target="_blank" rel="noreferrer">
               info@saglietti.it
             </a>
-          </div>
+          </p>
         </div>
-      </div>
-      <hr className="line" />
-      <div className="header-text-center flex align-center h-screen">
-        <ContactForm />
       </div>
     </div>
   )

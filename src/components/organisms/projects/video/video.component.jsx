@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Reveal from "react-awesome-reveal"
+import { Fade } from "react-awesome-reveal"
 
 const StyledVideoContainer = styled.figure`
   position: relative;
@@ -30,7 +30,7 @@ const VideoBlock = ({ attributes }) => {
       size={attributes.className ? attributes.className : ""}
       align={attributes.align ? attributes.align : ""}
     >
-      <Reveal effect="anim_enter">
+      <Fade triggerOnce>
         <video
           width="900"
           playsInline={attributes.playsInline}
@@ -44,7 +44,7 @@ const VideoBlock = ({ attributes }) => {
           <track src={attributes.caption} kind="subtitles" srcLang="no" />
           Your browser does not support HTML video.
         </video>
-      </Reveal>
+      </Fade>
     </StyledVideoContainer>
   )
 }

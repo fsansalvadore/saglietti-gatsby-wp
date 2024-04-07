@@ -97,7 +97,7 @@ const FooterComponent = styled.footer`
 
 const Footer = () => {
   return (
-    <FooterComponent className="mt-8">
+    <FooterComponent>
       <div className="footer-logo">
         <img src={Logo} alt="Saglietti" />
       </div>

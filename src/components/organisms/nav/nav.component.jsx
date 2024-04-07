@@ -8,6 +8,7 @@ import "./nav.styles.scss"
 const Navbar = styled.div`
   width: 100vw;
   height: 100px;
+  top: 0;
   position: fixed;
   z-index: 998;
   padding: 1.45rem 1rem;
@@ -15,9 +16,6 @@ const Navbar = styled.div`
   justify-content: flex-end;
   align-items: center;
   pointer-events: none;
-
-  .logo_link {
-  }
 
   @media screen and (min-width: 900px) {
     padding: 1.45rem 2rem;

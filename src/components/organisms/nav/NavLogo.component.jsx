@@ -8,6 +8,7 @@ const NavLogoLink = styled(Link)`
   width: 100vw;
   height: 100px;
   position: fixed;
+  top: 0;
   z-index: 998;
   padding: 1.45rem 1rem;
   display: flex;

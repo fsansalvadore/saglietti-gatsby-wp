@@ -4,9 +4,6 @@ import { Input, Checkbox } from "antd"
 import styled from "styled-components"
 import { motion } from "framer-motion"
 import FormErrorComponent from "../../atoms/form-error.component"
-import { ArrowRight } from "lucide-react"
-
-const { TextArea } = Input
 
 const ContactFormContainer = styled.div`
   position: relative;
@@ -20,19 +17,14 @@ const ContactFormContainer = styled.div`
   form,
   input,
   textarea,
-  .MuiFormControl-root,
-  .ant-input {
-    @apply !border-0 !p-4 md:!px-8 lg:!px-4 !border-b !border-black !rounded-0 !placeholder-black;
+  .MuiFormControl-root {
     width: 100% !important;
-    flex: 1;
   }
 
   .MuiInputBase-input,
   .MuiInput-input,
   .MuiFormLabel-root,
-  p,
-  .ant-input {
-    @apply !rounded-0 !placeholder-black;
+  p {
     color: #000;
     font-size: 0.75rem !important;
     font-weight: 800;
@@ -73,9 +65,33 @@ const ContactFormContainer = styled.div`
     -webkit-box-shadow: 0 0 0 30px white inset !important;
   }
 
+  .form-disclaimer {
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 40px;
+
+    p {
+      margin: 0 0 2px 0;
+    }
+
+    .privacy-check {
+      display: flex;
+      align-items: center;
+    }
+
+    .required-label {
+      text-align: right;
+    }
+  }
+
   button {
+    float: right;
     font-weight: 800;
     letter-spacing: 0.02rem;
+    background: #000;
+    color: #fff;
     padding: 10px 20px;
     border: none;
     box-shadow: none;
@@ -102,7 +118,7 @@ class ContactForm extends React.Component {
       name: "",
       email: "",
       message: "",
-      btn: "Invia",
+      btn: "Invia messaggio",
       feedback: "",
       loading: false,
     }
@@ -145,13 +161,13 @@ class ContactForm extends React.Component {
     const { name, email, message, btn, feedback, loading } = this.state
 
     return (
-      <ContactFormContainer className="h-full">
+      <ContactFormContainer>
+        <h2>Lasciaci un messaggio</h2>
         <form
           onSubmit={this.handleSubmit}
           name="contact"
           method="POST"
           data-netlify="true"
-          className="h-full flex flex-col !m-0"
         >
           <input
             type="hidden"
@@ -164,63 +180,58 @@ class ContactForm extends React.Component {
           <Input
             type="email"
             label="Email"
-            placeholder="Email"
             name="email"
             value={email}
             required
-            style={{ borderRadius: 0 }}
             onChange={this.handleChange}
-            className="!border-0 !p-4 md:!px-8 lg:!px-4 !border-b !border-black !rounded-0 !placeholder-black"
           />
+
+          <br />
+          <br />
+
           <Input
-            className="!border-0 !p-4 md:!px-8 lg:!px-4 !border-b !border-black !rounded-0 !placeholder-black"
             type="text"
             label="Nome"
-            placeholder="Nome"
             name="name"
-            style={{ borderRadius: 0 }}
             value={name}
             required
             onChange={this.handleChange}
           />
-          <TextArea
+
+          <br />
+          <br />
+
+          <Input
             label="Messaggio"
-            placeholder="Messaggio"
             name="message"
             value={message}
-            style={{ borderRadius: 0 }}
             required
-            rows={4}
-            maxLength={900}
             onChange={this.handleChange}
-            className="!flex-2 !border-0 !p-4 md:!px-8 lg:!px-4 !border-b !border-black !rounded-0 !placeholder-black"
-          />
-          <div className="p-4 md:!px-8 lg:!px-4">
-            <div className="flex items-center gap-2 !text-xs">
+          ></Input>
+          <div className="form-disclaimer">
+            <div className="privacy-check">
               <Checkbox
                 value="checkedA"
                 required
                 inputProps={{ "aria-label": "Checkbox A" }}
               />{" "}
-              Ho letto e accettato l'
-              <Link to="/privacy" className="underline">
-                informativa sulla privacy
-              </Link>
-              .
+              <p>
+                Ho letto e accettato l’
+                <Link to="/privacy">informativa sulla privacy</Link>.*
+              </p>
             </div>
-            {/* <div className="required-label">
+            <div className="required-label">
               <p>* Campi obbligatori</p>
-            </div> */}
+            </div>
           </div>
-          <button
-            type="submit"
-            className="flex-1 hover:!bg-black hover:!text-white transition-colors flex items-center gap-2 !border-0 !border-solid !border-t border-black !p-4 md:!px-8 lg:!px-4 "
-          >
+
+          <br />
+          <br />
+          <button type="submit">
             {
               // check if loading or success
               loading ? "loading" : btn
             }
-            <ArrowRight className="w-3 h-3" />
           </button>
         </form>
 

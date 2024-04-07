@@ -1,7 +1,7 @@
 // Variables
 
 $tablet-width: 768px;
-$desktop-width: 900px;
+$desktop-width: 1024px;
 
 @mixin mobile {
   @media (max-width: #{$tablet-width - 1px}) {
@@ -23,6 +23,7 @@ $desktop-width: 900px;
 
 * {
   cursor: auto;
+  @apply border-black;
 }
 
 a {
@@ -30,7 +31,7 @@ a {
 }
 
 body {
-  @apply font-sans;
+  @apply font-sans font-medium;
 }
 
 .text-serif,
@@ -59,29 +60,21 @@ span {
 .header-container {
   position: relative;
   width: 100%;
-  height: auto;
-  min-height: calc(var(--vh, 1vh) * 200);
-  display: flex;
-  flex-direction: column;
 
   .header-left {
     position: relative;
     width: 100vw;
-    float: none;
-    height: calc(var(--vh, 1vh) * 200);
   }
 
   .header-right {
     position: relative;
     width: 100vw;
-    height: 100vh;
-    float: none;
 
     &.sticky {
       position: relative;
       top: 0;
 
-      @media (min-width: 900px) {
+      @media (min-width: 1024px) {
         position: sticky;
       }
     }
@@ -119,14 +112,6 @@ span {
       }
     }
   }
-
-  @media (max-width: 900px) {
-    min-height: 190vh;
-
-    .header-left {
-      height: 200vh;
-    }
-  }
 }
 
 .tl-edges {
@@ -156,13 +141,7 @@ hr.line {
   }
 }
 
-.contacts-container {
-  .header-text-center p {
-    line-height: 130%;
-  }
-}
-
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .header-text-center {
     h1,
     p {
@@ -270,7 +249,7 @@ hr.line {
 .vertical_line {
   display: none;
 }
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .vertical_line {
     display: block;
   }
@@ -284,12 +263,10 @@ hr.line {
 
     .header-left {
       width: 60%;
-      float: left;
     }
 
     .header-right {
       width: 40%;
-      float: right;
     }
   }
 }

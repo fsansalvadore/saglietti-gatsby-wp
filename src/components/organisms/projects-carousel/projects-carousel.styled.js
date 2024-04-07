@@ -4,8 +4,20 @@ const ProjectsCarouselStyled = styled.div`
   position: sticky;
   top: 0;
   width: 100%;
-  height: 40vh;
-  float: none;
+  height: 100vh;
+
+  .slider-container,
+  .slick-list,
+  .slick-track,
+  .slick-slider {
+    height: 100%;
+  }
+  .slick-dots {
+    bottom: 25px;
+  }
+  .slick-dots li button:before {
+    color: white;
+  }
 
   .carousel-top {
     position: relative;
@@ -102,7 +114,7 @@ const ProjectsCarouselStyled = styled.div`
   }
 
   .carousel-bottom {
-    border-top: 1px solid #000;
+    border-top: 1px solid #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -134,9 +146,7 @@ const ProjectsCarouselStyled = styled.div`
   }
 
   @media (min-width: 900px) {
-    width: 40%;
-    height: 100vh;
-    float: right;
+    /* height: 100vh; */
 
     .carousel-top {
       height: 80%;

@@ -34,7 +34,10 @@ body {
 }
 
 main {
+  @apply flex flex-col;
+  height: 100%;
   min-height: 70vh;
+  position: relative;
 }
 
 .fade-out {
@@ -49,7 +52,6 @@ figcaption,
 figure,
 footer,
 header,
-main,
 menu,
 nav,
 section,
