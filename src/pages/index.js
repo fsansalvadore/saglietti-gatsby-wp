@@ -50,7 +50,7 @@ const IndexPage = ({ data }) => {
       </SectionContainer>
       <SectionContainer className="!pb-4 sm:px-4">
         <div className="lg:col-start-3 col-span-2 w-full">
-          <Link to="/projetti" className="flex gap-2 text-lg items-center">
+          <Link to="/progetti" className="flex gap-2 text-lg items-center">
             Guarda tutti i progetti <ArrowRight className="w-3 h-3" />
           </Link>
         </div>
