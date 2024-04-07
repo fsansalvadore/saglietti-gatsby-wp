@@ -14,6 +14,7 @@ const ProjectsCarouselStyled = styled.div`
   }
   .slick-dots {
     bottom: 25px;
+    mix-blend-mode: difference;
   }
   .slick-dots li button:before {
     color: white;

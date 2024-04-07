@@ -117,9 +117,13 @@ const StudioPage = ({ data }) => {
     }
   })
 
+  useEffect(() => {
+    return () => (document.body.style.backgroundColor = "#fff")
+  }, [])
+
   return (
     <>
-      <StudioContent>
+      <StudioContent bgColor="#fff">
         <header className="p-4 pb-8 sm:p-8 !pt-[120px] sm:!pt-[150px]">
           <h1 className="sr-only">Studio Saglietti</h1>
           <p className="fade-in xl:max-w-[1000px] !text-2xl md:!text-4xl">
@@ -131,7 +135,7 @@ const StudioPage = ({ data }) => {
             che conta.
           </p>
         </header>
-        <SectionContainer>
+        <SectionContainer bgColor="#fff">
           <StaticImage
             src="../../../images/studio/saglietti-about-1.jpeg"
             alt="Studio Saglietti"
@@ -163,7 +167,7 @@ const StudioPage = ({ data }) => {
             </div>
           </div>
         </SectionContainer>
-        <SectionContainer>
+        <SectionContainer bgColor="#efdab1">
           <div className="flex flex-col gap-4 col-span-2 col-start-3">
             <StaticImage
               src="../../../images/studio/saglietti-about-2.jpeg"
@@ -172,7 +176,7 @@ const StudioPage = ({ data }) => {
             />
           </div>
         </SectionContainer>
-        <SectionContainer>
+        <SectionContainer bgColor="#efdab1">
           <div className="w-full sm:col-span-2">
             <h2 className="">metodo.</h2>
           </div>
@@ -220,7 +224,7 @@ const StudioPage = ({ data }) => {
             </Accordion>
           </div>
         </SectionContainer>
-        <SectionContainer>
+        <SectionContainer bgColor="#fff">
           <div className="w-full sm:col-span-2">
             <h2 className="">servizi.</h2>
           </div>
@@ -257,7 +261,7 @@ const StudioPage = ({ data }) => {
             </div>
           </div>
         </SectionContainer>
-        <SectionContainer>
+        <SectionContainer bgColor="#efdab1">
           <div className="w-full sm:col-span-2">
             <h2 className="">clienti.</h2>
           </div>
@@ -279,7 +283,7 @@ const StudioPage = ({ data }) => {
             </p>
           </div>
         </SectionContainer>
-        <SectionContainer>
+        <SectionContainer bgColor="#fff">
           <div className="col-span-1 h-full flex sm:items-end">
             <StaticImage
               src="../../../images/AIAP-FIRMA-SOCIO-SENIOR.png"
