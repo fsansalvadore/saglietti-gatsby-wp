@@ -232,12 +232,12 @@ const ProjectsList = ({ data, limit = 100, showVisitableOnly, hideTitle }) => {
                       </div>
                     )}
                   </div>
-                  <div className="proj_item-right">
+                  <div className="proj_item-right flex">
                     <div className="proj_year">
                       {proj.custom_post_type_Project.anno &&
                         proj.custom_post_type_Project.anno}
                     </div>
-                    <div className="proj_ambiti truncate">
+                    <div className="proj_ambiti flex-shrink truncate">
                       {proj.custom_post_type_Project.ambiti &&
                         proj.custom_post_type_Project.ambiti.map(ambito => (
                           <div
@@ -433,8 +433,7 @@ const ProjectsContainer = styled.div`
 
         .proj_year {
           font-family: "Inter", sans-serif !important;
-          font-size: 1rem;
-          min-width: 45px;
+          min-width: 68px;
           text-align: left;
           margin-right: 0;
           font-weight: 400;
@@ -442,8 +441,8 @@ const ProjectsContainer = styled.div`
 
         .proj_ambiti {
           padding: 14px 0 14px 0rem;
-          display: none;
           font-size: 0.75rem;
+          display: none;
           align-items: center;
           border-left: 1px solid #000;
 

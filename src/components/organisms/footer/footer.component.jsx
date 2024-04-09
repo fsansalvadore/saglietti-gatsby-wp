@@ -58,6 +58,11 @@ const FooterComponent = styled.footer`
 `
 
 const Footer = () => {
+  const handleSubmitForm = e => {
+    e.preventDefault()
+    console.log(e)
+  }
+
   return (
     <FooterComponent className="flex flex-col gap-4 sm:!grid grid-cols-2 md:grid-cols-3">
       <div className="h-full w-full flex flex-col gap-2 justify-between items-start">
@@ -75,11 +80,18 @@ const Footer = () => {
         <p className="m-0 uppercase">Copyright © {new Date().getFullYear()}</p>
         <Link to="/privacy">Privacy Policy</Link>
       </div>
-      <div className="flex flex-col gap-4 sm:col-start-2 md:col-start-3">
-        <a href="#" className="inline-flex gap-2 items-center justify-between">
-          Iscriviti alla newsletter <ArrowRight className="w-3 h-3" />
-        </a>
-        <hr className="!m-0 bg-transparent border-solid border-black border-0 border-b w-full" />
+      <div className="flex flex-col gap-2 sm:col-start-2 md:col-start-3">
+        <form onSubmit={handleSubmitForm} className="relative border-b">
+          <input
+            type="email"
+            required
+            placeholder="Iscriviti alla newsletter"
+            className="placeholder-black focus-visible:outline-none focus-visible:placeholder-[#00000050] pb-4 inline-flex gap-2 items-center justify-between w-full"
+          />
+          <button className="absolute top-0 p-1 right-2 flex items-center justify-center my-auto">
+            <ArrowRight className="w-3 h-3" />
+          </button>
+        </form>
         <SocialIcons />
       </div>
     </FooterComponent>
