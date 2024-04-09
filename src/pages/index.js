@@ -29,17 +29,17 @@ const IndexPage = ({ data }) => {
       <HeaderContainer />
       <SectionContainer>
         <div className="w-full sm:col-span-2">
-          <h2 className="">studio.</h2>
+          <h2 className="text-xl">studio.</h2>
         </div>
-        <div className="flex flex-col gap-4 col-span-2">
+        <div className="flex flex-col gap-4 col-span-2 text-xl">
           <p className="!m-0">
             <span className="block">
               Dal 2016 progettiamo <i>identità</i> ed <i>esperienze visive</i>.
             </span>
             Collaborare con aziende e istituzioni per noi è incentivare
             l'incontro tra il brand e il suo pubblico, utilizzando solo gli
-            strumenti che apportano
-            <strong>significato</strong> e <strong>valore alle idee</strong>.
+            strumenti che apportano <strong>significato</strong> e{" "}
+            <strong>valore alle idee</strong>.
           </p>
           <p className="md:mb-8">
             Per noi il nostro lavoro si nutre costantemente di ispirazione. Per
