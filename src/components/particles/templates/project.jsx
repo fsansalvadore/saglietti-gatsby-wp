@@ -256,6 +256,10 @@ const ProjectPage = props => {
     }
   })
 
+  // const mediaBlocks = blocks.filter((block) => block.t)
+  console.log("blocks", blocks)
+  console.log("custom_post_type_Project", custom_post_type_Project)
+
   return (
     <Layout>
       <Helmet>
@@ -308,10 +312,20 @@ const ProjectPage = props => {
                 </AccordionTrigger>
                 <AccordionContent className="!text-sm">
                   <div className="flex flex-col gap-2 lg:gap-4 fade-in mt-4">
+                    {custom_post_type_Project.descrizione &&
+                      custom_post_type_Project.descrizione.length !== null && (
+                        <div className="proj_details-block">
+                          <p
+                            dangerouslySetInnerHTML={{
+                              __html: custom_post_type_Project.descrizione,
+                            }}
+                          />
+                        </div>
+                      )}
                     {custom_post_type_Project.anno &&
                       custom_post_type_Project.anno.length !== null && (
                         <div className="proj_details-block">
-                          <h2 className="!m-0">Anno</h2>
+                          {/* <h2 className="!m-0">Anno</h2> */}
                           <p className="!m-0">
                             {custom_post_type_Project.anno}
                           </p>
@@ -320,7 +334,7 @@ const ProjectPage = props => {
                     {custom_post_type_Project.ambiti &&
                       custom_post_type_Project.ambiti.length > 0 && (
                         <div className="proj_details-block">
-                          <h2 className="!m-0">Ambiti</h2>
+                          {/* <h2 className="!m-0">Ambiti</h2> */}
                           <ul className="!m-0">
                             {custom_post_type_Project.ambiti.map(ambito => (
                               <li
@@ -338,7 +352,7 @@ const ProjectPage = props => {
                     {custom_post_type_Project.credits &&
                       custom_post_type_Project.credits.length > 0 && (
                         <div className="proj_details-block">
-                          <h2 className="!m-0 !mb-1">Credits</h2>
+                          {/* <h2 className="!m-0 !mb-1">Credits</h2> */}
                           <p
                             dangerouslySetInnerHTML={{
                               __html: custom_post_type_Project.credits,

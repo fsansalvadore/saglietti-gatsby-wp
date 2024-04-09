@@ -15,7 +15,7 @@ const NavLogoLink = styled(Link)`
   justify-content: flex-start;
   align-items: center;
   pointer-events: none;
-  mix-blend-mode: difference;
+  /* mix-blend-mode: difference; */
 
   .logo_link {
   }

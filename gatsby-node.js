@@ -26,6 +26,7 @@ const projectCustomDetails = `
     ambiti
     anno
     credits
+    descrizione
     titolo
     visitabile
   }

@@ -1,6 +1,6 @@
 import * as React from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
-import { Plus } from "lucide-react"
+import { Minus, Plus } from "lucide-react"
 
 import cn from "classnames"
 
@@ -12,24 +12,32 @@ const AccordionItem = React.forwardRef(({ className, ...props }, ref) => (
 AccordionItem.displayName = "AccordionItem"
 
 const AccordionTrigger = React.forwardRef(
-  ({ className, children, ...props }, ref) => {
-    console.log("props", props)
-    return (
-      <AccordionPrimitive.Header className="flex m-0">
-        <AccordionPrimitive.Trigger
-          ref={ref}
-          className={cn(
-            "flex items-center text-xl m-0 py-2 gap-2 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180",
-            className,
-          )}
-          {...props}
-        >
-          {children}
-          <Plus className="h-4 w-4 shrink-0 transition-transform duration-200" />
-        </AccordionPrimitive.Trigger>
-      </AccordionPrimitive.Header>
-    )
-  },
+  ({ className, children, ...props }, ref) => (
+    <AccordionPrimitive.Header className="flex m-0">
+      <AccordionPrimitive.Trigger
+        ref={ref}
+        className={cn(
+          "flex items-center text-xl m-0 py-2 gap-2 font-medium transition-all hover:underline [&[data-state=open]_svg]:rotate-180",
+          "[&[data-state=open]_[data-icon=open]]:opacity-100 [&[data-state=open]_[data-icon=closed]]:opacity-0",
+          "[&[data-state=closed]_[data-icon=closed]]:opacity-100 [&[data-state=closed]_[data-icon=open]]:opacity-0",
+          className,
+        )}
+        {...props}
+      >
+        {children}
+        <span className="h-4 w-4 relative">
+          <Plus
+            data-icon="closed"
+            className="absolute h-4 w-4 shrink-0 transition-all duration-200"
+          />
+          <Minus
+            data-icon="open"
+            className="absolute h-4 w-4 shrink-0 transition-all duration-200"
+          />
+        </span>
+      </AccordionPrimitive.Trigger>
+    </AccordionPrimitive.Header>
+  ),
 )
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName
 

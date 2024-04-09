@@ -22,9 +22,13 @@ const ContactsCTA = () => {
             info@saglietti.it
           </a>{" "}
           o vieni a{" "}
-          <Link to="/contatti" className="underline">
+          <a
+            href="https://maps.app.goo.gl/uvuZGUEYhbnYwoGT8"
+            target="_blank"
+            className="underline"
+          >
             trovarci
-          </Link>
+          </a>
           .
         </p>
       </div>
