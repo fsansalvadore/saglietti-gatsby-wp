@@ -15,7 +15,7 @@ const ContactFormContainer = styled.div`
 
   h2 {
     font-weight: 400;
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
   }
   form,
   input,

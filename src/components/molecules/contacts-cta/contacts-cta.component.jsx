@@ -10,7 +10,7 @@ const ContactsComponent = styled.div`
 const ContactsCTA = () => {
   return (
     <ContactsComponent className="contacts-container">
-      <div className="py-4 md:py-20 text-center max-w-[800px] mx-auto flex flex-col items-center text-2xl">
+      <div className="py-4 md:py-20 text-center max-w-[900px] mx-auto flex flex-col items-center text-2xl sm:text-3xl">
         <p className="!m-0">Vogliamo lavorare insieme al tuo progetto?</p>
         <p>
           Chiamaci al numero{" "}

@@ -28,18 +28,11 @@ const StudioContent = styled.div`
   flex-direction: column;
 
   h1 {
-    font-size: 1rem;
     font-family: "Inter", sans-serif;
     font-weight: 200;
   }
 
-  h2 {
-    font-size: 0.8rem;
-    font-weight: bold;
-  }
-
   p {
-    font-size: 1rem;
     font-weight: 500;
     line-height: 140%;
     letter-spacing: 0;
@@ -70,11 +63,6 @@ const StudioContent = styled.div`
 
     .studio_content-container {
       flex-direction: row;
-    }
-
-    h2 {
-      font-size: 0.8rem;
-      font-weight: bold;
     }
   }
 `
@@ -123,10 +111,10 @@ const StudioPage = ({ data }) => {
 
   return (
     <>
-      <StudioContent bgColor="#fff">
+      <StudioContent>
         <header className="p-4 pb-8 sm:p-8 !pt-[120px] sm:!pt-[150px]">
           <h1 className="sr-only">Studio Saglietti</h1>
-          <p className="fade-in xl:max-w-[1000px] !text-2xl md:!text-4xl">
+          <p className="fade-in max-w-[1000px] !text-2xl md:!text-4xl">
             Costruiamo <i>brand</i> con idee semplici e rilevanti.
             <br />
             Il nostro mantra è l'essenzialità, che applichiamo in ogni parte del
@@ -135,13 +123,13 @@ const StudioPage = ({ data }) => {
             che conta.
           </p>
         </header>
-        <SectionContainer bgColor="#fff">
+        <SectionContainer>
           <StaticImage
             src="../../../images/studio/saglietti-about-1.jpeg"
             alt="Studio Saglietti"
             className="w-full sm:!col-span-2 lg:!col-span-1 h-auto"
           />
-          <div className="flex flex-col gap-4 col-span-2 col-start-3">
+          <div className="flex flex-col gap-4 col-span-2 col-start-3 text-xl">
             <p className="fade-in">
               Con la nostra esperienza, sviluppiamo ogni progetto con passione e
               contaminazione internazionale collaborando con professionisti come{" "}
@@ -167,7 +155,7 @@ const StudioPage = ({ data }) => {
             </div>
           </div>
         </SectionContainer>
-        <SectionContainer bgColor="#efdab1">
+        <SectionContainer>
           <div className="flex flex-col gap-4 col-span-2 col-start-3">
             <StaticImage
               src="../../../images/studio/saglietti-about-2.jpeg"
@@ -176,14 +164,14 @@ const StudioPage = ({ data }) => {
             />
           </div>
         </SectionContainer>
-        <SectionContainer bgColor="#efdab1">
+        <SectionContainer bgColor="#fff">
           <div className="w-full sm:col-span-2">
-            <h2 className="">metodo.</h2>
+            <h2 className="text-xl">metodo.</h2>
           </div>
-          <div className="flex flex-col gap-4 col-span-2">
+          <div className="flex flex-col gap-4 col-span-2 text-xl">
             <p className="mb-4 sm:mb-10">
-              Crediamo che un design efficace sia il risultato di un’idea che
-              funziona, un’idea che scaturisce da intuizioni strategiche ben
+              Crediamo che un design efficace sia il risultato di un'idea che
+              funziona, un'idea che scaturisce da intuizioni strategiche ben
               ponderate. Per noi, giungere al cuore di ogni progetto è una
               missione.
             </p>
@@ -197,7 +185,7 @@ const StudioPage = ({ data }) => {
                 <AccordionTrigger className="font-bold">
                   <span>1</span> Ascolto
                 </AccordionTrigger>
-                <AccordionContent>
+                <AccordionContent className="text-xl">
                   Raccogliamo i bisogni e le esigenze del cliente, per ottenere
                   una comprensione completa del contesto e dei desideri del
                   brand.
@@ -207,7 +195,7 @@ const StudioPage = ({ data }) => {
                 <AccordionTrigger className="font-bold">
                   <span>2</span> Analisi
                 </AccordionTrigger>
-                <AccordionContent>
+                <AccordionContent className="text-xl">
                   Esaminiamo i valori e la personalità della marca, adottando un
                   approccio strategico per concretizzare i passi successivi.
                 </AccordionContent>
@@ -216,7 +204,7 @@ const StudioPage = ({ data }) => {
                 <AccordionTrigger className="font-bold">
                   <span>3</span> Design
                 </AccordionTrigger>
-                <AccordionContent>
+                <AccordionContent className="text-xl">
                   Elaboraziamo il messaggio e lo traduciamo in un'espressione
                   visiva che colpisca nel segno.
                 </AccordionContent>
@@ -224,21 +212,21 @@ const StudioPage = ({ data }) => {
             </Accordion>
           </div>
         </SectionContainer>
-        <SectionContainer bgColor="#fff">
+        <SectionContainer bgColor="#F02834">
           <div className="w-full sm:col-span-2">
-            <h2 className="">servizi.</h2>
+            <h2 className="text-xl">servizi.</h2>
           </div>
-          <div className="flex flex-col gap-4 col-span-2">
+          <div className="flex flex-col gap-4 col-span-2 text-xl">
             <p>
               Le nostre soluzioni non soddisfano solo le esigenze immediate del
               cliente, ma puntano a una comprensione della marca più profonda e
-              significativa, con l’obiettivo di creare una connessione autentica
+              significativa, con l'obiettivo di creare una connessione autentica
               e duratura con il suo pubblico.
             </p>
             <p className="md:mb-8">
               Offriamo una gamma di servizi ampia e strutturata. Uno standard
-              qualitativo che non è solo un punto d’arrivo, ma è la partenza e
-              l’ispirazione e accetta la sfida più importante: creare un
+              qualitativo che non è solo un punto d'arrivo, ma è la partenza e
+              l'ispirazione e accetta la sfida più importante: creare un
               incontro tra il brand e il suo pubblico, utilizzando solo gli
               strumenti che apportano significato e valore alle idee.
             </p>
@@ -261,17 +249,17 @@ const StudioPage = ({ data }) => {
             </div>
           </div>
         </SectionContainer>
-        <SectionContainer bgColor="#efdab1">
+        <SectionContainer>
           <div className="w-full sm:col-span-2">
-            <h2 className="">clienti.</h2>
+            <h2 className="text-xl">clienti.</h2>
           </div>
-          <div className="flex flex-col gap-4 col-span-2">
+          <div className="flex flex-col gap-4 col-span-2 text-xl">
             <p>
               Creiamo linguaggi di comunicazione per qualsiasi tipo di{" "}
               <strong>progetto</strong>,<strong>budget</strong> e{" "}
               <strong>media</strong>. Ma il nostro approccio al lavoro è sempre
               lo stesso: offrire al cliente un partner con cui condividere una
-              visione. Un’intesa che ci porta a comprendere a fondo gli
+              visione. Un'intesa che ci porta a comprendere a fondo gli
               obiettivi e generare fiducia, massimizzando i risultati.
             </p>
             <p>
@@ -283,7 +271,7 @@ const StudioPage = ({ data }) => {
             </p>
           </div>
         </SectionContainer>
-        <SectionContainer bgColor="#fff">
+        <SectionContainer>
           <div className="col-span-1 h-full flex sm:items-end">
             <StaticImage
               src="../../../images/AIAP-FIRMA-SOCIO-SENIOR.png"
@@ -291,7 +279,7 @@ const StudioPage = ({ data }) => {
               className="w-full max-w-40 h-auto"
             />
           </div>
-          <div className="flex flex-col gap-4 col-span-2 col-start-3">
+          <div className="flex flex-col gap-4 col-span-2 col-start-3 text-xl">
             <p>
               Abbiamo collaborato con{" "}
               {data.wordpress.clients.nodes.map(client => (

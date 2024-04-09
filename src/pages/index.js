@@ -57,9 +57,9 @@ const IndexPage = ({ data }) => {
       <ProjectsList data={data} limit={5} hideTitle showVisitableOnly />
       <SectionContainer>
         <div className="w-full sm:col-span-2">
-          <h2 className="">metodologia.</h2>
+          <h2 className="text-xl">metodologia.</h2>
         </div>
-        <div className="flex flex-col gap-4 col-span-2">
+        <div className="flex flex-col gap-4 col-span-2 text-xl">
           <p>
             Creiamo linguaggi di comunicazione per qualsiasi tipo di{" "}
             <strong>progetto</strong>, <strong>budget</strong> e{" "}
