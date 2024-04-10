@@ -365,18 +365,10 @@ const ProjectPage = props => {
               </AccordionItem>
             </Accordion>
           </div>
-          {/* <div className="proj_breadbrumbs">
-            <Link to="/">Home</Link>
-            <ArrowRight />
-            <Link to="/progetti/">Progetti</Link>
-            <ArrowRight />
-            <span>{title}</span>
-          </div> */}
         </div>
         <VerticalLine style={{ left: "40%" }} className="vertical_line" />
         <div className="proj_content-container">
-          <div className="proj_cover">
-            {/* <div className="proj_cover-img" style={{backgroundImage: `url(${featuredImage ? featuredImage.node.link : fallbackImg})`}}></div> */}
+          {/* <div className="proj_cover">
             {featuredImage ? (
               featuredImage.node.imageFile &&
               !featuredImage.node.sourceUrl.includes(".gif") ? null : ( // /> //   fixed={featuredImage.node.imageFile.childImageSharp.fixed} //   className="proj_cover-img" // <BackgroundImage
@@ -393,7 +385,7 @@ const ProjectPage = props => {
                 style={{ backgroundImage: `url(${fallbackImg})` }}
               />
             )}
-          </div>
+          </div> */}
           <ComponentParser content={blocks} />
         </div>
       </ProjectContainerComponent>

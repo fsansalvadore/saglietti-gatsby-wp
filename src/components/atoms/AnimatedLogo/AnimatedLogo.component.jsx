@@ -53,7 +53,7 @@ const AnimatedLogo = () => {
             viewBox="0 0 87 19"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            shapeRendering="crispEdges"
+            className="subpixel-antialiased"
           >
             <path d="M47.1 4.89H44.97V14.61H47.1V4.89Z" fill="#000" />
             <path
@@ -103,6 +103,7 @@ const AnimatedLogo = () => {
             viewBox="0 0 173 19"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            className="subpixel-antialiased"
           >
             <path
               d="M5.19 4.66C3.8 4.66 2.81 5.22 2.13 6.07V0H0V14.68H2.13V13.52C2.8 14.37 3.8 14.93 5.19 14.93C7.92 14.93 10.07 12.78 10.07 9.79C10.07 6.81 7.92 4.66 5.19 4.66ZM4.93 12.93C3.16 12.93 1.98 11.58 1.98 9.8C1.98 8.02 3.17 6.67 4.93 6.67C6.77 6.67 7.88 8.09 7.88 9.8C7.88 11.51 6.76 12.93 4.93 12.93Z"
@@ -177,6 +178,7 @@ const AnimatedLogo = () => {
             viewBox="0 0 87 19"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            className="subpixel-antialiased"
           >
             <path d="M47.1 4.89H44.97V14.61H47.1V4.89Z" fill="#000" />
             <path
