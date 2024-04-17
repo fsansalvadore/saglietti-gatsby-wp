@@ -193,7 +193,7 @@ class ContactForm extends React.Component {
             rows={4}
             maxLength={900}
             onChange={this.handleChange}
-            className="!flex-2 !border-0 !p-4 md:!px-8 lg:!px-4 !border-b !border-black !rounded-0 !placeholder-black"
+            className="flex-2 md:!flex-4 !border-0 !p-4 md:!px-8 lg:!px-4 !border-b !border-black !rounded-0 !placeholder-black"
           />
           <div className="p-4 md:!px-8 lg:!px-4">
             <div className="flex items-center gap-2 !text-xs">

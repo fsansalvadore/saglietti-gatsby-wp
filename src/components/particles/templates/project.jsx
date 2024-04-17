@@ -1,14 +1,12 @@
 import React, { useEffect } from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import styled from "styled-components"
-import ArrowRight from "../../atoms/svg/arrow-right.component"
 import Layout from "../../layout"
 import VerticalLine from "../../atoms/vertical-line.component"
 import ComponentParser from "../ComponentParser"
 import fallbackImg from "../../../images/fallback.png"
 import PrevNextProject from "../../molecules/prev-next-project/prev-next-project.component"
-import TextRevealAnimation from "../hooks/animationTextReveal"
 import {
   Accordion,
   AccordionContent,

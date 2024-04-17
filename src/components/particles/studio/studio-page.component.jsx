@@ -212,7 +212,7 @@ const StudioPage = ({ data }) => {
             </Accordion>
           </div>
         </SectionContainer>
-        <SectionContainer bgColor="#F02834">
+        <SectionContainer bgColor="#FFF50F">
           <div className="w-full sm:col-span-2">
             <h2 className="text-xl">servizi.</h2>
           </div>

@@ -427,6 +427,7 @@ const ProjectsContainer = styled.div`
         flex: 1;
         display: flex;
         height: 100%;
+        line-height: 110%;
         align-items: center;
         opacity: 0;
         padding-left: 1rem;
@@ -441,7 +442,7 @@ const ProjectsContainer = styled.div`
 
         .proj_ambiti {
           padding: 14px 0 14px 0rem;
-          font-size: 0.75rem;
+          /* font-size: 0.75rem; */
           display: none;
           align-items: center;
           border-left: 1px solid #000;

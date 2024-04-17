@@ -62,7 +62,7 @@ const ProjectsCarouselStyled = styled.div`
       .info-left {
         .proj_ambiti {
           li {
-            font-size: 0.9rem;
+            /* font-size: 0.9rem; */
             font-weight: 200;
             letter-spacing: 0;
             position: relative;

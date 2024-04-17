@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { motion, AnimatePresence } from "framer-motion"
 
 import Nav from "./organisms/nav/nav.component"
-import NavLogo from "./organisms/nav/NavLogo.component"
+// import NavLogo from "./organisms/nav/NavLogo.component"
 import "./layout.css"
 import Footer from "./organisms/footer/footer.component"
 import Cursor from "./atoms/cursor.component"
@@ -41,7 +41,7 @@ const Layout = ({ children }) => {
       {cursorComp}
       {cursorFollowComp}
       <Loading isLoading={isLoading} />
-      <NavLogo />
+      {/* <NavLogo /> */}
       <Nav siteTitle={data.site.siteMetadata.title} />
       <AnimatePresence mode="wait">
         <motion.main

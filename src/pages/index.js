@@ -2,7 +2,6 @@ import React from "react"
 import Layout from "../components/layout"
 import { Helmet } from "react-helmet"
 import { graphql, Link } from "gatsby"
-import { ArrowRight } from "lucide-react"
 // Components
 import HeaderContainer from "../components/organisms/header-container/header-container.component"
 
@@ -49,8 +48,22 @@ const IndexPage = ({ data }) => {
       </SectionContainer>
       <SectionContainer className="!pb-4 sm:px-4">
         <div className="lg:col-start-3 col-span-2 w-full">
-          <Link to="/progetti" className="flex gap-2 text-lg items-center">
-            Guarda tutti i progetti <ArrowRight className="w-3 h-3" />
+          <Link
+            to="/progetti"
+            className="flex gap-4 text-lg items-center group"
+          >
+            Guarda tutti i progetti
+            <svg
+              className="w-5 h-5 translate-x-0 transition-transform group-hover:translate-x-1"
+              width="100%"
+              height="100%"
+              viewBox="0 0 32 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M17 2L29 13L17 23" stroke="black" strokeWidth="3" />
+              <path d="M0 13L29 13" stroke="black" strokeWidth="3" />
+            </svg>
           </Link>
         </div>
       </SectionContainer>

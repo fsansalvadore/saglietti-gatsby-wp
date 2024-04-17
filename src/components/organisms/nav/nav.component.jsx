@@ -3,7 +3,8 @@ import PropTypes from "prop-types"
 import Menu from "../menu-container/menu-container.component"
 import styled from "styled-components"
 import "./nav.styles.scss"
-// import AnimatedLogo from "../../atoms/AnimatedLogo/AnimatedLogo.component";
+// import AnimatedLogo from "../../atoms/AnimatedLogo/AnimatedLogo.component";ù
+import NavLogo from "./NavLogo.component"
 
 const Navbar = styled.div`
   width: 100vw;
@@ -70,11 +71,7 @@ const Nav = () => {
   return (
     <>
       <Navbar>
-        {/* <Link to="/" style={{display: "flex", alignItems: "center"}}>
-          <div className="logo_link">
-            <AnimatedLogo />
-          </div>
-        </Link> */}
+        <NavLogo />
         <MenuBtn onClick={() => toggleMenu(!isOpen)} isOpen={isOpen}>
           <span></span>
           <span></span>
