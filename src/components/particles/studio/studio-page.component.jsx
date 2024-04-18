@@ -33,7 +33,7 @@ const StudioContent = styled.div`
   }
 
   p {
-    font-weight: 500;
+    font-weight: 400;
     line-height: 140%;
     letter-spacing: 0;
   }

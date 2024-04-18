@@ -12,7 +12,7 @@ const Contatti = () => (
     <Helmet>
       <title>Contatti • Saglietti</title>
     </Helmet>
-    <div className="relative w-full h-full md:min-h-[calc(100vh-100px)] flex flex-col items-stretch lg:flex-row flex-1 header-container mt-[100px] border-t border-b border-black">
+    <div className="relative w-full h-full md:min-h-[calc(100vh-100px)] flex flex-col items-stretch lg:flex-row flex-1 header-container border-t border-b border-black">
       <ContactsInfoContainer />
       <div className="header-right sticky">
         <ContactForm />

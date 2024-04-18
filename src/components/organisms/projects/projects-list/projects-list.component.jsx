@@ -479,7 +479,7 @@ const ProjectsContainer = styled.div`
   }
 
   h2 {
-    font-weight: 500;
+    font-weight: 400;
     margin-top: 60px;
   }
 

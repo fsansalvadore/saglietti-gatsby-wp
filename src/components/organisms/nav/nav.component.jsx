@@ -1,40 +1,24 @@
-import React, { useEffect, useRef, useState } from "react"
+import "./nav.styles.scss"
+import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import Menu from "../menu-container/menu-container.component"
 import styled from "styled-components"
-import "./nav.styles.scss"
-// import AnimatedLogo from "../../atoms/AnimatedLogo/AnimatedLogo.component";ù
+import { Link } from "gatsby"
 import NavLogo from "./NavLogo.component"
 import { isBrowser } from "framer-motion"
-
-const Navbar = styled.div`
-  width: 100vw;
-  height: 100px;
-  top: 0;
-  position: fixed;
-  z-index: 998;
-  padding: 1.45rem 1rem;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  pointer-events: none;
-
-  @media screen and (min-width: 900px) {
-    padding: 1.45rem 2rem;
-  }
-`
+import classNames from "classnames"
 
 const MenuBtn = styled.a`
   position: relative;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background-color: #fff;
+  /* background-color: #fff; */
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: auto;
-  pointer: cursor;
+  cursor: pointer;
   will-change: transform;
   transition: transform 0.2s ease;
 
@@ -67,31 +51,54 @@ const MenuBtn = styled.a`
 `
 
 const Nav = () => {
-  const ref = useRef(null)
   const [isOpen, toggleMenu] = useState(false)
+  const [isChip, setIsChip] = useState(false)
 
-  // useEffect(() => {
-  //   if (!isBrowser) return
-  //   const handleScroll = e => {
-  //     const body = document.querySelector("body")
-  //     console.log("scroll event", e)
-  //     console.log("scroll", window?.scrollX)
-  //   }
+  useEffect(() => {
+    if (!isBrowser) return
+    const doc = document.documentElement
+    const handleScroll = e => {
+      const top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
+      setIsChip(top > 20)
+    }
 
-  //   window.addEventListener("scroll", handleScroll)
-
-  //   return () => window.removeEventListener("scroll", () => null)
-  // }, [])
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   return (
     <>
-      <Navbar ref={ref}>
-        <NavLogo />
-        <MenuBtn onClick={() => toggleMenu(!isOpen)} isOpen={isOpen}>
-          <span></span>
-          <span></span>
-        </MenuBtn>
-      </Navbar>
+      <nav className="fixed z-[998] px-2 top-0 flex justify-center w-full h-[100px] items-center">
+        <div
+          className={classNames(
+            "flex items-center backdrop-blur-lg border py-2 px-6 justify-between w-screen mx-auto rounded-full !transition-all !duration-300 will-change-transform",
+            isChip && !isOpen
+              ? "bg-white/90 w-[90vw] max-w-[900px] shadow-sm border-gray-100"
+              : "max-w-full bg-transparent shadow-none border-transparent",
+          )}
+        >
+          <NavLogo />
+          <MenuBtn
+            className="md:!hidden"
+            onClick={() => toggleMenu(!isOpen)}
+            isOpen={isOpen}
+          >
+            <span></span>
+            <span></span>
+          </MenuBtn>
+          <div className="hidden md:flex items-center gap-2 lg:gap-4">
+            <Link to="/studio" className="p-1">
+              Studio
+            </Link>
+            <Link to="/progetti" className="p-1">
+              Progetti
+            </Link>
+            <Link to="/contatti" className="p-1">
+              Contatti
+            </Link>
+          </div>
+        </div>
+      </nav>
       <Menu isOpen={isOpen} />
     </>
   )

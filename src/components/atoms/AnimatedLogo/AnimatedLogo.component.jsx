@@ -38,7 +38,7 @@ const AnimatedLogo = () => {
     <AnimatedLogoContainer className="py-1">
       <motion.div
         className="logo-anim"
-        animate={{ translateY: [0, 0, -40, -40, -80, -80] }}
+        animate={{ translateY: [0, 0, -40, -40, -77, -77] }}
         transition={{
           repeat: Infinity,
           duration: 10,

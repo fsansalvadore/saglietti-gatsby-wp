@@ -45,6 +45,7 @@ const Layout = ({ children }) => {
       <Nav siteTitle={data.site.siteMetadata.title} />
       <AnimatePresence mode="wait">
         <motion.main
+          className="pt-[100px]"
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 1] }}
           exit={{ opacity: [1, 0] }}

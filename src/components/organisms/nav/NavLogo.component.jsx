@@ -5,24 +5,11 @@ import "./nav.styles.scss"
 import AnimatedLogo from "../../atoms/AnimatedLogo/AnimatedLogo.component"
 
 const NavLogoLink = styled(Link)`
-  width: 100vw;
-  height: 100px;
-  position: fixed;
-  top: 0;
-  z-index: 998;
-  padding: 1.45rem 1rem;
+  /* height: 100px; */
   display: flex;
   justify-content: flex-start;
   align-items: center;
   pointer-events: none;
-  /* mix-blend-mode: difference; */
-
-  .logo_link {
-  }
-
-  @media screen and (min-width: 900px) {
-    padding: 1.45rem 2rem;
-  }
 `
 
 const NavLogo = () => {
