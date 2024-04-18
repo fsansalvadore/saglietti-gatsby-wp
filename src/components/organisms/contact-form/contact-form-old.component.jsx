@@ -27,7 +27,7 @@ const ContactFormContainer = styled.div`
   p {
     color: #000;
     font-size: 0.75rem !important;
-    font-weight: 800;
+    font-weight: 600;
     font-family: "Inter", sans-serif;
     letter-spacing: 0.03rem;
   }
@@ -88,7 +88,7 @@ const ContactFormContainer = styled.div`
 
   button {
     float: right;
-    font-weight: 800;
+    font-weight: 500;
     letter-spacing: 0.02rem;
     background: #000;
     color: #fff;

@@ -152,7 +152,7 @@ textarea {
   margin: 0;
 }
 optgroup {
-  font-weight: 800;
+  font-weight: 600;
 }
 button,
 input {
@@ -274,7 +274,7 @@ h1 {
     "Inter",
     Helvetica Neue,
     sans-serif;
-  font-weight: bold;
+  font-weight: 500;
   text-rendering: optimizeLegibility;
   font-size: 2.25rem;
   line-height: 1.1;
@@ -312,7 +312,7 @@ h3 {
     "Inter",
     Helvetica Neue,
     sans-serif;
-  font-weight: bold;
+  font-weight: 500;
   text-rendering: optimizeLegibility;
   font-size: 1.38316rem;
   line-height: 1.1;
@@ -331,7 +331,7 @@ h4 {
     "Inter",
     Helvetica Neue,
     sans-serif;
-  font-weight: bold;
+  font-weight: 500;
   text-rendering: optimizeLegibility;
   font-size: 1rem;
   line-height: 1.1;
@@ -350,7 +350,7 @@ h5 {
     "Inter",
     Helvetica Neue,
     sans-serif;
-  font-weight: bold;
+  font-weight: 500;
   text-rendering: optimizeLegibility;
   font-size: 0.85028rem;
   line-height: 1.1;
@@ -369,7 +369,7 @@ h6 {
     "Inter",
     Helvetica Neue,
     sans-serif;
-  font-weight: bold;
+  font-weight: 500;
   text-rendering: optimizeLegibility;
   font-size: 0.78405rem;
   line-height: 1.1;
@@ -550,16 +550,16 @@ address {
   margin-bottom: 1.45rem;
 }
 b {
-  font-weight: bold;
+  font-weight: 500;
 }
 strong {
-  font-weight: bold;
+  font-weight: 600;
 }
 dt {
-  font-weight: bold;
+  font-weight: 500;
 }
 th {
-  font-weight: bold;
+  font-weight: 500;
 }
 li {
   margin-bottom: calc(1.45rem / 2);

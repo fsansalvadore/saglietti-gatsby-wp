@@ -182,7 +182,7 @@ const StudioPage = ({ data }) => {
             </p>
             <Accordion type="multiple" collapsible>
               <AccordionItem value="ascolto">
-                <AccordionTrigger className="font-bold">
+                <AccordionTrigger className="font-semibold">
                   <span>1</span> Ascolto
                 </AccordionTrigger>
                 <AccordionContent className="text-xl">
@@ -192,7 +192,7 @@ const StudioPage = ({ data }) => {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="analisi">
-                <AccordionTrigger className="font-bold">
+                <AccordionTrigger className="font-semibold">
                   <span>2</span> Analisi
                 </AccordionTrigger>
                 <AccordionContent className="text-xl">
@@ -201,7 +201,7 @@ const StudioPage = ({ data }) => {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="design">
-                <AccordionTrigger className="font-bold">
+                <AccordionTrigger className="font-semibold">
                   <span>3</span> Design
                 </AccordionTrigger>
                 <AccordionContent className="text-xl">
@@ -284,7 +284,7 @@ const StudioPage = ({ data }) => {
               Abbiamo collaborato con{" "}
               {data.wordpress.clients.nodes.map(client => (
                 <span
-                  className="inline font-bold [&_span]:last:hidden"
+                  className="inline  [&_span]:last:hidden"
                   key={`${client.title}-${Math.floor(
                     Math.random() * (100 - 999) + 100,
                   )}`}

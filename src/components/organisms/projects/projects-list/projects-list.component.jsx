@@ -318,7 +318,7 @@ const ProjectsContainer = styled.div`
         padding: 6px 0;
         margin: 0;
         font-size: 16px;
-        font-weight: bold;
+        font-weight: 600;
         letter-spacing: 0;
         border-radius: 0;
         border: none;
@@ -403,7 +403,7 @@ const ProjectsContainer = styled.div`
 
         p.not-found {
           margin-top: 1rem;
-          font-weight: bold;
+          font-weight: 500;
         }
         h3 {
           font-weight: normal;
@@ -486,7 +486,7 @@ const ProjectsContainer = styled.div`
   .extra_proj-container {
     li {
       font-size: 0.8rem;
-      font-weight: 800;
+      font-weight: 500;
       padding: 10px 0;
     }
   }

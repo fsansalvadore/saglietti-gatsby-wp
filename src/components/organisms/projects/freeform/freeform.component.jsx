@@ -13,7 +13,7 @@ const FreeformStyled = styled.div`
     margin: 0 auto;
     max-width: 700px;
     line-height: 1.4rem;
-    font-weight: 800;
+    font-weight: 600;
     letter-spacing: 0;
   }
 `

@@ -18,7 +18,7 @@ const StudioHeader = styled.header`
 
     p {
       font-size: 1.75rem;
-      font-weight: bold;
+      font-weight: 600;
       font-family: "Inter", sans-serif;
     }
   }
