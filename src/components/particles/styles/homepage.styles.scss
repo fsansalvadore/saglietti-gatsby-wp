@@ -16,24 +16,11 @@
       display: none;
     }
   }
-
-  .video-container {
-    position: absolute;
-    width: 90%;
-    background-color: transparent;
-    margin: 20vw auto 0 auto;
-    left: 0;
-    right: 0;
-  }
 }
 
 @media (min-width: 900px) {
   .black-bg-container {
     padding: 250px 2rem 40vw 2rem;
-
-    .video-container {
-      margin: 15vw auto 0 auto;
-    }
 
     .quote-anim p {
       font-size: 1.6rem;
