@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet"
 import ProjectsList from "../components/organisms/projects/projects-list/projects-list.component"
 
 const Progetti = ({ data }) => (
-  <Layout>
+  <Layout className="!pt-0">
     <Helmet>
       <title>Progetti • Saglietti</title>
     </Helmet>

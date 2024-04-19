@@ -434,7 +434,7 @@ const ProjectsContainer = styled.div`
 
         .proj_year {
           font-family: "Inter", sans-serif !important;
-          min-width: 68px;
+          min-width: 70px;
           text-align: left;
           margin-right: 0;
           font-weight: 400;

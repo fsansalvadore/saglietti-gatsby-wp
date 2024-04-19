@@ -7,13 +7,13 @@ import { Link } from "gatsby"
 import NavLogo from "./NavLogo.component"
 import { isBrowser } from "framer-motion"
 import classNames from "classnames"
+import { useLockBodyScroll, useWindowSize } from "react-use"
 
 const MenuBtn = styled.a`
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  /* background-color: #fff; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,8 +51,9 @@ const MenuBtn = styled.a`
 `
 
 const Nav = () => {
-  const [isOpen, toggleMenu] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const [isChip, setIsChip] = useState(false)
+  const { width } = useWindowSize()
 
   useEffect(() => {
     if (!isBrowser) return
@@ -66,21 +67,27 @@ const Nav = () => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  useLockBodyScroll(isOpen, document.body)
+
+  useEffect(() => {
+    setIsOpen(false)
+  }, [width])
+
   return (
     <>
       <nav className="fixed z-[998] px-2 top-0 flex justify-center w-full h-[100px] items-center">
         <div
           className={classNames(
-            "flex items-center backdrop-blur-lg border py-2 px-6 justify-between w-screen mx-auto rounded-full !transition-all !duration-300 will-change-transform",
+            "flex items-center border py-2 px-6 justify-between w-screen mx-auto rounded-full !transition-all !duration-300 will-change-transform",
             isChip && !isOpen
-              ? "bg-white/90 w-[90vw] max-w-[900px] shadow-sm border-gray-100"
-              : "max-w-full bg-transparent shadow-none border-transparent",
+              ? "bg-white/90 backdrop-blur-lg w-[90vw] max-w-[900px] shadow-sm border-gray-100"
+              : "max-w-full bg-transparent backdrop-blur-0 shadow-none border-transparent",
           )}
         >
           <NavLogo />
           <MenuBtn
             className="md:!hidden"
-            onClick={() => toggleMenu(!isOpen)}
+            onClick={() => setIsOpen(!isOpen)}
             isOpen={isOpen}
           >
             <span></span>

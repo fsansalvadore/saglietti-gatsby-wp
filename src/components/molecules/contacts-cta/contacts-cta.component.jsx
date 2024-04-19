@@ -17,7 +17,7 @@ const ContactsCTA = () => {
           <a href="tel:00393406450856" className="underline">
             +39 340 645 0856
           </a>
-          , invia un'e-mail a{" "}
+          , <br className="hidden md:block" /> invia un'e-mail a{" "}
           <a href="mailto:info@saglietti.it" className="underline">
             info@saglietti.it
           </a>{" "}

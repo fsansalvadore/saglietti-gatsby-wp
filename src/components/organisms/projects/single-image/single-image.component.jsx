@@ -13,7 +13,8 @@ const StyledImageContainer = styled.figure`
   align-items: ${props =>
     props.align.includes("center") ? "center" : "flex-start"};
 
-  img {
+  img,
+  div {
     width: 100%;
   }
   figcaption {

@@ -12,8 +12,14 @@ import CursorFollow from "./atoms/cursor-follow.component"
 import GenericMetadata from "./particles/meta/GenericMetadata"
 import CookieComponent from "./molecules/CookieComponent.component"
 import Loading from "./molecules/Loading/Loading.component"
+import cn from "classnames"
 
-const Layout = ({ children }) => {
+const Layout = ({
+  className,
+  hasTopBorder = false,
+  offsetFromTop = false,
+  children,
+}) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -43,9 +49,17 @@ const Layout = ({ children }) => {
       <Loading isLoading={isLoading} />
       {/* <NavLogo /> */}
       <Nav siteTitle={data.site.siteMetadata.title} />
+      <div
+        aria-hidden="true"
+        className={cn("w-screen relative", offsetFromTop && "h-[100px]")}
+      />
       <AnimatePresence mode="wait">
         <motion.main
-          className="pt-[100px] w-screen overflow-hidden"
+          className={cn(
+            "w-screen overflow-hidden",
+            hasTopBorder && "border-t",
+            className,
+          )}
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 1] }}
           exit={{ opacity: [1, 0] }}

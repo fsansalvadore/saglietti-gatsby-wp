@@ -21,7 +21,7 @@ const ContactsCTA = loadable(
 
 const IndexPage = ({ data }) => {
   return (
-    <Layout>
+    <Layout offsetFromTop hasTopBorder>
       <Helmet>
         <title>Saglietti • Branding — Digital • Home Page</title>
       </Helmet>

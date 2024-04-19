@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import MenuItems from "../../molecules/menu-items/menu-items.component"
 import SocialIcons from "../../molecules/SocialIcons/SocialIcons.component"
 import { Link } from "gatsby"
+import { useLockBodyScroll } from "react-use"
 
 const MenuContainer = styled.div`
   position: fixed;

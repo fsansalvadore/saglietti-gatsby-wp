@@ -254,12 +254,8 @@ const ProjectPage = props => {
     }
   })
 
-  // const mediaBlocks = blocks.filter((block) => block.t)
-  console.log("blocks", blocks)
-  console.log("custom_post_type_Project", custom_post_type_Project)
-
   return (
-    <Layout>
+    <Layout offsetFromTop hasTopBorder className="border-b">
       <Helmet>
         <title>{title} • Saglietti</title>
         <meta name="description" content={seo.metaDesc} />
@@ -301,7 +297,7 @@ const ProjectPage = props => {
         />
       </Helmet>
       <ProjectContainerComponent vh={vh}>
-        <div className="proj_info-container !pt-[110px]">
+        <div className="proj_info-container">
           <div className="proj_info-block flex-1">
             <Accordion type="single" collapsible>
               <AccordionItem value="title" className="w-full">
