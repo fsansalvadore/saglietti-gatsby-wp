@@ -77,7 +77,7 @@ const Menu = ({ isOpen }) => {
   return (
     <MenuContainer isOpen={isOpen} classname="menu-container">
       <MenuItems isOpen={isOpen}></MenuItems>
-      <MenuInfo>
+      {/* <MenuInfo>
         <div className="privacy-link no-mobile">
           <Link to="/privacy">Privacy Policy</Link>
         </div>
@@ -110,7 +110,7 @@ const Menu = ({ isOpen }) => {
         <div>
           <SocialIcons />
         </div>
-      </MenuInfo>
+      </MenuInfo> */}
     </MenuContainer>
   )
 }

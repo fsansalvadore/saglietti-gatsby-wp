@@ -21,7 +21,12 @@ const ContactsInfoContainer = () => {
         <div className="text-block">
           <p>
             Per tirocini curricolari o stage invia CV e portfolio a{" "}
-            <a href="mailto:info@saglietti.it" target="_blank" rel="noreferrer">
+            <a
+              href="mailto:info@saglietti.it"
+              className="underline"
+              target="_blank"
+              rel="noreferrer"
+            >
               info@saglietti.it
             </a>
           </p>

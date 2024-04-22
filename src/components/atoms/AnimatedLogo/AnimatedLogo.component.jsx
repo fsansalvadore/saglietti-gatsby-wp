@@ -35,10 +35,10 @@ const AnimatedLogoContainer = styled.div`
 
 const AnimatedLogo = () => {
   return (
-    <AnimatedLogoContainer className="py-1">
+    <AnimatedLogoContainer className="py-1 -mb-px">
       <motion.div
         className="logo-anim"
-        animate={{ translateY: [0, 0, -40, -40, -77, -77] }}
+        animate={{ translateY: [2, 2, -40, -40, -76, -76] }}
         transition={{
           repeat: Infinity,
           duration: 10,
