@@ -42,7 +42,7 @@ const LinkComponent = styled.div`
     text-decoration: none;
     font-size: 1rem;
     font-family: "Inter", sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     margin-right: 0;
 
     &:hover span {

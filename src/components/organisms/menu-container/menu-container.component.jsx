@@ -1,16 +1,15 @@
-import React, { useEffect } from "react"
+import React from "react"
 import styled from "styled-components"
 import MenuItems from "../../molecules/menu-items/menu-items.component"
 import SocialIcons from "../../molecules/SocialIcons/SocialIcons.component"
 import { Link } from "gatsby"
-import { useLockBodyScroll } from "react-use"
 
 const MenuContainer = styled.div`
   position: fixed;
   width: 100vw;
   height: 100vh;
   z-index: 990;
-  font-weight: 300;
+  font-weight: 400;
   top: 0;
   left: 0;
   bottom: 0;

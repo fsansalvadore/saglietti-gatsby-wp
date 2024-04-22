@@ -403,7 +403,7 @@ const ProjectsContainer = styled.div`
 
         p.not-found {
           margin-top: 1rem;
-          font-weight: 500;
+          font-weight: 400;
         }
         h3 {
           font-weight: normal;
@@ -486,7 +486,7 @@ const ProjectsContainer = styled.div`
   .extra_proj-container {
     li {
       font-size: 0.8rem;
-      font-weight: 500;
+      font-weight: 400;
       padding: 10px 0;
     }
   }

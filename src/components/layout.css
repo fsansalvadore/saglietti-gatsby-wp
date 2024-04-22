@@ -241,7 +241,7 @@ html {
 body {
   color: #000;
   font-family: "Inter", sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   word-wrap: break-word;
   font-kerning: normal;
   -moz-font-feature-settings: "kern", "liga", "clig", "calt";
@@ -274,7 +274,7 @@ h1 {
     "Inter",
     Helvetica Neue,
     sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   text-rendering: optimizeLegibility;
   font-size: 2.25rem;
   line-height: 1.1;
@@ -312,7 +312,7 @@ h3 {
     "Inter",
     Helvetica Neue,
     sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   text-rendering: optimizeLegibility;
   font-size: 1.38316rem;
   line-height: 1.1;
@@ -331,7 +331,7 @@ h4 {
     "Inter",
     Helvetica Neue,
     sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   text-rendering: optimizeLegibility;
   font-size: 1rem;
   line-height: 1.1;
@@ -350,7 +350,7 @@ h5 {
     "Inter",
     Helvetica Neue,
     sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   text-rendering: optimizeLegibility;
   font-size: 0.85028rem;
   line-height: 1.1;
@@ -369,7 +369,7 @@ h6 {
     "Inter",
     Helvetica Neue,
     sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   text-rendering: optimizeLegibility;
   font-size: 0.78405rem;
   line-height: 1.1;
@@ -550,16 +550,16 @@ address {
   margin-bottom: 1.45rem;
 }
 b {
-  font-weight: 500;
+  font-weight: 400;
 }
 strong {
   font-weight: 600;
 }
 dt {
-  font-weight: 500;
+  font-weight: 400;
 }
 th {
-  font-weight: 500;
+  font-weight: 400;
 }
 li {
   margin-bottom: calc(1.45rem / 2);

@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import { ArrowRight } from "lucide-react"
 
 import Logo from "../../../images/Saglietti_logo.svg"
 import SocialIcons from "../../molecules/SocialIcons/SocialIcons.component"

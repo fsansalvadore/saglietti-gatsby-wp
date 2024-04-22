@@ -74,7 +74,7 @@ const ContactFormContainer = styled.div`
   }
 
   button {
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.02rem;
     padding: 10px 20px;
     border: none;
