@@ -67,7 +67,7 @@ const Nav = () => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  useLockBodyScroll(isOpen, document.body)
+  useLockBodyScroll(isOpen)
 
   useEffect(() => {
     setIsOpen(false)
