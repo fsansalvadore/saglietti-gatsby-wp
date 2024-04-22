@@ -3,11 +3,10 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import { Helmet } from "react-helmet"
 
-// import '../components/particles/styles/projects.styles.scss'
 import ProjectsList from "../components/organisms/projects/projects-list/projects-list.component"
 
 const Progetti = ({ data }) => (
-  <Layout>
+  <Layout className="!pt-0">
     <Helmet>
       <title>Progetti • Saglietti</title>
     </Helmet>

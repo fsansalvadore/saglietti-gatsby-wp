@@ -1,7 +1,7 @@
 // Variables
 
 $tablet-width: 768px;
-$desktop-width: 900px;
+$desktop-width: 1024px;
 
 @mixin mobile {
   @media (max-width: #{$tablet-width - 1px}) {
@@ -23,10 +23,20 @@ $desktop-width: 900px;
 
 * {
   cursor: auto;
+  @apply border-black;
 }
 
 a {
   cursor: pointer !important;
+}
+
+body {
+  @apply font-sans font-normal transition-colors duration-500;
+}
+
+.text-serif,
+i {
+  @apply font-serif;
 }
 
 p,
@@ -50,29 +60,21 @@ span {
 .header-container {
   position: relative;
   width: 100%;
-  height: auto;
-  min-height: calc(var(--vh, 1vh) * 200);
-  display: flex;
-  flex-direction: column;
 
   .header-left {
     position: relative;
     width: 100vw;
-    float: none;
-    height: calc(var(--vh, 1vh) * 200);
   }
 
   .header-right {
     position: relative;
     width: 100vw;
-    height: 100vh;
-    float: none;
 
     &.sticky {
       position: relative;
       top: 0;
 
-      @media (min-width: 900px) {
+      @media (min-width: 1024px) {
         position: sticky;
       }
     }
@@ -110,14 +112,6 @@ span {
       }
     }
   }
-
-  @media (max-width: 900px) {
-    min-height: 190vh;
-
-    .header-left {
-      height: 200vh;
-    }
-  }
 }
 
 .tl-edges {
@@ -138,22 +132,16 @@ hr.line {
 
   h1,
   p {
-    font-family: "ff-real-headline-pro-2", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.75rem;
     line-height: 120%;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 0;
     text-rendering: optimizeLegibility;
   }
 }
 
-.contacts-container {
-  .header-text-center p {
-    line-height: 130%;
-  }
-}
-
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .header-text-center {
     h1,
     p {
@@ -170,10 +158,6 @@ hr.line {
 }
 
 .text-block {
-  h2 {
-    font-size: 0.9rem !important;
-  }
-
   p {
     font-size: 1.2rem !important;
   }
@@ -199,30 +183,30 @@ hr.line {
   }
 }
 
-@media (max-width: 1200px) {
-  .flex {
-    flex-direction: column;
-    justify-content: center;
-  }
-}
+// @media (max-width: 1200px) {
+//   .flex {
+//     flex-direction: column;
+//     justify-content: center;
+//   }
+// }
 
-.proj_content-container .react-reveal.anim_enter {
-  animation-name: animEnter;
-  animation-fill-mode: forwards;
-  animation-duration: 0.5s;
-  animation-delay: 0.3s;
-}
+// .proj_content-container .react-reveal.anim_enter {
+//   animation-name: animEnter;
+//   animation-fill-mode: forwards;
+//   animation-duration: 0.5s;
+//   animation-delay: 0.3s;
+// }
 
-@keyframes animEnter {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 30px, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0px, 0);
-  }
-}
+// @keyframes animEnter {
+//   0% {
+//     opacity: 0;
+//     transform: translate3d(0, 30px, 0);
+//   }
+//   100% {
+//     opacity: 1;
+//     transform: translate3d(0, 0px, 0);
+//   }
+// }
 
 @keyframes fadeIn {
   0% {
@@ -261,7 +245,7 @@ hr.line {
 .vertical_line {
   display: none;
 }
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .vertical_line {
     display: block;
   }
@@ -275,26 +259,10 @@ hr.line {
 
     .header-left {
       width: 60%;
-      float: left;
     }
 
     .header-right {
       width: 40%;
-      float: right;
     }
   }
 }
-
-// body .cooky.react-cookie-banner {
-//   position: fixed !important;
-//   width: 100vw;
-//   background-color: #fff !important;
-
-//   .cookie-message {
-//     color: #000 !important;
-//   }
-
-//   .close-button {
-//     cursor: pointer !important;
-//   }
-// }

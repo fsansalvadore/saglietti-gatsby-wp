@@ -1,68 +1,38 @@
-import React from 'react'
-import { Link } from 'gatsby'
-// import TransitionLink from 'gatsby-plugin-transition-link'
-import styled from 'styled-components'
-import ArrowRightSVG from '../../../images/icons/arrow-right.svg'
+import React from "react"
+import styled from "styled-components"
 
 const ContactsComponent = styled.div`
   width: 100%;
   padding: 100px 5%;
-  border-top: 1px solid #000;
-
-  a {
-    font-family: 'ff-real-headline-pro-2', sans-serif;
-    width: 100%;
-    float: right;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-decoration: none;
-    font-size: 1.4rem;
-    font-weight: 300;
-    margin-right: 0;
-
-    &:hover span {
-      transform: translate3d(10px, 0, 0);
-    }
-
-    span {
-      width: 30px;
-      height: 30px;
-      min-width: 30px;
-      min-height: 30px;
-      border-radius: 50%;
-      border: 1px solid #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s ease;
-    }
-  }
-
-  @media (min-width: 900px) {
-    padding: 150px 5%;
-
-    a {
-      width: 33%;
-      margin-right: 8.33%;
-      font-size: 2rem;
-
-      span {
-        width: 42px;
-        height: 42px;
-        min-width: 42px;
-        min-height: 42px;
-      }
-    }
-  }
 `
 
 const ContactsCTA = () => {
   return (
-    <ContactsComponent className="contacts-container TextRevealAnim">
-      <Link to="/contatti" className="TextRevealItem">Contattaci <span><img src={ArrowRightSVG} alt=""/></span></Link>
+    <ContactsComponent className="contacts-container">
+      <div className="py-4 md:py-20 text-center max-w-[900px] mx-auto flex flex-col items-center text-2xl sm:text-3xl">
+        <p className="!m-0">Vogliamo lavorare insieme al tuo progetto?</p>
+        <p>
+          Chiamaci al numero{" "}
+          <a href="tel:00393406450856" className="underline">
+            +39 340 645 0856
+          </a>
+          , <br className="hidden md:block" /> invia un'e-mail a{" "}
+          <a href="mailto:info@saglietti.it" className="underline">
+            info@saglietti.it
+          </a>{" "}
+          o vieni a{" "}
+          <a
+            href="https://maps.app.goo.gl/uvuZGUEYhbnYwoGT8"
+            target="_blank"
+            className="underline"
+          >
+            trovarci
+          </a>
+          .
+        </p>
+      </div>
     </ContactsComponent>
   )
 }
 
-export default ContactsCTA;
+export default ContactsCTA

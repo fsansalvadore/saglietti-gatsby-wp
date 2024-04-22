@@ -4,31 +4,14 @@ import { Link } from "gatsby"
 
 import Logo from "../../../images/Saglietti_logo.svg"
 import SocialIcons from "../../molecules/SocialIcons/SocialIcons.component"
+import MailchimpForm from "../../MailchimpForm"
 
 const FooterComponent = styled.footer`
   width: 100%;
-  padding: 50px 1rem;
-  display: flex;
-  flex-direction: column;
-  border-top: 1px solid var(--line-color);
-  text-align: center;
-  align-items: center;
-
-  .footer-logo {
-    width: 25%;
-  }
-
-  div {
-    margin: 20px 0;
-  }
+  padding: 1rem;
 
   .footer-info {
-    width: 100%;
     font-size: 0.8rem;
-
-    p {
-      margin: 0 0 0.5rem 0;
-    }
 
     ul {
       margin: 0;
@@ -45,14 +28,8 @@ const FooterComponent = styled.footer`
       }
     }
   }
-  .flex-end {
-    display: flex;
-    justify-content: center;
-  }
 
   .footer-sitemap {
-    width: 100%;
-
     ul {
       margin: 0;
     }
@@ -73,66 +50,33 @@ const FooterComponent = styled.footer`
 
   @media only screen and (min-width: 900px) {
     padding: 70px 2rem;
-    flex-direction: row;
-    text-align: left;
-    align-items: flex-start;
 
     div {
       margin: 0;
-    }
-
-    .footer-sitemap,
-    .footer-info {
-      width: 16.6%;
-
-      &.large {
-        width: 24%;
-      }
-    }
-
-    .flex-end {
-      justify-content: flex-end;
     }
   }
 `
 
 const Footer = () => {
   return (
-    <FooterComponent>
-      <div className="footer-logo">
-        <img src={Logo} alt="Saglietti" />
-      </div>
-      <div className="footer-info large">
-        <p>Copyright © {new Date().getFullYear()}</p>
-        <p>P.I 03391740044</p>
-        <p>
-          <a href="mailto:info@saglietti.it">info@saglietti.it</a>
-        </p>
-        <p>
-          <a href="tel:+393406450856">+39 340 645 0856</a>
-        </p>
-      </div>
-      <div className="footer-sitemap">
-        <ul>
-          <li>
-            <Link to="/studio">Studio</Link>
-          </li>
-          <li>
-            <Link to="/progetti">Progetti</Link>
-          </li>
-          <li>
-            <Link to="/contatti">Contatti</Link>
-          </li>
-        </ul>
+    <FooterComponent className="flex flex-col gap-4 sm:!grid grid-cols-2 md:grid-cols-3">
+      <div className="h-full w-full flex flex-col gap-2 justify-between items-start">
+        <img src={Logo} alt="Saglietti" className="h-[30px] w-auto" />
+        <p className="!m-0">branding + digital</p>
       </div>
       <div className="footer-info">
-        <ul>
-          <li>
-            <Link to="/privacy">Privacy Policy</Link>
-          </li>
-        </ul>
+        <p>
+          IT 10153 Torino TO
+          <br />
+          Corso Regio Parco 36A
+          <br />T <a href="tel:00393406450856">+39 340 645 0856</a>
+        </p>
+        <p className="m-0 !mt-4 md:!mt-8 uppercase">VAT 03391740044</p>
+        <p className="m-0 uppercase">Copyright © {new Date().getFullYear()}</p>
+        <Link to="/privacy">Privacy Policy</Link>
       </div>
-      <div className="footer-info flex-end">
+      <div className="flex flex-col gap-2 sm:col-start-2 md:col-start-3">
+        <MailchimpForm />
         <SocialIcons />
       </div>
     </FooterComponent>

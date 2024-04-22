@@ -4,16 +4,22 @@ import { useStaticQuery, graphql } from "gatsby"
 import { motion, AnimatePresence } from "framer-motion"
 
 import Nav from "./organisms/nav/nav.component"
-import NavLogo from "./organisms/nav/NavLogo.component"
+// import NavLogo from "./organisms/nav/NavLogo.component"
 import "./layout.css"
 import Footer from "./organisms/footer/footer.component"
 import Cursor from "./atoms/cursor.component"
 import CursorFollow from "./atoms/cursor-follow.component"
 import GenericMetadata from "./particles/meta/GenericMetadata"
 import CookieComponent from "./molecules/CookieComponent.component"
-import Loading from "../components/molecules/Loading/Loading.component"
+import Loading from "./molecules/Loading/Loading.component"
+import cn from "classnames"
 
-const Layout = ({ children }) => {
+const Layout = ({
+  className,
+  hasTopBorder = false,
+  offsetFromTop = false,
+  children,
+}) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -41,10 +47,19 @@ const Layout = ({ children }) => {
       {cursorComp}
       {cursorFollowComp}
       <Loading isLoading={isLoading} />
-      <NavLogo />
+      {/* <NavLogo /> */}
       <Nav siteTitle={data.site.siteMetadata.title} />
-      <AnimatePresence exitBeforeEnter>
+      <div
+        aria-hidden="true"
+        className={cn("w-screen relative", offsetFromTop && "h-[100px]")}
+      />
+      <AnimatePresence mode="wait">
         <motion.main
+          className={cn(
+            "w-screen overflow-hidden",
+            hasTopBorder && "border-t",
+            className,
+          )}
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 1] }}
           exit={{ opacity: [1, 0] }}

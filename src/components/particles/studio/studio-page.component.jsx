@@ -1,12 +1,19 @@
 import React, { useEffect } from "react"
 import styled from "styled-components"
-import AIAP from "../../../images/AIAP-FIRMA-SOCIO-SENIOR.png"
 
 import { gsap } from "gsap"
 import * as ScrollMagic from "scrollmagic-with-ssr" // Or use scrollmagic-with-ssr to avoid server rendering problems
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
 import { TweenLite, TimelineLite } from "gsap/all"
 import CustomEase from "../../particles/vendor/gsap/CustomEase"
+import { StaticImage } from "gatsby-plugin-image"
+import SectionContainer from "../../SectionContainer"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../../Accordion"
 
 if (typeof window !== `undefined`) {
   gsap.registerPlugin(CustomEase)
@@ -19,141 +26,20 @@ const StudioContent = styled.div`
   padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: 0;
 
   h1 {
-    font-size: 1rem;
-    font-family: "ff-real-headline-pro", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 200;
   }
 
-  h2 {
-    font-size: 0.8rem;
-    font-weight: bold;
-  }
-
   p {
-    font-size: 1rem;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 140%;
     letter-spacing: 0;
-    margin: 0;
-
-    strong {
-      font-weight: 400;
-    }
-  }
-
-  .text-lg {
-    font-family: "ff-real-headline-pro", sans-serif;
-    font-size: 1.6rem;
-    font-weight: normal;
-    line-height: 120%;
-  }
-
-  section {
-    padding: 60px 1rem;
-  }
-
-  .studio_container.intro {
-    padding: 150px 1rem 5rem 1rem;
-  }
-
-  .studio_content-container {
-    display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid #000;
-  }
-
-  .studio_content-left {
-    border-top: 1px solid #000;
-    border-right: none;
-    width: 100%;
-  }
-  .studio_content-right {
-    flex: 1;
-    border-top: 1px solid #000;
   }
 
   .filosofia_container {
     border-bottom: 1px solid #000;
-  }
-
-  .clienti_container {
-    ul {
-      display: block;
-      margin: 0;
-    }
-
-    li.fade-in {
-      display: block;
-    }
-
-    .clients_list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 4rem;
-      row-gap: 4rem;
-      margin-top: 4rem;
-
-      li {
-        list-style: none;
-        display: flex;
-        align-items: center;
-        font-weight: 300;
-      }
-    }
-  }
-
-  .metodo_container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-
-    & > div {
-      width: 100%;
-    }
-
-    h2 {
-      font-size: 0.8rem;
-      font-weight: bold;
-      margin-bottom: 1.8rem;
-    }
-
-    ul {
-      padding: 0;
-      margin: 0 0 1rem 0;
-    }
-
-    li {
-      list-style: none;
-      display: flex;
-      align-items: flex-start;
-      font-weight: 300;
-      font-size: 1rem;
-      margin-bottom: 15px;
-
-      span {
-        font-family: "ff-real-headline-pro", sans-serif;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 30px;
-        height: 30px;
-        min-width: 30px;
-        min-height: 30px;
-        font-size: 0.7rem;
-        font-weight: bold;
-        margin-right: 15px;
-        border: 1px solid #000;
-        border-radius: 50%;
-
-        * {
-          line-height: 0;
-        }
-      }
-    }
   }
 
   .servizi_container {
@@ -163,19 +49,6 @@ const StudioContent = styled.div`
     align-items: flex-start;
     justify-content: space-between;
 
-    ul {
-      padding: 0;
-      margin: 2rem 0;
-    }
-
-    li {
-      list-style: none;
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 140%;
-      letter-spacing: 0;
-    }
-
     img {
       max-height: 60px;
       justify-self: flex-end;
@@ -183,63 +56,13 @@ const StudioContent = styled.div`
   }
 
   @media (min-width: 900px) {
-    section {
-      padding: 2rem;
-    }
-
     .studio_content-left {
       width: 60vw;
       border-right: 1px solid #000;
     }
 
-    .studio_container.intro {
-      padding: 150px 20% 5rem 2rem;
-    }
-
     .studio_content-container {
       flex-direction: row;
-    }
-
-    h2 {
-      font-size: 0.8rem;
-      font-weight: bold;
-    }
-
-    p {
-      font-size: 1.25rem;
-      line-height: 140%;
-    }
-
-    .text-lg {
-      font-size: 2.9rem;
-      line-height: 110%;
-    }
-
-    .clienti_container {
-      .clients_list {
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-      }
-    }
-
-    .metodo_container li {
-      font-size: 1.25rem;
-      margin-bottom: 15px;
-    }
-  }
-
-  @media (min-width: 768px) and (max-width: 1200px) {
-    .clienti_container {
-      .clients_list {
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-    }
-  }
-
-  @media (min-width: 600px) and (max-width: 768px) {
-    .clienti_container {
-      .clients_list {
-        grid-template-columns: 1fr 1fr 1fr;
-      }
     }
   }
 `
@@ -264,9 +87,9 @@ const StudioPage = ({ data }) => {
               y: 0,
               ease: CustomEase.create(
                 "custom",
-                "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1"
+                "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1",
               ),
-            }
+            },
           )
 
           new ScrollMagic.Scene({
@@ -282,123 +105,197 @@ const StudioPage = ({ data }) => {
     }
   })
 
+  useEffect(() => {
+    return () => (document.body.style.backgroundColor = "#fff")
+  }, [])
+
   return (
     <>
       <StudioContent>
-        <header className="studio_container intro">
-          <p className="fade-in text-lg">
-            Costruiamo i brand con idee semplici e rilevanti. Il nostro mantra è
-            l’essenzialità. La applichiamo in ogni parte del progetto: concept,
-            messaggio, design, colore. Perché eliminando il superfluo, rimanga
-            tutto ciò che conta.
+        <header className="p-4 pb-8 sm:p-8 !pt-[120px] sm:!pt-[150px]">
+          <h1 className="sr-only">Studio Saglietti</h1>
+          <p className="fade-in max-w-[1000px] !text-2xl md:!text-4xl">
+            Costruiamo <i>brand</i> con idee semplici e rilevanti.
+            <br />
+            Il nostro mantra è l'essenzialità, che applichiamo in ogni parte del
+            progetto: <i>concept</i>, <i>messaggio</i>, <i>design</i> e{" "}
+            <i>colore</i>. Perché, eliminando il superfluo, rimanga tutto ciò
+            che conta.
           </p>
         </header>
-        <div className="studio_content-container">
-          <div className="studio_content-left">
-            <section className="filosofia_container">
-              <h2 className="">Filosofia</h2>
-              <p className="">
-                Il nostro design nasce da qui. Mettendo in relazione{" "}
-                <strong>Essenza</strong>, <strong>Espressione</strong> ed{" "}
-                <strong>Emozione</strong> per stabilire connessioni armoniche
-                con gli utenti. Succede tutti i giorni, facciamo scorrere in
-                ogni progetto più di 10 anni di know how, passione e
-                contaminazione internazionale. Noi lo chiamiamo Pensiero
-                Circolare.
-              </p>
-            </section>
-            <section className="metodo_container">
-              <h2 className="">Metodo</h2>
-              <ul>
-                <li className="">
-                  <span>1</span> Riceviamo i need del cliente.
-                </li>
-                <li className="">
-                  <span>2</span> Analizziamo i valori del brand.
-                </li>
-                <li className="">
-                  <span>3</span> Creiamo un concetto.
-                </li>
-              </ul>
-              <p className="fade-in">
-                Sono i tre step con i quali nascono tutti i nostri progetti.
-                <br />
-                L'obiettivo? Dare vita a una strategia di comunicazione
-                completa, innovativa, in grado di offrire forte distintività e
-                generare engagement.
-              </p>
-              <br />
-              <p className="fade-in">
-                Creiamo linguaggi di comunicazione per qualsiasi tipo di
-                progetto, budget, media. Ma il nostro approccio al lavoro è
-                sempre lo stesso: offrire al cliente non un collaboratore, ma un
-                partner con cui condividere una visione. Un’intesa che ci porta
-                a comprendere a fondo gli obiettivi e generare fiducia,
-                massimizzando i risultati.
-              </p>
-              <br />
-              <p className="fade-in">
-                Mettiamo il nostro know-how e la nostra idea di design al
-                servizio di tutti i settori: food &amp; beverage, fashion,
-                technology, manifattura, interior design, istituzioni e
-                organizzazioni culturali.
-              </p>
-            </section>
+        <SectionContainer>
+          <StaticImage
+            src="../../../images/studio/saglietti-about-1.jpeg"
+            alt="Studio Saglietti"
+            className="w-full sm:!col-span-2 lg:!col-span-1 h-auto"
+          />
+          <div className="flex flex-col gap-4 col-span-2 col-start-3 text-xl">
+            <p className="fade-in">
+              Con la nostra esperienza, sviluppiamo ogni progetto con passione e
+              contaminazione internazionale collaborando con professionisti come{" "}
+              <i>strategist</i>, <i>designer</i>, <i>copywriter</i>,{" "}
+              <i>sviluppatori</i> e <i>videomakers</i> attenti a realizzare
+              progetti ricercati e unici.
+            </p>
+            <div className="flex flex-col gap-2">
+              <Accordion type="single" collapsible>
+                <AccordionItem value="item-1">
+                  <AccordionTrigger>Hanno collaborato con noi</AccordionTrigger>
+                  <AccordionContent className="!text-sm">
+                    Marzia Anania, Gaia Bonessa, Chiara Bourlot, Sofia Calvo,
+                    Evan Cigna, Marta Doria, Francesca De Bortoli, Federica
+                    Favretti, Rachele Fasoli, Ester Galletto, Gloria Geri,
+                    Alessia Leonetti, Erika Lo Bianco, Alessia Mastrorilli,
+                    Laura Notarpietro, Elisa Peroglio Carus, Gaia Perenno,
+                    Fabrizio Primo, Sara Sartini, Luca Sommadossi, Andrea Vinci,
+                    Stefano Vitti
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
           </div>
-          <div className="studio_content-right">
-            <section className="servizi_container">
-              <div>
-                <h2 className="">Servizi</h2>
-                <p className="">
-                  <strong>
-                    La qualità non è solo un punto d’arrivo. È la partenza e
-                    l’ispirazione.
-                  </strong>{" "}
-                  Una gamma di servizi ampia e strutturata. Uno standard
-                  qualitativo che quotidianamente accetta la sfida più
-                  importante: pensare avanti, sempre.
-                </p>
-                <ul>
-                  <li className="fade-in">Art Direction</li>
-                  <li className="fade-in">Identità Visiva</li>
-                  <li className="fade-in">Progettazione Editoriale</li>
-                  <li className="fade-in">Grafica Ambientale</li>
-                  <li className="fade-in">Wayfinding</li>
-                  <li className="fade-in">Exhibition Design</li>
-                  <li className="fade-in">Packaging Design</li>
-                  <li className="fade-in">Digital Design + Development</li>
-                  <li className="fade-in">Motion Graphics</li>
-                </ul>
-              </div>
-              <img
-                className="aiap"
-                src={AIAP}
-                alt="Associazione Italiana Design della Comunicazione Visiva"
-              />
-            </section>
+        </SectionContainer>
+        <SectionContainer>
+          <div className="flex flex-col gap-4 col-span-2 col-start-3">
+            <StaticImage
+              src="../../../images/studio/saglietti-about-2.jpeg"
+              alt="Studio Saglietti"
+              className="object-cover object-center w-full h-auto"
+            />
           </div>
-        </div>
-        <section className="clienti_container">
-          <h2 className="">Clienti e collaborazioni</h2>
-          <ul className="clients_list">
-            {data.wordpress.clients.nodes.map(client => (
-              <li
-                key={`${client.title}-${Math.floor(
-                  Math.random() * (100 - 999) + 100
-                )}`}
-              >
-                <span className="">
-                  {client.featuredImage && (
-                    <img
-                      src={client.featuredImage.node.link}
-                      alt={client.title}
-                    />
-                  )}
+        </SectionContainer>
+        <SectionContainer bgColor="#fff">
+          <div className="w-full sm:col-span-2">
+            <h2 className="text-xl">metodo.</h2>
+          </div>
+          <div className="flex flex-col gap-4 col-span-2 text-xl">
+            <p className="mb-4 sm:mb-10">
+              Crediamo che un design efficace sia il risultato di un'idea che
+              funziona, un'idea che scaturisce da intuizioni strategiche ben
+              ponderate. Per noi, giungere al cuore di ogni progetto è una
+              missione.
+            </p>
+            <p className="">
+              Noi lo chiamiamo <strong>Pensiero Circolare</strong>: un processo
+              generativo che guida ogni aspetto del nostro lavoro e si articola
+              in tre fasi chiave:
+            </p>
+            <Accordion type="multiple" collapsible>
+              <AccordionItem value="ascolto">
+                <AccordionTrigger className="font-semibold">
+                  <span>1</span> Ascolto
+                </AccordionTrigger>
+                <AccordionContent className="text-xl">
+                  Raccogliamo i bisogni e le esigenze del cliente, per ottenere
+                  una comprensione completa del contesto e dei desideri del
+                  brand.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="analisi">
+                <AccordionTrigger className="font-semibold">
+                  <span>2</span> Analisi
+                </AccordionTrigger>
+                <AccordionContent className="text-xl">
+                  Esaminiamo i valori e la personalità della marca, adottando un
+                  approccio strategico per concretizzare i passi successivi.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="design">
+                <AccordionTrigger className="font-semibold">
+                  <span>3</span> Design
+                </AccordionTrigger>
+                <AccordionContent className="text-xl">
+                  Elaboraziamo il messaggio e lo traduciamo in un'espressione
+                  visiva che colpisca nel segno.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        </SectionContainer>
+        <SectionContainer bgColor="#FFF50F">
+          <div className="w-full sm:col-span-2">
+            <h2 className="text-xl">servizi.</h2>
+          </div>
+          <div className="flex flex-col gap-4 col-span-2 text-xl">
+            <p>
+              Le nostre soluzioni non soddisfano solo le esigenze immediate del
+              cliente, ma puntano a una comprensione della marca più profonda e
+              significativa, con l'obiettivo di creare una connessione autentica
+              e duratura con il suo pubblico.
+            </p>
+            <p className="md:mb-8">
+              Offriamo una gamma di servizi ampia e strutturata. Uno standard
+              qualitativo che non è solo un punto d'arrivo, ma è la partenza e
+              l'ispirazione e accetta la sfida più importante: creare un
+              incontro tra il brand e il suo pubblico, utilizzando solo gli
+              strumenti che apportano significato e valore alle idee.
+            </p>
+            <div>
+              <h3 className="m-0 text-base">Branding</h3>
+              <p className="m-0">
+                Strategy, Creative direction, Art direction, Brand architecture,
+                Brand logotype, Graphic design, Identità visiva, Progettazione
+                editoriale, Illustrazione, Packaging, Retail design, Exhibit
+                design, Environmental, Wayfinding & Signage
+              </p>
+            </div>
+            <div>
+              <h3 className="m-0 text-base">Digital</h3>
+              <p className="m-0">
+                Digital strategy, Digital communication, Design systems, Motion
+                graphics, Web & App design, Interface design, User interface,
+                User experience, Social media
+              </p>
+            </div>
+          </div>
+        </SectionContainer>
+        <SectionContainer>
+          <div className="w-full sm:col-span-2">
+            <h2 className="text-xl">clienti.</h2>
+          </div>
+          <div className="flex flex-col gap-4 col-span-2 text-xl">
+            <p>
+              Creiamo linguaggi di comunicazione per qualsiasi tipo di{" "}
+              <strong>progetto</strong>,<strong>budget</strong> e{" "}
+              <strong>media</strong>. Ma il nostro approccio al lavoro è sempre
+              lo stesso: offrire al cliente un partner con cui condividere una
+              visione. Un'intesa che ci porta a comprendere a fondo gli
+              obiettivi e generare fiducia, massimizzando i risultati.
+            </p>
+            <p>
+              Mettiamo il nostro know-how la nostra esperienza e la nostra idea
+              di design al servizio di tutti i settori: <i>food & beverage</i>,
+              <i>fashion</i>, <i>technology</i>, <i>manifattura</i>,{" "}
+              <i>interior design</i>, <i>istituzioni</i> e
+              <i>organizzazioni culturali</i>.
+            </p>
+          </div>
+        </SectionContainer>
+        <SectionContainer>
+          <div className="col-span-1 h-full flex sm:items-end">
+            <StaticImage
+              src="../../../images/AIAP-FIRMA-SOCIO-SENIOR.png"
+              alt="AIAP - Socio Professionista Senior"
+              className="w-full max-w-40 h-auto"
+            />
+          </div>
+          <div className="flex flex-col gap-4 col-span-2 col-start-3 text-xl">
+            <p>
+              Abbiamo collaborato con{" "}
+              {data.wordpress.clients.nodes.map(client => (
+                <span
+                  className="inline  [&_span]:last:hidden"
+                  key={`${client.title}-${Math.floor(
+                    Math.random() * (100 - 999) + 100,
+                  )}`}
+                >
+                  {client.title}
+                  <span>, </span>
                 </span>
-              </li>
-            ))}
-          </ul>
-        </section>
+              ))}
+            </p>
+          </div>
+        </SectionContainer>
       </StudioContent>
     </>
   )

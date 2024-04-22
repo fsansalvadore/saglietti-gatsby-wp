@@ -6,28 +6,15 @@
 }
 
 * {
+  @apply font-sans;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "ff-real-headline-pro-2", sans-serif;
 }
-
-/* @font-face {
-  font-family: 'ff-real-headline-pro-2';
-  src: url('../webFonts/ff-real-headline-pro-2/font.woff2') format('woff2'), url('../webFonts/ff-real-headline-pro-2/font.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'ff-real-headline-pro-2';
-  src: url('../webFonts/ff-real-headline-pro-2/font.woff2') format('woff2'), url('../webFonts/ff-real-headline-pro-2/font.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-} */
 
 html {
   background: #fff;
-  font-family: "ff-real-headline-pro-2", sans-serif;
+  font-family: "Inter", sans-serif;
   overflow: auto !important;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -47,7 +34,10 @@ body {
 }
 
 main {
+  @apply flex flex-col;
+  height: 100%;
   min-height: 70vh;
+  position: relative;
 }
 
 .fade-out {
@@ -62,7 +52,6 @@ figcaption,
 figure,
 footer,
 header,
-main,
 menu,
 nav,
 section,
@@ -163,7 +152,7 @@ textarea {
   margin: 0;
 }
 optgroup {
-  font-weight: 800;
+  font-weight: 600;
 }
 button,
 input {
@@ -234,7 +223,9 @@ textarea {
   font: inherit;
 }
 html {
-  font: 112.5%/1.45em georgia, serif;
+  font:
+    112.5%/1.45em georgia,
+    serif;
   box-sizing: border-box;
   overflow-y: scroll;
 }
@@ -248,9 +239,9 @@ html {
   box-sizing: inherit;
 }
 body {
-  color: hsla(0, 0%, 0%, 0.8);
-  font-family: "ff-real-headline-pro-2", sans-serif;
-  font-weight: 300;
+  color: #000;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
   word-wrap: break-word;
   font-kerning: normal;
   -moz-font-feature-settings: "kern", "liga", "clig", "calt";
@@ -279,13 +270,17 @@ h1 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "ff-real-headline-pro", Helvetica Neue, sans-serif;
-  font-weight: bold;
+  font-family:
+    "Inter",
+    Helvetica Neue,
+    sans-serif;
+  font-weight: 400;
   text-rendering: optimizeLegibility;
   font-size: 2.25rem;
   line-height: 1.1;
 }
 h2 {
+  @apply text-xl;
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
@@ -295,10 +290,12 @@ h2 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "ff-real-headline-pro", Helvetica Neue, sans-serif;
+  font-family:
+    "Inter",
+    Helvetica Neue,
+    sans-serif;
   text-rendering: optimizeLegibility;
   font-size: 0.8rem;
-  font-weight: bold;
   line-height: 1.1;
 }
 h3 {
@@ -311,8 +308,11 @@ h3 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "ff-real-headline-pro", Helvetica Neue, sans-serif;
-  font-weight: bold;
+  font-family:
+    "Inter",
+    Helvetica Neue,
+    sans-serif;
+  font-weight: 400;
   text-rendering: optimizeLegibility;
   font-size: 1.38316rem;
   line-height: 1.1;
@@ -327,8 +327,11 @@ h4 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "ff-real-headline-pro", Helvetica Neue, sans-serif;
-  font-weight: bold;
+  font-family:
+    "Inter",
+    Helvetica Neue,
+    sans-serif;
+  font-weight: 400;
   text-rendering: optimizeLegibility;
   font-size: 1rem;
   line-height: 1.1;
@@ -343,8 +346,11 @@ h5 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "ff-real-headline-pro", Helvetica Neue, sans-serif;
-  font-weight: bold;
+  font-family:
+    "Inter",
+    Helvetica Neue,
+    sans-serif;
+  font-weight: 400;
   text-rendering: optimizeLegibility;
   font-size: 0.85028rem;
   line-height: 1.1;
@@ -359,8 +365,11 @@ h6 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "ff-real-headline-pro", Helvetica Neue, sans-serif;
-  font-weight: bold;
+  font-family:
+    "Inter",
+    Helvetica Neue,
+    sans-serif;
+  font-weight: 400;
   text-rendering: optimizeLegibility;
   font-size: 0.78405rem;
   line-height: 1.1;
@@ -427,7 +436,7 @@ p {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 1.45rem;
+  margin-bottom: 0.45rem;
   line-height: 120%;
 }
 figure {
@@ -541,16 +550,16 @@ address {
   margin-bottom: 1.45rem;
 }
 b {
-  font-weight: bold;
+  font-weight: 400;
 }
 strong {
-  font-weight: bold;
+  font-weight: 600;
 }
 dt {
-  font-weight: bold;
+  font-weight: 400;
 }
 th {
-  font-weight: bold;
+  font-weight: 400;
 }
 li {
   margin-bottom: calc(1.45rem / 2);

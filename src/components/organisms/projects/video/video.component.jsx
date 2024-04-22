@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Reveal from "react-reveal/Reveal"
+import Reveal from "react-awesome-reveal"
 
 const StyledVideoContainer = styled.figure`
   position: relative;

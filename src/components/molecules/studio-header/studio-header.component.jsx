@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 const StudioHeader = styled.header`
   width: 100%;
@@ -18,8 +18,8 @@ const StudioHeader = styled.header`
 
     p {
       font-size: 1.75rem;
-      font-weight: bold;
-      font-family: 'ff-real-text-pro', sans-serif;
+      font-weight: 600;
+      font-family: "Inter", sans-serif;
     }
   }
 
@@ -33,7 +33,7 @@ const StudioHeader = styled.header`
       h1 {
         font-size: 1.5rem;
       }
-  
+
       p {
         font-size: 2.75rem;
       }

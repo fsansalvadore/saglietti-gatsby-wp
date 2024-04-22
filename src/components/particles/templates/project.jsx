@@ -1,15 +1,18 @@
 import React, { useEffect } from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import styled from "styled-components"
-import ArrowRight from "../../atoms/svg/arrow-right.component"
 import Layout from "../../layout"
 import VerticalLine from "../../atoms/vertical-line.component"
 import ComponentParser from "../ComponentParser"
 import fallbackImg from "../../../images/fallback.png"
 import PrevNextProject from "../../molecules/prev-next-project/prev-next-project.component"
-import TextRevealAnimation from "../hooks/animationTextReveal"
-import BackgroundImage from "gatsby-background-image"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../../Accordion"
 
 import { gsap } from "gsap"
 import { TweenLite, TimelineLite } from "gsap/all"
@@ -25,8 +28,8 @@ if (typeof window !== `undefined`) {
 const ProjectContainerComponent = styled.div`
   position: relative;
   width: 100%;
-  min-height: 90vh;
-  min-height: ${props => (props.vh ? `calc(var(--vh, 1vh) * 100)` : "90vh")};
+  /* min-height: 90vh;
+  min-height: ${props => (props.vh ? `calc(var(--vh, 1vh) * 100)` : "90vh")}; */
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #000;
@@ -34,8 +37,9 @@ const ProjectContainerComponent = styled.div`
   .proj_info-container {
     position: relative;
     top: 0;
-    height: calc(var(--vh, 1vh) * 100);
-    min-height: calc(var(--vh, 1vh) * 100);
+    height: 100%;
+    /* height: calc(var(--vh, 1vh) * 100); */
+    /* min-height: calc(var(--vh, 1vh) * 100); */
     width: 100vw;
     padding: 1.45rem 2rem;
 
@@ -43,7 +47,7 @@ const ProjectContainerComponent = styled.div`
       margin-bottom: 1.45rem;
 
       h1 {
-        font-family: "ff-real-text-pro";
+        font-family: "Inter";
         font-weight: 200;
         letter-spacing: 0;
         margin: 0;
@@ -60,7 +64,7 @@ const ProjectContainerComponent = styled.div`
       .proj_details-block {
         width: 25%;
         margin-right: 10px;
-        font-family: "ff-real-headline-pro-2";
+        font-family: "Inter";
         font-size: 0.7rem;
         line-height: 1rem;
 
@@ -180,17 +184,17 @@ const ProjectPage = props => {
   const { data } = props
   let prevPost = null
   let nextPost = null
-  console.log("seo", seo)
+
   const sortedProjects = data.wordpress.projects.nodes
     .filter(p => p.custom_post_type_Project.visitabile === true)
     .sort((a, b) =>
       a.date < b.date
         ? 1
         : a.date === b.date
-        ? a.title > b.title
-          ? 1
-          : -1
-        : -1
+          ? a.title > b.title
+            ? 1
+            : -1
+          : -1,
     )
   const postLength = sortedProjects.length
   if (index === postLength - 1) {
@@ -232,9 +236,9 @@ const ProjectPage = props => {
               opacity: 1,
               ease: CustomEase.create(
                 "custom",
-                "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1"
+                "M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1",
               ),
-            }
+            },
           )
 
           new ScrollMagic.Scene({
@@ -251,7 +255,7 @@ const ProjectPage = props => {
   })
 
   return (
-    <Layout>
+    <Layout offsetFromTop hasTopBorder className="border-b">
       <Helmet>
         <title>{title} • Saglietti</title>
         <meta name="description" content={seo.metaDesc} />
@@ -293,69 +297,75 @@ const ProjectPage = props => {
         />
       </Helmet>
       <ProjectContainerComponent vh={vh}>
-        <div className="proj_info-container flex align-center">
-          <div className="proj_info-block">
-            <TextRevealAnimation addClass="title">
-              <h1 className="TextRevealItem">{title}</h1>
-            </TextRevealAnimation>
-            <div className="proj_details-container fade-in">
-              {custom_post_type_Project.anno &&
-                custom_post_type_Project.anno.length !== null && (
-                  <div className="proj_details-block">
-                    <h2>Anno</h2>
-                    <p>{custom_post_type_Project.anno}</p>
+        <div className="proj_info-container">
+          <div className="proj_info-block flex-1">
+            <Accordion type="single" collapsible>
+              <AccordionItem value="title" className="w-full">
+                <AccordionTrigger className="justify-between">
+                  <h1 className="text-left text-xl m-0">{title}</h1>
+                </AccordionTrigger>
+                <AccordionContent className="!text-sm">
+                  <div className="flex flex-col gap-2 lg:gap-4 fade-in mt-4">
+                    {custom_post_type_Project.descrizione &&
+                      custom_post_type_Project.descrizione.length !== null && (
+                        <div className="proj_details-block">
+                          <p
+                            dangerouslySetInnerHTML={{
+                              __html: custom_post_type_Project.descrizione,
+                            }}
+                          />
+                        </div>
+                      )}
+                    {custom_post_type_Project.anno &&
+                      custom_post_type_Project.anno.length !== null && (
+                        <div className="proj_details-block">
+                          {/* <h2 className="!m-0">Anno</h2> */}
+                          <p className="!m-0">
+                            {custom_post_type_Project.anno}
+                          </p>
+                        </div>
+                      )}
+                    {custom_post_type_Project.ambiti &&
+                      custom_post_type_Project.ambiti.length > 0 && (
+                        <div className="proj_details-block">
+                          {/* <h2 className="!m-0">Ambiti</h2> */}
+                          <ul className="!m-0">
+                            {custom_post_type_Project.ambiti.map(ambito => (
+                              <li
+                                key={`${ambito}-${Math.floor(
+                                  Math.random() * (100 - 999) + 100,
+                                )}`}
+                                className="!m-0"
+                              >
+                                {ambito}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    {custom_post_type_Project.credits &&
+                      custom_post_type_Project.credits.length > 0 && (
+                        <div className="proj_details-block">
+                          {/* <h2 className="!m-0 !mb-1">Credits</h2> */}
+                          <p
+                            dangerouslySetInnerHTML={{
+                              __html: custom_post_type_Project.credits,
+                            }}
+                          />
+                        </div>
+                      )}
                   </div>
-                )}
-              {custom_post_type_Project.ambiti &&
-                custom_post_type_Project.ambiti.length > 0 && (
-                  <div className="proj_details-block">
-                    <h2>Ambiti</h2>
-                    <ul>
-                      {custom_post_type_Project.ambiti.map(ambito => (
-                        <li
-                          key={`${ambito}-${Math.floor(
-                            Math.random() * (100 - 999) + 100
-                          )}`}
-                        >
-                          {ambito}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              {custom_post_type_Project.credits &&
-                custom_post_type_Project.credits.length > 0 && (
-                  <div className="proj_details-block">
-                    <h2>Credits</h2>
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: custom_post_type_Project.credits,
-                      }}
-                    />
-                  </div>
-                )}
-            </div>
-          </div>
-          <div className="proj_breadbrumbs">
-            <Link to="/">Home</Link>
-            <ArrowRight />
-            <Link to="/progetti/">Progetti</Link>
-            <ArrowRight />
-            <span>{title}</span>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
         </div>
         <VerticalLine style={{ left: "40%" }} className="vertical_line" />
         <div className="proj_content-container">
-          <div className="proj_cover">
-            {/* <div className="proj_cover-img" style={{backgroundImage: `url(${featuredImage ? featuredImage.node.link : fallbackImg})`}}></div> */}
+          {/* <div className="proj_cover">
             {featuredImage ? (
               featuredImage.node.imageFile &&
-              !featuredImage.node.sourceUrl.includes(".gif") ? (
-                <BackgroundImage
-                  className="proj_cover-img"
-                  fixed={featuredImage.node.imageFile.childImageSharp.fixed}
-                />
-              ) : (
+              !featuredImage.node.sourceUrl.includes(".gif") ? null : ( // /> //   fixed={featuredImage.node.imageFile.childImageSharp.fixed} //   className="proj_cover-img" // <BackgroundImage
                 <div
                   className="proj_cover-img"
                   style={{
@@ -369,7 +379,7 @@ const ProjectPage = props => {
                 style={{ backgroundImage: `url(${fallbackImg})` }}
               />
             )}
-          </div>
+          </div> */}
           <ComponentParser content={blocks} />
         </div>
       </ProjectContainerComponent>

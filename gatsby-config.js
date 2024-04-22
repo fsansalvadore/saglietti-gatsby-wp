@@ -81,7 +81,9 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
+    "gatsby-plugin-postcss",
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-sitemap`,
@@ -119,18 +121,13 @@ module.exports = {
         //   })
       },
     },
-    // {
-    //   resolve: `gatsby-source-spotify`,
-    //   options: {
-    //     clientId: process.env.SPOTIFY_CLIENT_ID,
-    //     clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-    //     refreshToken: process.env.SPOTIFY_REFRESH_TOKEN,
-
-    //     fetchPlaylists: true, // optional. Set to false to disable fetching of your playlists
-    //     fetchRecent: true, // optional. Set to false to disable fetching of your recently played tracks
-    //     timeRanges: ["short_term", "medium_term", "long_term"], // optional. Set time ranges to be fetched
-    //   },
-    // },
+    {
+      resolve: "gatsby-plugin-google-fonts",
+      options: {
+        fonts: ["Inter:400,600"],
+        display: "swap",
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -157,8 +154,5 @@ module.exports = {
         // crossOrigin: `use-credentials`,
       },
     },
-    // // this (optional) plugin enables Progressive Web App + Offline functionality
-    // // To learn more, visit: https://gatsby.dev/offline
-    // 'gatsby-plugin-offline'
   ],
 }

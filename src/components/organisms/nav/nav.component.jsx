@@ -1,40 +1,24 @@
-import React, { useState } from "react"
+import "./nav.styles.scss"
+import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import Menu from "../menu-container/menu-container.component"
 import styled from "styled-components"
-import "./nav.styles.scss"
-// import AnimatedLogo from "../../atoms/AnimatedLogo/AnimatedLogo.component";
-
-const Navbar = styled.div`
-  width: 100vw;
-  height: 100px;
-  position: fixed;
-  z-index: 998;
-  padding: 1.45rem 1rem;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  pointer-events: none;
-
-  .logo_link {
-  }
-
-  @media screen and (min-width: 900px) {
-    padding: 1.45rem 2rem;
-  }
-`
+import { Link } from "gatsby"
+import NavLogo from "./NavLogo.component"
+import { isBrowser } from "framer-motion"
+import classNames from "classnames"
+import { useLockBodyScroll, useWindowSize } from "react-use"
 
 const MenuBtn = styled.a`
   position: relative;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: auto;
-  pointer: cursor;
+  cursor: pointer;
   will-change: transform;
   transition: transform 0.2s ease;
 
@@ -67,21 +51,61 @@ const MenuBtn = styled.a`
 `
 
 const Nav = () => {
-  const [isOpen, toggleMenu] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [isChip, setIsChip] = useState(false)
+  const { width } = useWindowSize()
+
+  useEffect(() => {
+    if (!isBrowser) return
+    const doc = document.documentElement
+    const handleScroll = e => {
+      const top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
+      setIsChip(top > 20)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  useLockBodyScroll(isOpen)
+
+  useEffect(() => {
+    setIsOpen(false)
+  }, [width])
 
   return (
     <>
-      <Navbar>
-        {/* <Link to="/" style={{display: "flex", alignItems: "center"}}>
-          <div className="logo_link">
-            <AnimatedLogo />
+      <nav className="fixed z-[998] px-2 top-0 flex justify-center w-full h-[100px] items-center">
+        <div
+          className={classNames(
+            "flex items-center border py-2 px-6 justify-between w-screen mx-auto rounded-full !transition-all !duration-300 will-change-transform",
+            isChip && !isOpen
+              ? "bg-white/90 backdrop-blur-lg w-[90vw] max-w-[900px] shadow-sm border-gray-100"
+              : "max-w-full bg-transparent backdrop-blur-0 shadow-none border-transparent",
+          )}
+        >
+          <NavLogo />
+          <MenuBtn
+            className="md:!hidden"
+            onClick={() => setIsOpen(!isOpen)}
+            isOpen={isOpen}
+          >
+            <span></span>
+            <span></span>
+          </MenuBtn>
+          <div className="hidden md:flex items-center gap-2 lg:gap-4">
+            <Link to="/studio" className="p-1">
+              Studio
+            </Link>
+            <Link to="/progetti" className="p-1">
+              Progetti
+            </Link>
+            <Link to="/contatti" className="p-1">
+              Contatti
+            </Link>
           </div>
-        </Link> */}
-        <MenuBtn onClick={() => toggleMenu(!isOpen)} isOpen={isOpen}>
-          <span></span>
-          <span></span>
-        </MenuBtn>
-      </Navbar>
+        </div>
+      </nav>
       <Menu isOpen={isOpen} />
     </>
   )
