@@ -7,7 +7,7 @@ const ProjectsCarousel = () => {
   const data = useStaticQuery(graphql`
     query CarouselQuery {
       wordpress {
-        projects(first: 25, where: { status: PUBLISH }) {
+        projects(first: 100, where: { status: PUBLISH }) {
           nodes {
             id
             title
@@ -30,6 +30,7 @@ const ProjectsCarousel = () => {
               anno
               ambiti
               visitabile
+              posizioneCarosello
             }
           }
         }
@@ -38,17 +39,25 @@ const ProjectsCarousel = () => {
   `)
 
   const featuredProjects = data.wordpress.projects.nodes
-    .filter(p => p.custom_post_type_Project.visitabile === true)
-    .sort((a, b) =>
-      a.date < b.date
+    .filter(
+      p =>
+        !!p.custom_post_type_Project.posizioneCarosello &&
+        p.custom_post_type_Project.posizioneCarosello !== 0,
+    )
+    ?.sort((a, b) =>
+      a.custom_post_type_Project.posizioneCarosello <
+      b.custom_post_type_Project.posizioneCarosello
         ? 1
-        : a.date === b.date
+        : a.custom_post_type_Project.posizioneCarosello ===
+            b.custom_post_type_Project.posizioneCarosello
           ? a.title > b.title
             ? 1
             : -1
           : -1,
     )
-    .slice(0, 10)
+  // .slice(0, 10)
+
+  console.log(data, featuredProjects)
 
   const settings = {
     dots: true,
@@ -64,7 +73,7 @@ const ProjectsCarousel = () => {
     <ProjectsCarouselStyled className="projects-carousel">
       <div className="slider-container w-full h-full">
         <Slider {...settings}>
-          {featuredProjects.map((project, i) => (
+          {featuredProjects?.map((project, i) => (
             <Slide key={project.id} project={project} />
           ))}
         </Slider>
