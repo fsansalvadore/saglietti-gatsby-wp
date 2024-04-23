@@ -1,9 +1,19 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Slider from "react-slick"
 import ProjectsCarouselStyled from "./projects-carousel.styled"
 
 const ProjectsCarousel = () => {
+  let sliderRef = useRef(null)
+
+  const play = () => {
+    sliderRef.slickPlay()
+  }
+
+  useEffect(() => {
+    sliderRef?.current && play()
+  }, [sliderRef])
+
   const data = useStaticQuery(graphql`
     query CarouselQuery {
       wordpress {
@@ -58,6 +68,8 @@ const ProjectsCarousel = () => {
 
   const settings = {
     dots: true,
+    autoplay: true,
+    autoplaySpeed: 5000,
     fade: true,
     infinite: true,
     speed: 500,
@@ -69,7 +81,7 @@ const ProjectsCarousel = () => {
   return (
     <ProjectsCarouselStyled className="projects-carousel">
       <div className="slider-container w-full h-full">
-        <Slider {...settings}>
+        <Slider ref={slider => (sliderRef = slider)} {...settings}>
           {featuredProjects?.map((project, i) => (
             <Slide key={project.id} project={project} />
           ))}
