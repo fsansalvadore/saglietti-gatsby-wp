@@ -29,15 +29,10 @@ export const query = graphql`
           }
         }
       }
-      clients {
+      clients(first: 100, where: { status: PUBLISH }) {
         nodes {
           id
           title
-          featuredImage {
-            node {
-              link
-            }
-          }
         }
       }
     }

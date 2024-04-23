@@ -24,6 +24,7 @@ const ContactsCTA = () => {
           <a
             href="https://maps.app.goo.gl/uvuZGUEYhbnYwoGT8"
             target="_blank"
+            rel="noreferrer"
             className="underline"
           >
             trovarci

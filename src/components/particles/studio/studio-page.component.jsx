@@ -109,6 +109,10 @@ const StudioPage = ({ data }) => {
     return () => (document.body.style.backgroundColor = "#fff")
   }, [])
 
+  const sortedClients = data.wordpress.clients.nodes.sort((a, b) =>
+    a.title > b.title ? 1 : -1,
+  )
+
   return (
     <>
       <StudioContent>
@@ -282,7 +286,7 @@ const StudioPage = ({ data }) => {
           <div className="flex flex-col gap-4 col-span-2 col-start-3 text-xl">
             <p>
               Abbiamo collaborato con{" "}
-              {data.wordpress.clients.nodes.map(client => (
+              {sortedClients?.map(client => (
                 <span
                   className="inline  [&_span]:last:hidden"
                   key={`${client.title}-${Math.floor(

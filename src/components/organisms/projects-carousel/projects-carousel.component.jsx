@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import Slider from "react-slick"
 import ProjectsCarouselStyled from "./projects-carousel.styled"
 
