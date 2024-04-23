@@ -22,7 +22,7 @@ const ContactsCTA = () => {
           </a>{" "}
           o vieni a{" "}
           <a
-            href="https://maps.app.goo.gl/uvuZGUEYhbnYwoGT8"
+            href="https://maps.app.goo.gl/pVxowrq4QRewAjbK6"
             target="_blank"
             rel="noreferrer"
             className="underline"
