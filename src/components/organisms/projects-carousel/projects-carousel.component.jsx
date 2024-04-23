@@ -55,9 +55,6 @@ const ProjectsCarousel = () => {
             : -1
           : -1,
     )
-  // .slice(0, 10)
-
-  console.log(data, featuredProjects)
 
   const settings = {
     dots: true,
