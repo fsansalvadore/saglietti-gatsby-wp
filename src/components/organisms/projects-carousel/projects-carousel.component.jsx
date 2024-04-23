@@ -94,11 +94,13 @@ const ProjectsCarousel = () => {
 const Slide = ({ project }) => {
   return (
     <div className="w-full h-full bg-black">
-      <img
-        src={project.featuredImage.node.link}
-        alt={project.title}
-        className="absolute inset-0 w-full h-full object-cover object-center"
-      />
+      {project.featuredImage && (
+        <img
+          src={project.featuredImage?.node?.link}
+          alt={project.title}
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+      )}
     </div>
   )
 }

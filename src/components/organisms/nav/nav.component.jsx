@@ -58,10 +58,13 @@ const Nav = () => {
   useEffect(() => {
     if (!isBrowser) return
     const doc = document.documentElement
+
     const handleScroll = e => {
       const top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
       setIsChip(top > 20)
     }
+
+    handleScroll()
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)

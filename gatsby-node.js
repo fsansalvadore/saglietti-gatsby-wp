@@ -29,6 +29,7 @@ const projectCustomDetails = `
     descrizione
     titolo
     visitabile
+    posizioneCarosello
   }
 `
 
