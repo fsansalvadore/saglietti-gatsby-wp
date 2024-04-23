@@ -51,7 +51,7 @@ const ProjectsList = ({ data, limit = 100, showVisitableOnly, hideTitle }) => {
           .slice(0, limit),
       )
     }
-  }, [setProjects, term, data.wordpress.projects])
+  }, [setProjects, term, data.wordpress.projects, limit, showVisitableOnly])
 
   useEffect(() => {
     if (typeof window !== `undefined`) {
@@ -188,8 +188,8 @@ const ProjectsList = ({ data, limit = 100, showVisitableOnly, hideTitle }) => {
                     <path
                       d="M14.6743 15.3094L11.291 11.9261M13.1188 7.53158C13.1188 10.968 10.333 13.7538 6.89657 13.7538C3.46012 13.7538 0.674316 10.968 0.674316 7.53158C0.674316 4.09512 3.46012 1.30933 6.89657 1.30933C10.333 1.30933 13.1188 4.09512 13.1188 7.53158Z"
                       stroke="black"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                   </svg>
                 </i>
@@ -239,15 +239,19 @@ const ProjectsList = ({ data, limit = 100, showVisitableOnly, hideTitle }) => {
                     </div>
                     <div className="proj_ambiti flex-shrink truncate">
                       {proj.custom_post_type_Project.ambiti &&
-                        proj.custom_post_type_Project.ambiti.map(ambito => (
-                          <div
-                            key={`${ambito}-${Math.floor(
-                              Math.random() * (100 - 999) + 100,
-                            )}`}
-                          >
-                            {ambito}
-                          </div>
-                        ))}
+                        proj.custom_post_type_Project.ambiti
+                          .sort((a, b) => (a > b ? 1 : -1))
+                          .map((ambito, i) => (
+                            <div
+                              className="mr-2"
+                              key={`${ambito}-${Math.floor(
+                                Math.random() * (100 - 999) + 100,
+                              )}`}
+                            >
+                              {i !== 0 && <span className="mr-2">/</span>}
+                              {ambito}
+                            </div>
+                          ))}
                     </div>
                   </div>
                 </Link>
@@ -441,7 +445,7 @@ const ProjectsContainer = styled.div`
         }
 
         .proj_ambiti {
-          padding: 14px 0 14px 0rem;
+          padding: 14px 10px;
           /* font-size: 0.75rem; */
           display: none;
           align-items: center;
@@ -451,18 +455,18 @@ const ProjectsContainer = styled.div`
             font-weight: 400;
             font-family: "Inter";
             position: relative;
-            padding: 0 10px;
+            /* padding: 0 10px; */
 
-            &::before {
+            /* &::before {
               position: absolute;
               content: "/";
               font-size: 0.6rem;
               width: 1px;
-              left: -2px;
+              left: -5px;
             }
             &:first-of-type::before {
               display: none;
-            }
+            } */
           }
         }
       }
@@ -541,7 +545,7 @@ const ProjectsContainer = styled.div`
     .proj_content .block__link .proj_item-right .proj_ambiti {
       display: flex;
       flex-wrap: wrap;
-      padding: 19px 0 19px 0.5rem;
+      padding: 19px;
     }
 
     .proj_content .block__link .proj_item-right .proj_year {
