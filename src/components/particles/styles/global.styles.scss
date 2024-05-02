@@ -34,9 +34,8 @@ body {
   @apply font-sans font-normal transition-colors duration-500;
 }
 
-.text-serif,
 i {
-  @apply font-serif;
+  @apply italic font-bold;
 }
 
 p,

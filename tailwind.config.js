@@ -8,7 +8,6 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Inter", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
-        serif: ["Playfair Display", "serif"],
       },
       keyframes: {
         "accordion-down": {
