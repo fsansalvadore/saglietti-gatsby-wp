@@ -78,7 +78,7 @@ const Nav = ({ initialTransparent = false }) => {
 
   return (
     <>
-      <nav className="fixed z-[998] px-2 lg:px-4 top-0 flex justify-center w-full h-[100px] items-center">
+      <nav className="fixed z-[998] px-4 top-0 flex justify-center w-full h-[100px] items-center">
         <div
           className={classNames(
             "flex items-center bg-white/90 backdrop-blur-lg border py-2 px-4 justify-between w-screen mx-auto rounded-full !transition-all !duration-300 will-change-transform",
