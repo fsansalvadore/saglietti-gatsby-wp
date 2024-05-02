@@ -5,14 +5,17 @@ import { Helmet } from "react-helmet"
 
 import ProjectsList from "../components/organisms/projects/projects-list/projects-list.component"
 
-const Progetti = ({ data }) => (
-  <Layout className="!pt-0">
-    <Helmet>
-      <title>Progetti • Saglietti</title>
-    </Helmet>
-    <ProjectsList data={data} />
-  </Layout>
-)
+const Progetti = ({ data }) => {
+  console.log("PROGETTIIII")
+  return (
+    <Layout className="!pt-0" initialTransparent>
+      <Helmet>
+        <title>Progetti • Saglietti</title>
+      </Helmet>
+      <ProjectsList data={data} />
+    </Layout>
+  )
+}
 
 export const query = graphql`
   query ProjectsQuery {

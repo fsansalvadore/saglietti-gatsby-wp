@@ -4,7 +4,7 @@ const ProjectsCarouselStyled = styled.div`
   position: sticky;
   top: 0;
   width: 100%;
-  height: calc(100vh - 100px);
+  height: 100vh;
 
   .slider-container,
   .slick-list,

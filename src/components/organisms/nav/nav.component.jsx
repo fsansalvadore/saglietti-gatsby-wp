@@ -50,7 +50,7 @@ const MenuBtn = styled.a`
   }
 `
 
-const Nav = () => {
+const Nav = ({ initialTransparent = false }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isChip, setIsChip] = useState(false)
   const { width } = useWindowSize()
@@ -78,13 +78,16 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="fixed z-[998] px-2 top-0 flex justify-center w-full h-[100px] items-center">
+      <nav className="fixed z-[998] px-2 lg:px-4 top-0 flex justify-center w-full h-[100px] items-center">
         <div
           className={classNames(
-            "flex items-center border py-2 px-6 justify-between w-screen mx-auto rounded-full !transition-all !duration-300 will-change-transform",
+            "flex items-center bg-white/90 backdrop-blur-lg border py-2 px-4 justify-between w-screen mx-auto rounded-full !transition-all !duration-300 will-change-transform",
             isChip && !isOpen
-              ? "bg-white/90 backdrop-blur-lg w-[90vw] max-w-[900px] shadow-sm border-gray-100"
-              : "max-w-full bg-transparent backdrop-blur-0 shadow-none border-transparent",
+              ? "bg-white/90 w-[90vw] max-w-[900px] shadow-sm border-gray-100"
+              : classNames(
+                  "max-w-full shadow-none border-transparent",
+                  initialTransparent && "!backdrop-blur-0 !bg-transparent",
+                ),
           )}
         >
           <NavLogo />

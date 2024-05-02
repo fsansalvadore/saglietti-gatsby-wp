@@ -79,7 +79,7 @@ const ProjectsCarousel = () => {
   }
 
   return (
-    <ProjectsCarouselStyled className="projects-carousel">
+    <ProjectsCarouselStyled>
       <div className="slider-container w-full h-full">
         <Slider ref={slider => (sliderRef = slider)} {...settings}>
           {featuredProjects?.map((project, i) => (
