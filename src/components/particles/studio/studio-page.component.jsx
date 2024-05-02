@@ -106,6 +106,7 @@ const StudioPage = ({ data }) => {
   })
 
   useEffect(() => {
+    document.body.style.backgroundColor = "#d7e1e1"
     return () => (document.body.style.backgroundColor = "#fff")
   }, [])
 
@@ -187,7 +188,7 @@ const StudioPage = ({ data }) => {
             <Accordion type="multiple" collapsible>
               <AccordionItem value="ascolto">
                 <AccordionTrigger className="font-semibold">
-                  <span>1</span> Ascolto
+                  1 Ascolto
                 </AccordionTrigger>
                 <AccordionContent className="text-xl">
                   Raccogliamo i bisogni e le esigenze del cliente, per ottenere
@@ -197,7 +198,7 @@ const StudioPage = ({ data }) => {
               </AccordionItem>
               <AccordionItem value="analisi">
                 <AccordionTrigger className="font-semibold">
-                  <span>2</span> Analisi
+                  2 Analisi
                 </AccordionTrigger>
                 <AccordionContent className="text-xl">
                   Esaminiamo i valori e la personalità della marca, adottando un
@@ -206,10 +207,10 @@ const StudioPage = ({ data }) => {
               </AccordionItem>
               <AccordionItem value="design">
                 <AccordionTrigger className="font-semibold">
-                  <span>3</span> Design
+                  3 Design
                 </AccordionTrigger>
                 <AccordionContent className="text-xl">
-                  Elaboraziamo il messaggio e lo traduciamo in un'espressione
+                  Elaboriamo il messaggio e lo traduciamo in un'espressione
                   visiva che colpisca nel segno.
                 </AccordionContent>
               </AccordionItem>

@@ -8,11 +8,11 @@ const SectionContainer = ({ children, id, className = "", bgColor }) => {
     margin: "50% 100px -50% 0px",
   })
 
-  useEffect(() => {
-    if (bgColor && isInView) {
-      document.body.style.backgroundColor = bgColor
-    }
-  }, [isInView])
+  // useEffect(() => {
+  //   if (bgColor && isInView) {
+  //     document.body.style.backgroundColor = bgColor
+  //   }
+  // }, [isInView])
 
   return (
     <section
