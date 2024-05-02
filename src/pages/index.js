@@ -3,20 +3,20 @@ import Layout from "../components/layout"
 import { Helmet } from "react-helmet"
 import { graphql, Link } from "gatsby"
 // Components
-import HeaderContainer from "../components/organisms/header-container/header-container.component"
+import HeaderContainer from "../components/ui-patterns/header-container/header-container.component"
 
-import "../components/particles/styles/homepage.styles.scss"
+import "../components/common/styles/homepage.styles.scss"
 import loadable from "@loadable/component"
 import SectionContainer from "../components/SectionContainer"
 
 const ProjectsList = loadable(
   () =>
     import(
-      "../components/organisms/projects/projects-list/projects-list.component"
+      "../components/ui-patterns/projects/projects-list/projects-list.component"
     ),
 )
 const ContactsCTA = loadable(
-  () => import("../components/molecules/contacts-cta/contacts-cta.component"),
+  () => import("../components/ui-patterns/contacts-cta/contacts-cta.component"),
 )
 
 const IndexPage = ({ data }) => {

@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import { Helmet } from "react-helmet"
 
-import ProjectsList from "../components/organisms/projects/projects-list/projects-list.component"
+import ProjectsList from "../components/ui-patterns/projects/projects-list/projects-list.component"
 
 const Progetti = ({ data }) => {
   console.log("PROGETTIIII")

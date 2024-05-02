@@ -4,8 +4,8 @@ import { Helmet } from "react-helmet"
 // Components
 import Layout from "../components/layout"
 
-import "../components/particles/styles/global.styles.scss"
-import StudioPage from "../components/particles/studio/studio-page.component"
+import "../components/common/styles/global.styles.scss"
+import StudioPage from "../components/common/studio/studio-page.component"
 
 const Studio = ({ data }) => (
   <Layout>
