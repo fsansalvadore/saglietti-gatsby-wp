@@ -76,6 +76,7 @@ const ProjectsCarousel = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     waitForAnimate: false,
+    pauseOnHover: false,
   }
 
   return (
