@@ -67,12 +67,12 @@ const ProjectsCarousel = () => {
     )
 
   const settings = {
-    dots: true,
+    dots: false,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 1500,
     fade: true,
     infinite: true,
-    speed: 500,
+    speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
     waitForAnimate: false,
