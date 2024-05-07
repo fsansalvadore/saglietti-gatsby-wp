@@ -187,9 +187,7 @@ const StudioPage = ({ data }) => {
             </p>
             <Accordion type="multiple" collapsible>
               <AccordionItem value="ascolto">
-                <AccordionTrigger className="font-semibold">
-                  1 Ascolto
-                </AccordionTrigger>
+                <AccordionTrigger className="">1 Ascolto</AccordionTrigger>
                 <AccordionContent className="text-xl">
                   Raccogliamo i bisogni e le esigenze del cliente, per ottenere
                   una comprensione completa del contesto e dei desideri del
@@ -197,18 +195,14 @@ const StudioPage = ({ data }) => {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="analisi">
-                <AccordionTrigger className="font-semibold">
-                  2 Analisi
-                </AccordionTrigger>
+                <AccordionTrigger className="">2 Analisi</AccordionTrigger>
                 <AccordionContent className="text-xl">
                   Esaminiamo i valori e la personalità della marca, adottando un
                   approccio strategico per concretizzare i passi successivi.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="design">
-                <AccordionTrigger className="font-semibold">
-                  3 Design
-                </AccordionTrigger>
+                <AccordionTrigger className="">3 Design</AccordionTrigger>
                 <AccordionContent className="text-xl">
                   Elaboriamo il messaggio e lo traduciamo in un'espressione
                   visiva che colpisca nel segno.

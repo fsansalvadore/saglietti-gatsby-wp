@@ -322,7 +322,7 @@ const ProjectsContainer = styled.div`
         padding: 6px 0;
         margin: 0;
         font-size: 16px;
-        font-weight: 600;
+        font-weight: 400;
         letter-spacing: 0;
         border-radius: 0;
         border: none;
