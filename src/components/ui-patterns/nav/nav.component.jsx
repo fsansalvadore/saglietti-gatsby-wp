@@ -106,7 +106,10 @@ const Nav = ({ initialTransparent = false }) => {
             <Link to="/progetti" className="p-1">
               Progetti
             </Link>
-            <Link to="/contatti" className="p-1">
+            <Link
+              href="mailto:info@saglietti.it"
+              className="p-1 hover:underline transition-all"
+            >
               Contatti
             </Link>
           </div>

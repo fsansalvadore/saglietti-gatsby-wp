@@ -5,7 +5,7 @@ const FormErrorComponent = styled.div`
   bottom: -0.75rem;
 
   * {
-    font-weight: 600;
+    font-weight: 400;
     font-family: "Inter", sans-serif !important;
     font-size: 1rem !important;
     letter-spacing: -0.01rem !important;

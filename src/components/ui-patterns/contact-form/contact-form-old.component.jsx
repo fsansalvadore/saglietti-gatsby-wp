@@ -27,7 +27,7 @@ const ContactFormContainer = styled.div`
   p {
     color: #000;
     font-size: 0.75rem !important;
-    font-weight: 600;
+    font-weight: 400;
     font-family: "Inter", sans-serif;
     letter-spacing: 0.03rem;
   }

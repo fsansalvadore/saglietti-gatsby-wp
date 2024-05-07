@@ -92,7 +92,7 @@ abbr[title] {
 b,
 strong {
   font-weight: inherit;
-  font-weight: bolder;
+  font-weight: normal;
 }
 dfn {
   font-style: italic;
@@ -152,7 +152,7 @@ textarea {
   margin: 0;
 }
 optgroup {
-  font-weight: 600;
+  font-weight: 400;
 }
 button,
 input {
@@ -553,7 +553,7 @@ b {
   font-weight: 400;
 }
 strong {
-  font-weight: 600;
+  font-weight: 400;
 }
 dt {
   font-weight: 400;

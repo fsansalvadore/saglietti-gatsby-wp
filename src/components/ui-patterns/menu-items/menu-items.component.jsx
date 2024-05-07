@@ -157,7 +157,7 @@ const MenuItems = ({ isOpen }) => {
         <hr />
       </span>
       <div className="link-container menu-link">
-        <Link to="/contatti" className="">
+        <Link href="mailto:info@saglietti.it" className="">
           Contatti
         </Link>
       </div>

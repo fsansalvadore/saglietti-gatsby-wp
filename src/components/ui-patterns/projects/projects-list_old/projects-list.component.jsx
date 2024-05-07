@@ -91,7 +91,7 @@ const ProjectsContainer = styled.div`
   .extra_proj-container {
     li {
       font-size: 0.8rem;
-      font-weight: 600;
+      font-weight: 400;
       padding: 10px 0;
     }
   }

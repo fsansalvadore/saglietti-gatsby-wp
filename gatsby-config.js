@@ -5,12 +5,12 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Saglietti`,
-    titleTemplate: "%s • Branding — Digital",
+    titleTemplate: "%s • Branding + Digital",
     description: `Saglietti è uno studio di comunicazione specializzato in identità visiva, adv, editoria ed exhibit design. La nostra missione: creare valore.`,
     author: `@Francesco_Sansa`,
     url: "https://www.saglietti.it", // No trailing slash allowed!
     siteUrl: `https://www.saglietti.it`,
-    image: "/images/Saglietti_1200X623.png", // Path to your image you placed in the 'static' folder
+    image: "/1200X600_saglietti.jpg", // Path to your image you placed in the 'static' folder
     twitterUsername: "@Francesco_Sansa",
   },
   plugins: [
