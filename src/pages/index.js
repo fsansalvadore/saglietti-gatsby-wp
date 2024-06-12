@@ -67,7 +67,7 @@ const IndexPage = ({ data }) => {
           </Link>
         </div>
       </SectionContainer>
-      <ProjectsList data={data} limit={5} hideTitle showVisitableOnly />
+      <ProjectsList data={data} limit={5} hideTitle />
       <SectionContainer>
         <div className="w-full sm:col-span-2">
           <h2 className="text-xl">metodologia.</h2>
