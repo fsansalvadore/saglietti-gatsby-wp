@@ -52,23 +52,23 @@ const MenuBtn = styled.a`
 
 const Nav = ({ initialTransparent = false }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [isChip, setIsChip] = useState(false)
+  const [isChip, setIsChip] = useState(true)
   const { width } = useWindowSize()
 
-  useEffect(() => {
-    if (!isBrowser) return
-    const doc = document.documentElement
+  // useEffect(() => {
+  //   if (!isBrowser) return
+  //   const doc = document.documentElement
 
-    const handleScroll = e => {
-      const top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
-      setIsChip(top > 20)
-    }
+  //   const handleScroll = e => {
+  //     const top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
+  //     setIsChip(top > 20)
+  //   }
 
-    handleScroll()
+  //   handleScroll()
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  //   window.addEventListener("scroll", handleScroll)
+  //   return () => window.removeEventListener("scroll", handleScroll)
+  // }, [])
 
   useLockBodyScroll(isOpen)
 
