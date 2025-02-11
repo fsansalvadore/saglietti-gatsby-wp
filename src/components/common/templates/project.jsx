@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import styled from "styled-components"
@@ -13,12 +13,16 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../../ui/Accordion"
+import Slider from "react-slick"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 
 import { gsap } from "gsap"
 import { TweenLite, TimelineLite } from "gsap/all"
 import * as ScrollMagic from "scrollmagic-with-ssr" // Or use scrollmagic-with-ssr to avoid server rendering problems
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
 import CustomEase from "../../common/vendor/gsap/CustomEase"
+import cn from "classnames"
 
 if (typeof window !== `undefined`) {
   gsap.registerPlugin(CustomEase)
@@ -27,20 +31,14 @@ if (typeof window !== `undefined`) {
 
 const ProjectContainerComponent = styled.div`
   position: relative;
-  width: 100%;
-  /* min-height: 90vh;
-  min-height: ${props => (props.vh ? `calc(var(--vh, 1vh) * 100)` : "90vh")}; */
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #000;
 
   .proj_info-container {
-    position: relative;
-    top: 0;
-    height: 100%;
-    /* height: calc(var(--vh, 1vh) * 100); */
-    /* min-height: calc(var(--vh, 1vh) * 100); */
-    width: 100vw;
     padding: 1.45rem 2rem;
 
     .title {
@@ -155,18 +153,46 @@ const ProjectContainerComponent = styled.div`
   @media (min-width: 900px) {
     flex-direction: row;
 
-    .proj_info-container {
-      width: 40vw;
-      position: sticky;
-    }
-
-    .proj_content-container {
-      width: 60vw;
-    }
-
     .vertical_line {
       display: block;
     }
+  }
+`
+
+const CarouselContainer = styled.div`
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  .slick-slide,
+  .slick-list {
+    position: relative;
+    height: 100%;
+  }
+
+  .slick-slide img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+  }
+
+  .image-count {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    font-size: 1rem;
+  }
+
+  .info-icon {
+    position: absolute;
+    z-index: 20;
+    bottom: 20px;
+    right: 20px;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
   }
 `
 
@@ -182,6 +208,8 @@ const ProjectPage = props => {
     tags,
   } = props.pageContext
   const { data } = props
+  const [infoOpen, setInfoOpen] = useState(false)
+
   let prevPost = null
   let nextPost = null
 
@@ -254,8 +282,87 @@ const ProjectPage = props => {
     }
   })
 
+  console.log(blocks)
+
+  const _blocks = blocks.filter(block => !!block.attributes)
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  }
+
+  const InfoSheet = open => {
+    return (
+      <div
+        className={[
+          "proj_info-container absolute z-20 flex flex-col gap-2 inset-0 top-auto w-full h-fit bg-white translate-y-full transition-transform",
+          open && "translate-y-0",
+        ]}
+      >
+        <button
+          className="absolute right-4 bottom-4 text-lg w-7 h-7"
+          onClick={() => setInfoOpen(false)}
+        >
+          Close
+        </button>
+        <h1>{title}</h1>
+        <div className="flex flex-col gap-2 lg:gap-4 fade-in mt-4">
+          {custom_post_type_Project.descrizione &&
+            custom_post_type_Project.descrizione.length !== null && (
+              <div className="proj_details-block">
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: custom_post_type_Project.descrizione,
+                  }}
+                />
+              </div>
+            )}
+          {custom_post_type_Project.anno &&
+            custom_post_type_Project.anno.length !== null && (
+              <div className="proj_details-block">
+                {/* <h2 className="!m-0">Anno</h2> */}
+                <p className="!m-0">{custom_post_type_Project.anno}</p>
+              </div>
+            )}
+          {custom_post_type_Project.ambiti &&
+            custom_post_type_Project.ambiti.length > 0 && (
+              <div className="proj_details-block">
+                {/* <h2 className="!m-0">Ambiti</h2> */}
+                <ul className="!m-0">
+                  {custom_post_type_Project.ambiti.map(ambito => (
+                    <li
+                      key={`${ambito}-${Math.floor(
+                        Math.random() * (100 - 999) + 100,
+                      )}`}
+                      className="!m-0"
+                    >
+                      {ambito}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          {custom_post_type_Project.credits &&
+            custom_post_type_Project.credits.length > 0 && (
+              <div className="proj_details-block">
+                {/* <h2 className="!m-0 !mb-1">Credits</h2> */}
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: custom_post_type_Project.credits,
+                  }}
+                />
+              </div>
+            )}
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <Layout offsetFromTop hasTopBorder className="border-b">
+    <Layout className="border-b">
       <Helmet>
         <title>{title} • Saglietti</title>
         <meta name="description" content={seo.metaDesc} />
@@ -296,92 +403,30 @@ const ProjectPage = props => {
           content={featuredImage ? featuredImage.node.link : fallbackImg}
         />
       </Helmet>
-      <ProjectContainerComponent vh={vh}>
-        <div className="proj_info-container">
-          <div className="proj_info-block flex-1">
-            <Accordion type="single" collapsible>
-              <AccordionItem value="title" className="w-full">
-                <AccordionTrigger className="justify-between">
-                  <h1 className="text-left text-xl m-0">{title}</h1>
-                </AccordionTrigger>
-                <AccordionContent className="!text-sm">
-                  <div className="flex flex-col gap-2 lg:gap-4 fade-in mt-4">
-                    {custom_post_type_Project.descrizione &&
-                      custom_post_type_Project.descrizione.length !== null && (
-                        <div className="proj_details-block">
-                          <p
-                            dangerouslySetInnerHTML={{
-                              __html: custom_post_type_Project.descrizione,
-                            }}
-                          />
-                        </div>
-                      )}
-                    {custom_post_type_Project.anno &&
-                      custom_post_type_Project.anno.length !== null && (
-                        <div className="proj_details-block">
-                          {/* <h2 className="!m-0">Anno</h2> */}
-                          <p className="!m-0">
-                            {custom_post_type_Project.anno}
-                          </p>
-                        </div>
-                      )}
-                    {custom_post_type_Project.ambiti &&
-                      custom_post_type_Project.ambiti.length > 0 && (
-                        <div className="proj_details-block">
-                          {/* <h2 className="!m-0">Ambiti</h2> */}
-                          <ul className="!m-0">
-                            {custom_post_type_Project.ambiti.map(ambito => (
-                              <li
-                                key={`${ambito}-${Math.floor(
-                                  Math.random() * (100 - 999) + 100,
-                                )}`}
-                                className="!m-0"
-                              >
-                                {ambito}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    {custom_post_type_Project.credits &&
-                      custom_post_type_Project.credits.length > 0 && (
-                        <div className="proj_details-block">
-                          {/* <h2 className="!m-0 !mb-1">Credits</h2> */}
-                          <p
-                            dangerouslySetInnerHTML={{
-                              __html: custom_post_type_Project.credits,
-                            }}
-                          />
-                        </div>
-                      )}
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </div>
-        </div>
-        <VerticalLine style={{ left: "40%" }} className="vertical_line" />
-        <div className="proj_content-container">
-          {/* <div className="proj_cover">
-            {featuredImage ? (
-              featuredImage.node.imageFile &&
-              !featuredImage.node.sourceUrl.includes(".gif") ? null : ( // /> //   fixed={featuredImage.node.imageFile.childImageSharp.fixed} //   className="proj_cover-img" // <BackgroundImage
-                <div
-                  className="proj_cover-img"
-                  style={{
-                    backgroundImage: `url(${featuredImage.node.sourceUrl})`,
-                  }}
+      <ProjectContainerComponent className="overflow-hidden" vh={vh}>
+        <CarouselContainer className="h-full">
+          <Slider className="h-full" {...settings}>
+            {_blocks?.map((block, index) => (
+              <div key={index} className="h-full">
+                <img
+                  src={block.attributes.url}
+                  alt={`Slide ${index + 1}`}
+                  className="absolute inset-0 w-full h-full"
                 />
-              )
-            ) : (
-              <div
-                className="proj_cover-img"
-                style={{ backgroundImage: `url(${fallbackImg})` }}
-              />
-            )}
-          </div> */}
-          <ComponentParser content={blocks} />
-        </div>
+              </div>
+            ))}
+          </Slider>
+          <div className="image-count">
+            {settings.currentSlide + 1} / {blocks.length}
+          </div>
+          <button
+            className="info-icon absolute z-30"
+            onClick={() => setInfoOpen(true)}
+          >
+            INFO
+          </button>
+        </CarouselContainer>
+        <InfoSheet open={infoOpen} />
       </ProjectContainerComponent>
       <PrevNextProject prev={prevPost} next={nextPost} />
     </Layout>
