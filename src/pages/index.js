@@ -62,28 +62,6 @@ const IndexPage = ({ data }) => {
         </div>
       </SectionContainer>
       <ProjectsList data={data} limit={5} hideTitle />
-      <SectionContainer>
-        <div className="w-full sm:col-span-2">
-          <h2 className="text-xl">metodologia.</h2>
-        </div>
-        <div className="flex flex-col gap-4 col-span-2 text-xl">
-          <p>
-            Creiamo linguaggi di comunicazione per qualsiasi tipo di{" "}
-            <strong>progetto</strong>, <strong>budget</strong> e{" "}
-            <strong>media</strong>. Ma il nostro approccio al lavoro è sempre lo
-            stesso: offrire al cliente un partner con cui{" "}
-            <strong>condividere una visione</strong>. Un'intesa che ci porta a
-            comprendere a fondo gli obiettivi e{" "}
-            <strong>generare fiducia</strong>, massimizzando i risultati.
-          </p>
-          <p>
-            Le nostre soluzioni non soddisfano solo le esigenze immediate del
-            cliente, ma puntano a una comprensione della marca più profonda e
-            significativa, con l'obiettivo di creare una{" "}
-            <strong>connessione duratura</strong> con il suo pubblico.
-          </p>
-        </div>
-      </SectionContainer>
       <ContactsCTA />
     </Layout>
   )
