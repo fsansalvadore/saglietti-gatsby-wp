@@ -27,27 +27,19 @@ const IndexPage = ({ data }) => {
       </Helmet>
       <HeaderContainer />
       <SectionContainer>
-        <div className="w-full sm:col-span-2">
-          <h2 className="text-xl">studio.</h2>
-        </div>
-        <div className="flex flex-col gap-4 col-span-2 text-xl">
+        <div className="flex flex-col gap-4 col-span-full lg:col-span-2 text-2xl">
           <p className="!m-0">
-            <span className="block">
-              Dal 2016 progettiamo <i>identità</i> ed <i>esperienze visive</i>.
-            </span>
-            Collaborare con aziende e istituzioni per noi è incentivare
-            l'incontro tra il brand e il suo pubblico, utilizzando solo gli
-            strumenti che apportano <strong>significato</strong> e{" "}
-            <strong>valore alle idee</strong>.
+            Siamo uno studio di comunicazione e direzione creativa di Torino
+            specializzato in branding e digital design.
           </p>
           <p className="md:mb-8">
-            Per noi il nostro lavoro si nutre costantemente di ispirazione. Per
-            questo non smettiamo mai di cercarla. <i>Ovunque</i>.
+            Ci occupiamo di identità visiva, editoria, exhibition design,
+            packaging, siti web e motion design.
           </p>
         </div>
       </SectionContainer>
-      <SectionContainer className="!pb-4 sm:px-4">
-        <div className="lg:col-start-3 col-span-2 w-full">
+      <SectionContainer className="!pb-4">
+        <div className="col-span-2 w-full">
           <Link
             to="/progetti"
             className="flex gap-4 text-lg items-center group"
