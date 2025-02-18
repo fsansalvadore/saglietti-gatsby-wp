@@ -22,18 +22,18 @@ const StyledImageContainer = styled.figure`
   }
 `
 
-const SingleImage = ({ attributes }) => {
+const SingleImage = ({ attributes, ...props }) => {
   return (
     <StyledImageContainer
       size={attributes.className ? attributes.className : ""}
       align={attributes.align ? attributes.align : ""}
+      {...props}
     >
-      <Fade triggerOnce>
-        <img src={attributes.url} alt={attributes.alt ? attributes.alt : ""} />
-        {attributes.caption && attributes.caption.length > 0 && (
-          <figcaption>{attributes.caption}</figcaption>
-        )}
-      </Fade>
+      {/* <Fade triggerOnce> */}
+      <img src={attributes.url} alt={attributes.alt ? attributes.alt : ""} />
+      {attributes.caption && attributes.caption.length > 0 && (
+        <figcaption>{attributes.caption}</figcaption>
+      )}
     </StyledImageContainer>
   )
 }

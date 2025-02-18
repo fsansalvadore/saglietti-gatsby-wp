@@ -4,10 +4,11 @@ import { Fade } from "react-awesome-reveal"
 
 import ParagraphStyled from "./paragraph.styled"
 
-const Paragraph = ({ originalContent }) => {
+const Paragraph = ({ originalContent, ...props }) => {
   return (
-    <ParagraphStyled>
-      <Fade triggerOnce>{parse(originalContent)}</Fade>
+    <ParagraphStyled {...props}>
+      {/* <Fade triggerOnce>{parse(originalContent)}</Fade> */}
+      {parse(originalContent)}
     </ParagraphStyled>
   )
 }

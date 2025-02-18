@@ -11,7 +11,7 @@ import Spacer from "../ui-patterns/projects/spacer/spacer.component"
 import Gallery from "../ui-patterns/projects/gallery/gallery.component"
 import Carousel from "../ui-patterns/projects/carousel/carousel.component"
 
-const components = {
+export const components = {
   "core/paragraph": Paragraph,
   "core/image": SingleImage,
   "core/video": VideoBlock,
@@ -23,18 +23,14 @@ const components = {
   "eedee/block-gutenslider": Carousel,
 }
 
-const isEmpty = obj => {
+export const isEmpty = obj => {
   return Object.entries(obj).length === 0 && obj.constructor === Object
 }
 
-const ComponentParser = props => {
-  let { content } = props
+export const useBlockComponents = blocks => {
+  if (!blocks) return null
 
-  if (!content) return null
-
-  const filteredComponents = content.filter(
-    component => component.name !== null,
-  )
+  const filteredComponents = blocks.filter(component => component.name !== null)
 
   if (filteredComponents && filteredComponents.length > 0) {
     const pageComponents = filteredComponents.map((component, index) => {
@@ -54,9 +50,19 @@ const ComponentParser = props => {
       )
     })
 
-    if (pageComponents) {
-      return pageComponents
-    }
+    return pageComponents
+  }
+
+  return null
+}
+
+const ComponentParser = props => {
+  let { blocks } = props
+
+  const pageComponents = useBlockComponents(blocks)
+
+  if (pageComponents) {
+    return pageComponents
   }
 
   return null

@@ -4,15 +4,12 @@ import { Helmet } from "react-helmet"
 import styled from "styled-components"
 import Layout from "../../layout"
 import VerticalLine from "../../ui/vertical-line.component"
-import ComponentParser from "../ComponentParser"
+import ComponentParser, {
+  components,
+  useBlockComponents,
+} from "../ComponentParser"
 import fallbackImg from "../../../images/fallback.png"
 import PrevNextProject from "../../ui-patterns/prev-next-project/prev-next-project.component"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "../../ui/Accordion"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
@@ -283,9 +280,11 @@ const ProjectPage = props => {
     setIsSheetOpen(true)
   }
 
-  console.log(blocks)
-
   const _blocks = blocks.filter(block => !!block.attributes)
+  const blocksComponents = useBlockComponents(_blocks)
+  console.log(blocks)
+  console.log(_blocks)
+  console.log(blocksComponents)
 
   const settings = {
     dots: true,
@@ -346,15 +345,20 @@ const ProjectPage = props => {
             className="h-full"
             {...settings}
           >
-            {_blocks?.map((block, index) => (
-              <div key={index} className="h-full">
-                <img
-                  src={block.attributes.url}
-                  alt={`Slide ${index + 1}`}
-                  className="absolute inset-0 w-full h-full"
-                />
-              </div>
-            ))}
+            {_blocks?.map((block, index) => {
+              const Component = components[block.name]
+
+              if (!Component) return null
+
+              return (
+                <div key={index} className="w-full h-full min-h-screen">
+                  <Component
+                    {...block}
+                    className="absolute inset-0 w-full h-full"
+                  />
+                </div>
+              )
+            })}
           </Slider>
           <div className="image-count">
             {activeSlide + 1} / {blocks.length}
