@@ -9,6 +9,7 @@ import SagliettiLogo from "../../SagliettiLogo"
 const FooterComponent = styled.footer`
   width: 100%;
   padding: 1rem;
+  filter: ${props => (props.isInverted ? "invert()" : "none")};
 
   .footer-info {
     font-size: 0.8rem;
@@ -57,9 +58,12 @@ const FooterComponent = styled.footer`
   }
 `
 
-const Footer = () => {
+const Footer = ({ isInverted }) => {
   return (
-    <FooterComponent className="flex flex-col gap-4 sm:!grid grid-cols-2 md:grid-cols-3">
+    <FooterComponent
+      isInverted={isInverted}
+      className="flex flex-col gap-4 sm:!grid grid-cols-2 md:grid-cols-3"
+    >
       <div className="h-full w-full flex flex-col gap-2 justify-between items-start">
         <SagliettiLogo />
         <p className="!m-0">branding + digital</p>

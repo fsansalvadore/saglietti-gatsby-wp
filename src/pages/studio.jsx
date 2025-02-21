@@ -8,7 +8,7 @@ import "../components/common/styles/global.styles.scss"
 import StudioPage from "../components/common/studio/studio-page.component"
 
 const Studio = ({ data }) => (
-  <Layout>
+  <Layout isInverted={true}>
     <Helmet>
       <title>Studio • Saglietti</title>
     </Helmet>
@@ -27,12 +27,6 @@ export const query = graphql`
               sourceUrl
             }
           }
-        }
-      }
-      clients(first: 100, where: { status: PUBLISH }) {
-        nodes {
-          id
-          title
         }
       }
     }

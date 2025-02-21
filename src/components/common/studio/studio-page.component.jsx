@@ -7,7 +7,6 @@ import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
 import { TweenLite, TimelineLite } from "gsap/all"
 import CustomEase from "../../common/vendor/gsap/CustomEase"
 import { StaticImage } from "gatsby-plugin-image"
-import SectionContainer from "../../SectionContainer"
 
 if (typeof window !== `undefined`) {
   gsap.registerPlugin(CustomEase)
@@ -104,10 +103,6 @@ const StudioPage = ({ data }) => {
     document.body.style.backgroundColor = "#000000"
     return () => (document.body.style.backgroundColor = "#fff")
   }, [])
-
-  const sortedClients = data.wordpress.clients.nodes.sort((a, b) =>
-    a.title > b.title ? 1 : -1,
-  )
 
   return (
     <>

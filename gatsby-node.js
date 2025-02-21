@@ -247,7 +247,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   wordpress?.projects?.nodes?.forEach(project => {
     actions.createPage({
       path: `/progetti/${project.slug}`,
-      component: path.resolve(`./src/components/common/templates/project.jsx`),
+      component: path.resolve(
+        `./src/components/common/templates/project.layout.jsx`,
+      ),
       context: {
         ...project,
         index: wordpress?.projects?.nodes

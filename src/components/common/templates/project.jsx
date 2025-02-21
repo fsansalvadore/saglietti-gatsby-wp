@@ -1,14 +1,12 @@
-import React, { useEffect, useState, useRef } from "react"
-import { graphql } from "gatsby"
-import { Helmet } from "react-helmet"
-import styled from "styled-components"
-import Layout from "../../layout"
-import { components } from "../ComponentParser"
-import fallbackImg from "../../../images/fallback.png"
-import PrevNextProject from "../../ui-patterns/prev-next-project/prev-next-project.component"
-import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
+
+import React, { useEffect, useState, useRef } from "react"
+import { graphql } from "gatsby"
+import styled from "styled-components"
+import { components } from "../ComponentParser"
+import PrevNextProject from "../../ui-patterns/prev-next-project/prev-next-project.component"
+import Slider from "react-slick"
 
 import { gsap } from "gsap"
 import { TweenLite, TimelineLite } from "gsap/all"
@@ -16,6 +14,11 @@ import * as ScrollMagic from "scrollmagic-with-ssr" // Or use scrollmagic-with-s
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
 import CustomEase from "../../common/vendor/gsap/CustomEase"
 import cn from "classnames"
+import { useCursor } from "../../ui/CursorProvider"
+import Cursor from "../../ui/cursor.component"
+import CursorFollow from "../../ui/cursor-follow.component"
+import CursorLeft from "../../ui/cursorArrowLeft"
+import CursorRight from "../../ui/cursorArrowRight"
 if (typeof window !== `undefined`) {
   gsap.registerPlugin(CustomEase)
   ScrollMagicPluginGsap(ScrollMagic, TweenLite, TimelineLite)
@@ -184,23 +187,15 @@ const CarouselContainer = styled.div`
   }
 `
 
-const ProjectPage = props => {
-  const {
-    slug,
-    blocks,
-    custom_post_type_Project,
-    index,
-    title,
-    featuredImage,
-    seo,
-    tags,
-  } = props.pageContext
+const Project = props => {
+  const { blocks, custom_post_type_Project, index, title } = props.pageContext
   const { data } = props
   const sliderRef = useRef(null)
   const leftArrowRef = useRef(null)
   const rightArrowRef = useRef(null)
   const [isSheetOpen, setIsSheetOpen] = useState(false)
   const [activeSlide, setActiveSlide] = useState(0)
+  const { setCursorComp, setCursorFollowComp } = useCursor()
 
   let prevPost = null
   let nextPost = null
@@ -287,58 +282,34 @@ const ProjectPage = props => {
   }
 
   return (
-    <Layout className="border-b">
-      <Helmet>
-        <title>{title} • Saglietti</title>
-        <meta name="description" content={seo.metaDesc} />
-        <meta
-          name="keywords"
-          content={
-            tags
-              ? tags.nodes.map(tag => (tag.name ? ` ${tag.name}` : ""))
-              : "saglietti, portfolio, studio di design, progetti di design"
-          }
-        />
-        <meta
-          itemprop="image"
-          content={featuredImage ? featuredImage.node.link : fallbackImg}
-        />
-        <meta property="og:site_name" content={`${title} • Saglietti`} />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content={`https://www.saglietti.it/progetti/${slug}`}
-        />
-        <meta property="og:title" content={`${title} • Saglietti`} />
-        <meta
-          property="og:image"
-          content={featuredImage ? featuredImage.node.link : fallbackImg}
-        />
-        <meta property="og:description" content={seo.metaDesc} />
-        <meta property="og:locale" content="it_IT" />
-        <meta name="twitter:card" content="summary" />
-        <meta
-          name="twitter:site"
-          content={`https://www.saglietti.it/progetti/${slug}`}
-        />
-        <meta name="twitter:title" content={`${title} • Saglietti`} />
-        <meta name="twitter:description" content={seo.metaDesc} />
-        <meta
-          name="twitter:image"
-          content={featuredImage ? featuredImage.node.link : fallbackImg}
-        />
-      </Helmet>
+    <>
       <ProjectContainerComponent className="overflow-hidden" vh={vh}>
         <CarouselContainer className="h-full relative">
           <button
             ref={leftArrowRef}
             className="hidden md:block absolute z-10 inset-0 right-auto w-1/2 h-full"
             onClick={() => sliderRef?.current?.slickGoTo(activeSlide - 1)}
+            onMouseEnter={() => {
+              setCursorComp(<CursorLeft />)
+              setCursorFollowComp(null)
+            }}
+            onMouseLeave={() => {
+              setCursorComp(<Cursor />)
+              setCursorFollowComp(<CursorFollow />)
+            }}
           />
           <button
             ref={rightArrowRef}
             className="hidden md:block absolute z-10 inset-0 left-auto w-1/2 h-full"
             onClick={() => sliderRef?.current?.slickGoTo(activeSlide + 1)}
+            onMouseEnter={() => {
+              setCursorComp(<CursorRight />)
+              setCursorFollowComp(null)
+            }}
+            onMouseLeave={() => {
+              setCursorComp(<Cursor />)
+              setCursorFollowComp(<CursorFollow />)
+            }}
           />
           <Slider
             ref={sliderRef}
@@ -378,7 +349,7 @@ const ProjectPage = props => {
         />
       </ProjectContainerComponent>
       <PrevNextProject prev={prevPost} next={nextPost} />
-    </Layout>
+    </>
   )
 }
 
@@ -485,4 +456,4 @@ export const query = graphql`
   }
 `
 
-export default ProjectPage
+export default Project
