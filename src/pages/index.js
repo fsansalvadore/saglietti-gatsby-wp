@@ -27,7 +27,7 @@ const IndexPage = ({ data }) => {
       </Helmet>
       <HeaderContainer />
       <SectionContainer>
-        <div className="flex flex-col gap-4 col-span-full lg:col-span-2 text-2xl">
+        <div className="flex flex-col gap-4 col-span-full lg:col-span-6 text-2xl">
           <p className="!m-0">
             Siamo uno studio di comunicazione e direzione creativa di Torino
             specializzato in branding e digital design.
@@ -39,7 +39,7 @@ const IndexPage = ({ data }) => {
         </div>
       </SectionContainer>
       <SectionContainer className="!pb-4">
-        <div className="col-span-2 w-full">
+        <div className="col-span-6 w-full">
           <Link
             to="/progetti"
             className="flex gap-4 text-lg items-center group"

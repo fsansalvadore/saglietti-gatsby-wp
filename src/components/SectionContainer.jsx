@@ -19,7 +19,7 @@ const SectionContainer = ({ children, id, className = "", bgColor }) => {
       ref={ref}
       id={id}
       className={cn(
-        "w-full flex flex-col sm:!grid sm:grid-cols-4 p-4 sm:p-8 sm:py-12 gap-2",
+        "w-full flex flex-col sm:!grid sm:grid-cols-12 p-4 sm:p-8 sm:py-24 gap-8 sm:gap-20",
         className,
       )}
     >

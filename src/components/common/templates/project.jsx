@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import styled from "styled-components"
 import Layout from "../../layout"
-import VerticalLine from "../../ui/vertical-line.component"
-import ComponentParser, {
-  components,
-  useBlockComponents,
-} from "../ComponentParser"
+import { components } from "../ComponentParser"
 import fallbackImg from "../../../images/fallback.png"
 import PrevNextProject from "../../ui-patterns/prev-next-project/prev-next-project.component"
 import Slider from "react-slick"
@@ -200,6 +196,9 @@ const ProjectPage = props => {
     tags,
   } = props.pageContext
   const { data } = props
+  const sliderRef = useRef(null)
+  const leftArrowRef = useRef(null)
+  const rightArrowRef = useRef(null)
   const [isSheetOpen, setIsSheetOpen] = useState(false)
   const [activeSlide, setActiveSlide] = useState(0)
 
@@ -275,16 +274,9 @@ const ProjectPage = props => {
     }
   })
 
-  const handleOpenSheet = () => {
-    console.log("open")
-    setIsSheetOpen(true)
-  }
+  const handleOpenSheet = () => setIsSheetOpen(true)
 
   const _blocks = blocks.filter(block => !!block.attributes)
-  const blocksComponents = useBlockComponents(_blocks)
-  console.log(blocks)
-  console.log(_blocks)
-  console.log(blocksComponents)
 
   const settings = {
     dots: true,
@@ -337,8 +329,19 @@ const ProjectPage = props => {
         />
       </Helmet>
       <ProjectContainerComponent className="overflow-hidden" vh={vh}>
-        <CarouselContainer className="h-full">
+        <CarouselContainer className="h-full relative">
+          <button
+            ref={leftArrowRef}
+            className="hidden md:block absolute z-10 inset-0 right-auto w-1/2 h-full"
+            onClick={() => sliderRef?.current?.slickGoTo(activeSlide - 1)}
+          />
+          <button
+            ref={rightArrowRef}
+            className="hidden md:block absolute z-10 inset-0 left-auto w-1/2 h-full"
+            onClick={() => sliderRef?.current?.slickGoTo(activeSlide + 1)}
+          />
           <Slider
+            ref={sliderRef}
             afterChange={newIndex => {
               setActiveSlide(newIndex)
             }}
@@ -361,7 +364,7 @@ const ProjectPage = props => {
             })}
           </Slider>
           <div className="image-count">
-            {activeSlide + 1} / {blocks.length}
+            {activeSlide + 1} / {_blocks.length}
           </div>
           <button className="info-icon absolute z-30" onClick={handleOpenSheet}>
             INFO
