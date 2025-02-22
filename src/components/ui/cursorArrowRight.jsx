@@ -11,10 +11,9 @@ const CursorComponent = styled.div`
 
   position: fixed;
   display: none;
-  height: 2px;
-  width: 20px;
+  height: 5px;
+  width: 100px;
   border: 1px solid #fff;
-  border-radius: 50%;
   z-index: 9999;
   background-color: #fff;
   background: #fff;
@@ -29,12 +28,36 @@ const CursorComponent = styled.div`
     transform 0.1s ease,
     opacity 0.1s ease;
 
+  &::before {
+    content: "";
+    position: absolute;
+    top: calc(-100% + 3px);
+    transform-origin: right;
+    right: 0;
+    width: 50px;
+    height: 5px;
+    transform: rotate(45deg);
+    background-color: #fff;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: calc(-100% + 3px);
+    right: 0;
+    transform-origin: right;
+    width: 50px;
+    height: 5px;
+    transform: rotate(-45deg);
+    background-color: #fff;
+  }
+
   span.cursor_secondary {
     position: absolute;
     left: -11px;
     top: -11px;
-    width: 40px;
-    height: 4px;
+    /* width: 40px;
+    height: 4px; */
     border: 1px solid #fff;
     border-radius: 50%;
     opacity: 0;
@@ -100,8 +123,8 @@ const CursorRight = () => {
     cursorRef.current.style.opacity = "0.75"
     cursorRef.current.style.top = clientY - 10 + "px"
     cursorRef.current.style.left = clientX - 10 + "px"
-    endX.current = clientX
-    endY.current = clientY
+    endX.current = clientX - cursorRef.current.offsetWidth / 2
+    endY.current = clientY - cursorRef.current.offsetHeight / 2
   }, [])
 
   useEventListener("mousemove", onMouseMove, document)

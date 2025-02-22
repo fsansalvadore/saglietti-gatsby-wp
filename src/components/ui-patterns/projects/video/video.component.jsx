@@ -27,6 +27,14 @@ const StyledVideoContainer = styled.figure`
 `
 
 const VideoBlock = ({ attributes, ...props }) => {
+  const videoRef = React.useRef(null)
+
+  React.useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.autoplay = true
+    }
+  }, [videoRef])
+
   return (
     <StyledVideoContainer
       size={attributes.className ? attributes.className : ""}
@@ -35,13 +43,14 @@ const VideoBlock = ({ attributes, ...props }) => {
     >
       {/* <Reveal effect="anim_enter"> */}
       <video
+        ref={videoRef}
         width="900"
-        playsInline={attributes.playsInline}
-        muted={attributes.muted}
-        loop={attributes.loop}
+        playsInline
         poster={attributes.poster}
-        controls={true}
-        autoplay={true}
+        muted
+        loop
+        controls={false}
+        autoPlay
         className="w-full h-screen object-cover"
       >
         <source src={attributes.src} type="video/mp4" />
