@@ -19,6 +19,7 @@ const Layout = ({
   children,
   initialTransparent,
   isInverted = false,
+  hasFooter = true,
 }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -64,7 +65,7 @@ const Layout = ({
           {children}
         </motion.main>
       </AnimatePresence>
-      <Footer isInverted={isInverted} />
+      {hasFooter && <Footer isInverted={isInverted} />}
       <CookieComponent />
     </CursorProvider>
   )

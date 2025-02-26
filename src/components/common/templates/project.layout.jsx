@@ -9,7 +9,7 @@ const ProjectLayout = props => {
   const { slug, title, featuredImage, seo, tags } = props.pageContext
 
   return (
-    <Layout className="border-b">
+    <Layout className="border-b" hasFooter={false}>
       <Helmet>
         <title>{title} • Saglietti</title>
         <meta name="description" content={seo.metaDesc} />

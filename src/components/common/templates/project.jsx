@@ -34,8 +34,6 @@ const ProjectContainerComponent = styled.div`
   border-bottom: 1px solid #000;
 
   .proj_info-container {
-    padding: 1.45rem 2rem;
-
     h1 {
       font-family: "Inter";
       font-weight: 200;
@@ -170,19 +168,13 @@ const CarouselContainer = styled.div`
 
   .image-count {
     position: absolute;
-    bottom: 20px;
-    left: 20px;
     color: white;
-    font-size: 1rem;
   }
 
   .info-icon {
     position: absolute;
     z-index: 20;
-    bottom: 20px;
-    right: 20px;
     color: white;
-    font-size: 1.5rem;
     cursor: pointer;
   }
 `
@@ -288,7 +280,10 @@ const Project = props => {
           <button
             ref={leftArrowRef}
             className="hidden md:block absolute z-10 inset-0 right-auto w-1/2 h-full"
-            onClick={() => sliderRef?.current?.slickGoTo(activeSlide - 1)}
+            onClick={() => {
+              sliderRef?.current?.slickGoTo(activeSlide - 1)
+              setIsSheetOpen(false)
+            }}
             onMouseEnter={() => {
               setCursorComp(<CursorLeft />)
               setCursorFollowComp(null)
@@ -301,7 +296,10 @@ const Project = props => {
           <button
             ref={rightArrowRef}
             className="hidden md:block absolute z-10 inset-0 left-auto w-1/2 h-full"
-            onClick={() => sliderRef?.current?.slickGoTo(activeSlide + 1)}
+            onClick={() => {
+              sliderRef?.current?.slickGoTo(activeSlide + 1)
+              setIsSheetOpen(false)
+            }}
             onMouseEnter={() => {
               setCursorComp(<CursorRight />)
               setCursorFollowComp(null)
@@ -334,11 +332,14 @@ const Project = props => {
               )
             })}
           </Slider>
-          <div className="image-count">
-            {activeSlide + 1} / {_blocks.length}
+          <div className="image-count left-4 bottom-4 md:left-8 md:bottom-8 text-2xl">
+            {activeSlide + 1} — {_blocks.length}
           </div>
-          <button className="info-icon absolute z-30" onClick={handleOpenSheet}>
-            INFO
+          <button
+            className="info-icon absolute z-30 text-2xl bottom-4 right-4 md:bottom-8 md:right-8"
+            onClick={handleOpenSheet}
+          >
+            Info
           </button>
         </CarouselContainer>
         <InfoSheet
@@ -348,7 +349,7 @@ const Project = props => {
           title={title}
         />
       </ProjectContainerComponent>
-      <PrevNextProject prev={prevPost} next={nextPost} />
+      {/* <PrevNextProject prev={prevPost} next={nextPost} /> */}
     </>
   )
 }
@@ -362,64 +363,66 @@ const InfoSheet = ({
   return (
     <div
       className={cn(
-        "proj_info-container absolute z-20 flex flex-col gap-2 inset-0 top-auto w-full h-fit bg-white translate-y-full transform transition-transform",
+        "proj_info-container absolute z-[9999] p-4 md:p-8 flex flex-col gap-2 inset-0 top-auto w-full h-screen md:h-fit bg-white translate-y-full transform transition-transform",
         isOpen && "!translate-y-0",
       )}
     >
       <button
-        className="absolute right-4 bottom-4 text-lg w-fit h-7 uppercase"
+        className="absolute right-4 bottom-4 md:right-8 md:bottom-8 text-2xl w-fit h-7"
         onClick={() => setIsSheetOpen(false)}
       >
-        Close
+        Chiudi
       </button>
-      <h1>{title}</h1>
-      <div className="flex flex-col gap-2 lg:gap-4">
-        {custom_post_type_Project.descrizione &&
-          custom_post_type_Project.descrizione.length !== null && (
-            <div className="proj_details-block">
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: custom_post_type_Project.descrizione,
-                }}
-              />
-            </div>
-          )}
-        {custom_post_type_Project.anno &&
-          custom_post_type_Project.anno.length !== null && (
-            <div className="proj_details-block">
-              {/* <h2 className="!m-0">Anno</h2> */}
-              <p className="!m-0">{custom_post_type_Project.anno}</p>
-            </div>
-          )}
-        {custom_post_type_Project.ambiti &&
-          custom_post_type_Project.ambiti.length > 0 && (
-            <div className="proj_details-block">
-              {/* <h2 className="!m-0">Ambiti</h2> */}
-              <ul className="!m-0">
-                {custom_post_type_Project.ambiti.map(ambito => (
-                  <li
-                    key={`${ambito}-${Math.floor(
-                      Math.random() * (100 - 999) + 100,
-                    )}`}
-                    className="!m-0"
-                  >
-                    {ambito}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        {custom_post_type_Project.credits &&
-          custom_post_type_Project.credits.length > 0 && (
-            <div className="proj_details-block">
-              {/* <h2 className="!m-0 !mb-1">Credits</h2> */}
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: custom_post_type_Project.credits,
-                }}
-              />
-            </div>
-          )}
+      <div className="flex flex-col gap-2 lg:gap-4 w-full max-w-[650px]">
+        <h1 className="text-2xl">{title}</h1>
+        <div className="flex flex-col gap-2 lg:gap-4">
+          {custom_post_type_Project.descrizione &&
+            custom_post_type_Project.descrizione.length !== null && (
+              <div className="proj_details-block">
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: custom_post_type_Project.descrizione,
+                  }}
+                />
+              </div>
+            )}
+          {custom_post_type_Project.anno &&
+            custom_post_type_Project.anno.length !== null && (
+              <div className="proj_details-block">
+                {/* <h2 className="!m-0">Anno</h2> */}
+                <p className="!m-0">{custom_post_type_Project.anno}</p>
+              </div>
+            )}
+          {custom_post_type_Project.ambiti &&
+            custom_post_type_Project.ambiti.length > 0 && (
+              <div className="proj_details-block">
+                {/* <h2 className="!m-0">Ambiti</h2> */}
+                <ul className="!m-0">
+                  {custom_post_type_Project.ambiti.map(ambito => (
+                    <li
+                      key={`${ambito}-${Math.floor(
+                        Math.random() * (100 - 999) + 100,
+                      )}`}
+                      className="!m-0"
+                    >
+                      {ambito}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          {custom_post_type_Project.credits &&
+            custom_post_type_Project.credits.length > 0 && (
+              <div className="proj_details-block">
+                {/* <h2 className="!m-0 !mb-1">Credits</h2> */}
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: custom_post_type_Project.credits,
+                  }}
+                />
+              </div>
+            )}
+        </div>
       </div>
     </div>
   )

@@ -121,10 +121,12 @@ const CursorLeft = () => {
   const onMouseMove = React.useCallback(({ clientX, clientY }) => {
     if (!cursorRef?.current) return
     cursorRef.current.style.opacity = "0.75"
-    cursorRef.current.style.top = clientY - 10 + "px"
-    cursorRef.current.style.left = clientX - 10 + "px"
-    endX.current = clientX - cursorRef.current.offsetWidth / 2
-    endY.current = clientY - cursorRef.current.offsetHeight / 2
+    cursorRef.current.style.top =
+      clientY - cursorRef.current.offsetHeight / 2 + "px"
+    cursorRef.current.style.left =
+      clientX - cursorRef.current.offsetWidth / 2 + "px"
+    endX.current = clientX
+    endY.current = clientY
   }, [])
 
   useEventListener("mousemove", onMouseMove, document)

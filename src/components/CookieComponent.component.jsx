@@ -12,6 +12,7 @@ const CookieComponent = () => {
         minHeight: "100px",
         height: "auto",
         bottom: "0",
+        top: "auto",
         zIndex: "1000",
         width: "100vw",
         display: "flex",
