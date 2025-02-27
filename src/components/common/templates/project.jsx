@@ -2,10 +2,10 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
 import React, { useEffect, useState, useRef } from "react"
-import { graphql } from "gatsby"
+// import { graphql } from "gatsby"
 import styled from "styled-components"
 import { components } from "../ComponentParser"
-import PrevNextProject from "../../ui-patterns/prev-next-project/prev-next-project.component"
+// import PrevNextProject from "../../ui-patterns/prev-next-project/prev-next-project.component"
 import Slider from "react-slick"
 
 import { gsap } from "gsap"
@@ -36,7 +36,7 @@ const ProjectContainerComponent = styled.div`
   .proj_info-container {
     h1 {
       font-family: "Inter";
-      font-weight: 200;
+      font-weight: 500;
       letter-spacing: 0;
       margin: 0;
     }
@@ -180,8 +180,8 @@ const CarouselContainer = styled.div`
 `
 
 const Project = props => {
-  const { blocks, custom_post_type_Project, index, title } = props.pageContext
-  const { data } = props
+  const { blocks, custom_post_type_Project, title } = props.pageContext
+  // const { data } = props
   const sliderRef = useRef(null)
   const leftArrowRef = useRef(null)
   const rightArrowRef = useRef(null)
@@ -189,31 +189,31 @@ const Project = props => {
   const [activeSlide, setActiveSlide] = useState(0)
   const { setCursorComp, setCursorFollowComp } = useCursor()
 
-  let prevPost = null
-  let nextPost = null
+  // let prevPost = null
+  // let nextPost = null
 
-  const sortedProjects = data.wordpress.projects.nodes
-    .filter(p => p.custom_post_type_Project.visitabile === true)
-    .sort((a, b) =>
-      a.date < b.date
-        ? 1
-        : a.date === b.date
-          ? a.title > b.title
-            ? 1
-            : -1
-          : -1,
-    )
-  const postLength = sortedProjects.length
-  if (index === postLength - 1) {
-    prevPost = sortedProjects[index - 1]
-    nextPost = sortedProjects[0]
-  } else if (index === 0) {
-    prevPost = sortedProjects[postLength - 1]
-    nextPost = sortedProjects[index + 1]
-  } else {
-    prevPost = sortedProjects[index - 1]
-    nextPost = sortedProjects[index + 1]
-  }
+  // const sortedProjects = data.wordpress.projects.nodes
+  //   .filter(p => p.custom_post_type_Project.visitabile === true)
+  //   .sort((a, b) =>
+  //     a.date < b.date
+  //       ? 1
+  //       : a.date === b.date
+  //         ? a.title > b.title
+  //           ? 1
+  //           : -1
+  //         : -1,
+  //   )
+  // const postLength = sortedProjects.length
+  // if (index === postLength - 1) {
+  //   prevPost = sortedProjects[index - 1]
+  //   nextPost = sortedProjects[0]
+  // } else if (index === 0) {
+  //   prevPost = sortedProjects[postLength - 1]
+  //   nextPost = sortedProjects[index + 1]
+  // } else {
+  //   prevPost = sortedProjects[index - 1]
+  //   nextPost = sortedProjects[index + 1]
+  // }
 
   let vh = null
   if (typeof window !== `undefined`) {
@@ -278,6 +278,7 @@ const Project = props => {
       <ProjectContainerComponent className="overflow-hidden" vh={vh}>
         <CarouselContainer className="h-full relative">
           <button
+            aria-label="arrow left"
             ref={leftArrowRef}
             className="hidden md:block absolute z-10 inset-0 right-auto w-1/2 h-full"
             onClick={() => {
@@ -294,6 +295,7 @@ const Project = props => {
             }}
           />
           <button
+            aria-label="arrow right"
             ref={rightArrowRef}
             className="hidden md:block absolute z-10 inset-0 left-auto w-1/2 h-full"
             onClick={() => {
@@ -428,35 +430,35 @@ const InfoSheet = ({
   )
 }
 
-export const query = graphql`
-  query PrevNextQuery {
-    wordpress {
-      projects(first: 100, where: { status: PUBLISH }) {
-        nodes {
-          id
-          title
-          date
-          slug
-          custom_post_type_Project {
-            anno
-            visitabile
-          }
-          featuredImage {
-            node {
-              sourceUrl
-              imageFile {
-                childImageSharp {
-                  fixed(width: 1500, quality: 90) {
-                    ...GatsbyImageSharpFixed
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query PrevNextQuery {
+//     wordpress {
+//       projects(first: 100, where: { status: PUBLISH }) {
+//         nodes {
+//           id
+//           title
+//           date
+//           slug
+//           custom_post_type_Project {
+//             anno
+//             visitabile
+//           }
+//           featuredImage {
+//             node {
+//               sourceUrl
+//               imageFile {
+//                 childImageSharp {
+//                   fixed(width: 1500, quality: 90) {
+//                     ...GatsbyImageSharpFixed
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
 
 export default Project

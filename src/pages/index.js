@@ -28,11 +28,11 @@ const IndexPage = ({ data }) => {
       <HeaderContainer />
       <SectionContainer>
         <div className="flex flex-col gap-4 col-span-full lg:col-span-6 text-2xl">
-          <p className="!m-0">
+          <p className="!m-0 w-full">
             Siamo uno studio di comunicazione e direzione creativa di Torino
             specializzato in branding e digital design.
           </p>
-          <p className="md:mb-8">
+          <p className="md:mb-8 w-full">
             Ci occupiamo di identità visiva, editoria, exhibition design,
             packaging, siti web e motion design.
           </p>

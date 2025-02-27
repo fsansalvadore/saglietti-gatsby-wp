@@ -31,7 +31,7 @@ const CursorComponent = ({ children }) => {
       setCursorComp(<Cursor />)
       setCursorFollowComp(<CursorFollow />)
     }
-  }, [])
+  }, [setCursorComp, setCursorFollowComp])
 
   return (
     <>

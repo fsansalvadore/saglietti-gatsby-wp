@@ -5,7 +5,7 @@ import Menu from "../menu-container/menu-container.component"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import NavLogo from "./NavLogo.component"
-import { isBrowser } from "framer-motion"
+// import { isBrowser } from "framer-motion"
 import classNames from "classnames"
 import { useLockBodyScroll, useWindowSize } from "react-use"
 
@@ -52,7 +52,6 @@ const MenuBtn = styled.a`
 
 const Nav = ({ initialTransparent = false }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [isChip, setIsChip] = useState(true)
   const { width } = useWindowSize()
 
   // useEffect(() => {
@@ -82,7 +81,7 @@ const Nav = ({ initialTransparent = false }) => {
         <div
           className={classNames(
             "flex items-center bg-white/90 backdrop-blur-lg border py-2 px-4 justify-between w-screen mx-auto rounded-full !transition-all !duration-300 will-change-transform",
-            isChip && !isOpen
+            !isOpen
               ? "bg-white/90 w-[90vw] max-w-[900px] shadow-sm border-gray-100"
               : classNames(
                   "max-w-full shadow-none border-transparent",

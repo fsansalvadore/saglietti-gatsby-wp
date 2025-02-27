@@ -2,8 +2,8 @@ import React from "react"
 
 const ContactsCTA = () => {
   return (
-    <div className="w-full p-[1rem] sm:p-[2rem] pb-[100px]">
-      <div className="py-4 md:py-20 max-w-[900px] flex flex-col text-lg sm:text-xl">
+    <div className="w-full p-[1rem] sm:p-[2rem] py-12 md:py-[100px]">
+      <div className="py-4 md:py-20 max-w-[900px] flex flex-col text-2xl">
         <p className="!m-0">Siamo sempre felici di incontrare nuove persone.</p>
         <p>
           Chiamaci al{" "}

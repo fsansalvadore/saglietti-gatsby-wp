@@ -1,6 +1,6 @@
 import React from "react"
 import parse from "html-react-parser"
-import { Fade } from "react-awesome-reveal"
+// import { Fade } from "react-awesome-reveal"
 
 import ParagraphStyled from "./paragraph.styled"
 
