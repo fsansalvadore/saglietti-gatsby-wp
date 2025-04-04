@@ -27,27 +27,19 @@ const IndexPage = ({ data }) => {
       </Helmet>
       <HeaderContainer />
       <SectionContainer>
-        <div className="w-full sm:col-span-2">
-          <h2 className="text-xl">studio.</h2>
-        </div>
-        <div className="flex flex-col gap-4 col-span-2 text-xl">
-          <p className="!m-0">
-            <span className="block">
-              Dal 2016 progettiamo <i>identità</i> ed <i>esperienze visive</i>.
-            </span>
-            Collaborare con aziende e istituzioni per noi è incentivare
-            l'incontro tra il brand e il suo pubblico, utilizzando solo gli
-            strumenti che apportano <strong>significato</strong> e{" "}
-            <strong>valore alle idee</strong>.
+        <div className="flex flex-col gap-4 col-span-full lg:col-span-6 text-2xl">
+          <p className="!m-0 w-full">
+            Siamo uno studio di comunicazione e direzione creativa di Torino
+            specializzato in branding e digital design.
           </p>
-          <p className="md:mb-8">
-            Per noi il nostro lavoro si nutre costantemente di ispirazione. Per
-            questo non smettiamo mai di cercarla. <i>Ovunque</i>.
+          <p className="md:mb-8 w-full">
+            Ci occupiamo di identità visiva, editoria, exhibition design,
+            packaging, siti web e motion design.
           </p>
         </div>
       </SectionContainer>
-      <SectionContainer className="!pb-4 sm:px-4">
-        <div className="lg:col-start-3 col-span-2 w-full">
+      <SectionContainer className="!pb-4">
+        <div className="col-span-6 w-full">
           <Link
             to="/progetti"
             className="flex gap-4 text-lg items-center group"
@@ -70,28 +62,6 @@ const IndexPage = ({ data }) => {
         </div>
       </SectionContainer>
       <ProjectsList data={data} limit={5} hideTitle />
-      <SectionContainer>
-        <div className="w-full sm:col-span-2">
-          <h2 className="text-xl">metodologia.</h2>
-        </div>
-        <div className="flex flex-col gap-4 col-span-2 text-xl">
-          <p>
-            Creiamo linguaggi di comunicazione per qualsiasi tipo di{" "}
-            <strong>progetto</strong>, <strong>budget</strong> e{" "}
-            <strong>media</strong>. Ma il nostro approccio al lavoro è sempre lo
-            stesso: offrire al cliente un partner con cui{" "}
-            <strong>condividere una visione</strong>. Un'intesa che ci porta a
-            comprendere a fondo gli obiettivi e{" "}
-            <strong>generare fiducia</strong>, massimizzando i risultati.
-          </p>
-          <p>
-            Le nostre soluzioni non soddisfano solo le esigenze immediate del
-            cliente, ma puntano a una comprensione della marca più profonda e
-            significativa, con l'obiettivo di creare una{" "}
-            <strong>connessione duratura</strong> con il suo pubblico.
-          </p>
-        </div>
-      </SectionContainer>
       <ContactsCTA />
     </Layout>
   )

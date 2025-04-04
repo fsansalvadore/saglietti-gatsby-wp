@@ -6,8 +6,7 @@ import { motion, AnimatePresence } from "framer-motion"
 
 import Nav from "./ui-patterns/nav/nav.component"
 import Footer from "./ui-patterns/footer/footer.component"
-import Cursor from "./ui/cursor.component"
-import CursorFollow from "./ui/cursor-follow.component"
+import { CursorProvider } from "./ui/CursorProvider"
 import GenericMetadata from "./common/meta/GenericMetadata"
 import CookieComponent from "./CookieComponent.component"
 import Loading from "./ui-patterns/Loading/Loading.component"
@@ -19,6 +18,8 @@ const Layout = ({
   offsetFromTop = false,
   children,
   initialTransparent,
+  isInverted = false,
+  hasFooter = true,
 }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -30,22 +31,16 @@ const Layout = ({
     }
   `)
   const [isLoading, setIsLoading] = useState(true)
-  const [cursorComp, setCursorComp] = useState(null)
-  const [cursorFollowComp, setCursorFollowComp] = useState(null)
 
   useEffect(() => {
     if (typeof document !== `undefined`) {
-      setCursorComp(<Cursor />)
-      setCursorFollowComp(<CursorFollow />)
       setIsLoading(false)
     }
   }, [])
 
   return (
-    <>
+    <CursorProvider>
       <GenericMetadata />
-      {cursorComp}
-      {cursorFollowComp}
       <Loading isLoading={isLoading} />
       <Nav
         siteTitle={data.site.siteMetadata.title}
@@ -70,9 +65,9 @@ const Layout = ({
           {children}
         </motion.main>
       </AnimatePresence>
-      <Footer />
+      {hasFooter && <Footer isInverted={isInverted} />}
       <CookieComponent />
-    </>
+    </CursorProvider>
   )
 }
 

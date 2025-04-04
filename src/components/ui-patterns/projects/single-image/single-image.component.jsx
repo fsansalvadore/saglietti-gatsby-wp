@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Fade } from "react-awesome-reveal"
+// import { Fade } from "react-awesome-reveal"
 
 const StyledImageContainer = styled.figure`
   position: relative;
@@ -22,18 +22,22 @@ const StyledImageContainer = styled.figure`
   }
 `
 
-const SingleImage = ({ attributes }) => {
+const SingleImage = ({ attributes, ...props }) => {
+  console.log("SingleImage", attributes, props)
   return (
     <StyledImageContainer
       size={attributes.className ? attributes.className : ""}
       align={attributes.align ? attributes.align : ""}
+      {...props}
     >
-      <Fade triggerOnce>
-        <img src={attributes.url} alt={attributes.alt ? attributes.alt : ""} />
-        {attributes.caption && attributes.caption.length > 0 && (
-          <figcaption>{attributes.caption}</figcaption>
-        )}
-      </Fade>
+      {/* <Fade triggerOnce> */}
+      <img
+        src={attributes.url.replace("-1024x576", "")}
+        alt={attributes.alt ? attributes.alt : ""}
+      />
+      {attributes.caption && attributes.caption.length > 0 && (
+        <figcaption>{attributes.caption}</figcaption>
+      )}
     </StyledImageContainer>
   )
 }

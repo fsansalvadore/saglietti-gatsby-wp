@@ -35,7 +35,13 @@ const SliderBlock = styled.div`
   }
 `
 
-const Carousel = ({ name, saveContent, dynamicContent, innerBlocks }) => {
+const Carousel = ({
+  name,
+  saveContent,
+  dynamicContent,
+  innerBlocks,
+  ...props
+}) => {
   var settings = {
     dots: false,
     infinite: false,
@@ -71,7 +77,7 @@ const Carousel = ({ name, saveContent, dynamicContent, innerBlocks }) => {
 
   return (
     <Reveal effect="anim_enter">
-      <SliderBlock>
+      <SliderBlock {...props}>
         <Slider {...settings}>
           {innerBlocks.map(slide => (
             <div

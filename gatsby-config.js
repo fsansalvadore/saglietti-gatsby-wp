@@ -24,7 +24,6 @@ module.exports = {
         fieldName: "wordpress",
         // Url to query from
         url: "https://wp.saglietti.it/graphql",
-        refetchInterval: 60,
       },
     },
     {

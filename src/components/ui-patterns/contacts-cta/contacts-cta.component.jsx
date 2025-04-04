@@ -1,22 +1,16 @@
 import React from "react"
-import styled from "styled-components"
-
-const ContactsComponent = styled.div`
-  width: 100%;
-  padding: 100px 5%;
-`
 
 const ContactsCTA = () => {
   return (
-    <ContactsComponent className="contacts-container">
-      <div className="py-4 md:py-20 text-center max-w-[900px] mx-auto flex flex-col items-center text-2xl sm:text-3xl">
-        <p className="!m-0">Vogliamo lavorare insieme al tuo progetto?</p>
+    <div className="w-full p-[1rem] sm:p-[2rem] py-12 md:py-[100px]">
+      <div className="py-4 md:py-20 max-w-[900px] flex flex-col text-2xl">
+        <p className="!m-0">Siamo sempre felici di incontrare nuove persone.</p>
         <p>
-          Chiamaci al numero{" "}
+          Chiamaci al{" "}
           <a href="tel:00393406450856" className="underline">
             +39 340 645 0856
           </a>
-          , <br className="hidden md:block" /> invia un'e-mail a{" "}
+          , <br className="hidden md:block" /> scrivi a{" "}
           <a href="mailto:info@saglietti.it" className="underline">
             info@saglietti.it
           </a>{" "}
@@ -32,7 +26,7 @@ const ContactsCTA = () => {
           .
         </p>
       </div>
-    </ContactsComponent>
+    </div>
   )
 }
 

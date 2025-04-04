@@ -2,13 +2,14 @@ import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
-import Logo from "../../../images/Saglietti_logo.svg"
 import SocialIcons from "../SocialIcons/SocialIcons.component"
 import MailchimpForm from "../../MailchimpForm"
+import SagliettiLogo from "../../SagliettiLogo"
 
 const FooterComponent = styled.footer`
   width: 100%;
   padding: 1rem;
+  filter: ${props => (props.isInverted ? "invert()" : "none")};
 
   .footer-info {
     font-size: 0.8rem;
@@ -48,7 +49,7 @@ const FooterComponent = styled.footer`
     }
   }
 
-  @media only screen and (min-width: 900px) {
+  @media only screen and (min-width: 640px) {
     padding: 70px 2rem;
 
     div {
@@ -57,11 +58,14 @@ const FooterComponent = styled.footer`
   }
 `
 
-const Footer = () => {
+const Footer = ({ isInverted }) => {
   return (
-    <FooterComponent className="flex flex-col gap-4 sm:!grid grid-cols-2 md:grid-cols-3">
+    <FooterComponent
+      isInverted={isInverted}
+      className="flex flex-col gap-4 sm:!grid grid-cols-2 md:grid-cols-3"
+    >
       <div className="h-full w-full flex flex-col gap-2 justify-between items-start">
-        <img src={Logo} alt="Saglietti" className="h-[30px] w-auto" />
+        <SagliettiLogo />
         <p className="!m-0">branding + digital</p>
       </div>
       <div className="footer-info">

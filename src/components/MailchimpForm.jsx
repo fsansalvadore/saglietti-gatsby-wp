@@ -28,6 +28,7 @@ const MailchimpForm = () => {
         type="submit"
         value="Subscribe"
         className="absolute top-1 right-0 flex items-center justify-center my-auto"
+        aria-label="subscribe"
       >
         <svg
           className="w-3 h-3 rotate-45"

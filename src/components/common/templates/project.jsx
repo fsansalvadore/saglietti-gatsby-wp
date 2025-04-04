@@ -1,25 +1,24 @@
-import React, { useEffect } from "react"
-import { graphql } from "gatsby"
-import { Helmet } from "react-helmet"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+
+import React, { useEffect, useState, useRef } from "react"
+// import { graphql } from "gatsby"
 import styled from "styled-components"
-import Layout from "../../layout"
-import VerticalLine from "../../ui/vertical-line.component"
-import ComponentParser from "../ComponentParser"
-import fallbackImg from "../../../images/fallback.png"
-import PrevNextProject from "../../ui-patterns/prev-next-project/prev-next-project.component"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "../../ui/Accordion"
+import { components } from "../ComponentParser"
+// import PrevNextProject from "../../ui-patterns/prev-next-project/prev-next-project.component"
+import Slider from "react-slick"
 
 import { gsap } from "gsap"
 import { TweenLite, TimelineLite } from "gsap/all"
 import * as ScrollMagic from "scrollmagic-with-ssr" // Or use scrollmagic-with-ssr to avoid server rendering problems
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
 import CustomEase from "../../common/vendor/gsap/CustomEase"
-
+import cn from "classnames"
+import { useCursor } from "../../ui/CursorProvider"
+import Cursor from "../../ui/cursor.component"
+import CursorFollow from "../../ui/cursor-follow.component"
+import CursorLeft from "../../ui/cursorArrowLeft"
+import CursorRight from "../../ui/cursorArrowRight"
 if (typeof window !== `undefined`) {
   gsap.registerPlugin(CustomEase)
   ScrollMagicPluginGsap(ScrollMagic, TweenLite, TimelineLite)
@@ -27,31 +26,19 @@ if (typeof window !== `undefined`) {
 
 const ProjectContainerComponent = styled.div`
   position: relative;
-  width: 100%;
-  /* min-height: 90vh;
-  min-height: ${props => (props.vh ? `calc(var(--vh, 1vh) * 100)` : "90vh")}; */
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #000;
 
   .proj_info-container {
-    position: relative;
-    top: 0;
-    height: 100%;
-    /* height: calc(var(--vh, 1vh) * 100); */
-    /* min-height: calc(var(--vh, 1vh) * 100); */
-    width: 100vw;
-    padding: 1.45rem 2rem;
-
-    .title {
-      margin-bottom: 1.45rem;
-
-      h1 {
-        font-family: "Inter";
-        font-weight: 200;
-        letter-spacing: 0;
-        margin: 0;
-      }
+    h1 {
+      font-family: "Inter";
+      font-weight: 500;
+      letter-spacing: 0;
+      margin: 0;
     }
 
     .proj_info-block {
@@ -155,58 +142,78 @@ const ProjectContainerComponent = styled.div`
   @media (min-width: 900px) {
     flex-direction: row;
 
-    .proj_info-container {
-      width: 40vw;
-      position: sticky;
-    }
-
-    .proj_content-container {
-      width: 60vw;
-    }
-
     .vertical_line {
       display: block;
     }
   }
 `
 
-const ProjectPage = props => {
-  const {
-    slug,
-    blocks,
-    custom_post_type_Project,
-    index,
-    title,
-    featuredImage,
-    seo,
-    tags,
-  } = props.pageContext
-  const { data } = props
-  let prevPost = null
-  let nextPost = null
+const CarouselContainer = styled.div`
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 
-  const sortedProjects = data.wordpress.projects.nodes
-    .filter(p => p.custom_post_type_Project.visitabile === true)
-    .sort((a, b) =>
-      a.date < b.date
-        ? 1
-        : a.date === b.date
-          ? a.title > b.title
-            ? 1
-            : -1
-          : -1,
-    )
-  const postLength = sortedProjects.length
-  if (index === postLength - 1) {
-    prevPost = sortedProjects[index - 1]
-    nextPost = sortedProjects[0]
-  } else if (index === 0) {
-    prevPost = sortedProjects[postLength - 1]
-    nextPost = sortedProjects[index + 1]
-  } else {
-    prevPost = sortedProjects[index - 1]
-    nextPost = sortedProjects[index + 1]
+  .slick-slide,
+  .slick-list {
+    position: relative;
+    height: 100%;
   }
+
+  .slick-slide img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+  }
+
+  .image-count {
+    position: absolute;
+    color: white;
+  }
+
+  .info-icon {
+    position: absolute;
+    z-index: 20;
+    color: white;
+    cursor: pointer;
+  }
+`
+
+const Project = props => {
+  const { blocks, custom_post_type_Project, title } = props.pageContext
+  // const { data } = props
+  const sliderRef = useRef(null)
+  const leftArrowRef = useRef(null)
+  const rightArrowRef = useRef(null)
+  const [isSheetOpen, setIsSheetOpen] = useState(false)
+  const [activeSlide, setActiveSlide] = useState(0)
+  const { setCursorComp, setCursorFollowComp } = useCursor()
+
+  // let prevPost = null
+  // let nextPost = null
+
+  // const sortedProjects = data.wordpress.projects.nodes
+  //   .filter(p => p.custom_post_type_Project.visitabile === true)
+  //   .sort((a, b) =>
+  //     a.date < b.date
+  //       ? 1
+  //       : a.date === b.date
+  //         ? a.title > b.title
+  //           ? 1
+  //           : -1
+  //         : -1,
+  //   )
+  // const postLength = sortedProjects.length
+  // if (index === postLength - 1) {
+  //   prevPost = sortedProjects[index - 1]
+  //   nextPost = sortedProjects[0]
+  // } else if (index === 0) {
+  //   prevPost = sortedProjects[postLength - 1]
+  //   nextPost = sortedProjects[index + 1]
+  // } else {
+  //   prevPost = sortedProjects[index - 1]
+  //   nextPost = sortedProjects[index + 1]
+  // }
 
   let vh = null
   if (typeof window !== `undefined`) {
@@ -254,169 +261,204 @@ const ProjectPage = props => {
     }
   })
 
+  const handleOpenSheet = () => setIsSheetOpen(true)
+
+  const _blocks = blocks.filter(block => !!block.attributes)
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  }
+
   return (
-    <Layout offsetFromTop hasTopBorder className="border-b">
-      <Helmet>
-        <title>{title} • Saglietti</title>
-        <meta name="description" content={seo.metaDesc} />
-        <meta
-          name="keywords"
-          content={
-            tags
-              ? tags.nodes.map(tag => (tag.name ? ` ${tag.name}` : ""))
-              : "saglietti, portfolio, studio di design, progetti di design"
-          }
-        />
-        <meta
-          itemprop="image"
-          content={featuredImage ? featuredImage.node.link : fallbackImg}
-        />
-        <meta property="og:site_name" content={`${title} • Saglietti`} />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content={`https://www.saglietti.it/progetti/${slug}`}
-        />
-        <meta property="og:title" content={`${title} • Saglietti`} />
-        <meta
-          property="og:image"
-          content={featuredImage ? featuredImage.node.link : fallbackImg}
-        />
-        <meta property="og:description" content={seo.metaDesc} />
-        <meta property="og:locale" content="it_IT" />
-        <meta name="twitter:card" content="summary" />
-        <meta
-          name="twitter:site"
-          content={`https://www.saglietti.it/progetti/${slug}`}
-        />
-        <meta name="twitter:title" content={`${title} • Saglietti`} />
-        <meta name="twitter:description" content={seo.metaDesc} />
-        <meta
-          name="twitter:image"
-          content={featuredImage ? featuredImage.node.link : fallbackImg}
-        />
-      </Helmet>
-      <ProjectContainerComponent vh={vh}>
-        <div className="proj_info-container">
-          <div className="proj_info-block flex-1">
-            <Accordion type="single" collapsible>
-              <AccordionItem value="title" className="w-full">
-                <AccordionTrigger className="justify-between">
-                  <h1 className="text-left text-xl m-0">{title}</h1>
-                </AccordionTrigger>
-                <AccordionContent className="!text-sm">
-                  <div className="flex flex-col gap-2 lg:gap-4 fade-in mt-4">
-                    {custom_post_type_Project.descrizione &&
-                      custom_post_type_Project.descrizione.length !== null && (
-                        <div className="proj_details-block">
-                          <p
-                            dangerouslySetInnerHTML={{
-                              __html: custom_post_type_Project.descrizione,
-                            }}
-                          />
-                        </div>
-                      )}
-                    {custom_post_type_Project.anno &&
-                      custom_post_type_Project.anno.length !== null && (
-                        <div className="proj_details-block">
-                          {/* <h2 className="!m-0">Anno</h2> */}
-                          <p className="!m-0">
-                            {custom_post_type_Project.anno}
-                          </p>
-                        </div>
-                      )}
-                    {custom_post_type_Project.ambiti &&
-                      custom_post_type_Project.ambiti.length > 0 && (
-                        <div className="proj_details-block">
-                          {/* <h2 className="!m-0">Ambiti</h2> */}
-                          <ul className="!m-0">
-                            {custom_post_type_Project.ambiti.map(ambito => (
-                              <li
-                                key={`${ambito}-${Math.floor(
-                                  Math.random() * (100 - 999) + 100,
-                                )}`}
-                                className="!m-0"
-                              >
-                                {ambito}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    {custom_post_type_Project.credits &&
-                      custom_post_type_Project.credits.length > 0 && (
-                        <div className="proj_details-block">
-                          {/* <h2 className="!m-0 !mb-1">Credits</h2> */}
-                          <p
-                            dangerouslySetInnerHTML={{
-                              __html: custom_post_type_Project.credits,
-                            }}
-                          />
-                        </div>
-                      )}
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </div>
-        </div>
-        <VerticalLine style={{ left: "40%" }} className="vertical_line" />
-        <div className="proj_content-container">
-          {/* <div className="proj_cover">
-            {featuredImage ? (
-              featuredImage.node.imageFile &&
-              !featuredImage.node.sourceUrl.includes(".gif") ? null : ( // /> //   fixed={featuredImage.node.imageFile.childImageSharp.fixed} //   className="proj_cover-img" // <BackgroundImage
-                <div
-                  className="proj_cover-img"
-                  style={{
-                    backgroundImage: `url(${featuredImage.node.sourceUrl})`,
-                  }}
-                />
+    <>
+      <ProjectContainerComponent className="overflow-hidden" vh={vh}>
+        <CarouselContainer className="h-full relative">
+          <button
+            aria-label="arrow left"
+            ref={leftArrowRef}
+            className="hidden md:block absolute z-10 inset-0 right-auto w-1/2 h-full"
+            onClick={() => {
+              sliderRef?.current?.slickGoTo(activeSlide - 1)
+              setIsSheetOpen(false)
+            }}
+            onMouseEnter={() => {
+              setCursorComp(<CursorLeft />)
+              setCursorFollowComp(null)
+            }}
+            onMouseLeave={() => {
+              setCursorComp(<Cursor />)
+              setCursorFollowComp(<CursorFollow />)
+            }}
+          />
+          <button
+            aria-label="arrow right"
+            ref={rightArrowRef}
+            className="hidden md:block absolute z-10 inset-0 left-auto w-1/2 h-full"
+            onClick={() => {
+              sliderRef?.current?.slickGoTo(activeSlide + 1)
+              setIsSheetOpen(false)
+            }}
+            onMouseEnter={() => {
+              setCursorComp(<CursorRight />)
+              setCursorFollowComp(null)
+            }}
+            onMouseLeave={() => {
+              setCursorComp(<Cursor />)
+              setCursorFollowComp(<CursorFollow />)
+            }}
+          />
+          <Slider
+            ref={sliderRef}
+            afterChange={newIndex => {
+              setActiveSlide(newIndex)
+            }}
+            className="h-full"
+            {...settings}
+          >
+            {_blocks?.map((block, index) => {
+              const Component = components[block.name]
+
+              if (!Component) return null
+
+              return (
+                <div key={index} className="w-full h-full min-h-screen">
+                  <Component
+                    {...block}
+                    className="absolute inset-0 w-full h-full"
+                  />
+                </div>
               )
-            ) : (
-              <div
-                className="proj_cover-img"
-                style={{ backgroundImage: `url(${fallbackImg})` }}
-              />
-            )}
-          </div> */}
-          <ComponentParser content={blocks} />
-        </div>
+            })}
+          </Slider>
+          <div className="image-count left-4 bottom-4 md:left-8 md:bottom-8 text-2xl">
+            {activeSlide + 1} — {_blocks.length}
+          </div>
+          <button
+            className="info-icon absolute z-30 text-2xl bottom-4 right-4 md:bottom-8 md:right-8"
+            onClick={handleOpenSheet}
+          >
+            Info
+          </button>
+        </CarouselContainer>
+        <InfoSheet
+          isOpen={isSheetOpen}
+          setIsSheetOpen={setIsSheetOpen}
+          custom_post_type_Project={custom_post_type_Project}
+          title={title}
+        />
       </ProjectContainerComponent>
-      <PrevNextProject prev={prevPost} next={nextPost} />
-    </Layout>
+      {/* <PrevNextProject prev={prevPost} next={nextPost} /> */}
+    </>
   )
 }
 
-export const query = graphql`
-  query PrevNextQuery {
-    wordpress {
-      projects(first: 100, where: { status: PUBLISH }) {
-        nodes {
-          id
-          title
-          date
-          slug
-          custom_post_type_Project {
-            anno
-            visitabile
-          }
-          featuredImage {
-            node {
-              sourceUrl
-              imageFile {
-                childImageSharp {
-                  fixed(width: 1500, quality: 90) {
-                    ...GatsbyImageSharpFixed
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
+const InfoSheet = ({
+  isOpen,
+  setIsSheetOpen,
+  custom_post_type_Project,
+  title,
+}) => {
+  return (
+    <div
+      className={cn(
+        "proj_info-container absolute z-[9999] p-4 md:p-8 flex flex-col gap-2 inset-0 top-auto w-full h-screen md:h-fit bg-white translate-y-full transform transition-transform",
+        isOpen && "!translate-y-0",
+      )}
+    >
+      <button
+        className="absolute right-4 bottom-4 md:right-8 md:bottom-8 text-2xl w-fit h-7"
+        onClick={() => setIsSheetOpen(false)}
+      >
+        Chiudi
+      </button>
+      <div className="flex flex-col gap-2 lg:gap-4 w-full max-w-[650px]">
+        <h1 className="text-2xl">{title}</h1>
+        <div className="flex flex-col gap-2 lg:gap-4">
+          {custom_post_type_Project.descrizione &&
+            custom_post_type_Project.descrizione.length !== null && (
+              <div className="proj_details-block">
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: custom_post_type_Project.descrizione,
+                  }}
+                />
+              </div>
+            )}
+          {custom_post_type_Project.anno &&
+            custom_post_type_Project.anno.length !== null && (
+              <div className="proj_details-block">
+                {/* <h2 className="!m-0">Anno</h2> */}
+                <p className="!m-0">{custom_post_type_Project.anno}</p>
+              </div>
+            )}
+          {custom_post_type_Project.ambiti &&
+            custom_post_type_Project.ambiti.length > 0 && (
+              <div className="proj_details-block">
+                {/* <h2 className="!m-0">Ambiti</h2> */}
+                <ul className="!m-0">
+                  {custom_post_type_Project.ambiti.map(ambito => (
+                    <li
+                      key={`${ambito}-${Math.floor(
+                        Math.random() * (100 - 999) + 100,
+                      )}`}
+                      className="!m-0"
+                    >
+                      {ambito}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          {custom_post_type_Project.credits &&
+            custom_post_type_Project.credits.length > 0 && (
+              <div className="proj_details-block">
+                {/* <h2 className="!m-0 !mb-1">Credits</h2> */}
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: custom_post_type_Project.credits,
+                  }}
+                />
+              </div>
+            )}
+        </div>
+      </div>
+    </div>
+  )
+}
 
-export default ProjectPage
+// export const query = graphql`
+//   query PrevNextQuery {
+//     wordpress {
+//       projects(first: 100, where: { status: PUBLISH }) {
+//         nodes {
+//           id
+//           title
+//           date
+//           slug
+//           custom_post_type_Project {
+//             anno
+//             visitabile
+//           }
+//           featuredImage {
+//             node {
+//               sourceUrl
+//               imageFile {
+//                 childImageSharp {
+//                   fixed(width: 1500, quality: 90) {
+//                     ...GatsbyImageSharpFixed
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
+
+export default Project
