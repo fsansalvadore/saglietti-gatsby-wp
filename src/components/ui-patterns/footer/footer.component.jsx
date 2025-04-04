@@ -72,7 +72,7 @@ const Footer = ({ isInverted }) => {
         <p>
           IT 10153 Torino TO
           <br />
-          Corso Regio Parco 36A
+          Via Reggio 13
           <br />T <a href="tel:00393406450856">+39 340 645 0856</a>
         </p>
         <p className="m-0 !mt-4 md:!mt-8 uppercase">VAT 03391740044</p>
