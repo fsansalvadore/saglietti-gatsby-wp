@@ -165,7 +165,7 @@ const Cursor = () => {
 
   return (
     <CursorComponent ref={cursorRef}>
-      <span className="cursor_secondary"></span>
+      <span className="cursor_secondary" />
       {inner && <span>{inner}</span>}
     </CursorComponent>
   )

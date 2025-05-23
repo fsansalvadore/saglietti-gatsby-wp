@@ -23,7 +23,6 @@ const StyledImageContainer = styled.figure`
 `
 
 const SingleImage = ({ attributes, ...props }) => {
-  console.log("SingleImage", attributes, props)
   return (
     <StyledImageContainer
       size={attributes.className ? attributes.className : ""}

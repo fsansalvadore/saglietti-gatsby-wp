@@ -20,6 +20,7 @@ const ContactsCTA = loadable(
 )
 
 const IndexPage = ({ data }) => {
+  console.log("wordpresss", data)
   return (
     <Layout>
       <Helmet>
@@ -61,7 +62,7 @@ const IndexPage = ({ data }) => {
           </Link>
         </div>
       </SectionContainer>
-      <ProjectsList data={data} limit={5} hideTitle />
+      <ProjectsList data={data} limit={10} hideTitle />
       <ContactsCTA />
     </Layout>
   )
@@ -87,6 +88,22 @@ export const query = graphql`
             anno
             visitabile
           }
+        }
+      }
+      page(id: "cG9zdDoxMQ==") {
+        title
+        homepageacf {
+          caroselloProgetti
+          fieldGroupName
+          firstmarqueetext
+          lastmarqueetext
+          marqueetexttwo
+          statictext
+          # featuredprojects {
+          #   ... on Project {
+          #     title
+          #   }
+          # }
         }
       }
     }
