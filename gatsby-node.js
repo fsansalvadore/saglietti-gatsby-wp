@@ -80,17 +80,33 @@ const videoBlocks = `
   ... on WORDPRESS_CoreVideoBlock {
     ${coreBlocksFields}
     attributes {
-      id
-      src
-      caption
-      align
-      poster
-      playsInline
-      muted
-      loop
-      controls
-      className
-      autoplay
+      __typename
+      ... on WORDPRESS_CoreVideoBlockAttributes {
+        id
+        src
+        caption
+        align
+        poster
+        playsInline
+        muted
+        loop
+        controls
+        className
+        autoplay
+      }
+      ... on WORDPRESS_CoreVideoBlockDeprecatedV1Attributes {
+        id
+        src
+        caption
+        align
+        poster
+        playsInline
+        muted
+        loop
+        controls
+        className
+        autoplay
+      }
     }
   }
 `
@@ -100,37 +116,37 @@ const galleryBlocks = `
     ${coreBlocksFields}
   }
 `
-const carouselBlocks = `
-... on WORDPRESS_EedeeBlockGutensliderBlock {
-    name
-    dynamicContent
-    saveContent
-    innerBlocks {
-      ... on WORDPRESS_EedeeBlockGutenslideBlock {
-        dynamicContent
-        originalContent
-        name
-        attributes {
-          ... on WORDPRESS_EedeeBlockGutenslideBlockAttributes {
-            mediaId
-            mediaUrl
-            linkUrl
-            mediaAlt
-            background
-            dimRatio
-            className
-            initialized
-            isEditable
-            mediaType
-            overlayColor
-            rgbaBackground
-            verticalAlign
-          }
-        }
-      }
-    }
-  }
-`
+// const carouselBlocks = `
+// ... on WORDPRESS_EedeeBlockGutensliderBlock {
+//     name
+//     dynamicContent
+//     saveContent
+//     innerBlocks {
+//       ... on WORDPRESS_EedeeBlockGutenslideBlock {
+//         dynamicContent
+//         originalContent
+//         name
+//         attributes {
+//           ... on WORDPRESS_EedeeBlockGutenslideBlockAttributes {
+//             mediaId
+//             mediaUrl
+//             linkUrl
+//             mediaAlt
+//             background
+//             dimRatio
+//             className
+//             initialized
+//             isEditable
+//             mediaType
+//             overlayColor
+//             rgbaBackground
+//             verticalAlign
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
 
 const seoFields = `
   seo {
@@ -178,7 +194,6 @@ const query = `
             ${imageBlocks}
             ${videoBlocks}
             ${galleryBlocks}
-            ${carouselBlocks}
           }
           status
           slug

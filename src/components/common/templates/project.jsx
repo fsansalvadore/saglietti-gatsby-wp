@@ -341,7 +341,7 @@ const InfoSheet = ({
       )}
     >
       <button
-        className="absolute right-4 bottom-4 md:right-8 md:bottom-8 text-2xl w-fit h-7"
+        className="absolute right-4 bottom-4 md:right-8 md:bottom-8 text-2xl w-fit h-7 !cursor-pointer"
         onClick={() => setIsSheetOpen(false)}
       >
         Chiudi
