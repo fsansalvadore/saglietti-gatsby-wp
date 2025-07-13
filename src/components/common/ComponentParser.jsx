@@ -30,7 +30,8 @@ export const isEmpty = obj => {
 export const useBlockComponents = blocks => {
   if (!blocks) return null
 
-  const filteredComponents = blocks.filter(component => component.name !== null)
+  const filteredComponents =
+    blocks?.filter(component => component.name !== null) ?? []
 
   if (filteredComponents && filteredComponents.length > 0) {
     const pageComponents = filteredComponents.map((component, index) => {

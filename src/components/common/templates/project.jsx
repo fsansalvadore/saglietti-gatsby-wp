@@ -235,7 +235,7 @@ const Project = props => {
 
   const handleOpenSheet = () => setIsSheetOpen(true)
 
-  const _blocks = blocks.filter(block => !!block.attributes)
+  const _blocks = blocks?.filter(block => !!block.attributes) ?? []
 
   const settings = {
     dots: true,

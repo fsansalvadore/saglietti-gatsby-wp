@@ -31,7 +31,7 @@ const SingleImage = ({ attributes, ...props }) => {
     >
       {/* <Fade triggerOnce> */}
       <img
-        src={attributes.url.replace("-1024x576", "")}
+        src={attributes.url?.replace("-1024x576", "")}
         alt={attributes.alt ? attributes.alt : ""}
       />
       {attributes.caption && attributes.caption.length > 0 && (
