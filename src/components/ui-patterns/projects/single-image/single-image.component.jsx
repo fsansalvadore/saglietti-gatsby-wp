@@ -1,6 +1,6 @@
 import React from "react"
-import styled from "styled-components"
 // import { Fade } from "react-awesome-reveal"
+import styled from "styled-components"
 
 const StyledImageContainer = styled.figure`
   position: relative;
