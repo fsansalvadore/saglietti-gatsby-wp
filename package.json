@@ -18,8 +18,8 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "engines": {
-    "npm": ">=9.0.0",
-    "node": ">=18.0.0"
+    "npm": ">=10.0.0",
+    "node": ">=22.0.0"
   },
   "dependencies": {
     "@loadable/component": "^5.16.2",
