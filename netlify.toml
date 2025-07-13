@@ -1,0 +1,11 @@
+[build]
+  command = "gatsby build"
+  publish = "public"
+
+[[plugins]]
+  package = "@netlify/plugin-gatsby"
+  [plugins.inputs]
+  cachePublic = false
+  cacheCypress = false
+  cacheNodeModules = false
+  enableGatsbyCache = false
