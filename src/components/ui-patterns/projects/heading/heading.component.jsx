@@ -1,6 +1,6 @@
 import React from "react"
 import parse from "html-react-parser"
-import { Fade } from "react-awesome-reveal"
+// import { Fade } from "react-awesome-reveal"
 import styled from "styled-components"
 
 const HeadingStyled = styled.div`
@@ -12,7 +12,8 @@ const HeadingStyled = styled.div`
 const Heading = ({ name, originalContent }) => {
   return (
     <HeadingStyled>
-      <Fade triggerOnce>{parse(originalContent)}</Fade>
+      {/* <Fade triggerOnce>{parse(originalContent)}</Fade> */}
+      {parse(originalContent)}
     </HeadingStyled>
   )
 }

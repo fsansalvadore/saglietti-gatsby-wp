@@ -6,7 +6,6 @@ import { Helmet } from "react-helmet"
 import ProjectsList from "../components/ui-patterns/projects/projects-list/projects-list.component"
 
 const Progetti = ({ data }) => {
-  console.log("PROGETTIIII")
   return (
     <Layout className="!pt-0" initialTransparent>
       <Helmet>

@@ -23,9 +23,9 @@ const ProjectsList = ({ data, limit = 100, showVisitableOnly, hideTitle }) => {
   const [term, setTerm] = useState("")
 
   useEffect(() => {
-    if (data.wordpress.projects) {
+    if (data?.wordpress?.projects) {
       setProjects(
-        data.wordpress.projects.nodes
+        data.wordpress.projects?.nodes
           .filter(item =>
             showVisitableOnly ? item.custom_post_type_Project.visitabile : true,
           )
@@ -51,7 +51,7 @@ const ProjectsList = ({ data, limit = 100, showVisitableOnly, hideTitle }) => {
           .slice(0, limit),
       )
     }
-  }, [setProjects, term, data.wordpress.projects, limit, showVisitableOnly])
+  }, [setProjects, term, data?.wordpress?.projects, limit, showVisitableOnly])
 
   useEffect(() => {
     if (typeof window !== `undefined`) {

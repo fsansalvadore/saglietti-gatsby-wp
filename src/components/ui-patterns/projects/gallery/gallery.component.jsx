@@ -1,7 +1,7 @@
 import React from "react"
 import parse from "html-react-parser"
 import styled from "styled-components"
-import { Fade } from "react-awesome-reveal"
+// import { Fade } from "react-awesome-reveal"
 
 import "./gallery.style.scss"
 
@@ -12,7 +12,8 @@ const GalleryContainer = styled.div`
 const Gallery = ({ originalContent }) => {
   return (
     <GalleryContainer>
-      <Fade triggerOnce>{parse(originalContent)}</Fade>
+      {/* <Fade triggerOnce>{parse(originalContent)}</Fade> */}
+      {parse(originalContent)}
     </GalleryContainer>
   )
 }

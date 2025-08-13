@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Slider from "react-slick"
-import Reveal from "react-awesome-reveal"
+// import Reveal from "react-awesome-reveal"
 
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
@@ -76,24 +76,20 @@ const Carousel = ({
   }
 
   return (
-    <Reveal effect="anim_enter">
-      <SliderBlock {...props}>
-        <Slider {...settings}>
-          {innerBlocks.map(slide => (
-            <div
-              key={JSON.parse(slide.attributes.background).backgroundImage.id}
-            >
-              <img
-                src={
-                  JSON.parse(slide.attributes.background).backgroundImage.link
-                }
-                alt=""
-              />
-            </div>
-          ))}
-        </Slider>
-      </SliderBlock>
-    </Reveal>
+    // <Reveal effect="anim_enter">
+    <SliderBlock {...props}>
+      <Slider {...settings}>
+        {innerBlocks.map(slide => (
+          <div key={JSON.parse(slide.attributes.background).backgroundImage.id}>
+            <img
+              src={JSON.parse(slide.attributes.background).backgroundImage.link}
+              alt=""
+            />
+          </div>
+        ))}
+      </Slider>
+    </SliderBlock>
+    // </Reveal>
   )
 }
 

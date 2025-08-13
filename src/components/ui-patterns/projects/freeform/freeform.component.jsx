@@ -1,6 +1,6 @@
 import React from "react"
 import parse from "html-react-parser"
-import { Fade } from "react-awesome-reveal"
+// import { Fade } from "react-awesome-reveal"
 import styled from "styled-components"
 
 const FreeformStyled = styled.div`
@@ -21,7 +21,8 @@ const FreeformStyled = styled.div`
 const Freeform = ({ name, originalContent }) => {
   return (
     <FreeformStyled>
-      <Fade triggerOnce>{parse(originalContent)}</Fade>
+      {/* <Fade triggerOnce>{parse(originalContent)}</Fade> */}
+      {parse(originalContent)}
     </FreeformStyled>
   )
 }

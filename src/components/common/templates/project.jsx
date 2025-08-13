@@ -2,10 +2,8 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
 import React, { useEffect, useState, useRef } from "react"
-// import { graphql } from "gatsby"
 import styled from "styled-components"
 import { components } from "../ComponentParser"
-// import PrevNextProject from "../../ui-patterns/prev-next-project/prev-next-project.component"
 import Slider from "react-slick"
 
 import { gsap } from "gsap"
@@ -181,39 +179,13 @@ const CarouselContainer = styled.div`
 
 const Project = props => {
   const { blocks, custom_post_type_Project, title } = props.pageContext
-  // const { data } = props
+
   const sliderRef = useRef(null)
   const leftArrowRef = useRef(null)
   const rightArrowRef = useRef(null)
   const [isSheetOpen, setIsSheetOpen] = useState(false)
   const [activeSlide, setActiveSlide] = useState(0)
   const { setCursorComp, setCursorFollowComp } = useCursor()
-
-  // let prevPost = null
-  // let nextPost = null
-
-  // const sortedProjects = data.wordpress.projects.nodes
-  //   .filter(p => p.custom_post_type_Project.visitabile === true)
-  //   .sort((a, b) =>
-  //     a.date < b.date
-  //       ? 1
-  //       : a.date === b.date
-  //         ? a.title > b.title
-  //           ? 1
-  //           : -1
-  //         : -1,
-  //   )
-  // const postLength = sortedProjects.length
-  // if (index === postLength - 1) {
-  //   prevPost = sortedProjects[index - 1]
-  //   nextPost = sortedProjects[0]
-  // } else if (index === 0) {
-  //   prevPost = sortedProjects[postLength - 1]
-  //   nextPost = sortedProjects[index + 1]
-  // } else {
-  //   prevPost = sortedProjects[index - 1]
-  //   nextPost = sortedProjects[index + 1]
-  // }
 
   let vh = null
   if (typeof window !== `undefined`) {
@@ -263,7 +235,7 @@ const Project = props => {
 
   const handleOpenSheet = () => setIsSheetOpen(true)
 
-  const _blocks = blocks.filter(block => !!block.attributes)
+  const _blocks = blocks?.filter(block => !!block.attributes) ?? []
 
   const settings = {
     dots: true,
@@ -351,7 +323,6 @@ const Project = props => {
           title={title}
         />
       </ProjectContainerComponent>
-      {/* <PrevNextProject prev={prevPost} next={nextPost} /> */}
     </>
   )
 }
@@ -370,7 +341,7 @@ const InfoSheet = ({
       )}
     >
       <button
-        className="absolute right-4 bottom-4 md:right-8 md:bottom-8 text-2xl w-fit h-7"
+        className="absolute right-4 bottom-4 md:right-8 md:bottom-8 text-2xl w-fit h-7 !cursor-pointer"
         onClick={() => setIsSheetOpen(false)}
       >
         Chiudi
@@ -429,36 +400,5 @@ const InfoSheet = ({
     </div>
   )
 }
-
-// export const query = graphql`
-//   query PrevNextQuery {
-//     wordpress {
-//       projects(first: 100, where: { status: PUBLISH }) {
-//         nodes {
-//           id
-//           title
-//           date
-//           slug
-//           custom_post_type_Project {
-//             anno
-//             visitabile
-//           }
-//           featuredImage {
-//             node {
-//               sourceUrl
-//               imageFile {
-//                 childImageSharp {
-//                   fixed(width: 1500, quality: 90) {
-//                     ...GatsbyImageSharpFixed
-//                   }
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
 
 export default Project
