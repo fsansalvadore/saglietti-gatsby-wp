@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "FFMarkWebProLight";
+  src:
+    url("/src/webFonts/FFMarkWebProLight/font.woff2") format("woff2"),
+    url("/src/webFonts/FFMarkWebProLight/font.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "FFMarkWebProMedium";
+  src:
+    url("/src/webFonts/FFMarkWebProMedium/font.woff2") format("woff2"),
+    url("/src/webFonts/FFMarkWebProMedium/font.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}

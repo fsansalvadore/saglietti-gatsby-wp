@@ -22,7 +22,6 @@ const StudioContent = styled.div`
   color: #fff;
 
   h1 {
-    font-family: "Inter", sans-serif;
     font-weight: 200;
   }
 

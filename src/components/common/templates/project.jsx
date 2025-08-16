@@ -33,7 +33,6 @@ const ProjectContainerComponent = styled.div`
 
   .proj_info-container {
     h1 {
-      font-family: "Inter";
       font-weight: 500;
       letter-spacing: 0;
       margin: 0;
@@ -49,7 +48,6 @@ const ProjectContainerComponent = styled.div`
       .proj_details-block {
         width: 25%;
         margin-right: 10px;
-        font-family: "Inter";
         font-size: 0.7rem;
         line-height: 1rem;
 

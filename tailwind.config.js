@@ -7,7 +7,30 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
+        sans: [
+          "FFMarkWebProLight",
+          "Inter",
+          "Helvetica Neue",
+          "Helvetica",
+          "Arial",
+          "sans-serif",
+        ],
+        ffMarkLight: [
+          "FFMarkWebProLight",
+          "Inter",
+          "Helvetica Neue",
+          "Helvetica",
+          "Arial",
+          "sans-serif",
+        ],
+        ffMarkMedium: [
+          "FFMarkWebProMedium",
+          "Inter",
+          "Helvetica Neue",
+          "Helvetica",
+          "Arial",
+          "sans-serif",
+        ],
       },
       keyframes: {
         "accordion-down": {

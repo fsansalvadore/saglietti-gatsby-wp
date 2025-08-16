@@ -27,7 +27,6 @@ const ProjectsContainer = styled.div`
 
   h1,
   h2 {
-    font-family: "Inter";
     font-weight: 200;
     font-size: 1rem;
     letter-spacing: 0;
