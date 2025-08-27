@@ -5,7 +5,7 @@ const MarqueeSlidingText = ({ text, className, repeat = 3 }) => {
   return (
     <div
       className={classNames(
-        "overflow-hidden max-w-[100vw] text-[152px] font-medium flex gap-20 flex-nowrap",
+        "overflow-hidden max-w-[100vw] text-[152px] font-medium flex gap-8 flex-nowrap",
         className,
       )}
     >

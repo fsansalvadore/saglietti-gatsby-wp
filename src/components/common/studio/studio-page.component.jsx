@@ -106,7 +106,7 @@ const StudioPage = ({ data }) => {
   return (
     <>
       <StudioContent>
-        <header className="p-4 pb-8 sm:p-8 !pt-[120px] sm:!pt-[150px] mx-auto max-w-7xl">
+        <header className="p-4 pb-8 sm:p-8 !pt-[120px] sm:!pt-[200px] mx-auto max-w-7xl">
           <h1 className="sr-only">Studio Saglietti</h1>
           <p className="fade-in w-full lg:w-2/3 !text-2xl md:!text-4xl">
             La nostra curiosità è la forza che ci guida nel dare vita a nuovi
@@ -114,8 +114,8 @@ const StudioPage = ({ data }) => {
             tra materia, spazio, movimento e strumenti digitali.
           </p>
         </header>
-        <div className="w-full mx-auto max-w-7xl p-4 sm:p-8 sm:py-24 flex flex-col sm:!grid sm:grid-cols-12 gap-8 sm:gap-20">
-          <div className="flex flex-col gap-4 col-span-full md:col-span-8 text-xl">
+        <div className="w-full mx-auto max-w-7xl p-4 sm:p-8 sm:py-20 flex flex-col sm:!grid sm:grid-cols-12 gap-12 sm:gap-20">
+          <div className="flex flex-col gap-12 col-span-full md:col-span-8 text-xl">
             <p className="fade-in">
               Crediamo che un buon design richieda tempo e dedizione, per questo
               esploriamo con attenzione l'identità e il carattere di ogni
@@ -123,7 +123,7 @@ const StudioPage = ({ data }) => {
               loro, emerge in modo naturale un design funzionale e
               contemporaneo.
             </p>
-            <p>
+            <p className="fade-in">
               Lo studio è stato fondato nel 2015 da Alessandro Saglietti. Nel
               corso degli anni, abbiamo collaborato con strategist, designer,
               copywriter e sviluppatori che hanno costruito con noi i numerosi
@@ -137,38 +137,43 @@ const StudioPage = ({ data }) => {
             className="w-full col-span-full md:!col-span-4 aspect-[582/577]"
           />
         </div>
-        <div className="w-full mx-auto max-w-7xl p-4 sm:p-8 sm:py-24 flex flex-col sm:!grid sm:grid-cols-12 gap-8 sm:gap-20">
-          <div className="flex flex-col gap-4 lg:col-start-5 col-span-full lg:col-span-8 text-lg">
+        <div className="w-full mx-auto max-w-7xl p-4 sm:p-8 sm:py-20 flex flex-col sm:!grid sm:grid-cols-12">
+          <div className="flex flex-col gap-12 lg:col-start-5 col-span-full lg:col-span-8 text-lg">
             <p className="fade-in">
-              I nostri servizi i non soddisfano solo le esigenze immediate del
-              cliente, ma puntano alla loro comprensione in modo più profondo e
-              significativo, con l'obiettivo di generare soluzioni complete e
-              che portano a risultati concreti.
+              Non soddisfiamo solo le esigenze immediate del cliente, ma puntano
+              alla loro comprensione in modo più profondo e significativo, con
+              l'obiettivo di generare soluzioni complete e che portano a
+              risultati concreti.
             </p>
-            <p className="fade-in">
-              Branding: Strategia, Direzione creativa, Architettura del brand,
-              Art direction, Marchi e logotipi, Graphic design, Identità visiva,
-              Progettazione editoriale, Illustrazione, Packaging, Mostre e
-              installazioni, Segnaletica, Illustrazione, Packaging,
-              Merchandising
-            </p>
-            <p className="fade-in">
-              Digital: Strategia digitale, Comunicazione digitale, Motion
-              graphic, Siti web, App design, Interface design, User interface,
-              User experience, Social media, Fotografia, Video
-            </p>
+            <div className="fade-in">
+              <h2>Branding</h2>
+              <p>
+                Strategia, Direzione creativa, Architettura del brand, Art
+                direction, Marchi e logotipi, Graphic design, Identità visiva,
+                Progettazione editoriale, Illustrazione, Packaging, Mostre e
+                installazioni, Segnaletica, Illustrazione, Packaging,
+                Merchandising
+              </p>
+            </div>
+            <div className="fade-in">
+              <h2>Digital</h2>
+              <p>
+                Strategia digitale, Comunicazione digitale, Motion graphic, Siti
+                web, App design, Interface design, User interface, User
+                experience, Social media, Fotografia, Video
+              </p>
+            </div>
             <p className="fade-in">
               Collaboriamo con OGR Torino, Intesa Sanpaolo, Gallerie d’Italia,
-              National Geographic, Fondazione CRC, Biennale di Venezia, Nitto
-              ATP Finals, Fondazione CRT per l’Arte Contemporanea, Condè Nast,
-              Musei Reali Torino, Politecnico di Torino, Hatje Cantz, Kappa,
-              FIDIVI, Fondazione Artea, Aromitalia, Gioari Cioccolato, Versace,
-              IBC Corp, Feat. Ventures, CEI Piemonte, Movement festival, Talent
-              Garden, LaGemma Venture, MAXXI Roma, GQ Italia, Circolo del
-              Design, Enway, CRA Carlo Ratti Associati, Istituto di Architettura
-              Montana, Hiroshima Mon Amour, IPI Immobiliare, Dear Onlus, New
-              Monday GmbH, Dear Onlus, Camera di Commercio di Torino, Mondo
-              Mostre, Democrance, Grigno Spirits
+              Fondazione CRT Arte, National Geographic, La Biennale, Fondazione
+              CRC, Nitto ATP Finals, Condè Nast, Musei Reali Torino, Politecnico
+              di Torino, Hatje Cantz, Kappa, FIDIVI, Fondazione Artea,
+              Aromitalia, Gioari Cioccolato, Versace, IBC Corp, Feat. Ventures,
+              CEI Piemonte, Movement festival, Talent Garden, LaGemma Venture,
+              MAXXI Roma, GQ Italia, Circolo del Design, Enway, CRA Carlo Ratti
+              Associati, Istituto di Architettura Montana, Hiroshima Mon Amour,
+              IPI Immobiliare, Dear Onlus, New Monday GmbH, Dear Onlus, Camera
+              di Commercio di Torino, Mondo Mostre, Democrance, Grigno Spirits
             </p>
           </div>
         </div>

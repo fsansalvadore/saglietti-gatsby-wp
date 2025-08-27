@@ -1,17 +1,14 @@
 import classNames from "classnames"
 import React, { useState } from "react"
 
-const MailchimpForm = () => {
+const MailchimpForm = ({ isInverted }) => {
   const [isFocused, setIsFocused] = useState(false)
 
-  console.log("isFocused", isFocused)
   function handleFocus() {
-    console.log("focused!")
     setIsFocused(true)
   }
 
   function handleBlur() {
-    console.log("blurred!")
     setIsFocused(false)
   }
 
@@ -28,9 +25,9 @@ const MailchimpForm = () => {
         id="mce-EMAIL"
         placeholder="Iscriviti alla newsletter"
         className={classNames(
-          "placeholder-black !bg-transparent transition-colors focus-visible:!bg-transparent focus-visible:outline-none focus-visible:placeholder-[#00000050] -mt-1 pt-1 pb-2 inline-flex gap-2 items-center justify-between w-full border-b border-transparent",
+          "placeholder-black text-center !bg-transparent transition-colors focus-visible:!bg-transparent focus-visible:outline-none focus-visible:placeholder-[#00000050] -mt-1 pt-1 pb-2 inline-flex gap-2 items-center justify-between w-full border-b border-transparent",
           !isFocused && "text-black/50",
-          isFocused && "!border-black",
+          isFocused && (isInverted ? "!border-white" : "!border-black"),
         )}
         onClick={handleFocus}
         onFocus={handleFocus}

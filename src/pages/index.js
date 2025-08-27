@@ -31,8 +31,8 @@ const IndexPage = ({ data }) => {
         text={data.wordpress.page.homepageacf.firstmarqueetext}
         className="mt-2"
       />
-      <SectionContainer className="!pt-0 -mt-8">
-        <p className="text-xl font-medium col-span-full">
+      <SectionContainer className="!pt-0 -mt-8 max-w-[100vw]">
+        <p className="text-xl max-w-[100vw] font-medium col-span-full text-center">
           {data.wordpress.page.homepageacf.statictext}
         </p>
       </SectionContainer>
