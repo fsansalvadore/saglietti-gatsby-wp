@@ -157,7 +157,12 @@ const MenuItems = ({ isOpen }) => {
         <hr />
       </span>
       <div className="link-container menu-link">
-        <Link href="mailto:info@saglietti.it" className="">
+        <Link
+          href="mailto:info@saglietti.it"
+          target="_blank"
+          rel="noopener noreferrer"
+          className=""
+        >
           Contatti
         </Link>
       </div>

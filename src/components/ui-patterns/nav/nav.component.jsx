@@ -107,6 +107,8 @@ const Nav = ({ initialTransparent = false }) => {
             </Link>
             <Link
               href="mailto:info@saglietti.it"
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-1 hover:underline transition-all"
             >
               Contatti
