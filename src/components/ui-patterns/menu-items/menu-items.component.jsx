@@ -9,6 +9,7 @@ import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
 import { CSSRulePlugin } from "gsap/CSSRulePlugin"
 import CustomEase from "../../common/vendor/gsap/CustomEase"
 import styled from "styled-components"
+import { useInfoSheet } from "../InfoSheet/InfoSheetProvider"
 
 if (typeof window !== `undefined`) {
   gsap.registerPlugin(CSSRulePlugin, CustomEase)
@@ -48,7 +49,8 @@ const NavLinks = styled.nav`
     will-change: opacity, width;
     transition: opacity 0.2s ease;
 
-    a {
+    a,
+    button {
       display: inline-block;
       font-size: 4vw;
       line-height: 100%;
@@ -69,7 +71,8 @@ const NavLinks = styled.nav`
     .menu-link {
       margin: 0 2vw;
 
-      a {
+      a,
+      button {
         padding: 10px 6px;
         font-size: 1.8rem;
       }
@@ -78,13 +81,14 @@ const NavLinks = styled.nav`
 `
 
 const MenuItems = ({ isOpen }) => {
+  const { setIsOpen: setInfoSheetOpen } = useInfoSheet()
   useEffect(() => {
     if (typeof window !== `undefined`) {
       if (isOpen) {
         const menuTL = gsap.timeline()
         menuTL
           .fromTo(
-            ".menu-link a",
+            ".menu-link a, .menu-link button",
             1,
             { y: 70, skewY: 5, opacity: 0 },
             {
@@ -157,14 +161,7 @@ const MenuItems = ({ isOpen }) => {
         <hr />
       </span>
       <div className="link-container menu-link">
-        <Link
-          href="mailto:info@saglietti.it"
-          target="_blank"
-          rel="noopener noreferrer"
-          className=""
-        >
-          Contatti
-        </Link>
+        <button onClick={() => setInfoSheetOpen(true)}>Contatti</button>
       </div>
     </NavLinks>
   )
