@@ -213,7 +213,7 @@ class ContactForm extends React.Component {
           </div>
           <button
             type="submit"
-            className="flex-1 hover:!bg-[#00000010] transition-colors flex items-center gap-2 !border-0 !border-solid !border-t border-black !p-4 md:!px-8 lg:!px-4 "
+            className="flex-1 !cursor-pointer hover:!bg-[#00000010] transition-colors flex items-center gap-2 !border-0 !border-solid !border-t border-black !p-4 md:!px-8 lg:!px-4 "
           >
             {
               // check if loading or success

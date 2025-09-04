@@ -19,7 +19,7 @@ const ContactsInfoSheet = () => {
       className={cn(
         "!fixed bottom-0",
         !isStudio &&
-          "!bg-black !text-white [&_input]:!border-white [&_textarea]:!border-transparent [&_input]:!bg-black [&_textarea]:!bg-black [&_input]:!placeholder-white [&_textarea]:!placeholder-white",
+          "!bg-black !text-white [&_*]:!text-white [&_input]:!border-white [&_textarea]:!border-transparent [&_input]:!bg-black [&_input]:autofill:!bg-black [&_textarea]:!bg-black [&_input]:!placeholder-white [&_textarea]:!placeholder-white [&_input]:!text-white [&_textarea]:!text-white",
       )}
     >
       <div className="flex flex-col gap-2 lg:gap-4 w-full max-w-[650px]">
