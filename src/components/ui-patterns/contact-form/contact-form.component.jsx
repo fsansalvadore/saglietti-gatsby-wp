@@ -197,17 +197,18 @@ class ContactForm extends React.Component {
           <div className="p-4 md:!px-8 lg:!px-4">
             <div className="flex items-center gap-2 !text-xs">
               <Checkbox
+                id="privacy-checkbox"
                 value="checkedA"
                 required
                 inputProps={{ "aria-label": "Checkbox A" }}
               />{" "}
-              <span>
+              <label for="privacy-checkbox" className="cursor-pointer">
                 Ho letto e accettato l'
                 <Link to="/privacy" className="underline">
                   informativa sulla privacy
                 </Link>
                 .
-              </span>
+              </label>
             </div>
           </div>
           <button
