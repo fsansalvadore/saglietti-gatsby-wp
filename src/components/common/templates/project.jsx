@@ -10,7 +10,7 @@ import { gsap } from "gsap"
 import { TweenLite, TimelineLite } from "gsap/all"
 import * as ScrollMagic from "scrollmagic-with-ssr" // Or use scrollmagic-with-ssr to avoid server rendering problems
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
-import CustomEase from "../../common/vendor/gsap/CustomEase"
+import CustomEase from "../vendor/gsap/CustomEase"
 import { useCursor } from "../../ui/CursorProvider"
 import Cursor from "../../ui/cursor.component"
 import CursorFollow from "../../ui/cursor-follow.component"
@@ -314,7 +314,7 @@ const Project = props => {
             Info
           </button>
         </CarouselContainer>
-        <InfoSheet isOpen={isSheetOpen} setIsSheetOpen={setIsSheetOpen}>
+        <InfoSheet isOpen={isSheetOpen} setIsOpen={setIsSheetOpen}>
           <div className="flex flex-col gap-2 lg:gap-4 w-full max-w-[650px]">
             <h1 className="text-2xl">{title}</h1>
             <div className="flex flex-col gap-2 lg:gap-4">
