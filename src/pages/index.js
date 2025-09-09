@@ -38,8 +38,10 @@ const IndexPage = ({ data }) => {
       </SectionContainer>
       <MarqueeSlidingText
         text={data.wordpress.page.homepageacf.marqueetexttwo}
-        className="mt-28 !text-3xl [&>span]:animate-[marquee_35s_linear_infinite_reverse] bg-black text-white py-6"
+        className="mt-28 !text-3xl bg-black text-white py-6"
         repeat={3}
+        speed={50}
+        reverse={true}
       />
       <SectionContainer className="!py-0">
         <div className="col-span-full w-full">
@@ -67,8 +69,9 @@ const IndexPage = ({ data }) => {
       <ProjectsList data={data} limit={10} hideTitle />
       <MarqueeSlidingText
         text={data.wordpress.page.homepageacf.lastmarqueetext}
-        className="my-28 border-y !text-3xl [&>span]:animate-[marquee_35s_linear_infinite] py-6"
+        className="my-28 border-y !text-3xl py-6"
         repeat={3}
+        speed={50}
       />
     </Layout>
   )
