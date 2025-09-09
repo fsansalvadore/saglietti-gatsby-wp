@@ -66,11 +66,10 @@ const MarqueeSlidingText = ({
         <span
           key={`marquee-${text}-${index}`}
           ref={index === 0 ? textRef : null}
-          className="whitespace-nowrap"
+          className="whitespace-nowrap animate-marquee"
           style={{
-            animation: `marquee ${animationDuration} linear infinite${
-              reverse ? " reverse" : ""
-            }`,
+            animationDuration: animationDuration,
+            animationDirection: reverse ? "reverse" : "normal",
           }}
         >
           {text}
