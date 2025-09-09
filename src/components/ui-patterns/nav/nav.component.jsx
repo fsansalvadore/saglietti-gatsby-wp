@@ -53,7 +53,7 @@ const MenuBtn = styled.a`
 const Nav = ({ initialTransparent = false }) => {
   const [isOpen, setIsOpen] = useState(false)
   const { width } = useWindowSize()
-  const { setIsOpen: setInfoSheetOpen } = useInfoSheet()
+  const { setIsOpen: setInfoSheetOpen, isOpen: infoSheetOpen } = useInfoSheet()
 
   useLockBodyScroll(isOpen)
 
@@ -92,7 +92,7 @@ const Nav = ({ initialTransparent = false }) => {
               Progetti
             </Link>
             <button
-              onClick={() => setInfoSheetOpen(true)}
+              onClick={() => setInfoSheetOpen(!infoSheetOpen)}
               className="p-1 hover:underline transition-all"
             >
               Contatti
