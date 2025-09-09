@@ -41,7 +41,6 @@ const VideoBlock = ({ attributes, ...props }) => {
       align={attributes.align ? attributes.align : ""}
       {...props}
     >
-      {/* <Reveal effect="anim_enter"> */}
       <video
         ref={videoRef}
         width="900"
@@ -57,7 +56,6 @@ const VideoBlock = ({ attributes, ...props }) => {
         <track src={attributes.caption} kind="subtitles" srcLang="no" />
         Your browser does not support HTML video.
       </video>
-      {/* </Reveal> */}
     </StyledVideoContainer>
   )
 }

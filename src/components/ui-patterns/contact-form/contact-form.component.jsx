@@ -36,7 +36,6 @@ const ContactFormContainer = styled.div`
     color: #000;
     font-size: 0.75rem !important;
     font-weight: 400;
-    font-family: "Inter", sans-serif;
     letter-spacing: 0.03rem;
   }
 
@@ -198,22 +197,23 @@ class ContactForm extends React.Component {
           <div className="p-4 md:!px-8 lg:!px-4">
             <div className="flex items-center gap-2 !text-xs">
               <Checkbox
+                id="privacy-checkbox"
                 value="checkedA"
                 required
                 inputProps={{ "aria-label": "Checkbox A" }}
               />{" "}
-              <span>
+              <label for="privacy-checkbox" className="cursor-pointer">
                 Ho letto e accettato l'
                 <Link to="/privacy" className="underline">
                   informativa sulla privacy
                 </Link>
                 .
-              </span>
+              </label>
             </div>
           </div>
           <button
             type="submit"
-            className="flex-1 hover:!bg-[#00000010] transition-colors flex items-center gap-2 !border-0 !border-solid !border-t border-black !p-4 md:!px-8 lg:!px-4 "
+            className="flex-1 !cursor-pointer hover:!bg-[#00000010] transition-colors flex items-center gap-2 !border-0 !border-solid !border-t border-black !p-4 md:!px-8 lg:!px-4 "
           >
             {
               // check if loading or success

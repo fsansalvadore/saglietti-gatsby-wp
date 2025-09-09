@@ -6,7 +6,8 @@ const FormErrorComponent = styled.div`
 
   * {
     font-weight: 400;
-    font-family: "Inter", sans-serif !important;
+    font-family: "FFMarkWebProLight", "Inter", "Helvetica Neue", "Helvetica",
+      "Arial", sans-serif;
     font-size: 1rem !important;
     letter-spacing: -0.01rem !important;
   }

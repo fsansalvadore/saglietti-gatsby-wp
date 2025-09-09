@@ -9,14 +9,14 @@ import "../components/common/styles/homepage.styles.scss"
 import loadable from "@loadable/component"
 import SectionContainer from "../components/SectionContainer"
 
+const MarqueeSlidingText = loadable(
+  () => import("../components/ui/MarqueeSlidingText"),
+)
 const ProjectsList = loadable(
   () =>
     import(
       "../components/ui-patterns/projects/projects-list/projects-list.component"
     ),
-)
-const ContactsCTA = loadable(
-  () => import("../components/ui-patterns/contacts-cta/contacts-cta.component"),
 )
 
 const IndexPage = ({ data }) => {
@@ -27,23 +27,27 @@ const IndexPage = ({ data }) => {
         <title>Saglietti • Branding — Digital • Home Page</title>
       </Helmet>
       <HeaderContainer />
-      <SectionContainer>
-        <div className="flex flex-col gap-4 col-span-full lg:col-span-6 text-2xl">
-          <p className="!m-0 w-full">
-            Siamo uno studio di comunicazione e direzione creativa di Torino
-            specializzato in branding e digital design.
-          </p>
-          <p className="md:mb-8 w-full">
-            Ci occupiamo di identità visiva, editoria, exhibition design,
-            packaging, siti web e motion design.
-          </p>
-        </div>
+      <MarqueeSlidingText
+        text={data.wordpress.page.homepageacf.firstmarqueetext}
+        className="mt-2"
+      />
+      <SectionContainer className="!pt-0 -mt-8 max-w-[100vw]">
+        <p className="text-xl max-w-[100vw] font-medium col-span-full text-center">
+          {data.wordpress.page.homepageacf.statictext}
+        </p>
       </SectionContainer>
-      <SectionContainer className="!pb-4">
-        <div className="col-span-6 w-full">
+      <MarqueeSlidingText
+        text={data.wordpress.page.homepageacf.marqueetexttwo}
+        className="mt-28 !text-3xl bg-black text-white py-6"
+        repeat={3}
+        speed={50}
+        reverse={true}
+      />
+      <SectionContainer className="!py-0">
+        <div className="col-span-full w-full">
           <Link
             to="/progetti"
-            className="flex gap-4 text-lg items-center group"
+            className="flex py-4 justify-between w-full gap-4 text-lg items-center group"
           >
             Guarda tutti i progetti
             <svg
@@ -63,7 +67,12 @@ const IndexPage = ({ data }) => {
         </div>
       </SectionContainer>
       <ProjectsList data={data} limit={10} hideTitle />
-      <ContactsCTA />
+      <MarqueeSlidingText
+        text={data.wordpress.page.homepageacf.lastmarqueetext}
+        className="my-28 border-y !text-3xl py-6"
+        repeat={3}
+        speed={50}
+      />
     </Layout>
   )
 }

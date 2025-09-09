@@ -12,6 +12,8 @@ const ContactsInfoContainer = () => {
             <br />
             <Link
               href="mailto:info@saglietti.it"
+              target="_blank"
+              rel="noopener noreferrer"
               className="underline cursor-pointer opacity-100 transition-opacity hover:opacity-90"
             >
               <i>Scrivici!</i>

@@ -8,7 +8,7 @@ const SagliettiLogo = props => {
       viewBox="0 0 220 41"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="h-[30px] w-auto"
+      className="h-[40px] md:h-[70px] xl:h-[100px] w-auto"
       {...props}
     >
       <g clipPath="url(#clip0_43_160)">

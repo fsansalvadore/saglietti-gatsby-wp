@@ -10,13 +10,13 @@ import { gsap } from "gsap"
 import { TweenLite, TimelineLite } from "gsap/all"
 import * as ScrollMagic from "scrollmagic-with-ssr" // Or use scrollmagic-with-ssr to avoid server rendering problems
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
-import CustomEase from "../../common/vendor/gsap/CustomEase"
-import cn from "classnames"
+import CustomEase from "../vendor/gsap/CustomEase"
 import { useCursor } from "../../ui/CursorProvider"
 import Cursor from "../../ui/cursor.component"
 import CursorFollow from "../../ui/cursor-follow.component"
 import CursorLeft from "../../ui/cursorArrowLeft"
 import CursorRight from "../../ui/cursorArrowRight"
+import InfoSheet from "../../ui-patterns/InfoSheet/InfoSheet"
 if (typeof window !== `undefined`) {
   gsap.registerPlugin(CustomEase)
   ScrollMagicPluginGsap(ScrollMagic, TweenLite, TimelineLite)
@@ -33,7 +33,6 @@ const ProjectContainerComponent = styled.div`
 
   .proj_info-container {
     h1 {
-      font-family: "Inter";
       font-weight: 500;
       letter-spacing: 0;
       margin: 0;
@@ -49,7 +48,6 @@ const ProjectContainerComponent = styled.div`
       .proj_details-block {
         width: 25%;
         margin-right: 10px;
-        font-family: "Inter";
         font-size: 0.7rem;
         line-height: 1rem;
 
@@ -316,88 +314,61 @@ const Project = props => {
             Info
           </button>
         </CarouselContainer>
-        <InfoSheet
-          isOpen={isSheetOpen}
-          setIsSheetOpen={setIsSheetOpen}
-          custom_post_type_Project={custom_post_type_Project}
-          title={title}
-        />
+        <InfoSheet isOpen={isSheetOpen} setIsOpen={setIsSheetOpen}>
+          <div className="flex flex-col gap-2 lg:gap-4 w-full max-w-[650px]">
+            <h1 className="text-2xl">{title}</h1>
+            <div className="flex flex-col gap-2 lg:gap-4">
+              {custom_post_type_Project.descrizione &&
+                custom_post_type_Project.descrizione.length !== null && (
+                  <div className="proj_details-block">
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: custom_post_type_Project.descrizione,
+                      }}
+                    />
+                  </div>
+                )}
+              {custom_post_type_Project.anno &&
+                custom_post_type_Project.anno.length !== null && (
+                  <div className="proj_details-block">
+                    {/* <h2 className="!m-0">Anno</h2> */}
+                    <p className="!m-0">{custom_post_type_Project.anno}</p>
+                  </div>
+                )}
+              {custom_post_type_Project.ambiti &&
+                custom_post_type_Project.ambiti.length > 0 && (
+                  <div className="proj_details-block">
+                    {/* <h2 className="!m-0">Ambiti</h2> */}
+                    <ul className="!m-0">
+                      {custom_post_type_Project.ambiti.map(ambito => (
+                        <li
+                          key={`${ambito}-${Math.floor(
+                            Math.random() * (100 - 999) + 100,
+                          )}`}
+                          className="!m-0"
+                        >
+                          {ambito}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              {custom_post_type_Project.credits &&
+                custom_post_type_Project.credits.length > 0 && (
+                  <div className="proj_details-block">
+                    {/* <h2 className="!m-0 !mb-1">Credits</h2> */}
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: custom_post_type_Project.credits,
+                      }}
+                    />
+                  </div>
+                )}
+            </div>
+          </div>
+        </InfoSheet>
       </ProjectContainerComponent>
     </>
-  )
-}
-
-const InfoSheet = ({
-  isOpen,
-  setIsSheetOpen,
-  custom_post_type_Project,
-  title,
-}) => {
-  return (
-    <div
-      className={cn(
-        "proj_info-container absolute z-[9999] p-4 md:p-8 flex flex-col gap-2 inset-0 top-auto w-full h-screen md:h-fit bg-white translate-y-full transform transition-transform",
-        isOpen && "!translate-y-0",
-      )}
-    >
-      <button
-        className="absolute right-4 bottom-4 md:right-8 md:bottom-8 text-2xl w-fit h-7 !cursor-pointer"
-        onClick={() => setIsSheetOpen(false)}
-      >
-        Chiudi
-      </button>
-      <div className="flex flex-col gap-2 lg:gap-4 w-full max-w-[650px]">
-        <h1 className="text-2xl">{title}</h1>
-        <div className="flex flex-col gap-2 lg:gap-4">
-          {custom_post_type_Project.descrizione &&
-            custom_post_type_Project.descrizione.length !== null && (
-              <div className="proj_details-block">
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: custom_post_type_Project.descrizione,
-                  }}
-                />
-              </div>
-            )}
-          {custom_post_type_Project.anno &&
-            custom_post_type_Project.anno.length !== null && (
-              <div className="proj_details-block">
-                {/* <h2 className="!m-0">Anno</h2> */}
-                <p className="!m-0">{custom_post_type_Project.anno}</p>
-              </div>
-            )}
-          {custom_post_type_Project.ambiti &&
-            custom_post_type_Project.ambiti.length > 0 && (
-              <div className="proj_details-block">
-                {/* <h2 className="!m-0">Ambiti</h2> */}
-                <ul className="!m-0">
-                  {custom_post_type_Project.ambiti.map(ambito => (
-                    <li
-                      key={`${ambito}-${Math.floor(
-                        Math.random() * (100 - 999) + 100,
-                      )}`}
-                      className="!m-0"
-                    >
-                      {ambito}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          {custom_post_type_Project.credits &&
-            custom_post_type_Project.credits.length > 0 && (
-              <div className="proj_details-block">
-                {/* <h2 className="!m-0 !mb-1">Credits</h2> */}
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: custom_post_type_Project.credits,
-                  }}
-                />
-              </div>
-            )}
-        </div>
-      </div>
-    </div>
   )
 }
 

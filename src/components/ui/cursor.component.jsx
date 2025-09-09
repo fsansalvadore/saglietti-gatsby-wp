@@ -146,7 +146,7 @@ const Cursor = () => {
     )
 
     hoverables.forEach(el => {
-      el.style.cursor = "none"
+      el.style.cursor = window.innerWidth > 1000 ? "none" : "auto"
       el.addEventListener("mouseover", () => {
         setIsHover(true)
       })
