@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import Slider from "react-slick"
-// import Reveal from "react-awesome-reveal"
 
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
@@ -76,7 +75,6 @@ const Carousel = ({
   }
 
   return (
-    // <Reveal effect="anim_enter">
     <SliderBlock {...props}>
       <Slider {...settings}>
         {innerBlocks.map(slide => (
@@ -89,7 +87,6 @@ const Carousel = ({
         ))}
       </Slider>
     </SliderBlock>
-    // </Reveal>
   )
 }
 
