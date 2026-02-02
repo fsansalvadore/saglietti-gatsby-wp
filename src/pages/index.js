@@ -80,7 +80,7 @@ const IndexPage = ({ data }) => {
 export const query = graphql`
   query ProjectsQuery {
     wordpress {
-      projects(first: 100, where: { status: PUBLISH }) {
+      projects(first: 200, where: { status: PUBLISH }) {
         nodes {
           id
           title

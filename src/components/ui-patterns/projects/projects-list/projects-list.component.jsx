@@ -18,7 +18,7 @@ if (typeof window !== `undefined`) {
   ScrollMagicPluginGsap(ScrollMagic, TweenLite, TimelineLite)
 }
 
-const ProjectsList = ({ data, limit = 100, showVisitableOnly, hideTitle }) => {
+const ProjectsList = ({ data, limit = 200, showVisitableOnly, hideTitle }) => {
   const [projects, setProjects] = useState(null)
   const [term, setTerm] = useState("")
 
