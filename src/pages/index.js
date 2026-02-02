@@ -66,7 +66,7 @@ const IndexPage = ({ data }) => {
           </Link>
         </div>
       </SectionContainer>
-      <ProjectsList data={data} limit={10} hideTitle />
+      <ProjectsList data={data} hideTitle />
       <MarqueeSlidingText
         text={data.wordpress.page.homepageacf.lastmarqueetext}
         className="my-28 border-y !text-3xl py-6"
@@ -80,7 +80,7 @@ const IndexPage = ({ data }) => {
 export const query = graphql`
   query ProjectsQuery {
     wordpress {
-      projects(first: 10, where: { status: PUBLISH }) {
+      projects(first: 100, where: { status: PUBLISH }) {
         nodes {
           id
           title

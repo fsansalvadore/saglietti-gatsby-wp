@@ -207,9 +207,7 @@ const ProjectsList = ({ data, limit = 100, showVisitableOnly, hideTitle }) => {
           {projects && projects.length > 0 ? (
             projects.map(proj => (
               <li
-                key={`${proj.id}-${proj.slug}-${Math.floor(
-                  Math.random() * (100 - 999) + 100,
-                )}`}
+                key={`${proj.id}-${proj.slug}`}
                 className="pseudo content last:border-b"
                 data-fx="1"
                 data-img={
@@ -263,7 +261,7 @@ const ProjectsList = ({ data, limit = 100, showVisitableOnly, hideTitle }) => {
               <span className="divider"></span>
               <Link to="/progetti" className="block__link no_link">
                 <div className="proj_item-left prog_list-item">
-                  <p className="not-found">Nessun progetto trovato</p>
+                  <p className="not-found">-</p>
                 </div>
               </Link>
             </li>
