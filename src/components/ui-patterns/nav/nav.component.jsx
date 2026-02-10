@@ -85,17 +85,17 @@ const Nav = ({ initialTransparent = false }) => {
             <span></span>
           </MenuBtn>
           <div className="hidden md:flex items-center gap-2 lg:gap-4">
-            <Link to="/studio" className="p-1">
-              Studio
+            <Link to="/chi-siamo" className="p-1">
+              chi siamo
             </Link>
             <Link to="/progetti" className="p-1">
-              Progetti
+              progetti
             </Link>
             <button
               onClick={() => setInfoSheetOpen(!infoSheetOpen)}
               className="p-1 hover:underline transition-all"
             >
-              Contatti
+              contatti
             </button>
           </div>
         </div>

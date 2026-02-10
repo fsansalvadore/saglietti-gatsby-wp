@@ -10,7 +10,7 @@ import StudioPage from "../components/common/studio/studio-page.component"
 const Studio = ({ data }) => (
   <Layout isInverted={true}>
     <Helmet>
-      <title>Studio • Saglietti</title>
+      <title>Chi siamo • Saglietti</title>
     </Helmet>
     <StudioPage data={data} />
   </Layout>
