@@ -4,9 +4,14 @@ import { Helmet } from "react-helmet"
 import Layout from "../../layout"
 import fallbackImg from "../../../images/fallback.png"
 import Project from "./project"
+import { useLanguage } from "../../../contexts/LanguageContext"
 
 const ProjectLayout = props => {
   const { slug, title, featuredImage, seo, tags } = props.pageContext
+  const { language } = useLanguage()
+
+  // Use current language for locale
+  const locale = language === "it" ? "it_IT" : "en_US"
 
   return (
     <Layout className="border-b" hasFooter={false}>
@@ -37,7 +42,7 @@ const ProjectLayout = props => {
           content={featuredImage ? featuredImage.node.link : fallbackImg}
         />
         <meta property="og:description" content={seo.metaDesc} />
-        <meta property="og:locale" content="it_IT" />
+        <meta property="og:locale" content={locale} />
         <meta name="twitter:card" content="summary" />
         <meta
           name="twitter:site"
@@ -58,7 +63,7 @@ const ProjectLayout = props => {
 export const query = graphql`
   query PrevNextQuery {
     wordpress {
-      projects(first: 100, where: { status: PUBLISH }) {
+      projects(first: 200, where: { status: PUBLISH }) {
         nodes {
           id
           title

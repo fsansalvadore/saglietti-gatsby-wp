@@ -170,7 +170,7 @@ const seoFields = `
 const query = `
   query PublishedProjects {
     wordpress {
-      projects(first: 100, where: { status: PUBLISH }) {
+      projects(first: 200, where: { status: PUBLISH }) {
         nodes {
           categories {
             nodes {

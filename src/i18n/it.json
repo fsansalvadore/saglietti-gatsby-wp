@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "about": "chi siamo",
+    "projects": "progetti",
+    "contact": "contatti"
+  },
+  "homepage": {
+    "viewAllProjects": "Guarda tutti i progetti"
+  },
+  "projects": {
+    "title": "Progetti",
+    "year": "Anno",
+    "fields": "Ambiti",
+    "credits": "Credits",
+    "description": "Descrizione",
+    "visitSite": "Visita il sito"
+  },
+  "common": {
+    "loading": "Caricamento...",
+    "error": "Si è verificato un errore",
+    "backToHome": "Torna alla home"
+  }
+}

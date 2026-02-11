@@ -5,6 +5,16 @@ Tech stack:
 - Tailwindcss
 - Netlify (cloud)
 
+## Multi-Language Support 🌐
+
+Il sito supporta italiano (default) e inglese con:
+- Switch lingua nella navigazione (IT/EN)
+- Persistenza della preferenza con localStorage
+- Integrazione con WordPress Polylang per contenuti dinamici
+- File JSON per traduzioni di testo statico
+
+Vedi [MULTILANGUAGE_GUIDE.md](./MULTILANGUAGE_GUIDE.md) per dettagli implementazione.
+
 ## Troubleshooting
 
 ### "Cannot query field" after adding new acf fields in Wordpress

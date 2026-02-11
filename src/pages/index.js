@@ -8,6 +8,8 @@ import HeaderContainer from "../components/ui-patterns/header-container/header-c
 import "../components/common/styles/homepage.styles.scss"
 import loadable from "@loadable/component"
 import SectionContainer from "../components/SectionContainer"
+import { useLanguage } from "../contexts/LanguageContext"
+import { useTranslation } from "../hooks/useTranslation"
 
 const MarqueeSlidingText = loadable(
   () => import("../components/ui/MarqueeSlidingText"),
@@ -20,7 +22,21 @@ const ProjectsList = loadable(
 )
 
 const IndexPage = ({ data }) => {
-  console.log("wordpresss", data)
+  const { language } = useLanguage()
+  const { t } = useTranslation()
+
+  // Safety check for data
+  if (!data || !data.wordpress) {
+    return null
+  }
+
+  // Select page based on current language
+  const displayPage = language === "en" ? data.wordpress.pageEN : data.wordpress.pageIT
+
+  // Since projects don't have language field in WordPress, show all projects
+  // You'll need to enable Polylang for the Project post type in WordPress
+  const filteredProjects = data.wordpress.projects?.nodes || []
+
   return (
     <Layout>
       <Helmet>
@@ -28,16 +44,16 @@ const IndexPage = ({ data }) => {
       </Helmet>
       <HeaderContainer />
       <MarqueeSlidingText
-        text={data.wordpress.page.homepageacf.firstmarqueetext}
+        text={displayPage?.homepageacf?.firstmarqueetext || ""}
         className="mt-2"
       />
       <SectionContainer className="!pt-0 -mt-8 max-w-[100vw]">
         <p className="text-xl max-w-[100vw] font-medium col-span-full text-center">
-          {data.wordpress.page.homepageacf.statictext}
+          {displayPage?.homepageacf?.statictext || ""}
         </p>
       </SectionContainer>
       <MarqueeSlidingText
-        text={data.wordpress.page.homepageacf.marqueetexttwo}
+        text={displayPage?.homepageacf?.marqueetexttwo || ""}
         className="mt-28 !text-3xl bg-black text-white py-6"
         repeat={3}
         speed={50}
@@ -49,7 +65,7 @@ const IndexPage = ({ data }) => {
             to="/progetti"
             className="flex py-4 justify-between w-full gap-4 text-lg items-center group"
           >
-            Guarda tutti i progetti
+            {t("homepage.viewAllProjects")}
             <svg
               className="w-3 h-3 rotate-45 translate-x-0 transition-transform group-hover:translate-x-1"
               width="100%"
@@ -66,9 +82,20 @@ const IndexPage = ({ data }) => {
           </Link>
         </div>
       </SectionContainer>
-      <ProjectsList data={data} hideTitle />
+      <ProjectsList
+        data={{
+          ...data,
+          wordpress: {
+            ...(data?.wordpress || {}),
+            projects: {
+              nodes: filteredProjects,
+            },
+          },
+        }}
+        hideTitle
+      />
       <MarqueeSlidingText
-        text={data.wordpress.page.homepageacf.lastmarqueetext}
+        text={displayPage?.homepageacf?.lastmarqueetext || ""}
         className="my-28 border-y !text-3xl py-6"
         repeat={3}
         speed={50}
@@ -99,7 +126,7 @@ export const query = graphql`
           }
         }
       }
-      page(id: "cG9zdDoxMQ==") {
+      pageIT: page(id: "cG9zdDoxMQ==") {
         title
         homepageacf {
           caroselloProgetti
@@ -108,11 +135,17 @@ export const query = graphql`
           lastmarqueetext
           marqueetexttwo
           statictext
-          # featuredprojects {
-          #   ... on Project {
-          #     title
-          #   }
-          # }
+        }
+      }
+      pageEN: page(id: "cG9zdDoxNjg5") {
+        title
+        homepageacf {
+          caroselloProgetti
+          fieldGroupName
+          firstmarqueetext
+          lastmarqueetext
+          marqueetexttwo
+          statictext
         }
       }
     }

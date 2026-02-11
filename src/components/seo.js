@@ -9,8 +9,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { useLanguage } from "../contexts/LanguageContext"
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, meta, title, image, article }) {
+  const { language } = useLanguage()
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -18,54 +20,96 @@ function SEO({ description, lang, meta, title }) {
           title
           description
           author
-          defaultTitle: title
           titleTemplate
-          defaultDescription: description
-          siteUrl: url
-          defaultImage: image
+          siteUrl
+          image
           twitterUsername
         }
       }
     }
   `)
 
-  const metaDescription = description || site.siteMetadata.description
+  const seo = {
+    title: title || site.siteMetadata.title,
+    description: description || site.siteMetadata.description,
+    image: image || `${site.siteMetadata.siteUrl}${site.siteMetadata.image}`,
+    url: site.siteMetadata.siteUrl,
+  }
+
+  const locale = language === "it" ? "it_IT" : "en_US"
+  const htmlLang = language === "it" ? "it" : "en"
 
   return (
-    <Helmet title={seo.title} titleTemplate={titleTemplate}>
-      <meta name="description" content={seo.description} />
-      <meta name="image" content={seo.image} />
-      {seo.url && <meta property="og:url" content={seo.url} />}
-      {(article ? true : null) && <meta property="og:type" content="article" />}
-      {seo.title && <meta property="og:title" content={seo.title} />}
-      {seo.description && (
-        <meta property="og:description" content={seo.description} />
-      )}
-      {seo.image && <meta property="og:image" content={seo.image} />}
-      <meta name="twitter:card" content="summary_large_image" />
-      {twitterUsername && (
-        <meta name="twitter:creator" content={twitterUsername} />
-      )}
-      {seo.title && <meta name="twitter:title" content={seo.title} />}
-      {seo.description && (
-        <meta name="twitter:description" content={seo.description} />
-      )}
-      {seo.image && <meta name="twitter:image" content={seo.image} />}
-    </Helmet>
+    <Helmet
+      htmlAttributes={{ lang: htmlLang }}
+      title={seo.title}
+      titleTemplate={site.siteMetadata.titleTemplate}
+      meta={[
+        {
+          name: `description`,
+          content: seo.description,
+        },
+        {
+          property: `og:title`,
+          content: seo.title,
+        },
+        {
+          property: `og:description`,
+          content: seo.description,
+        },
+        {
+          property: `og:type`,
+          content: article ? `article` : `website`,
+        },
+        {
+          property: `og:locale`,
+          content: locale,
+        },
+        {
+          property: `og:image`,
+          content: seo.image,
+        },
+        {
+          property: `og:url`,
+          content: seo.url,
+        },
+        {
+          name: `twitter:card`,
+          content: `summary_large_image`,
+        },
+        {
+          name: `twitter:creator`,
+          content: site.siteMetadata.twitterUsername,
+        },
+        {
+          name: `twitter:title`,
+          content: seo.title,
+        },
+        {
+          name: `twitter:description`,
+          content: seo.description,
+        },
+        {
+          name: `twitter:image`,
+          content: seo.image,
+        },
+      ].concat(meta)}
+    />
   )
 }
 
 SEO.defaultProps = {
-  lang: `it`,
   meta: [],
   description: ``,
+  article: false,
 }
 
 SEO.propTypes = {
   description: PropTypes.string,
-  lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  image: PropTypes.string,
+  article: PropTypes.bool,
 }
 
 export default SEO

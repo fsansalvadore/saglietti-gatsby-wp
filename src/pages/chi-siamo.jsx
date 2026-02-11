@@ -5,15 +5,20 @@ import { Helmet } from "react-helmet"
 import Layout from "../components/layout"
 import "../components/common/styles/global.styles.scss"
 import ChiSiamoPage from "../components/common/templates/chi-siamo"
+import { useLanguage } from "../contexts/LanguageContext"
 
-const ChiSiamo = ({ data }) => (
-  <Layout>
-    <Helmet>
-      <title>Chi siamo • Saglietti</title>
-    </Helmet>
-    <ChiSiamoPage data={data} />
-  </Layout>
-)
+const ChiSiamo = ({ data }) => {
+  const { language } = useLanguage()
+
+  return (
+    <Layout>
+      <Helmet>
+        <title>{language === "it" ? "Chi siamo" : "About us"} • Saglietti</title>
+      </Helmet>
+      <ChiSiamoPage data={data} />
+    </Layout>
+  )
+}
 
 export const query = graphql`
   query ChiSiamoQuery {

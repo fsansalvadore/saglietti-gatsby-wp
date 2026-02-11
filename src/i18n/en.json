@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "about": "about us",
+    "projects": "projects",
+    "contact": "contact"
+  },
+  "homepage": {
+    "viewAllProjects": "View all projects"
+  },
+  "projects": {
+    "title": "Projects",
+    "year": "Year",
+    "fields": "Fields",
+    "credits": "Credits",
+    "description": "Description",
+    "visitSite": "Visit website"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "backToHome": "Back to home"
+  }
+}

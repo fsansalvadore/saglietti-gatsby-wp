@@ -10,6 +10,7 @@ import { CSSRulePlugin } from "gsap/CSSRulePlugin"
 import CustomEase from "../../common/vendor/gsap/CustomEase"
 import styled from "styled-components"
 import { useInfoSheet } from "../InfoSheet/InfoSheetProvider"
+import { useTranslation } from "../../../hooks/useTranslation"
 
 if (typeof window !== `undefined`) {
   gsap.registerPlugin(CSSRulePlugin, CustomEase)
@@ -82,6 +83,8 @@ const NavLinks = styled.nav`
 
 const MenuItems = ({ isOpen }) => {
   const { setIsOpen: setInfoSheetOpen } = useInfoSheet()
+  const { t } = useTranslation()
+  
   useEffect(() => {
     if (typeof window !== `undefined`) {
       if (isOpen) {
@@ -154,14 +157,14 @@ const MenuItems = ({ isOpen }) => {
       </span>
       <div className="link-container menu-link">
         <Link to="/progetti" className="">
-          Progetti
+          {t("nav.projects")}
         </Link>
       </div>
       <span className="menu-item-divider">
         <hr />
       </span>
       <div className="link-container menu-link">
-        <button onClick={() => setInfoSheetOpen(true)}>Contatti</button>
+        <button onClick={() => setInfoSheetOpen(true)}>{t("nav.contact")}</button>
       </div>
     </NavLinks>
   )

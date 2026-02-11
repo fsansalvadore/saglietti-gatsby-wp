@@ -8,6 +8,8 @@ import NavLogo from "./NavLogo.component"
 import classNames from "classnames"
 import { useLockBodyScroll, useWindowSize } from "react-use"
 import { useInfoSheet } from "../InfoSheet/InfoSheetProvider"
+import { useLanguage } from "../../../contexts/LanguageContext"
+import { useTranslation } from "../../../hooks/useTranslation"
 
 const MenuBtn = styled.a`
   position: relative;
@@ -52,6 +54,8 @@ const MenuBtn = styled.a`
 
 const Nav = ({ initialTransparent = false }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const { language, toggleLanguage } = useLanguage()
+  const { t } = useTranslation()
   const { width } = useWindowSize()
   const { setIsOpen: setInfoSheetOpen, isOpen: infoSheetOpen } = useInfoSheet()
 
@@ -86,16 +90,19 @@ const Nav = ({ initialTransparent = false }) => {
           </MenuBtn>
           <div className="hidden md:flex items-center gap-2 lg:gap-4">
             <Link to="/chi-siamo" className="p-1">
-              chi siamo
+              {t("nav.about")}
             </Link>
             <Link to="/progetti" className="p-1">
-              progetti
+              {t("nav.projects")}
             </Link>
             <button
               onClick={() => setInfoSheetOpen(!infoSheetOpen)}
               className="p-1 hover:underline transition-all"
             >
-              contatti
+              {t("nav.contact")}
+            </button>
+            <button onClick={toggleLanguage}>
+              {language === "it" ? "EN" : "IT"}
             </button>
           </div>
         </div>

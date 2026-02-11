@@ -20,29 +20,32 @@ const PrivacyContainer = styled.div`
   }
 `
 
-const PrivacyPage = ({ data }) => (
-  <Layout>
-    <Helmet>
-      <title>Privacy • Saglietti</title>
-    </Helmet>
-    <PrivacyContainer>
-      <h1
-        dangerouslySetInnerHTML={{
-          __html: data.wordpress.pages.nodes.filter(
-            page => page.slug === "privacy-policy"
-          )[0].title,
-        }}
-      ></h1>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: data.wordpress.pages.nodes.filter(
-            page => page.slug === "privacy-policy"
-          )[0].content,
-        }}
-      ></div>
-    </PrivacyContainer>
-  </Layout>
-)
+const PrivacyPage = ({ data }) => {
+  // Find privacy page
+  const displayPage = data.wordpress.pages.nodes.find(
+    page => page.slug === "privacy-policy",
+  )
+
+  return (
+    <Layout>
+      <Helmet>
+        <title>Privacy • Saglietti</title>
+      </Helmet>
+      <PrivacyContainer>
+        <h1
+          dangerouslySetInnerHTML={{
+            __html: displayPage?.title || "Privacy Policy",
+          }}
+        ></h1>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: displayPage?.content || "",
+          }}
+        ></div>
+      </PrivacyContainer>
+    </Layout>
+  )
+}
 
 export const query = graphql`
   query PrivacyQuery {
