@@ -83,7 +83,7 @@ const NavLinks = styled.nav`
 
 const MenuItems = ({ isOpen }) => {
   const { setIsOpen: setInfoSheetOpen } = useInfoSheet()
-  const { t } = useTranslation()
+  const { t, language } = useTranslation()
   
   useEffect(() => {
     if (typeof window !== `undefined`) {
@@ -147,6 +147,14 @@ const MenuItems = ({ isOpen }) => {
 
   return (
     <NavLinks isOpen={isOpen} ref={menuLinksRef}>
+      <div className="link-container menu-link">
+        <Link to={language === "en" ? "/about" : "/chi-siamo"} className="">
+          {t("nav.about")}
+        </Link>
+      </div>
+      <span className="menu-item-divider">
+        <hr />
+      </span>
       <div className="link-container menu-link">
         <Link to="/studio" className="">
           Studio

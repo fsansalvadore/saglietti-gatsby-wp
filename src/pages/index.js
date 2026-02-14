@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Layout from "../components/layout"
 import { Helmet } from "react-helmet"
 import { graphql, Link } from "gatsby"
@@ -24,21 +24,36 @@ const ProjectsList = loadable(
 const IndexPage = ({ data }) => {
   const { language } = useLanguage()
   const { t } = useTranslation()
+  const [, forceUpdate] = useState()
+
+  // Force re-render when language changes
+  useEffect(() => {
+    console.log("🔄 IndexPage useEffect - language changed to:", language)
+    forceUpdate({}) // Force a re-render
+  }, [language])
+
+  console.log("🎨 IndexPage RENDER - current language:", language)
 
   // Safety check for data
   if (!data || !data.wordpress) {
+    console.log("⚠️ No data available")
     return null
   }
 
   // Select page based on current language
-  const displayPage = language === "en" ? data.wordpress.pageEN : data.wordpress.pageIT
+  const displayPage =
+    language === "en" ? data.wordpress.pageEN : data.wordpress.pageIT
+
+  console.log("📄 Selected page:", language === "en" ? "EN" : "IT")
+  console.log("📝 First marquee text:", displayPage?.homepageacf?.firstmarqueetext?.substring(0, 50))
+  console.log("🔤 Translation:", t("homepage.viewAllProjects"))
 
   // Since projects don't have language field in WordPress, show all projects
   // You'll need to enable Polylang for the Project post type in WordPress
   const filteredProjects = data.wordpress.projects?.nodes || []
 
   return (
-    <Layout>
+    <Layout key={language}>
       <Helmet>
         <title>Saglietti • Branding — Digital • Home Page</title>
       </Helmet>

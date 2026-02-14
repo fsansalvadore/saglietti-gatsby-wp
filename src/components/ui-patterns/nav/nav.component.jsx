@@ -89,7 +89,7 @@ const Nav = ({ initialTransparent = false }) => {
             <span></span>
           </MenuBtn>
           <div className="hidden md:flex items-center gap-2 lg:gap-4">
-            <Link to="/chi-siamo" className="p-1">
+            <Link to={language === "en" ? "/about" : "/chi-siamo"} className="p-1">
               {t("nav.about")}
             </Link>
             <Link to="/progetti" className="p-1">

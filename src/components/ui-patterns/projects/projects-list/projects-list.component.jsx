@@ -51,7 +51,7 @@ const ProjectsList = ({ data, limit = 200, showVisitableOnly, hideTitle }) => {
           .slice(0, limit),
       )
     }
-  }, [setProjects, term, data?.wordpress?.projects, limit, showVisitableOnly])
+  }, [term, data?.wordpress?.projects, limit, showVisitableOnly])
 
   useEffect(() => {
     if (typeof window !== `undefined`) {
@@ -162,7 +162,7 @@ const ProjectsList = ({ data, limit = 200, showVisitableOnly, hideTitle }) => {
         })
       })
     }
-  }, [projectsRef])
+  }, [])
 
   useEffect(() => {
     projectHover()
@@ -179,6 +179,9 @@ const ProjectsList = ({ data, limit = 200, showVisitableOnly, hideTitle }) => {
               <form>
                 <i className="search-icon">
                   <svg
+                    title="Search icon"
+                    aria-label="Search icon"
+                    role="img"
                     width="16"
                     height="16"
                     viewBox="0 0 16 16"

@@ -7,7 +7,7 @@ import "../components/common/styles/global.styles.scss"
 import ChiSiamoPage from "../components/common/templates/chi-siamo"
 import { useLanguage } from "../contexts/LanguageContext"
 
-const ChiSiamo = ({ data }) => {
+const About = ({ data }) => {
   const { language } = useLanguage()
 
   // Select page based on current language
@@ -24,7 +24,7 @@ const ChiSiamo = ({ data }) => {
 }
 
 export const query = graphql`
-  query ChiSiamoQuery {
+  query AboutQuery {
     wordpress {
       pageIT: page(id: "cG9zdDoxNzAx") {
         slug
@@ -64,4 +64,4 @@ export const query = graphql`
   }
 `
 
-export default ChiSiamo
+export default About
