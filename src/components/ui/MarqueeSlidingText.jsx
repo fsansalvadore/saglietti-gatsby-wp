@@ -45,7 +45,7 @@ const MarqueeSlidingText = ({
 
           setAnimationDuration(`${duration}s`)
         } catch (error) {
-          console.warn("Error calculating marquee duration:", error)
+          // console.warn("Error calculating marquee duration:", error)
           // Fallback to default duration
           setAnimationDuration("25s")
         }

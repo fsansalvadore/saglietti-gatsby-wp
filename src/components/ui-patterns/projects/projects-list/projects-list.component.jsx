@@ -220,7 +220,11 @@ const ProjectsList = ({ data, limit = 200, showVisitableOnly, hideTitle }) => {
                 }
               >
                 <Link
-                  to={`/progetti/${proj.slug}`}
+                  to={
+                    proj.language?.slug === "en"
+                      ? `/en/projects/${proj.slug}`
+                      : `/progetti/${proj.slug}`
+                  }
                   className={`block__link ${
                     !proj.custom_post_type_Project.visitabile && "no_link"
                   }`}
@@ -378,7 +382,7 @@ const ProjectsContainer = styled.div`
       .divider {
         position: absolute;
         width: 100%;
-        height: 0.9px;
+        height: 1px;
         opacity: 0;
         background-color: #000;
         top: 0;

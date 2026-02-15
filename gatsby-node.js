@@ -206,6 +206,10 @@ const query = `
             }
           }
           ${projectCustomDetails}
+          language {
+            slug
+            name
+          }
         }
       }
     }
@@ -260,16 +264,33 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const wordpress = result?.data?.wordpress
 
   wordpress?.projects?.nodes?.forEach(project => {
+    const projectLanguage = project.language?.slug || "it"
+    
+    // Determine the path based on language
+    // Italian: /progetti/{slug}
+    // English: /en/projects/{slug}
+    const projectPath =
+      projectLanguage === "en"
+        ? `/en/projects/${project.slug}`
+        : `/progetti/${project.slug}`
+
+    // Get projects in the same language for navigation
+    const projectsInLanguage = wordpress?.projects?.nodes?.filter(
+      p =>
+        (p.language?.slug || "it") === projectLanguage &&
+        p.custom_post_type_Project.visitabile === true,
+    )
+
     actions.createPage({
-      path: `/progetti/${project.slug}`,
+      path: projectPath,
       component: path.resolve(
         `./src/components/common/templates/project.layout.jsx`,
       ),
       context: {
         ...project,
-        index: wordpress?.projects?.nodes
-          ?.filter(p => p.custom_post_type_Project.visitabile === true)
-          .sort((a, b) =>
+        projectLanguage: projectLanguage,
+        index: projectsInLanguage
+          ?.sort((a, b) =>
             a.date < b.date
               ? 1
               : a.date === b.date

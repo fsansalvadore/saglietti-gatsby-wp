@@ -10,8 +10,6 @@ const ContactsInfoSheet = () => {
 
   const isStudio = useLocation().pathname?.startsWith("/studio")
 
-  console.log(isStudio)
-
   return (
     <InfoSheet
       isOpen={isOpen}

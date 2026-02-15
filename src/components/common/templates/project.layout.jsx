@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import Layout from "../../layout"
@@ -7,14 +7,24 @@ import Project from "./project"
 import { useLanguage } from "../../../contexts/LanguageContext"
 
 const ProjectLayout = props => {
-  const { slug, title, featuredImage, seo, tags } = props.pageContext
-  const { language } = useLanguage()
+  const { slug, title, featuredImage, seo, tags, projectLanguage } = props.pageContext
+  const { setLanguage } = useLanguage()
 
-  // Use current language for locale
-  const locale = language === "it" ? "it_IT" : "en_US"
+  // Set language based on the project's language
+  useEffect(() => {
+    if (projectLanguage) {
+      setLanguage(projectLanguage)
+    }
+  }, [projectLanguage, setLanguage])
+
+  // Use project language for locale
+  const locale = projectLanguage === "it" ? "it_IT" : "en_US"
+  const basePath = projectLanguage === "en" ? "/en/projects" : "/progetti"
+
+  const projectUrl = `https://www.saglietti.it${basePath}/${slug}`
 
   return (
-    <Layout className="border-b" hasFooter={false}>
+    <Layout className="border-b" hasFooter={false} key={projectLanguage}>
       <Helmet>
         <title>{title} • Saglietti</title>
         <meta name="description" content={seo.metaDesc} />
@@ -32,10 +42,7 @@ const ProjectLayout = props => {
         />
         <meta property="og:site_name" content={`${title} • Saglietti`} />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content={`https://www.saglietti.it/progetti/${slug}`}
-        />
+        <meta property="og:url" content={projectUrl} />
         <meta property="og:title" content={`${title} • Saglietti`} />
         <meta
           property="og:image"
@@ -44,10 +51,7 @@ const ProjectLayout = props => {
         <meta property="og:description" content={seo.metaDesc} />
         <meta property="og:locale" content={locale} />
         <meta name="twitter:card" content="summary" />
-        <meta
-          name="twitter:site"
-          content={`https://www.saglietti.it/progetti/${slug}`}
-        />
+        <meta name="twitter:site" content={projectUrl} />
         <meta name="twitter:title" content={`${title} • Saglietti`} />
         <meta name="twitter:description" content={seo.metaDesc} />
         <meta
@@ -69,6 +73,10 @@ export const query = graphql`
           title
           date
           slug
+          language {
+            slug
+            name
+          }
           custom_post_type_Project {
             anno
             visitabile

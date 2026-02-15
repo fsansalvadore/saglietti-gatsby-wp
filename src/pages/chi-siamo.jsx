@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 
@@ -8,15 +8,19 @@ import ChiSiamoPage from "../components/common/templates/chi-siamo"
 import { useLanguage } from "../contexts/LanguageContext"
 
 const ChiSiamo = ({ data }) => {
-  const { language } = useLanguage()
+  const { setLanguage } = useLanguage()
 
-  // Select page based on current language
-  const displayPage = language === "en" ? data.wordpress.pageEN : data.wordpress.pageIT
+  // Set language to Italian when this page loads
+  useEffect(() => {
+    setLanguage("it")
+  }, [setLanguage])
+
+  const displayPage = data.wordpress.pageIT
 
   return (
-    <Layout key={language}>
+    <Layout key="it">
       <Helmet>
-        <title>{language === "it" ? "Chi siamo" : "About us"} • Saglietti</title>
+        <title>Chi siamo • Saglietti</title>
       </Helmet>
       <ChiSiamoPage data={{ wordpress: { page: displayPage } }} />
     </Layout>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import Menu from "../menu-container/menu-container.component"
 import styled from "styled-components"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import NavLogo from "./NavLogo.component"
 import classNames from "classnames"
 import { useLockBodyScroll, useWindowSize } from "react-use"
@@ -54,7 +54,7 @@ const MenuBtn = styled.a`
 
 const Nav = ({ initialTransparent = false }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const { language, toggleLanguage } = useLanguage()
+  const { language } = useLanguage()
   const { t } = useTranslation()
   const { width } = useWindowSize()
   const { setIsOpen: setInfoSheetOpen, isOpen: infoSheetOpen } = useInfoSheet()
@@ -64,6 +64,57 @@ const Nav = ({ initialTransparent = false }) => {
   useEffect(() => {
     setIsOpen(false)
   }, [width])
+
+  const handleLanguageToggle = () => {
+    if (typeof window === "undefined") return
+    
+    let currentPath = window.location.pathname
+    // Remove trailing slash for consistent matching
+    if (currentPath.endsWith("/") && currentPath.length > 1) {
+      currentPath = currentPath.slice(0, -1)
+    }
+    
+    const newLanguage = language === "it" ? "en" : "it"
+    let targetPath = "/"
+    
+    if (newLanguage === "en") {
+      // Switching to English
+      if (currentPath === "/" || currentPath === "") {
+        targetPath = "/en"
+      } else if (currentPath === "/chi-siamo") {
+        targetPath = "/en/about"
+      } else if (currentPath.startsWith("/progetti/")) {
+        // Project detail page: /progetti/slug -> /en/projects/slug
+        const slug = currentPath.replace("/progetti/", "")
+        targetPath = `/en/projects/${slug}`
+      } else if (currentPath === "/progetti") {
+        targetPath = "/en/projects"
+      } else if (currentPath === "/privacy") {
+        targetPath = "/en/privacy"
+      } else {
+        targetPath = "/en"
+      }
+    } else {
+      // Switching to Italian
+      if (currentPath === "/en" || currentPath === "") {
+        targetPath = "/"
+      } else if (currentPath === "/en/about") {
+        targetPath = "/chi-siamo"
+      } else if (currentPath.startsWith("/en/projects/")) {
+        // Project detail page: /en/projects/slug -> /progetti/slug
+        const slug = currentPath.replace("/en/projects/", "")
+        targetPath = `/progetti/${slug}`
+      } else if (currentPath === "/en/projects") {
+        targetPath = "/progetti"
+      } else if (currentPath === "/en/privacy") {
+        targetPath = "/privacy"
+      } else {
+        targetPath = "/"
+      }
+    }
+    
+    navigate(targetPath)
+  }
 
   return (
     <>
@@ -89,10 +140,10 @@ const Nav = ({ initialTransparent = false }) => {
             <span></span>
           </MenuBtn>
           <div className="hidden md:flex items-center gap-2 lg:gap-4">
-            <Link to={language === "en" ? "/about" : "/chi-siamo"} className="p-1">
+            <Link to={language === "en" ? "/en/about" : "/chi-siamo"} className="p-1">
               {t("nav.about")}
             </Link>
-            <Link to="/progetti" className="p-1">
+            <Link to={language === "en" ? "/en/projects" : "/progetti"} className="p-1">
               {t("nav.projects")}
             </Link>
             <button
@@ -101,7 +152,7 @@ const Nav = ({ initialTransparent = false }) => {
             >
               {t("nav.contact")}
             </button>
-            <button onClick={toggleLanguage}>
+            <button onClick={handleLanguageToggle}>
               {language === "it" ? "EN" : "IT"}
             </button>
           </div>
