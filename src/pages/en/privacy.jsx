@@ -1,9 +1,9 @@
 import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
-import Layout from "../components/layout"
+import Layout from "../../components/layout"
 import { Helmet } from "react-helmet"
-import { useLanguage } from "../contexts/LanguageContext"
+import { useLanguage } from "../../contexts/LanguageContext"
 
 const PrivacyContainer = styled.div`
   padding: 200px 1rem;
@@ -21,21 +21,21 @@ const PrivacyContainer = styled.div`
   }
 `
 
-const PrivacyPage = ({ data }) => {
+const PrivacyPageEN = ({ data }) => {
   const { setLanguage } = useLanguage()
 
-  // Set language to Italian when this page loads
+  // Set language to English when this page loads
   useEffect(() => {
-    setLanguage("it")
+    setLanguage("en")
   }, [setLanguage])
 
-  // Find privacy page
+  // Find privacy page (you may need to filter by language in WordPress)
   const displayPage = data.wordpress.pages.nodes.find(
-    page => page.slug === "privacy-policy",
+    page => page.slug === "privacy-policy"
   )
 
   return (
-    <Layout key="it">
+    <Layout key="en">
       <Helmet>
         <title>Privacy • Saglietti</title>
       </Helmet>
@@ -56,7 +56,7 @@ const PrivacyPage = ({ data }) => {
 }
 
 export const query = graphql`
-  query PrivacyQuery {
+  query PrivacyQueryEN {
     wordpress {
       pages {
         nodes {
@@ -71,4 +71,4 @@ export const query = graphql`
   }
 `
 
-export default PrivacyPage
+export default PrivacyPageEN

@@ -1,33 +1,33 @@
 import React, { useEffect, useState } from "react"
-import Layout from "../components/layout"
+import Layout from "../../components/layout"
 import { Helmet } from "react-helmet"
 import { graphql, Link } from "gatsby"
 // Components
-import HeaderContainer from "../components/ui-patterns/header-container/header-container.component"
+import HeaderContainer from "../../components/ui-patterns/header-container/header-container.component"
 
-import "../components/common/styles/homepage.styles.scss"
+import "../../components/common/styles/homepage.styles.scss"
 import loadable from "@loadable/component"
-import SectionContainer from "../components/SectionContainer"
-import { useLanguage } from "../contexts/LanguageContext"
-import { useTranslation } from "../hooks/useTranslation"
+import SectionContainer from "../../components/SectionContainer"
+import { useLanguage } from "../../contexts/LanguageContext"
+import { useTranslation } from "../../hooks/useTranslation"
 
 const MarqueeSlidingText = loadable(
-  () => import("../components/ui/MarqueeSlidingText"),
+  () => import("../../components/ui/MarqueeSlidingText"),
 )
 const ProjectsList = loadable(
   () =>
     import(
-      "../components/ui-patterns/projects/projects-list/projects-list.component"
+      "../../components/ui-patterns/projects/projects-list/projects-list.component"
     ),
 )
 
-const IndexPage = ({ data }) => {
+const IndexPageEN = ({ data }) => {
   const { setLanguage } = useLanguage()
   const { t } = useTranslation()
 
-  // Set language to Italian when this page loads
+  // Set language to English when this page loads
   useEffect(() => {
-    setLanguage("it")
+    setLanguage("en")
   }, [setLanguage])
 
   // Safety check for data
@@ -35,15 +35,15 @@ const IndexPage = ({ data }) => {
     return null
   }
 
-  const displayPage = data.wordpress.pageIT
+  const displayPage = data.wordpress.pageEN
   
-  // Filter projects to show only Italian ones
+  // Filter projects to show only English ones
   const filteredProjects = data.wordpress.projects?.nodes?.filter(
-    project => (project.language?.slug || "it") === "it"
+    project => project.language?.slug === "en"
   ) || []
 
   return (
-    <Layout key="it">
+    <Layout key="en">
       <Helmet>
         <title>Saglietti • Branding — Digital • Home Page</title>
       </Helmet>
@@ -67,7 +67,7 @@ const IndexPage = ({ data }) => {
       <SectionContainer className="!py-0">
         <div className="col-span-full w-full">
           <Link
-            to="/progetti"
+            to="/en/projects"
             className="flex py-4 justify-between w-full gap-4 text-lg items-center group"
           >
             {t("homepage.viewAllProjects")}
@@ -110,7 +110,7 @@ const IndexPage = ({ data }) => {
 }
 
 export const query = graphql`
-  query ProjectsQuery {
+  query ProjectsQueryEN {
     wordpress {
       projects(first: 200, where: { status: PUBLISH }) {
         nodes {
@@ -135,17 +135,6 @@ export const query = graphql`
           }
         }
       }
-      pageIT: page(id: "cG9zdDoxMQ==") {
-        title
-        homepageacf {
-          caroselloProgetti
-          fieldGroupName
-          firstmarqueetext
-          lastmarqueetext
-          marqueetexttwo
-          statictext
-        }
-      }
       pageEN: page(id: "cG9zdDoxNjg5") {
         title
         homepageacf {
@@ -161,4 +150,4 @@ export const query = graphql`
   }
 `
 
-export default IndexPage
+export default IndexPageEN

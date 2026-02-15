@@ -18,7 +18,7 @@ if (typeof window !== `undefined`) {
   ScrollMagicPluginGsap(ScrollMagic, TweenLite, TimelineLite)
 }
 
-const ProjectsList = ({ data, limit = 100, showVisitableOnly, hideTitle }) => {
+const ProjectsList = ({ data, limit = 200, showVisitableOnly, hideTitle }) => {
   const [projects, setProjects] = useState(null)
   const [term, setTerm] = useState("")
 
@@ -51,7 +51,7 @@ const ProjectsList = ({ data, limit = 100, showVisitableOnly, hideTitle }) => {
           .slice(0, limit),
       )
     }
-  }, [setProjects, term, data?.wordpress?.projects, limit, showVisitableOnly])
+  }, [term, data?.wordpress?.projects, limit, showVisitableOnly])
 
   useEffect(() => {
     if (typeof window !== `undefined`) {
@@ -162,7 +162,7 @@ const ProjectsList = ({ data, limit = 100, showVisitableOnly, hideTitle }) => {
         })
       })
     }
-  }, [projectsRef])
+  }, [])
 
   useEffect(() => {
     projectHover()
@@ -179,6 +179,9 @@ const ProjectsList = ({ data, limit = 100, showVisitableOnly, hideTitle }) => {
               <form>
                 <i className="search-icon">
                   <svg
+                    title="Search icon"
+                    aria-label="Search icon"
+                    role="img"
                     width="16"
                     height="16"
                     viewBox="0 0 16 16"
@@ -207,9 +210,7 @@ const ProjectsList = ({ data, limit = 100, showVisitableOnly, hideTitle }) => {
           {projects && projects.length > 0 ? (
             projects.map(proj => (
               <li
-                key={`${proj.id}-${proj.slug}-${Math.floor(
-                  Math.random() * (100 - 999) + 100,
-                )}`}
+                key={`${proj.id}-${proj.slug}`}
                 className="pseudo content last:border-b"
                 data-fx="1"
                 data-img={
@@ -219,7 +220,11 @@ const ProjectsList = ({ data, limit = 100, showVisitableOnly, hideTitle }) => {
                 }
               >
                 <Link
-                  to={`/progetti/${proj.slug}`}
+                  to={
+                    proj.language?.slug === "en"
+                      ? `/en/projects/${proj.slug}`
+                      : `/progetti/${proj.slug}`
+                  }
                   className={`block__link ${
                     !proj.custom_post_type_Project.visitabile && "no_link"
                   }`}
@@ -263,7 +268,7 @@ const ProjectsList = ({ data, limit = 100, showVisitableOnly, hideTitle }) => {
               <span className="divider"></span>
               <Link to="/progetti" className="block__link no_link">
                 <div className="proj_item-left prog_list-item">
-                  <p className="not-found">Nessun progetto trovato</p>
+                  <p className="not-found">-</p>
                 </div>
               </Link>
             </li>
@@ -377,7 +382,7 @@ const ProjectsContainer = styled.div`
       .divider {
         position: absolute;
         width: 100%;
-        height: 0.9px;
+        height: 1px;
         opacity: 0;
         background-color: #000;
         top: 0;

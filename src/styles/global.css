@@ -19,3 +19,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
+p a {
+  @apply hover:underline;
+}
