@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react"
-import { Link, navigate } from "gatsby"
+import { Link } from "gatsby"
 import { gsap } from "gsap"
 import { TweenLite, TimelineLite } from "gsap/all"
 
@@ -159,7 +159,7 @@ const MenuItems = ({ isOpen }) => {
       </span>
       <div className="link-container menu-link">
         <Link to="/studio" className="">
-          Studio
+          {t("nav.studio")}
         </Link>
       </div>
       <span className="menu-item-divider">

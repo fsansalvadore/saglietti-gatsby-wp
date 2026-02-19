@@ -1,6 +1,7 @@
 {
   "nav": {
     "about": "about us",
+    "studio": "studio",
     "projects": "projects",
     "contact": "contact"
   },
@@ -13,7 +14,23 @@
     "fields": "Fields",
     "credits": "Credits",
     "description": "Description",
-    "visitSite": "Visit website"
+    "visitSite": "Visit website",
+    "searchPlaceholder": "Search by title, year or field"
+  },
+  "contact": {
+    "email": "Email",
+    "name": "Name",
+    "message": "Message",
+    "send": "Send",
+    "sending": "Sending...",
+    "success": "Message sent 👍",
+    "privacyText": "I have read and accepted the ",
+    "privacyLink": "privacy policy"
+  },
+  "footer": {
+    "newsletter": "Subscribe to newsletter",
+    "privacyPolicy": "Privacy Policy",
+    "copyright": "Copyright"
   },
   "common": {
     "loading": "Loading...",

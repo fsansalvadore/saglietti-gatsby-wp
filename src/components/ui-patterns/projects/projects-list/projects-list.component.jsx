@@ -10,6 +10,7 @@ import * as ScrollMagic from "scrollmagic-with-ssr" // Or use scrollmagic-with-s
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
 import { TweenLite, TimelineLite } from "gsap/all"
 import CustomEase from "../../../common/vendor/gsap/CustomEase"
+import { useTranslation } from "../../../../hooks/useTranslation"
 
 import "./projects-list.styles.scss"
 
@@ -19,6 +20,7 @@ if (typeof window !== `undefined`) {
 }
 
 const ProjectsList = ({ data, limit = 200, showVisitableOnly, hideTitle }) => {
+  const { t } = useTranslation()
   const [projects, setProjects] = useState(null)
   const [term, setTerm] = useState("")
 
@@ -65,7 +67,7 @@ const ProjectsList = ({ data, limit = 200, showVisitableOnly, hideTitle }) => {
           {
             translateY: 0,
             opacity: 1,
-            stagger: 0.04,
+            stagger: 0.03,
             ease: "power4.out",
           },
           0.3,
@@ -77,7 +79,7 @@ const ProjectsList = ({ data, limit = 200, showVisitableOnly, hideTitle }) => {
           {
             opacity: 1,
             ease: CustomEase.create("custom", "M0,0 C0.698,0 0.374,1 1,1 "),
-            stagger: 0.04,
+            stagger: 0.03,
           },
           0,
         )
@@ -200,7 +202,7 @@ const ProjectsList = ({ data, limit = 200, showVisitableOnly, hideTitle }) => {
                   type="text"
                   onChange={e => setTerm(e.target.value)}
                   value={term}
-                  placeholder="Cerca per titolo, anno o ambito"
+                  placeholder={t("projects.searchPlaceholder")}
                 />
               </form>
             </div>

@@ -29,10 +29,7 @@ const PrivacyPage = ({ data }) => {
     setLanguage("it")
   }, [setLanguage])
 
-  // Find privacy page
-  const displayPage = data.wordpress.pages.nodes.find(
-    page => page.slug === "privacy-policy",
-  )
+  const displayPage = data.wordpress.page
 
   return (
     <Layout key="it">
@@ -58,14 +55,11 @@ const PrivacyPage = ({ data }) => {
 export const query = graphql`
   query PrivacyQuery {
     wordpress {
-      pages {
-        nodes {
-          id
-          title
-          date
-          slug
-          content
-        }
+      page(id: "cG9zdDoz") {
+        id
+        title
+        slug
+        content
       }
     }
   }

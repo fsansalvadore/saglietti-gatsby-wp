@@ -29,10 +29,7 @@ const PrivacyPageEN = ({ data }) => {
     setLanguage("en")
   }, [setLanguage])
 
-  // Find privacy page (you may need to filter by language in WordPress)
-  const displayPage = data.wordpress.pages.nodes.find(
-    page => page.slug === "privacy-policy"
-  )
+  const displayPage = data.wordpress.page
 
   return (
     <Layout key="en">
@@ -58,14 +55,11 @@ const PrivacyPageEN = ({ data }) => {
 export const query = graphql`
   query PrivacyQueryEN {
     wordpress {
-      pages {
-        nodes {
-          id
-          title
-          date
-          slug
-          content
-        }
+      page(id: "cG9zdDoxODIx") {
+        id
+        title
+        slug
+        content
       }
     }
   }
