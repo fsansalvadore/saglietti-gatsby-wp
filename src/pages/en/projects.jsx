@@ -1,28 +1,28 @@
 import React, { useEffect } from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
+import Layout from "../../components/layout"
 import { Helmet } from "react-helmet"
-import { useLanguage } from "../contexts/LanguageContext"
+import { useLanguage } from "../../contexts/LanguageContext"
 
-import ProjectsList from "../components/ui-patterns/projects/projects-list/projects-list.component"
+import ProjectsList from "../../components/ui-patterns/projects/projects-list/projects-list.component"
 
-const Progetti = ({ data }) => {
+const ProjectsEN = ({ data }) => {
   const { setLanguage } = useLanguage()
 
-  // Set language to Italian when this page loads
+  // Set language to English when this page loads
   useEffect(() => {
-    setLanguage("it")
+    setLanguage("en")
   }, [setLanguage])
 
-  // Filter projects to show only Italian ones
+  // Filter projects to show only English ones
   const filteredProjects = data.wordpress.projects.nodes.filter(
-    project => (project.language?.slug || "it") === "it"
+    project => project.language?.slug === "en"
   )
 
   return (
-    <Layout className="!pt-0" initialTransparent key="it">
+    <Layout className="!pt-0" initialTransparent key="en">
       <Helmet>
-        <title>Progetti • Saglietti</title>
+        <title>Projects • Saglietti</title>
       </Helmet>
       <ProjectsList 
         data={{
@@ -40,7 +40,7 @@ const Progetti = ({ data }) => {
 }
 
 export const query = graphql`
-  query ProgettiPageQuery {
+  query ProjectsPageQueryEN {
     wordpress {
       projects(first: 200, where: { status: PUBLISH }) {
         nodes {
@@ -69,4 +69,4 @@ export const query = graphql`
   }
 `
 
-export default Progetti
+export default ProjectsEN

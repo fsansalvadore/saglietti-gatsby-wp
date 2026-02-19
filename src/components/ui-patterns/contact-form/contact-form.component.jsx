@@ -5,6 +5,8 @@ import styled from "styled-components"
 import { motion } from "framer-motion"
 import FormErrorComponent from "../../ui/form-error.component"
 import { ArrowRight } from "lucide-react"
+import { useTranslation } from "../../../hooks/useTranslation"
+import { useLanguage } from "../../../contexts/LanguageContext"
 
 const { TextArea } = Input
 
@@ -94,6 +96,13 @@ const encode = data => {
     .join("&")
 }
 
+const ContactFormWrapper = props => {
+  const { t } = useTranslation()
+  const { language } = useLanguage()
+  
+  return <ContactForm {...props} t={t} language={language} />
+}
+
 class ContactForm extends React.Component {
   constructor(props) {
     super(props)
@@ -101,7 +110,6 @@ class ContactForm extends React.Component {
       name: "",
       email: "",
       message: "",
-      btn: "Invia",
       feedback: "",
       loading: false,
     }
@@ -112,6 +120,8 @@ class ContactForm extends React.Component {
 
   handleSubmit = e => {
     this.setState({ loading: true })
+    const { t } = this.props
+    
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -119,7 +129,7 @@ class ContactForm extends React.Component {
     })
       .then(() => {
         this.setState({
-          feedback: "Messaggio inviato 👍",
+          feedback: t("contact.success"),
           loading: false,
           name: "",
           message: "",
@@ -141,7 +151,9 @@ class ContactForm extends React.Component {
   handleChange = e => this.setState({ [e.target.name]: e.target.value })
 
   render() {
-    const { name, email, message, btn, feedback, loading } = this.state
+    const { name, email, message, feedback, loading } = this.state
+    const { t, language } = this.props
+    const privacyPath = language === "en" ? "/en/privacy" : "/privacy"
 
     return (
       <ContactFormContainer className="h-full">
@@ -162,8 +174,8 @@ class ContactForm extends React.Component {
 
           <Input
             type="email"
-            label="Email"
-            placeholder="Email"
+            label={t("contact.email")}
+            placeholder={t("contact.email")}
             name="email"
             value={email}
             required
@@ -174,8 +186,8 @@ class ContactForm extends React.Component {
           <Input
             className="!border-0 !p-4 md:!px-8 lg:!px-4 !border-b !border-black !rounded-0 !placeholder-black"
             type="text"
-            label="Nome"
-            placeholder="Nome"
+            label={t("contact.name")}
+            placeholder={t("contact.name")}
             name="name"
             style={{ borderRadius: 0 }}
             value={name}
@@ -183,8 +195,8 @@ class ContactForm extends React.Component {
             onChange={this.handleChange}
           />
           <TextArea
-            label="Messaggio"
-            placeholder="Messaggio"
+            label={t("contact.message")}
+            placeholder={t("contact.message")}
             name="message"
             value={message}
             style={{ borderRadius: 0 }}
@@ -202,10 +214,10 @@ class ContactForm extends React.Component {
                 required
                 inputProps={{ "aria-label": "Checkbox A" }}
               />{" "}
-              <label for="privacy-checkbox" className="cursor-pointer">
-                Ho letto e accettato l'
-                <Link to="/privacy" className="underline">
-                  informativa sulla privacy
+              <label htmlFor="privacy-checkbox" className="cursor-pointer">
+                {t("contact.privacyText")}
+                <Link to={privacyPath} className="underline">
+                  {t("contact.privacyLink")}
                 </Link>
                 .
               </label>
@@ -215,10 +227,7 @@ class ContactForm extends React.Component {
             type="submit"
             className="flex-1 !cursor-pointer hover:!bg-[#00000010] transition-colors flex items-center gap-2 !border-0 !border-solid !border-t border-black !p-4 md:!px-8 lg:!px-4 "
           >
-            {
-              // check if loading or success
-              loading ? "loading" : btn
-            }
+            {loading ? t("contact.sending") : t("contact.send")}
             <ArrowRight className="w-3 h-3" />
           </button>
         </form>
@@ -239,4 +248,4 @@ class ContactForm extends React.Component {
   }
 }
 
-export default ContactForm
+export default ContactFormWrapper

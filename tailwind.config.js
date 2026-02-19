@@ -8,23 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: [
-          "FFMarkWebProLight",
-          "Inter",
-          "Helvetica Neue",
-          "Helvetica",
-          "Arial",
-          "sans-serif",
-        ],
-        ffMarkLight: [
-          "FFMarkWebProLight",
-          "Inter",
-          "Helvetica Neue",
-          "Helvetica",
-          "Arial",
-          "sans-serif",
-        ],
-        ffMarkMedium: [
-          "FFMarkWebProMedium",
+          "FFMarkProMedium",
           "Inter",
           "Helvetica Neue",
           "Helvetica",

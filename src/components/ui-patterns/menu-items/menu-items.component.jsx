@@ -10,6 +10,8 @@ import { CSSRulePlugin } from "gsap/CSSRulePlugin"
 import CustomEase from "../../common/vendor/gsap/CustomEase"
 import styled from "styled-components"
 import { useInfoSheet } from "../InfoSheet/InfoSheetProvider"
+import { useTranslation } from "../../../hooks/useTranslation"
+import { useLanguage } from "../../../contexts/LanguageContext"
 
 if (typeof window !== `undefined`) {
   gsap.registerPlugin(CSSRulePlugin, CustomEase)
@@ -82,6 +84,9 @@ const NavLinks = styled.nav`
 
 const MenuItems = ({ isOpen }) => {
   const { setIsOpen: setInfoSheetOpen } = useInfoSheet()
+  const { t } = useTranslation()
+  const { language } = useLanguage()
+  
   useEffect(() => {
     if (typeof window !== `undefined`) {
       if (isOpen) {
@@ -145,23 +150,31 @@ const MenuItems = ({ isOpen }) => {
   return (
     <NavLinks isOpen={isOpen} ref={menuLinksRef}>
       <div className="link-container menu-link">
+        <Link to={language === "en" ? "/en/about" : "/chi-siamo"} className="">
+          {t("nav.about")}
+        </Link>
+      </div>
+      <span className="menu-item-divider">
+        <hr />
+      </span>
+      <div className="link-container menu-link">
         <Link to="/studio" className="">
-          Studio
+          {t("nav.studio")}
         </Link>
       </div>
       <span className="menu-item-divider">
         <hr />
       </span>
       <div className="link-container menu-link">
-        <Link to="/progetti" className="">
-          Progetti
+        <Link to={language === "en" ? "/en/projects" : "/progetti"} className="">
+          {t("nav.projects")}
         </Link>
       </div>
       <span className="menu-item-divider">
         <hr />
       </span>
       <div className="link-container menu-link">
-        <button onClick={() => setInfoSheetOpen(true)}>Contatti</button>
+        <button onClick={() => setInfoSheetOpen(true)}>{t("nav.contact")}</button>
       </div>
     </NavLinks>
   )

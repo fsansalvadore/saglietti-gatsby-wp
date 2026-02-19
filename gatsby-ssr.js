@@ -1,10 +1,7 @@
 import React from "react"
 import { LanguageProvider } from "./src/contexts/LanguageContext"
 
-// Import global styles
-import "./src/styles/global.css"
-
-// Wrap the entire app with LanguageProvider
+// Wrap the entire app with LanguageProvider for SSR
 export const wrapRootElement = ({ element }) => {
   return <LanguageProvider>{element}</LanguageProvider>
 }

@@ -45,7 +45,7 @@ const MarqueeSlidingText = ({
 
           setAnimationDuration(`${duration}s`)
         } catch (error) {
-          console.warn("Error calculating marquee duration:", error)
+          // console.warn("Error calculating marquee duration:", error)
           // Fallback to default duration
           setAnimationDuration("25s")
         }
@@ -58,7 +58,7 @@ const MarqueeSlidingText = ({
   return (
     <div
       className={classNames(
-        "overflow-hidden max-w-[100vw] text-[152px] font-medium flex gap-4 flex-nowrap",
+        "overflow-hidden max-w-[100vw] text-5xl pt-8 pb-14 font-medium flex gap-4 flex-nowrap",
         className,
       )}
     >
