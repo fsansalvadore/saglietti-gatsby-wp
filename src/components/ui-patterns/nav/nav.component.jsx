@@ -59,7 +59,7 @@ const Nav = ({ initialTransparent = false }) => {
   const { t } = useTranslation()
   const { width } = useWindowSize()
   const { setIsOpen: setInfoSheetOpen, isOpen: infoSheetOpen } = useInfoSheet()
-  const [hasScrolled, setHasScrolled] = useHasScrolled()
+  const [hasScrolled] = useHasScrolled()
 
   useLockBodyScroll(isOpen)
 
