@@ -1,19 +1,9 @@
-import React, { useEffect, useRef } from "react"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Slider from "react-slick"
 import ProjectsCarouselStyled from "./projects-carousel.styled"
 
 const ProjectsCarousel = () => {
-  let sliderRef = useRef(null)
-
-  const play = () => {
-    sliderRef.slickPlay()
-  }
-
-  useEffect(() => {
-    sliderRef?.current && play()
-  }, [sliderRef])
-
   const data = useStaticQuery(graphql`
     query CarouselQuery {
       wordpress {
@@ -68,21 +58,46 @@ const ProjectsCarousel = () => {
 
   const settings = {
     dots: false,
+    arrows: false,
     autoplay: true,
-    autoplaySpeed: 1500,
-    fade: true,
+    autoplaySpeed: 5000,
+    speed: 5000,
+    cssEase: "linear",
     infinite: true,
-    speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
+    variableWidth: true,
     waitForAnimate: false,
     pauseOnHover: false,
+    swipe: false,
+    touchMove: false,
+    draggable: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 0.5,
+        },
+      },
+    ],
   }
 
   return (
     <ProjectsCarouselStyled>
       <div className="slider-container w-full h-full">
-        <Slider ref={slider => (sliderRef = slider)} {...settings}>
+        <Slider {...settings}>
           {featuredProjects?.map((project, i) => (
             <Slide key={project.id} project={project} />
           ))}
@@ -94,12 +109,12 @@ const ProjectsCarousel = () => {
 
 const Slide = ({ project }) => {
   return (
-    <div className="w-full h-full bg-black">
+    <div className="relative h-full flex items-center justify-center object-contain">
       {project.featuredImage && (
         <img
           src={project.featuredImage?.node?.link}
           alt={project.title}
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className="h-full w-auto object-contain"
         />
       )}
     </div>

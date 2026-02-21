@@ -4,7 +4,7 @@ const ProjectsCarouselStyled = styled.div`
   position: sticky;
   top: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
 
   .slider-container,
   .slick-list,
@@ -12,6 +12,22 @@ const ProjectsCarouselStyled = styled.div`
   .slick-slider {
     height: 100%;
   }
+  
+  .slick-slide {
+    height: 100%;
+    width: auto !important;
+    
+    > div {
+      height: 100%;
+      width: auto;
+    }
+  }
+  
+  .slick-track {
+    display: flex !important;
+    align-items: center;
+  }
+
   .slick-dots {
     bottom: 25px;
     mix-blend-mode: difference;
@@ -28,7 +44,6 @@ const ProjectsCarouselStyled = styled.div`
     background-color: #000;
     display: flex;
     align-items: flex-end;
-    padding: 1rem;
     background-position: center;
     background-size: cover;
 
@@ -120,7 +135,6 @@ const ProjectsCarouselStyled = styled.div`
     align-items: center;
     justify-content: space-between;
     height: 30%;
-    padding: 0 1rem;
     text-decoration: none;
     font-size: 1.15rem;
     letter-spacing: 0;
@@ -151,12 +165,12 @@ const ProjectsCarouselStyled = styled.div`
 
     .carousel-top {
       height: 80%;
-      padding: 2rem;
+      /* padding: 2rem; */
     }
     .carousel-bottom {
       font-size: 1.5rem;
       height: 20%;
-      padding: 0 2rem;
+      /* padding: 0 2rem; */
     }
   }
 `
