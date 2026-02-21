@@ -95,7 +95,7 @@ const ChiSiamoPage = ({ data }) => {
           return (
             <Accordion type="single" collapsible key={accordionId}>
               <AccordionItem value={accordionId}>
-                <AccordionTrigger className="text-md font-medium">
+                <AccordionTrigger className="text-md xl:text-xl">
                   {summaryText}
                 </AccordionTrigger>
                 <AccordionContent>
@@ -130,16 +130,16 @@ const ChiSiamoPage = ({ data }) => {
   }
 
   return (
-    <div className="w-full mx-auto max-w-[970px] p-4 sm:p-8 sm:py-20 flex flex-col gap-8 sm:gap-20">
+    <div className="w-full mx-auto p-4 sm:p-8 sm:py-20 flex flex-col gap-8 sm:gap-20">
       {/* Intro Section */}
       {testoIntroduttivo && (
-        <div className="[&_p]:pb-4 text-xl font-medium pt-20">
+        <div className="[&_p]:pb-4 text-xl lg:text-2xl xl:text-4xl pt-20 xl:tracking-[-0.01em]">
           {parseWithAccordion(testoIntroduttivo)}
         </div>
       )}
 
       {/* Staff/Contacts Section */}
-      <div className="grid sm:grid-cols-2 gap-4 text-md font-medium">
+      <div className="grid sm:grid-cols-2 gap-4 text-md xl:text-xl">
         {colonnaSinistra && (
           <div className="">{parseWithAccordion(colonnaSinistra)}</div>
         )}
@@ -169,12 +169,12 @@ const ChiSiamoPage = ({ data }) => {
       )}
 
       {/* Services/Clients Section */}
-      <div className="grid sm:grid-cols-2 gap-4 text-md font-medium">
+      <div className="grid sm:grid-cols-2 gap-4 text-md xl:text-xl">
         {colonnaFinaleSinistra && (
-          <div className="">{parseWithAccordion(colonnaFinaleSinistra)}</div>
+          <div>{parseWithAccordion(colonnaFinaleSinistra)}</div>
         )}
         {colonnaFinaleDestra && (
-          <div className="">{parseWithAccordion(colonnaFinaleDestra)}</div>
+          <div>{parseWithAccordion(colonnaFinaleDestra)}</div>
         )}
       </div>
     </div>

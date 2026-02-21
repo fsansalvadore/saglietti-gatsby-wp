@@ -16,7 +16,7 @@ const Progetti = ({ data }) => {
 
   // Filter projects to show only Italian ones
   const filteredProjects = data.wordpress.projects.nodes.filter(
-    project => (project.language?.slug || "it") === "it"
+    project => (project.language?.slug || "it") === "it",
   )
 
   return (
@@ -24,16 +24,16 @@ const Progetti = ({ data }) => {
       <Helmet>
         <title>Progetti • Saglietti</title>
       </Helmet>
-      <ProjectsList 
+      <ProjectsList
         data={{
           ...data,
           wordpress: {
             ...data.wordpress,
             projects: {
-              nodes: filteredProjects
-            }
-          }
-        }} 
+              nodes: filteredProjects,
+            },
+          },
+        }}
       />
     </Layout>
   )
@@ -62,6 +62,7 @@ export const query = graphql`
             ambiti
             anno
             visitabile
+            cliente
           }
         }
       }

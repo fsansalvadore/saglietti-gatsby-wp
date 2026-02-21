@@ -199,17 +199,20 @@ This document summarizes all the translation work completed to ensure full Itali
 
 ## Files Modified
 
-1. `src/i18n/it.json`
-2. `src/i18n/en.json`
-3. `src/components/ui-patterns/contact-form/contact-form.component.jsx`
-4. `src/components/ui-patterns/footer/footer.component.jsx`
-5. `src/components/MailchimpForm.jsx`
-6. `src/components/ui-patterns/projects/projects-list/projects-list.component.jsx`
-7. `src/components/ui-patterns/menu-items/menu-items.component.jsx`
-8. `src/styles/global.css`
-9. `src/components/layout.css`
-10. `tailwind.config.js`
-11. `src/pages/en/index.jsx` (cleaned up unused import)
+1. `src/i18n/it.json` - Added comprehensive translations
+2. `src/i18n/en.json` - Added comprehensive translations
+3. `src/components/ui-patterns/contact-form/contact-form.component.jsx` - Added translations
+4. `src/components/ui-patterns/footer/footer.component.jsx` - Added translations
+5. `src/components/MailchimpForm.jsx` - Added newsletter translation
+6. `src/components/ui-patterns/projects/projects-list/projects-list.component.jsx` - **Refactored and translated**
+7. `src/components/ui-patterns/menu-items/menu-items.component.jsx` - Added studio translation
+8. `src/styles/global.css` - Updated font to FFMarkProMedium
+9. `src/components/layout.css` - Updated font to FFMarkProMedium
+10. `tailwind.config.js` - Simplified font configuration
+11. `src/pages/privacy.jsx` - Updated to query specific page ID
+12. `src/pages/en/privacy.jsx` - Updated to query specific page ID
+13. `src/pages/index.js` - Cleaned up unused imports
+14. `src/pages/en/index.jsx` - Cleaned up unused imports
 
 ## Future Considerations
 
@@ -219,6 +222,44 @@ This document summarizes all the translation work completed to ensure full Itali
 4. **Form Validation**: Consider translating any form validation messages
 5. **Date Formatting**: Consider locale-specific date formatting for project dates
 
+## Major Refactoring
+
+### Projects List Component
+**Before:**
+- Used `styled-components` for CSS
+- Complex nested CSS with media queries
+- Multiple useEffect hooks with redundant logic
+- Manual DOM manipulation for hover effects
+
+**After:**
+- 100% Tailwind CSS classes
+- Cleaner, more maintainable structure
+- Simplified logic using `React.useMemo` for filtering/sorting
+- Streamlined hover effects
+- Reduced from ~570 lines to ~242 lines
+- Removed dependency on styled-components (kept scss file for hover animations)
+
+**Key Improvements:**
+- All CSS converted to inline Tailwind classes
+- Better performance with memoized filtering
+- Cleaner JSX structure
+- Maintained all GSAP animations and hover effects
+- Added proper translation support for search placeholder and title
+
+### Font Configuration
+- Unified all font references to use `FFMarkProMedium`
+- Removed font weight variations
+- Consistent font rendering across all components
+- Corrected font-family name to match MyFonts documentation
+
+### Privacy Pages
+- Updated both Italian and English privacy pages to query specific page IDs
+- Italian: `cG9zdDoz`
+- English: `cG9zdDoxODIx`
+- More efficient data fetching (direct ID query vs filtering)
+
 ## Conclusion
 
 All static text throughout the website has been successfully translated and now supports both Italian and English. The translation system uses a centralized JSON-based approach with the `useTranslation` hook, making it easy to add new translations or modify existing ones.
+
+The projects list component has been significantly refactored to use Tailwind CSS exclusively, resulting in cleaner, more maintainable code while preserving all functionality including animations and hover effects.

@@ -1,15 +1,12 @@
 import React, { useEffect } from "react"
 import Layout from "../components/layout"
 import { Helmet } from "react-helmet"
-import { graphql, Link } from "gatsby"
-// Components
+import { graphql } from "gatsby"
 import HeaderContainer from "../components/ui-patterns/header-container/header-container.component"
 
 import "../components/common/styles/homepage.styles.scss"
 import loadable from "@loadable/component"
-import SectionContainer from "../components/SectionContainer"
 import { useLanguage } from "../contexts/LanguageContext"
-import { useTranslation } from "../hooks/useTranslation"
 
 const MarqueeSlidingText = loadable(
   () => import("../components/ui/MarqueeSlidingText"),
@@ -23,7 +20,6 @@ const ProjectsList = loadable(
 
 const IndexPage = ({ data }) => {
   const { setLanguage } = useLanguage()
-  const { t } = useTranslation()
 
   // Set language to Italian when this page loads
   useEffect(() => {
@@ -98,6 +94,7 @@ export const query = graphql`
             ambiti
             anno
             visitabile
+            cliente
           }
         }
       }
