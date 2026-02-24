@@ -130,7 +130,7 @@ const ChiSiamoPage = ({ data }) => {
   }
 
   return (
-    <div className="w-full mx-auto p-4 sm:p-8 sm:py-20 flex flex-col gap-8 sm:gap-20">
+    <div className="w-full mx-auto p-4 sm:p-8 sm:py-12 flex flex-col gap-8 sm:gap-20">
       {/* Intro Section */}
       {testoIntroduttivo && (
         <div className="[&_p]:pb-4 text-xl lg:text-2xl xl:text-4xl pt-20 xl:tracking-[-0.01em]">

@@ -13,7 +13,7 @@ const NavLogoLink = styled(Link)`
 const NavLogo = () => {
   return (
     <NavLogoLink to="/" style={{ display: "flex", alignItems: "center" }}>
-      <div className="logo_link">
+      <div className="logo_link whitespace-nowrap">
         Saglietti. Branding + Digital
         {/* <AnimatedLogo /> */}
       </div>

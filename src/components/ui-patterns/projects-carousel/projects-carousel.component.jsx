@@ -45,7 +45,7 @@ const ProjectsCarousel = () => {
     )
 
   return (
-    <div className="w-full h-full overflow-hidden relative">
+    <div className="w-full h-full overflow-hidden relative border-y">
       <div className="flex h-full animate-marquee-slow will-change-transform">
         {featuredProjects?.map(project => (
           <div

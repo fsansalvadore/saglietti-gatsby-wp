@@ -116,11 +116,11 @@ const ProjectsList = ({ data, limit = 200, showVisitableOnly, hideTitle }) => {
 
   useEffect(() => {
     if (typeof window === `undefined` || projects.length === 0) return
-    
+
     const timer = setTimeout(() => {
       projectHover()
     }, 100)
-    
+
     return () => clearTimeout(timer)
   }, [projects])
 
@@ -150,10 +150,7 @@ const ProjectsList = ({ data, limit = 200, showVisitableOnly, hideTitle }) => {
   }, [])
 
   return (
-    <div
-      className="w-full mx-auto p-0 text-left relative z-0 border-b border-black"
-      ref={listRef}
-    >
+    <div className="w-full mx-auto p-0 text-left relative z-0" ref={listRef}>
       {!hideTitle && (
         <div className="pt-[150px] px-4 sm:px-8 lg:pl-8">
           <h1 className="projects-title text-base tracking-normal inline-block m-0 mb-16 opacity-0">
@@ -228,7 +225,7 @@ const ProjectsList = ({ data, limit = 200, showVisitableOnly, hideTitle }) => {
                     })}
                 </div>
                 <div className="col-span-2 lg:col-span-4 xl:col-span-3 flex items-stretch">
-                  <div className="flex-shrink-0 border-l lg:border-r border-black h-full !min-w-[45px] text-left py-5 px-5">
+                  <div className="flex-shrink-0 border-l lg:border-r border-black h-full !min-w-[45px] lg:!min-w-[100px] text-center lg:text-center py-5 px-4">
                     {proj.custom_post_type_Project.anno}
                   </div>
                   <div className="hidden lg:block flex-grow border-black h-full text-left py-5 px-5 truncate">

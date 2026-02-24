@@ -47,7 +47,7 @@ const IndexPage = ({ data }) => {
       <HeaderContainer />
       <MarqueeSlidingText
         text={displayPage?.homepageacf?.firstmarqueetextv2 || ""}
-        className="mt-2"
+        className="mt-2 mb-6"
       />
       <ProjectsList
         data={{
@@ -63,7 +63,7 @@ const IndexPage = ({ data }) => {
       />
       <MarqueeSlidingText
         text={displayPage?.homepageacf?.lastmarqueetext || ""}
-        className="my-28 border-y !text-3xl py-6"
+        className="border-b !text-3xl py-6"
         repeat={3}
         speed={50}
       />

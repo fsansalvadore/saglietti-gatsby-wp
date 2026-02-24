@@ -126,14 +126,14 @@ const Nav = ({ initialTransparent = false }) => {
   return (
     <>
       <nav className="fixed z-[998] px-4 top-0 flex justify-center w-full h-[100px] items-center">
-        <div className="relative w-full mx-auto flex items-center justify-center">
+        <div className="relative w-full mx-auto flex items-center  justify-between md:justify-center">
           <div
             className={cn(
               navClassName,
-              "absolute transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]",
+              "relative md:absolute transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]",
               hasScrolled
                 ? "left-0 translate-x-0"
-                : "left-1/2 -translate-x-[calc(100%+0.5rem)]",
+                : "md:left-1/2 md:-translate-x-[calc(100%+0.5rem)]",
             )}
             style={{
               willChange: "transform",
@@ -144,10 +144,10 @@ const Nav = ({ initialTransparent = false }) => {
           <div
             className={cn(
               navClassName,
-              "absolute transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]",
+              "relative md:absolute transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]",
               hasScrolled
                 ? "right-0 translate-x-0"
-                : "right-1/2 translate-x-full",
+                : "md:right-1/2 md:translate-x-full",
             )}
             style={{
               willChange: "transform",

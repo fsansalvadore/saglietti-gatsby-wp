@@ -32,13 +32,13 @@ const Footer = ({ isInverted }) => {
   const { t } = useTranslation()
   const { language } = useLanguage()
   const privacyPath = language === "en" ? "/en/privacy" : "/privacy"
-  
+
   return (
     <FooterComponent
       isInverted={isInverted}
-      className="w-full flex flex-col gap-28 pb-28"
+      className="w-full flex flex-col gap-8 pt-12 pb-28"
     >
-      <div className="flex flex-col font-medium md:flex-row gap-8 w-full [&_p]:!leading-6 [&_a]:!leading-6">
+      <div className="flex flex-col font-medium md:flex-row gap-4 lg:gap-0 justify-between w-full [&_p]:!leading-6 [&_a]:!leading-6">
         <div className="flex flex-col gap-2 flex-1 text-center">
           <a href="mailto:info@saglietti.it" className="underline">
             info@saglietti.it
