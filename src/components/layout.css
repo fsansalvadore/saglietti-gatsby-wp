@@ -12,6 +12,12 @@
 :root {
   --line-color: rgba(0, 0, 0, 1);
   --ease-1: cubic-bezier(0.6, 0.01, -0.05, 0.9);
+
+  /* Marquee section height (py-8 + text-5xl + mt-2 + mb-6 ≈ 10rem) */
+  --marquee-section-height: 10rem;
+  /* Header fills remaining viewport: 100dvh - marquee, min 300px */
+  --header-height-mobile: max(300px, calc(100dvh - var(--marquee-section-height)));
+  --header-height-desktop: max(300px, calc(100dvh - var(--marquee-section-height)));
 }
 
 * {

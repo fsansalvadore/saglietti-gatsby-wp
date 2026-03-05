@@ -44,11 +44,13 @@ const IndexPageEN = ({ data }) => {
       <Helmet>
         <title>Saglietti • Branding — Digital • Home Page</title>
       </Helmet>
-      <HeaderContainer />
-      <MarqueeSlidingText
-        text={displayPage?.homepageacf?.firstmarqueetextv2 || ""}
-        className="mt-2 mb-6"
-      />
+      <div className="min-h-[100dvh] flex flex-col">
+        <HeaderContainer className="flex-1" />
+        <MarqueeSlidingText
+          text={displayPage?.homepageacf?.firstmarqueetextv2 || ""}
+          className="mt-2 mb-6 flex-shrink-0"
+        />
+      </div>
       <ProjectsList
         data={{
           ...data,
