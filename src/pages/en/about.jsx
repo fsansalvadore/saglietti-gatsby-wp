@@ -6,6 +6,7 @@ import Layout from "../../components/layout"
 import "../../components/common/styles/global.styles.scss"
 import ChiSiamoPage from "../../components/common/templates/chi-siamo"
 import { useLanguage } from "../../contexts/LanguageContext"
+import { useServicesByCategory } from "../../hooks/useServicesByCategory"
 
 const AboutEN = ({ data }) => {
   const { setLanguage } = useLanguage()
@@ -16,13 +17,17 @@ const AboutEN = ({ data }) => {
   }, [setLanguage])
 
   const displayPage = data.wordpress.pageEN
+  const services = useServicesByCategory(data.wordpress.services?.nodes, "EN")
 
   return (
     <Layout key="en">
       <Helmet>
         <title>About us • Saglietti</title>
       </Helmet>
-      <ChiSiamoPage data={{ wordpress: { page: displayPage } }} />
+      <ChiSiamoPage
+        data={{ wordpress: { page: displayPage } }}
+        services={services}
+      />
     </Layout>
   )
 }
@@ -30,6 +35,25 @@ const AboutEN = ({ data }) => {
 export const query = graphql`
   query AboutQueryEN {
     wordpress {
+      services(first: 200, where: { status: PUBLISH }) {
+        nodes {
+          categories {
+            nodes {
+              name
+            }
+          }
+          title
+          date
+          language {
+            code
+          }
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
+        }
+      }
       pageEN: page(id: "cG9zdDoxNzE5") {
         slug
         chisiamoacf {

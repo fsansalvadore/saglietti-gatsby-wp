@@ -7,7 +7,7 @@ import {
   AccordionContent,
 } from "../../ui/Accordion"
 
-const ChiSiamoPage = ({ data }) => {
+const ChiSiamoPage = ({ data, services }) => {
   const pageData = data?.wordpress?.page?.chisiamoacf
 
   if (!pageData) {
@@ -95,7 +95,7 @@ const ChiSiamoPage = ({ data }) => {
           return (
             <Accordion type="single" collapsible key={accordionId}>
               <AccordionItem value={accordionId}>
-                <AccordionTrigger className="text-md xl:text-xl">
+                <AccordionTrigger className="text-sm xl:!text-sm">
                   {summaryText}
                 </AccordionTrigger>
                 <AccordionContent>
@@ -130,21 +130,18 @@ const ChiSiamoPage = ({ data }) => {
   }
 
   return (
-    <div className="w-full mx-auto p-4 sm:p-8 sm:py-12 flex flex-col gap-8 sm:gap-20">
+    <div className="w-full mx-auto p-4 sm:p-8 sm:py-12 flex flex-col gap-8 sm:gap-20 text-md xl:text-xl [&_h3]:text-sm [&_summary]:text-sm">
       {/* Intro Section */}
       {testoIntroduttivo && (
-        <div className="[&_p]:pb-4 text-xl lg:text-2xl xl:text-4xl pt-20 xl:tracking-[-0.01em]">
+        <div className="[&_p]:pb-4 text-xl lg:text-2xl pt-28 xl:tracking-[-0.01em] max-w-4xl">
           {parseWithAccordion(testoIntroduttivo)}
         </div>
       )}
 
-      {/* Staff/Contacts Section */}
-      <div className="grid sm:grid-cols-2 gap-4 text-md xl:text-xl">
+      {/* Staff Section */}
+      <div className="grid sm:grid-cols-2 gap-4 border-t border-black pt-20">
         {colonnaSinistra && (
           <div className="">{parseWithAccordion(colonnaSinistra)}</div>
-        )}
-        {colonnaDestra && (
-          <div className="">{parseWithAccordion(colonnaDestra)}</div>
         )}
       </div>
 
@@ -169,12 +166,45 @@ const ChiSiamoPage = ({ data }) => {
       )}
 
       {/* Services/Clients Section */}
-      <div className="grid sm:grid-cols-2 gap-4 text-md xl:text-xl">
+      <div className="grid sm:grid-cols-2 gap-4 border-t border-black pt-20">
         {colonnaFinaleSinistra && (
           <div>{parseWithAccordion(colonnaFinaleSinistra)}</div>
         )}
+        <div />
+        <div className="col-span-full flex flex-col gap-8 md:gap-12 pt-8">
+          {services?.map(({ name, services }) => (
+            <div key={name} className="flex flex-col gap-2">
+              <h3>{name}</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {services?.map(service => (
+                  <div key={service.title} className="flex flex-col gap-2">
+                    <div
+                      className="w-full aspect-video bg-gray-200 bg-cover bg-center"
+                      style={{
+                        backgroundImage: `url(${service.featuredImage?.node?.sourceUrl})`,
+                      }}
+                    >
+                      {service.description}
+                    </div>
+                    <h4 className="text-xs">{service.title}</h4>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="grid sm:grid-cols-2 gap-4 border-t border-black pt-20">
         {colonnaFinaleDestra && (
           <div>{parseWithAccordion(colonnaFinaleDestra)}</div>
+        )}
+      </div>
+
+      {/* Contacts Section */}
+      <div className="grid sm:grid-cols-2 gap-4 border-t border-black pt-20">
+        {colonnaDestra && (
+          <div className="">{parseWithAccordion(colonnaDestra)}</div>
         )}
       </div>
     </div>

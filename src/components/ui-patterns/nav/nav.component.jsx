@@ -120,7 +120,7 @@ const Nav = ({ initialTransparent = false }) => {
 
   const navClassName = cn(
     "flex items-center gap-2 lg:gap-4 py-2 px-4 rounded-full",
-    "bg-white/90 backdrop-blur-lg border shadow-sm border-gray-100",
+    "bg-white/80 backdrop-blur-lg border shadow-sm border-gray-100",
   )
 
   return (
@@ -130,7 +130,7 @@ const Nav = ({ initialTransparent = false }) => {
           <div
             className={cn(
               navClassName,
-              "relative md:absolute transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]",
+              "relative h-10 md:absolute transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]",
               hasScrolled
                 ? "left-0 translate-x-0"
                 : "md:left-1/2 md:-translate-x-[calc(100%+0.5rem)]",
@@ -144,7 +144,7 @@ const Nav = ({ initialTransparent = false }) => {
           <div
             className={cn(
               navClassName,
-              "relative md:absolute transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]",
+              "relative h-10 pr-2 md:absolute transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]",
               hasScrolled
                 ? "right-0 translate-x-0"
                 : "md:right-1/2 md:translate-x-full",
