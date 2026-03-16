@@ -10,6 +10,9 @@ const ProjectsCarousel = () => {
             id
             title
             slug
+            language {
+              slug
+            }
             featuredImage {
               node {
                 link
@@ -29,6 +32,7 @@ const ProjectsCarousel = () => {
   const featuredProjects = data.wordpress.projects.nodes
     .filter(
       p =>
+        (p.language?.slug || "it") === "it" &&
         !!p.custom_post_type_Project.posizioneCarosello &&
         p.custom_post_type_Project.posizioneCarosello !== 0,
     )
@@ -46,7 +50,7 @@ const ProjectsCarousel = () => {
 
   return (
     <div className="w-full flex-1 min-h-0 overflow-hidden relative border-b">
-      <div className="flex h-full animate-marquee-slow will-change-transform">
+      <div className="flex h-full animate-marquee-header will-change-transform">
         {featuredProjects?.map(project => (
           <div
             key={`${project.id}-1`}

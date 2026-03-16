@@ -48,7 +48,7 @@ const IndexPageEN = ({ data }) => {
         <HeaderContainer className="flex-1" />
         <MarqueeSlidingText
           text={displayPage?.homepageacf?.firstmarqueetextv2 || ""}
-          className="mt-2 mb-6 flex-shrink-0"
+          className="!pt-0 !pb-1 !h-[var(--marquee-section-height)] !text-2xl !leading-2 flex-shrink-0"
         />
       </div>
       <ProjectsList
