@@ -37,110 +37,110 @@ const coreBlocksFields = `
   originalContent
 `
 
-const carouselBlocks = `
-... on WORDPRESS_EedeeBlockGutensliderBlock {
-    name
-    dynamicContent
-    saveContent
-    innerBlocks {
-      ... on WORDPRESS_EedeeBlockGutenslideBlock {
-        dynamicContent
-        originalContent
-        name
-        attributes {
-          ... on WORDPRESS_EedeeBlockGutenslideBlockAttributes {
-            mediaId
-            mediaUrl
-            linkUrl
-            mediaAlt
-            background
-            dimRatio
-            className
-            initialized
-            isEditable
-            mediaType
-            overlayColor
-            rgbaBackground
-            verticalAlign
-          }
-        }
-      }
-    }
-  }
-`
+// const carouselBlocks = `
+// ... on WORDPRESS_EedeeBlockGutensliderBlock {
+//     name
+//     dynamicContent
+//     saveContent
+//     innerBlocks {
+//       ... on WORDPRESS_EedeeBlockGutenslideBlock {
+//         dynamicContent
+//         originalContent
+//         name
+//         attributes {
+//           ... on WORDPRESS_EedeeBlockGutenslideBlockAttributes {
+//             mediaId
+//             mediaUrl
+//             linkUrl
+//             mediaAlt
+//             background
+//             dimRatio
+//             className
+//             initialized
+//             isEditable
+//             mediaType
+//             overlayColor
+//             rgbaBackground
+//             verticalAlign
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
 
-const imageBlocks = `
-  ... on WORDPRESS_CoreImageBlock {
-    ${coreBlocksFields}
-    attributes {
-      ... on WORDPRESS_CoreImageBlockAttributes {
-        alt
-        caption
-        className
-        url
-      }
-    }
-  }
-`
+// const imageBlocks = `
+//   ... on WORDPRESS_CoreImageBlock {
+//     ${coreBlocksFields}
+//     attributes {
+//       ... on WORDPRESS_CoreImageBlockAttributes {
+//         alt
+//         caption
+//         className
+//         url
+//       }
+//     }
+//   }
+// `
 
-const videoBlocks = `
-  ... on WORDPRESS_CoreVideoBlock {
-    ${coreBlocksFields}
-    attributes {
-      __typename
-      ... on WORDPRESS_CoreVideoBlockAttributes {
-        id
-        src
-        caption
-        align
-        poster
-        playsInline
-        muted
-        loop
-        controls
-        className
-        autoplay
-      }
-      ... on WORDPRESS_CoreVideoBlockDeprecatedV1Attributes {
-        id
-        src
-        caption
-        align
-        poster
-        playsInline
-        muted
-        loop
-        controls
-        className
-        autoplay
-      }
-    }
-  }
-`
+// const videoBlocks = `
+//   ... on WORDPRESS_CoreVideoBlock {
+//     ${coreBlocksFields}
+//     attributes {
+//       __typename
+//       ... on WORDPRESS_CoreVideoBlockAttributes {
+//         id
+//         src
+//         caption
+//         align
+//         poster
+//         playsInline
+//         muted
+//         loop
+//         controls
+//         className
+//         autoplay
+//       }
+//       ... on WORDPRESS_CoreVideoBlockDeprecatedV1Attributes {
+//         id
+//         src
+//         caption
+//         align
+//         poster
+//         playsInline
+//         muted
+//         loop
+//         controls
+//         className
+//         autoplay
+//       }
+//     }
+//   }
+// `
 
-const galleryBlocks = `
-  ... on WORDPRESS_CoreGalleryBlock {
-    ${coreBlocksFields}
-  }
-`
-const seoFields = `
-  seo {
-    title
-    focuskw
-    metaDesc
-    metaKeywords
-    opengraphDescription
-    opengraphImage {
-      link
-    }
-    opengraphTitle
-    twitterDescription
-    twitterImage {
-      link
-    }
-    twitterTitle
-  }
-`
+// const galleryBlocks = `
+//   ... on WORDPRESS_CoreGalleryBlock {
+//     ${coreBlocksFields}
+//   }
+// `
+// const seoFields = `
+//   seo {
+//     title
+//     focuskw
+//     metaDesc
+//     metaKeywords
+//     opengraphDescription
+//     opengraphImage {
+//       link
+//     }
+//     opengraphTitle
+//     twitterDescription
+//     twitterImage {
+//       link
+//     }
+//     twitterTitle
+//   }
+// `
 
 const query = `
   query PublishedProjects {
@@ -160,16 +160,8 @@ const query = `
               ${mediaFields}
             }
           }
-          ${seoFields}
-          blocks {
-            ${carouselBlocks}
-            ${imageBlocks}
-            ${videoBlocks}
-            ${galleryBlocks}
-          }
           status
           slug
-          uri
           id
           title
           tags {
@@ -178,10 +170,6 @@ const query = `
             }
           }
           ${projectCustomDetails}
-          language {
-            slug
-            name
-          }
         }
       }
     }
@@ -224,13 +212,15 @@ exports.createResolvers = async ({
 }
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
-  const result = await graphql(`
-    ${query}
-  `)
+  const result = await graphql(query)
 
   // Handle errors
   if (result.errors) {
-    reporter.error("There was an error fetching posts", result.errors)
+    reporter.error(
+      "There was an error fetching posts",
+      result.errors,
+      JSON.stringify(result),
+    )
   }
 
   const wordpress = result?.data?.wordpress
@@ -271,9 +261,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
                 : -1,
           )
           .indexOf(project),
-        id: project.id,
-        title: project.title,
-        seo: project.seo,
       },
     })
   })

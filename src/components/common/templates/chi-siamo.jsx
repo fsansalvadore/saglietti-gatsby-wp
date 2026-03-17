@@ -149,18 +149,24 @@ const ChiSiamoPage = ({ data, services }) => {
       {(immagine1?.sourceUrl || immagine2?.sourceUrl) && (
         <div className="grid sm:grid-cols-2 gap-4">
           {immagine1?.sourceUrl && (
-            <img
-              src={immagine1.sourceUrl}
-              alt="Studio Saglietti"
-              className="w-full aspect-[4/3] object-cover"
-            />
+            <div className="group w-full aspect-[4/3] overflow-hidden">
+              <div
+                aria-label="Studio Saglietti"
+                role="img"
+                className="w-full h-full bg-cover bg-center transform transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                style={{ backgroundImage: `url(${immagine1.sourceUrl})` }}
+              />
+            </div>
           )}
           {immagine2?.sourceUrl && (
-            <img
-              src={immagine2.sourceUrl}
-              alt="Studio Saglietti"
-              className="w-full aspect-[4/3] object-cover"
-            />
+            <div className="group w-full aspect-[4/3] overflow-hidden">
+              <div
+                aria-label="Studio Saglietti"
+                role="img"
+                className="w-full h-full bg-cover bg-center transform transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                style={{ backgroundImage: `url(${immagine2.sourceUrl})` }}
+              />
+            </div>
           )}
         </div>
       )}
@@ -202,10 +208,8 @@ const ChiSiamoPage = ({ data, services }) => {
       </div>
 
       {/* Contacts Section */}
-      <div className="grid sm:grid-cols-2 gap-4 border-t border-black pt-20">
-        {colonnaDestra && (
-          <div className="">{parseWithAccordion(colonnaDestra)}</div>
-        )}
+      <div className="grid sm:grid-cols-2 gap-4 border-y border-black py-20">
+        {colonnaDestra && <div>{parseWithAccordion(colonnaDestra)}</div>}
       </div>
     </div>
   )

@@ -95,6 +95,20 @@ export const query = graphql`
               }
             }
           }
+          blocks {
+            ... on WORDPRESS_CoreImageBlock {
+              name
+              originalContent
+              attributes {
+                ... on WORDPRESS_CoreImageBlockAttributes {
+                  alt
+                  caption
+                  className
+                  url
+                }
+              }
+            }
+          }
         }
       }
     }
