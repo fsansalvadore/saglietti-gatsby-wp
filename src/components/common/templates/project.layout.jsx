@@ -7,7 +7,8 @@ import Project from "./project"
 import { useLanguage } from "../../../contexts/LanguageContext"
 
 const ProjectLayout = props => {
-  const { slug, title, featuredImage, seo, tags, projectLanguage } = props.pageContext
+  const { slug, title, featuredImage, seo, tags, projectLanguage } =
+    props.pageContext
   const { setLanguage } = useLanguage()
 
   // Set language based on the project's language
@@ -18,8 +19,9 @@ const ProjectLayout = props => {
   }, [projectLanguage, setLanguage])
 
   // Use project language for locale
-  const locale = projectLanguage === "it" ? "it_IT" : "en_US"
-  const basePath = projectLanguage === "en" ? "/en/projects" : "/progetti"
+  const isIta = projectLanguage === "it"
+  const locale = isIta ? "it_IT" : "en_US"
+  const basePath = !isIta ? "/en/projects" : "/progetti"
 
   const projectUrl = `https://www.saglietti.it${basePath}/${slug}`
 
@@ -27,7 +29,7 @@ const ProjectLayout = props => {
     <Layout className="border-b" hasFooter={false} key={projectLanguage}>
       <Helmet>
         <title>{title} • Saglietti</title>
-        <meta name="description" content={seo.metaDesc} />
+        <meta name="description" content={seo?.metaDesc || ""} />
         <meta
           name="keywords"
           content={
@@ -48,12 +50,12 @@ const ProjectLayout = props => {
           property="og:image"
           content={featuredImage ? featuredImage.node.link : fallbackImg}
         />
-        <meta property="og:description" content={seo.metaDesc} />
+        <meta property="og:description" content={seo?.metaDesc || ""} />
         <meta property="og:locale" content={locale} />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content={projectUrl} />
         <meta name="twitter:title" content={`${title} • Saglietti`} />
-        <meta name="twitter:description" content={seo.metaDesc} />
+        <meta name="twitter:description" content={seo?.metaDesc || ""} />
         <meta
           name="twitter:image"
           content={featuredImage ? featuredImage.node.link : fallbackImg}

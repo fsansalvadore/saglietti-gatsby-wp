@@ -32,36 +32,43 @@ const projectCustomDetails = `
     posizioneCarosello
   }
 `
-
 const coreBlocksFields = `
   name
   originalContent
 `
-const paragraphBlocks = `
-  ... on WORDPRESS_CoreParagraphBlock {
-    ${coreBlocksFields}
+
+const carouselBlocks = `
+... on WORDPRESS_EedeeBlockGutensliderBlock {
+    name
+    dynamicContent
+    saveContent
+    innerBlocks {
+      ... on WORDPRESS_EedeeBlockGutenslideBlock {
+        dynamicContent
+        originalContent
+        name
+        attributes {
+          ... on WORDPRESS_EedeeBlockGutenslideBlockAttributes {
+            mediaId
+            mediaUrl
+            linkUrl
+            mediaAlt
+            background
+            dimRatio
+            className
+            initialized
+            isEditable
+            mediaType
+            overlayColor
+            rgbaBackground
+            verticalAlign
+          }
+        }
+      }
+    }
   }
 `
-// const mediaTextBlocks = `
-//   ... on WORDPRESS_CoreMediaTextBlock {
-//     ${coreBlocksFields}
-//   }
-// `
-const headingBlocks = `
-... on WORDPRESS_CoreHeadingBlock {
-    ${coreBlocksFields}
-  }
-`
-const freeformBlocks = `
-... on WORDPRESS_CoreFreeformBlock {
-    ${coreBlocksFields}
-  }
-`
-const spacerBlocks = `
-... on WORDPRESS_CoreSpacerBlock {
-    ${coreBlocksFields}
-  }
-`
+
 const imageBlocks = `
   ... on WORDPRESS_CoreImageBlock {
     ${coreBlocksFields}
@@ -116,38 +123,6 @@ const galleryBlocks = `
     ${coreBlocksFields}
   }
 `
-// const carouselBlocks = `
-// ... on WORDPRESS_EedeeBlockGutensliderBlock {
-//     name
-//     dynamicContent
-//     saveContent
-//     innerBlocks {
-//       ... on WORDPRESS_EedeeBlockGutenslideBlock {
-//         dynamicContent
-//         originalContent
-//         name
-//         attributes {
-//           ... on WORDPRESS_EedeeBlockGutenslideBlockAttributes {
-//             mediaId
-//             mediaUrl
-//             linkUrl
-//             mediaAlt
-//             background
-//             dimRatio
-//             className
-//             initialized
-//             isEditable
-//             mediaType
-//             overlayColor
-//             rgbaBackground
-//             verticalAlign
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
-
 const seoFields = `
   seo {
     title
@@ -187,10 +162,7 @@ const query = `
           }
           ${seoFields}
           blocks {
-            ${paragraphBlocks}
-            ${headingBlocks}
-            ${freeformBlocks}
-            ${spacerBlocks}
+            ${carouselBlocks}
             ${imageBlocks}
             ${videoBlocks}
             ${galleryBlocks}
@@ -265,7 +237,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   wordpress?.projects?.nodes?.forEach(project => {
     const projectLanguage = project.language?.slug || "it"
-    
     // Determine the path based on language
     // Italian: /progetti/{slug}
     // English: /en/projects/{slug}
@@ -300,7 +271,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
                 : -1,
           )
           .indexOf(project),
-        blocks: project.blocks,
         id: project.id,
         title: project.title,
         seo: project.seo,

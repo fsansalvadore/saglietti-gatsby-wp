@@ -42,7 +42,7 @@ const ProjectsEN = ({ data }) => {
 export const query = graphql`
   query ProjectsPageQueryEN {
     wordpress {
-      projects(first: 400, where: { status: PUBLISH }) {
+      projects(first: 100, where: { status: PUBLISH, language: EN }) {
         nodes {
           id
           title

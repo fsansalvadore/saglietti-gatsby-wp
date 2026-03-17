@@ -39,7 +39,7 @@ const ChiSiamo = ({ data }) => {
 export const query = graphql`
   query ChiSiamoQuery {
     wordpress {
-      services(first: 200, where: { status: PUBLISH }) {
+      services(first: 50, where: { status: PUBLISH }) {
         nodes {
           categories {
             nodes {
