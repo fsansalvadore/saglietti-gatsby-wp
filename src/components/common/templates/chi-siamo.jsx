@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import parse from "html-react-parser"
 import {
   Accordion,
@@ -6,6 +6,41 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "../../ui/Accordion"
+
+const ServiceMedia = ({ service }) => {
+  const [videoFailed, setVideoFailed] = useState(false)
+
+  const coverImage =
+    service?.servizi_acf?.media?.sourceUrl ||
+    service?.featuredImage?.node?.sourceUrl
+  const hoverVideo = service?.servizi_acf?.mediaHover?.mediaItemUrl
+  const showVideo = Boolean(hoverVideo) && !videoFailed
+
+  return (
+    <div className="group/media relative w-full aspect-video bg-gray-200 overflow-hidden">
+      {coverImage && (
+        <img
+          src={coverImage}
+          alt={service?.title || "Service cover"}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      )}
+      {showVideo && (
+        <video
+          className="opacity-0 group-hover/media:opacity-100 transition-opacity absolute inset-0 w-full h-full object-cover"
+          src={hoverVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          loading="lazy"
+          preload="metadata"
+          onError={() => setVideoFailed(true)}
+        />
+      )}
+    </div>
+  )
+}
 
 const ChiSiamoPage = ({ data, services }) => {
   const pageData = data?.wordpress?.page?.chisiamoacf
@@ -48,18 +83,18 @@ const ChiSiamoPage = ({ data, services }) => {
       .replace(/<\/summary>\s*<br\s*\/?>/gi, "</summary>")
 
     // Step 3: Parse with accordion replacement
-    let accordionCounter = 0
+    const accordionCounter = { value: 0 }
 
     return parse(processedHtml, {
       replace: domNode => {
         // Handle <details> element
         if (domNode.name === "details") {
-          accordionCounter++
-          const accordionId = `accordion-${accordionCounter}`
+          accordionCounter.value++
+          const accordionId = `accordion-${accordionCounter.value}`
 
           // Collect content inside details
           let summaryText = ""
-          let contentNodes = []
+          const contentNodes = []
           let insideSummary = false
 
           domNode.children?.forEach(child => {
@@ -184,14 +219,7 @@ const ChiSiamoPage = ({ data, services }) => {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {services?.map(service => (
                   <div key={service.title} className="flex flex-col gap-2">
-                    <div
-                      className="w-full aspect-video bg-gray-200 bg-cover bg-center"
-                      style={{
-                        backgroundImage: `url(${service.featuredImage?.node?.sourceUrl})`,
-                      }}
-                    >
-                      {service.description}
-                    </div>
+                    <ServiceMedia service={service} />
                     <h4 className="text-xs">{service.title}</h4>
                   </div>
                 ))}

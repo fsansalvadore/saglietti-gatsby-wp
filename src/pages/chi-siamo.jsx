@@ -19,6 +19,8 @@ const ChiSiamo = ({ data }) => {
   const displayPage = data.wordpress.pageIT
   const services = useServicesByCategory(data.wordpress.services?.nodes, "IT")
 
+  console.log("services", services)
+
   return (
     <Layout key="it">
       <Helmet>
@@ -50,6 +52,14 @@ export const query = graphql`
           date
           language {
             code
+          }
+          servizi_acf {
+            media {
+              sourceUrl
+            }
+            mediaHover {
+              mediaItemUrl
+            }
           }
           featuredImage {
             node {
