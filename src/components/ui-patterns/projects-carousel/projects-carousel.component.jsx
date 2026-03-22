@@ -48,6 +48,8 @@ const ProjectsCarousel = () => {
           : -1,
     )
 
+  console.log("featuredProjects", featuredProjects)
+
   return (
     <div className="w-full flex-1 min-h-0 overflow-hidden relative border-b">
       <div className="flex h-full animate-marquee-header will-change-transform">

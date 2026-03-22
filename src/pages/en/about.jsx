@@ -47,6 +47,14 @@ export const query = graphql`
           language {
             code
           }
+          servizi_acf {
+            media {
+              sourceUrl
+            }
+            mediaHover {
+              mediaItemUrl
+            }
+          }
           featuredImage {
             node {
               sourceUrl

@@ -170,6 +170,53 @@ const query = `
             }
           }
           ${projectCustomDetails}
+          blocks {
+          ... on WORDPRESS_CoreImageBlock {
+              name
+              originalContent
+              attributes {
+                ... on WORDPRESS_CoreImageBlockAttributes {
+                  alt
+                  caption
+                  className
+                  url
+                }
+              }
+            }
+            ... on WORDPRESS_CoreVideoBlock {
+              name
+              originalContent
+              attributes {
+                __typename
+                ... on WORDPRESS_CoreVideoBlockAttributes {
+                  id
+                  src
+                  caption
+                  align
+                  poster
+                  playsInline
+                  muted
+                  loop
+                  controls
+                  className
+                  autoplay
+                }
+                ... on WORDPRESS_CoreVideoBlockDeprecatedV1Attributes {
+                  id
+                  src
+                  caption
+                  align
+                  poster
+                  playsInline
+                  muted
+                  loop
+                  controls
+                  className
+                  autoplay
+                }
+              }
+            }
+          }
         }
       }
     }
