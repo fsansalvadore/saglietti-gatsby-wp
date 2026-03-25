@@ -164,6 +164,9 @@ const query = `
           slug
           id
           title
+          language {
+            slug
+          }
           tags {
             nodes {
               name
