@@ -48,11 +48,10 @@ const ProjectsCarousel = () => {
           : -1,
     )
 
-  console.log("featuredProjects", featuredProjects)
-
   return (
     <div className="w-full flex-1 min-h-0 overflow-hidden relative border-b">
-      <div className="flex h-full animate-marquee-header will-change-transform">
+      {/* w-max: translateX(-50%) must be relative to the full track width (both copies), not the viewport */}
+      <div className="flex h-full w-max flex-nowrap animate-marquee-header will-change-transform">
         {featuredProjects?.map(project => (
           <div
             key={`${project.id}-1`}
