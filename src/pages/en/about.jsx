@@ -72,10 +72,20 @@ export const query = graphql`
           fieldGroupName
           testoIntroduttivo
           immagine1 {
-            sourceUrl
+            img {
+              sourceUrl
+            }
+            imgHover {
+              mediaItemUrl
+            }
           }
           immagine2 {
-            sourceUrl
+            img {
+              sourceUrl
+            }
+            imgHover {
+              mediaItemUrl
+            }
           }
         }
       }

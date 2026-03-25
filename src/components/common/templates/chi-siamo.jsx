@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+// biome-ignore lint/correctness/noUnusedImports: React in scope for ESLint react/react-in-jsx-scope
+import React from "react"
 import parse from "html-react-parser"
 import {
   Accordion,
@@ -6,41 +7,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "../../ui/Accordion"
-
-const ServiceMedia = ({ service }) => {
-  const [videoFailed, setVideoFailed] = useState(false)
-
-  const coverImage =
-    service?.servizi_acf?.media?.sourceUrl ||
-    service?.featuredImage?.node?.sourceUrl
-  const hoverVideo = service?.servizi_acf?.mediaHover?.mediaItemUrl
-  const showVideo = Boolean(hoverVideo) && !videoFailed
-
-  return (
-    <div className="group/media relative w-full aspect-video bg-gray-200 overflow-hidden">
-      {coverImage && (
-        <img
-          src={coverImage}
-          alt={service?.title || "Service cover"}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-      )}
-      {showVideo && (
-        <video
-          className="opacity-0 group-hover/media:opacity-100 transition-opacity absolute inset-0 w-full h-full object-cover"
-          src={hoverVideo}
-          autoPlay
-          muted
-          loop
-          playsInline
-          loading="lazy"
-          preload="metadata"
-          onError={() => setVideoFailed(true)}
-        />
-      )}
-    </div>
-  )
-}
+import CoverHoverMedia from "../CoverHoverMedia"
 
 const ChiSiamoPage = ({ data, services }) => {
   const pageData = data?.wordpress?.page?.chisiamoacf
@@ -181,27 +148,27 @@ const ChiSiamoPage = ({ data, services }) => {
       </div>
 
       {/* Images Section */}
-      {(immagine1?.sourceUrl || immagine2?.sourceUrl) && (
+      {(immagine1?.img?.sourceUrl || immagine2?.img?.sourceUrl) && (
         <div className="grid sm:grid-cols-2 gap-4">
-          {immagine1?.sourceUrl && (
-            <div className="group w-full aspect-[4/3] overflow-hidden">
-              <div
-                aria-label="Studio Saglietti"
-                role="img"
-                className="w-full h-full bg-cover bg-center transform transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-                style={{ backgroundImage: `url(${immagine1.sourceUrl})` }}
-              />
-            </div>
+          {immagine1?.img?.sourceUrl && (
+            <CoverHoverMedia
+              className="w-full"
+              baseUrl={immagine1.img.sourceUrl}
+              hoverUrl={immagine1.imgHover?.mediaItemUrl}
+              alt="Studio Saglietti"
+              aspectClass="aspect-[4/3]"
+              hoverScale
+            />
           )}
-          {immagine2?.sourceUrl && (
-            <div className="group w-full aspect-[4/3] overflow-hidden">
-              <div
-                aria-label="Studio Saglietti"
-                role="img"
-                className="w-full h-full bg-cover bg-center transform transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-                style={{ backgroundImage: `url(${immagine2.sourceUrl})` }}
-              />
-            </div>
+          {immagine2?.img?.sourceUrl && (
+            <CoverHoverMedia
+              className="w-full"
+              baseUrl={immagine2.img.sourceUrl}
+              hoverUrl={immagine2.imgHover?.mediaItemUrl}
+              alt="Studio Saglietti"
+              aspectClass="aspect-[4/3]"
+              hoverScale
+            />
           )}
         </div>
       )}
@@ -219,7 +186,21 @@ const ChiSiamoPage = ({ data, services }) => {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {services?.map(service => (
                   <div key={service.title} className="flex flex-col gap-2">
-                    <ServiceMedia service={service} />
+                    <CoverHoverMedia
+                      className="w-full"
+                      baseUrl={
+                        service?.servizi_acf?.media?.sourceUrl ||
+                        service?.featuredImage?.node?.sourceUrl
+                      }
+                      fallbackUrl={
+                        service?.servizi_acf?.media?.sourceUrl
+                          ? service?.featuredImage?.node?.sourceUrl
+                          : undefined
+                      }
+                      hoverUrl={service?.servizi_acf?.mediaHover?.mediaItemUrl}
+                      alt={service.title}
+                      aspectClass="aspect-video"
+                    />
                     <h4 className="text-xs">{service.title}</h4>
                   </div>
                 ))}
