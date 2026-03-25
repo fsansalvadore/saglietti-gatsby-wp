@@ -70,8 +70,7 @@ const Nav = ({ initialTransparent = false }) => {
   const [barDims, setBarDims] = useState({ cw: 0, tw: 0 })
   const [barMotionReady, setBarMotionReady] = useState(false)
 
-  const isDesktop =
-    typeof width === "number" && width >= MD_BREAKPOINT
+  const isDesktop = typeof width === "number" && width >= MD_BREAKPOINT
 
   // Remeasure when language, breakpoint, or menu open state changes pill widths; ResizeObserver alone may not fire.
   // biome-ignore lint/correctness/useExhaustiveDependencies: language, width, isOpen intentionally trigger remeasure
@@ -111,8 +110,7 @@ const Nav = ({ initialTransparent = false }) => {
     }
   }, [isDesktop, language, width, isOpen])
 
-  const canAnimateBar =
-    isDesktop && barDims.cw > 0 && barDims.tw > 0
+  const canAnimateBar = isDesktop && barDims.cw > 0 && barDims.tw > 0
 
   // Snap first frame after dimensions exist (no tween from 0 / garbage). Re-arm when desktop bar becomes animatable again.
   useEffect(() => {
@@ -200,6 +198,63 @@ const Nav = ({ initialTransparent = false }) => {
     ease: [0.4, 0, 0.2, 1],
   }
 
+  const navTrackPills = (
+    <>
+      <div className={cn(navClassName, "relative h-10 shrink-0")}>
+        <NavLogo />
+      </div>
+      <div
+        className={cn(
+          navClassName,
+          "relative h-10 shrink-0 px-2 md:pl-3 md:pr-2",
+        )}
+      >
+        <MenuBtn
+          className="md:!hidden"
+          onClick={() => setIsOpen(!isOpen)}
+          isOpen={isOpen}
+        >
+          <span></span>
+          <span></span>
+        </MenuBtn>
+        <div className="hidden md:flex items-center gap-2 lg:gap-4">
+          <Link
+            to={language === "en" ? "/en/about" : "/chi-siamo"}
+            className="p-1"
+          >
+            {t("nav.about")}
+          </Link>
+          <Link
+            to={language === "en" ? "/en/projects" : "/progetti"}
+            className="p-1"
+          >
+            {t("nav.projects")}
+          </Link>
+          <button
+            type="button"
+            onClick={() => setInfoSheetOpen(!infoSheetOpen)}
+            className="p-1 hover:underline transition-all"
+          >
+            {t("nav.contact")}
+          </button>
+          <button
+            type="button"
+            onClick={handleLanguageToggle}
+            className={cn(
+              "border rounded-full py-0.5 px-1 text-medium flex items-center",
+            )}
+          >
+            {language === "it" && <span className="px-1">IT</span>}
+            <div
+              className={cn("h-5 w-5 rounded-full bg-black", language === "it")}
+            />
+            {language !== "it" && <span className="px-1">EN</span>}
+          </button>
+        </div>
+      </div>
+    </>
+  )
+
   return (
     <>
       <nav className="fixed z-[998] px-4 top-0 flex justify-center w-full h-[100px] items-center">
@@ -207,82 +262,31 @@ const Nav = ({ initialTransparent = false }) => {
           ref={containerRef}
           className="relative mx-auto min-h-10 w-full max-w-full md:min-h-10 md:h-10"
         >
-          <motion.div
-            ref={trackRef}
-            initial={false}
-            className={cn(
-              "flex min-h-10 items-center gap-2 lg:gap-4",
-              "w-full justify-between",
-              "md:absolute md:left-0 md:top-1/2 md:max-w-none",
-            )}
-            animate={
-              isDesktop
-                ? canAnimateBar
+          {isDesktop ? (
+            <motion.div
+              ref={trackRef}
+              initial={false}
+              className={cn(
+                "absolute left-0 top-1/2 flex min-h-10 w-full max-w-none items-center justify-between gap-2 lg:gap-4",
+              )}
+              animate={
+                canAnimateBar
                   ? {
                       y: "-50%",
                       width: hasScrolled ? barDims.cw : barDims.tw,
-                      x: hasScrolled
-                        ? 0
-                        : (barDims.cw - barDims.tw) / 2,
+                      x: hasScrolled ? 0 : (barDims.cw - barDims.tw) / 2,
                     }
                   : { y: "-50%" }
-                : false
-            }
-            transition={
-              barMotionReady ? navBarTransition : { duration: 0 }
-            }
-          >
-            <div className={cn(navClassName, "relative h-10 shrink-0")}>
-              <NavLogo />
+              }
+              transition={barMotionReady ? navBarTransition : { duration: 0 }}
+            >
+              {navTrackPills}
+            </motion.div>
+          ) : (
+            <div className="flex min-h-10 w-full items-center justify-between gap-2 lg:gap-4">
+              {navTrackPills}
             </div>
-            <div className={cn(navClassName, "relative h-10 shrink-0 pr-2")}>
-              <MenuBtn
-                className="md:!hidden"
-                onClick={() => setIsOpen(!isOpen)}
-                isOpen={isOpen}
-              >
-                <span></span>
-                <span></span>
-              </MenuBtn>
-              <div className="hidden md:flex items-center gap-2 lg:gap-4">
-                <Link
-                  to={language === "en" ? "/en/about" : "/chi-siamo"}
-                  className="p-1"
-                >
-                  {t("nav.about")}
-                </Link>
-                <Link
-                  to={language === "en" ? "/en/projects" : "/progetti"}
-                  className="p-1"
-                >
-                  {t("nav.projects")}
-                </Link>
-                <button
-                  type="button"
-                  onClick={() => setInfoSheetOpen(!infoSheetOpen)}
-                  className="p-1 hover:underline transition-all"
-                >
-                  {t("nav.contact")}
-                </button>
-                <button
-                  type="button"
-                  onClick={handleLanguageToggle}
-                  className={cn(
-                    "border rounded-full py-0.5 px-1 text-medium flex items-center",
-                  )}
-                >
-                  {language === "it" && <span className="px-1">IT</span>}
-                  <div
-                    className={cn(
-                      "h-5 w-5 rounded-full bg-black",
-                      language === "it",
-                    )}
-                  />
-                  {language !== "it" && <span className="px-1">EN</span>}
-                </button>
-              </div>
-            </div>
-          </motion.div>
+          )}
         </div>
       </nav>
       <Menu isOpen={isOpen} />
