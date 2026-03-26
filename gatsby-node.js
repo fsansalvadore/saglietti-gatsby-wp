@@ -32,90 +32,11 @@ const projectCustomDetails = `
     posizioneCarosello
   }
 `
-
 const coreBlocksFields = `
   name
   originalContent
 `
-const paragraphBlocks = `
-  ... on WORDPRESS_CoreParagraphBlock {
-    ${coreBlocksFields}
-  }
-`
-// const mediaTextBlocks = `
-//   ... on WORDPRESS_CoreMediaTextBlock {
-//     ${coreBlocksFields}
-//   }
-// `
-const headingBlocks = `
-... on WORDPRESS_CoreHeadingBlock {
-    ${coreBlocksFields}
-  }
-`
-const freeformBlocks = `
-... on WORDPRESS_CoreFreeformBlock {
-    ${coreBlocksFields}
-  }
-`
-const spacerBlocks = `
-... on WORDPRESS_CoreSpacerBlock {
-    ${coreBlocksFields}
-  }
-`
-const imageBlocks = `
-  ... on WORDPRESS_CoreImageBlock {
-    ${coreBlocksFields}
-    attributes {
-      ... on WORDPRESS_CoreImageBlockAttributes {
-        alt
-        caption
-        className
-        url
-      }
-    }
-  }
-`
 
-const videoBlocks = `
-  ... on WORDPRESS_CoreVideoBlock {
-    ${coreBlocksFields}
-    attributes {
-      __typename
-      ... on WORDPRESS_CoreVideoBlockAttributes {
-        id
-        src
-        caption
-        align
-        poster
-        playsInline
-        muted
-        loop
-        controls
-        className
-        autoplay
-      }
-      ... on WORDPRESS_CoreVideoBlockDeprecatedV1Attributes {
-        id
-        src
-        caption
-        align
-        poster
-        playsInline
-        muted
-        loop
-        controls
-        className
-        autoplay
-      }
-    }
-  }
-`
-
-const galleryBlocks = `
-  ... on WORDPRESS_CoreGalleryBlock {
-    ${coreBlocksFields}
-  }
-`
 // const carouselBlocks = `
 // ... on WORDPRESS_EedeeBlockGutensliderBlock {
 //     name
@@ -148,29 +69,83 @@ const galleryBlocks = `
 //   }
 // `
 
-const seoFields = `
-  seo {
-    title
-    focuskw
-    metaDesc
-    metaKeywords
-    opengraphDescription
-    opengraphImage {
-      link
-    }
-    opengraphTitle
-    twitterDescription
-    twitterImage {
-      link
-    }
-    twitterTitle
-  }
-`
+// const imageBlocks = `
+//   ... on WORDPRESS_CoreImageBlock {
+//     ${coreBlocksFields}
+//     attributes {
+//       ... on WORDPRESS_CoreImageBlockAttributes {
+//         alt
+//         caption
+//         className
+//         url
+//       }
+//     }
+//   }
+// `
+
+// const videoBlocks = `
+//   ... on WORDPRESS_CoreVideoBlock {
+//     ${coreBlocksFields}
+//     attributes {
+//       __typename
+//       ... on WORDPRESS_CoreVideoBlockAttributes {
+//         id
+//         src
+//         caption
+//         align
+//         poster
+//         playsInline
+//         muted
+//         loop
+//         controls
+//         className
+//         autoplay
+//       }
+//       ... on WORDPRESS_CoreVideoBlockDeprecatedV1Attributes {
+//         id
+//         src
+//         caption
+//         align
+//         poster
+//         playsInline
+//         muted
+//         loop
+//         controls
+//         className
+//         autoplay
+//       }
+//     }
+//   }
+// `
+
+// const galleryBlocks = `
+//   ... on WORDPRESS_CoreGalleryBlock {
+//     ${coreBlocksFields}
+//   }
+// `
+// const seoFields = `
+//   seo {
+//     title
+//     focuskw
+//     metaDesc
+//     metaKeywords
+//     opengraphDescription
+//     opengraphImage {
+//       link
+//     }
+//     opengraphTitle
+//     twitterDescription
+//     twitterImage {
+//       link
+//     }
+//     twitterTitle
+//   }
+// `
 
 const query = `
   query PublishedProjects {
     wordpress {
-      projects(first: 100, where: { status: PUBLISH }) {
+      projects(first: 200, where: { status: PUBLISH }) {
         nodes {
           categories {
             nodes {
@@ -185,27 +160,66 @@ const query = `
               ${mediaFields}
             }
           }
-          ${seoFields}
-          blocks {
-            ${paragraphBlocks}
-            ${headingBlocks}
-            ${freeformBlocks}
-            ${spacerBlocks}
-            ${imageBlocks}
-            ${videoBlocks}
-            ${galleryBlocks}
-          }
           status
           slug
-          uri
           id
           title
+          language {
+            slug
+          }
           tags {
             nodes {
               name
             }
           }
           ${projectCustomDetails}
+          blocks {
+          ... on WORDPRESS_CoreImageBlock {
+              name
+              originalContent
+              attributes {
+                ... on WORDPRESS_CoreImageBlockAttributes {
+                  alt
+                  caption
+                  className
+                  url
+                }
+              }
+            }
+            ... on WORDPRESS_CoreVideoBlock {
+              name
+              originalContent
+              attributes {
+                __typename
+                ... on WORDPRESS_CoreVideoBlockAttributes {
+                  id
+                  src
+                  caption
+                  align
+                  poster
+                  playsInline
+                  muted
+                  loop
+                  controls
+                  className
+                  autoplay
+                }
+                ... on WORDPRESS_CoreVideoBlockDeprecatedV1Attributes {
+                  id
+                  src
+                  caption
+                  align
+                  poster
+                  playsInline
+                  muted
+                  loop
+                  controls
+                  className
+                  autoplay
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -248,28 +262,46 @@ exports.createResolvers = async ({
 }
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
-  const result = await graphql(`
-    ${query}
-  `)
+  const result = await graphql(query)
 
   // Handle errors
   if (result.errors) {
-    reporter.error("There was an error fetching posts", result.errors)
+    reporter.error(
+      "There was an error fetching posts",
+      result.errors,
+      JSON.stringify(result),
+    )
   }
 
   const wordpress = result?.data?.wordpress
 
   wordpress?.projects?.nodes?.forEach(project => {
+    const projectLanguage = project.language?.slug || "it"
+    // Determine the path based on language
+    // Italian: /progetti/{slug}
+    // English: /en/projects/{slug}
+    const projectPath =
+      projectLanguage === "en"
+        ? `/en/projects/${project.slug}`
+        : `/progetti/${project.slug}`
+
+    // Get projects in the same language for navigation
+    const projectsInLanguage = wordpress?.projects?.nodes?.filter(
+      p =>
+        (p.language?.slug || "it") === projectLanguage &&
+        p.custom_post_type_Project.visitabile === true,
+    )
+
     actions.createPage({
-      path: `/progetti/${project.slug}`,
+      path: projectPath,
       component: path.resolve(
         `./src/components/common/templates/project.layout.jsx`,
       ),
       context: {
         ...project,
-        index: wordpress?.projects?.nodes
-          ?.filter(p => p.custom_post_type_Project.visitabile === true)
-          .sort((a, b) =>
+        projectLanguage: projectLanguage,
+        index: projectsInLanguage
+          ?.sort((a, b) =>
             a.date < b.date
               ? 1
               : a.date === b.date
@@ -279,10 +311,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
                 : -1,
           )
           .indexOf(project),
-        blocks: project.blocks,
-        id: project.id,
-        title: project.title,
-        seo: project.seo,
       },
     })
   })

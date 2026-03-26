@@ -1,0 +1,40 @@
+{
+  "nav": {
+    "about": "chi siamo",
+    "studio": "studio",
+    "projects": "progetti",
+    "contact": "contatti"
+  },
+  "homepage": {
+    "viewAllProjects": "Guarda tutti i progetti"
+  },
+  "projects": {
+    "title": "Progetti",
+    "year": "Anno",
+    "fields": "Ambiti",
+    "credits": "Credits",
+    "description": "Descrizione",
+    "visitSite": "Visita il sito",
+    "searchPlaceholder": "Cerca per titolo, anno o ambito"
+  },
+  "contact": {
+    "email": "Email",
+    "name": "Nome",
+    "message": "Messaggio",
+    "send": "Invia",
+    "sending": "Invio in corso...",
+    "success": "Messaggio inviato 👍",
+    "privacyText": "Ho letto e accettato l'",
+    "privacyLink": "informativa sulla privacy"
+  },
+  "footer": {
+    "newsletter": "Iscriviti alla newsletter",
+    "privacyPolicy": "Privacy Policy",
+    "copyright": "Copyright"
+  },
+  "common": {
+    "loading": "Caricamento...",
+    "error": "Si è verificato un errore",
+    "backToHome": "Torna alla home"
+  }
+}

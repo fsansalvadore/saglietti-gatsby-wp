@@ -3,12 +3,12 @@ import React from "react"
 const SagliettiLogo = props => {
   return (
     <svg
-      width="220"
-      height="41"
+      width="100%"
+      height="100%"
       viewBox="0 0 220 41"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="h-[40px] md:h-[70px] xl:h-[100px] w-auto"
+      className="h-auto w-full px-[3vw]"
       {...props}
     >
       <g clipPath="url(#clip0_43_160)">

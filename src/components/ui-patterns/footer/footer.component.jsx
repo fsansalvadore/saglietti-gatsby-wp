@@ -4,6 +4,8 @@ import { Link } from "gatsby"
 
 import MailchimpForm from "../../MailchimpForm"
 import SagliettiLogo from "../../SagliettiLogo"
+import { useTranslation } from "../../../hooks/useTranslation"
+import { useLanguage } from "../../../contexts/LanguageContext"
 
 const FooterComponent = styled.footer`
   width: 100%;
@@ -27,12 +29,16 @@ const FooterComponent = styled.footer`
 `
 
 const Footer = ({ isInverted }) => {
+  const { t } = useTranslation()
+  const { language } = useLanguage()
+  const privacyPath = language === "en" ? "/en/privacy" : "/privacy"
+
   return (
     <FooterComponent
       isInverted={isInverted}
-      className="w-full flex flex-col gap-28 pb-28"
+      className="w-full flex flex-col gap-8 pt-12 pb-28"
     >
-      <div className="flex flex-col font-medium md:flex-row gap-8 w-full [&_p]:!leading-6 [&_a]:!leading-6">
+      <div className="flex flex-col font-medium md:flex-row gap-4 lg:gap-0 justify-between w-full [&_p]:!leading-6 [&_a]:!leading-6">
         <div className="flex flex-col gap-2 flex-1 text-center">
           <a href="mailto:info@saglietti.it" className="underline">
             info@saglietti.it
@@ -67,9 +73,9 @@ const Footer = ({ isInverted }) => {
         </div>
         <div className="flex flex-col gap-2 flex-1 text-center">
           <p className="m-0 uppercase">
-            Copyright © {new Date().getFullYear()}
+            {t("footer.copyright")} © {new Date().getFullYear()}
           </p>
-          <Link to="/privacy">Privacy Policy</Link>
+          <Link to={privacyPath}>{t("footer.privacyPolicy")}</Link>
         </div>
       </div>
       <SagliettiLogo />

@@ -54,12 +54,15 @@
     "react-helmet": "^6.1.0",
     "react-slick": "^0.29.0",
     "react-use": "^17.5.0",
-    "sass": "^1.77.6",
+    "sass": "1.78.0",
     "scrollmagic": "^2.0.8",
     "scrollmagic-plugin-gsap": "^1.0.4",
     "scrollmagic-with-ssr": "^1.0.2",
     "slick-carousel": "^1.8.1",
     "styled-components": "^6.1.2"
+  },
+  "overrides": {
+    "sass": "1.78.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",

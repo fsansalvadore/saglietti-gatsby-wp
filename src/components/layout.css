@@ -1,16 +1,7 @@
 @import url(https://use.typekit.net/jcw6zqi.css);
 
 @font-face {
-  font-family: "FFMarkWebProLight";
-  src:
-    url("/src/webFonts/FFMarkWebProLight/font.woff2") format("woff2"),
-    url("/src/webFonts/FFMarkWebProLight/font.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "FFMarkWebProMedium";
+  font-family: "FFMarkProMedium";
   src:
     url("/src/webFonts/FFMarkWebProMedium/font.woff2") format("woff2"),
     url("/src/webFonts/FFMarkWebProMedium/font.woff") format("woff");
@@ -21,6 +12,16 @@
 :root {
   --line-color: rgba(0, 0, 0, 1);
   --ease-1: cubic-bezier(0.6, 0.01, -0.05, 0.9);
+
+  --marquee-section-height: 4rem;
+  --header-height-mobile: max(
+    300px,
+    calc(100dvh - var(--marquee-section-height))
+  );
+  --header-height-desktop: max(
+    300px,
+    calc(100dvh - var(--marquee-section-height))
+  );
 }
 
 * {
@@ -32,7 +33,7 @@
 html {
   @apply font-sans;
   background: #fff;
-  font-family: "FFMarkWebProLight", "Inter", "Helvetica Neue", "Helvetica",
+  font-family: "FFMarkProMedium", "Inter", "Helvetica Neue", "Helvetica",
     "Arial", sans-serif;
   overflow: auto !important;
   -ms-text-size-adjust: 100%;
@@ -50,6 +51,8 @@ body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
   background: #fff;
+  font-family: "FFMarkWebProMedium", "Inter", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
 }
 
 main {
@@ -259,9 +262,9 @@ html {
 }
 body {
   color: #000;
-  font-family: "FFMarkWebProLight", "Inter", "Helvetica Neue", "Helvetica",
+  font-family: "FFMarkProMedium", "Inter", "Helvetica Neue", "Helvetica",
     "Arial", sans-serif;
-  font-weight: 400;
+  font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
   -moz-font-feature-settings: "kern", "liga", "clig", "calt";

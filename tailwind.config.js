@@ -8,23 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: [
-          "FFMarkWebProLight",
-          "Inter",
-          "Helvetica Neue",
-          "Helvetica",
-          "Arial",
-          "sans-serif",
-        ],
-        ffMarkLight: [
-          "FFMarkWebProLight",
-          "Inter",
-          "Helvetica Neue",
-          "Helvetica",
-          "Arial",
-          "sans-serif",
-        ],
-        ffMarkMedium: [
-          "FFMarkWebProMedium",
+          "FFMarkProMedium",
           "Inter",
           "Helvetica Neue",
           "Helvetica",
@@ -45,11 +29,17 @@ module.exports = {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-100%)" },
         },
+        // For duplicated tracks: move half the strip width so the loop lines up with the clone.
+        "marquee-seamless": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         marquee: "marquee 25s linear infinite",
+        "marquee-header": "marquee-seamless 120s linear infinite both",
       },
     },
   },

@@ -1,8 +1,10 @@
 import classNames from "classnames"
 import React, { useState } from "react"
+import { useTranslation } from "../hooks/useTranslation"
 
 const MailchimpForm = ({ isInverted }) => {
   const [isFocused, setIsFocused] = useState(false)
+  const { t } = useTranslation()
 
   function handleFocus() {
     setIsFocused(true)
@@ -23,7 +25,7 @@ const MailchimpForm = ({ isInverted }) => {
         name="EMAIL"
         required
         id="mce-EMAIL"
-        placeholder="Iscriviti alla newsletter"
+        placeholder={t("footer.newsletter")}
         className={classNames(
           "placeholder-black text-center !bg-transparent transition-colors focus-visible:!bg-transparent focus-visible:outline-none focus-visible:placeholder-[#00000050] -mt-1 pt-1 pb-2 inline-flex gap-2 items-center justify-between w-full border-b border-transparent",
           !isFocused && "text-black/50",
