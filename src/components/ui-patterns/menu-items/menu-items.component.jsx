@@ -138,11 +138,6 @@ const MenuItems = ({ isOpen }) => {
       <span className={dividerClasses}>
         <hr className="h-0 m-0 border-b-[3px] border-black w-full" />
       </span>
-      <div className={menuLinkClasses}>
-        <Link to="/studio" className={linkClasses}>
-          {t("nav.studio")}
-        </Link>
-      </div>
       <span className={dividerClasses}>
         <hr className="h-0 m-0 border-b-[3px] border-black w-full" />
       </span>
