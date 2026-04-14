@@ -39,6 +39,8 @@ const IndexPage = ({ data }) => {
       project => (project.language?.slug || "it") === "it",
     ) || []
 
+  console.log("data", data)
+
   return (
     <Layout key="it">
       <Helmet>
@@ -103,7 +105,16 @@ export const query = graphql`
       pageIT: page(id: "cG9zdDoxMQ==") {
         title
         homepageacf {
-          caroselloProgetti
+          caroselloProgetti {
+            ... on WORDPRESS_Project {
+              title
+              featuredImage {
+                node {
+                  uri
+                }
+              }
+            }
+          }
           firstmarqueetextv2
           lastmarqueetext
         }
@@ -111,7 +122,16 @@ export const query = graphql`
       pageEN: page(id: "cG9zdDoxNjg5") {
         title
         homepageacf {
-          caroselloProgetti
+          caroselloProgetti {
+            ... on WORDPRESS_Project {
+              title
+              featuredImage {
+                node {
+                  uri
+                }
+              }
+            }
+          }
           firstmarqueetextv2
           lastmarqueetext
         }

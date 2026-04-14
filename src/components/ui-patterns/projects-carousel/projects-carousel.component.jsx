@@ -10,25 +10,21 @@ const ProjectsCarousel = () => {
   const [activeSlide, setActiveSlide] = useState(0)
 
   const data = useStaticQuery(graphql`
-    query CarouselQuery {
+    query ProjectsCarouselHomeQuery {
       wordpress {
-        projects(first: 100, where: { status: PUBLISH }) {
-          nodes {
-            id
-            title
-            slug
-            language {
-              slug
-            }
-            featuredImage {
-              node {
-                link
-                sourceUrl
+        homeCarouselPage: page(id: "cG9zdDoxMQ==") {
+          homepageacf {
+            caroselloProgetti {
+              ... on WORDPRESS_Project {
+                id
+                title
+                featuredImage {
+                  node {
+                    uri
+                    sourceUrl
+                  }
+                }
               }
-            }
-            custom_post_type_Project {
-              visitabile
-              posizioneCarosello
             }
           }
         }
@@ -36,37 +32,34 @@ const ProjectsCarousel = () => {
     }
   `)
 
-  const featuredProjects = data.wordpress.projects.nodes
-    .filter(
-      p =>
-        (p.language?.slug || "it") === "it" &&
-        !!p.custom_post_type_Project.posizioneCarosello &&
-        p.custom_post_type_Project.posizioneCarosello !== 0,
-    )
-    ?.sort((a, b) =>
-      a.custom_post_type_Project.posizioneCarosello <
-      b.custom_post_type_Project.posizioneCarosello
-        ? 1
-        : a.custom_post_type_Project.posizioneCarosello ===
-            b.custom_post_type_Project.posizioneCarosello
-          ? a.title > b.title
-            ? 1
-            : -1
-          : -1,
-    )
+  const rawItems =
+    data?.wordpress?.homeCarouselPage?.homepageacf?.caroselloProgetti
+  const featuredProjects = Array.isArray(rawItems)
+    ? rawItems.filter(
+        p =>
+          p?.id &&
+          (p.featuredImage?.node?.sourceUrl || p.featuredImage?.node?.uri),
+      )
+    : []
 
   const settings = {
     dots: false,
-    autoplay: true,
+    autoplay: featuredProjects.length > 1,
     autoplaySpeed: 2000,
     fade: true,
-    infinite: true,
+    infinite: featuredProjects.length > 1,
     speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
     waitForAnimate: false,
     pauseOnHover: false,
     arrows: false,
+  }
+
+  if (featuredProjects.length === 0) {
+    return (
+      <div className="w-full flex-1 min-h-0 overflow-hidden relative border-b bg-neutral-200" />
+    )
   }
 
   return (
@@ -89,23 +82,28 @@ const ProjectsCarousel = () => {
         className="h-full"
         {...settings}
       >
-        {featuredProjects?.map(project => (
-          <div
-            key={project.id}
-            className="h-full w-full flex items-center justify-center"
-          >
-            {project.featuredImage?.node?.sourceUrl && (
-              <img
-                src={project.featuredImage.node.sourceUrl}
-                alt={project.title}
-                className="h-full w-full object-cover"
-              />
-            )}
-          </div>
-        ))}
+        {featuredProjects.map(project => {
+          const src =
+            project.featuredImage?.node?.sourceUrl ||
+            project.featuredImage?.node?.uri
+          return (
+            <div
+              key={project.id}
+              className="h-full w-full flex items-center justify-center"
+            >
+              {src && (
+                <img
+                  src={src}
+                  alt={project.title || ""}
+                  className="h-full w-full object-cover"
+                />
+              )}
+            </div>
+          )
+        })}
       </Slider>
       <div className="absolute !text-white left-4 bottom-4 md:left-8 md:bottom-8 text-2xl z-20">
-        {activeSlide + 1} — {featuredProjects?.length || 0}
+        {activeSlide + 1} — {featuredProjects.length}
       </div>
     </div>
   )
