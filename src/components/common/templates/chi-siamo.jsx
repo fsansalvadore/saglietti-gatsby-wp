@@ -14,7 +14,7 @@ const InlineHoverImageWord = ({ label, imageSrc, imageAlt }) => {
 
   return (
     <span className="relative inline-block group cursor-default">
-      <span className="underline decoration-black/40 underline-offset-4">
+      <span className="underline decoration-black/40 hover:decoration-black underline-offset-4">
         {label}
       </span>
       {imageSrc ? (
