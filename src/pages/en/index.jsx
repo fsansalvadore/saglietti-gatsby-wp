@@ -103,7 +103,16 @@ export const query = graphql`
       pageEN: page(id: "cG9zdDoxNjg5") {
         title
         homepageacf {
-          caroselloProgetti
+          caroselloProgetti {
+            ... on WORDPRESS_Project {
+              title
+              featuredImage {
+                node {
+                  uri
+                }
+              }
+            }
+          }
           firstmarqueetextv2
           lastmarqueetext
         }

@@ -7,9 +7,17 @@ import Project from "./project"
 import { useLanguage } from "../../../contexts/LanguageContext"
 
 const ProjectLayout = props => {
-  const { slug, title, featuredImage, seo, tags, projectLanguage } =
-    props.pageContext
-  const { setLanguage } = useLanguage()
+  const {
+    slug,
+    title,
+    featuredImage,
+    seo,
+    tags,
+    projectLanguage,
+    translationPathIt,
+    translationPathEn,
+  } = props.pageContext
+  const { setLanguage, setProjectTranslationPaths } = useLanguage()
 
   // Set language based on the project's language
   useEffect(() => {
@@ -17,6 +25,14 @@ const ProjectLayout = props => {
       setLanguage(projectLanguage)
     }
   }, [projectLanguage, setLanguage])
+
+  useEffect(() => {
+    setProjectTranslationPaths({
+      it: translationPathIt ?? null,
+      en: translationPathEn ?? null,
+    })
+    return () => setProjectTranslationPaths(null)
+  }, [translationPathIt, translationPathEn, setProjectTranslationPaths])
 
   // Use project language for locale
   const isIta = projectLanguage === "it"

@@ -9,6 +9,27 @@ import {
 } from "../../ui/Accordion"
 import CoverHoverMedia from "../CoverHoverMedia"
 
+const InlineHoverImageWord = ({ label, imageSrc, imageAlt }) => {
+  if (!label) return null
+
+  return (
+    <span className="relative inline-block group cursor-default">
+      <span className="underline decoration-black/40 hover:decoration-black underline-offset-4">
+        {label}
+      </span>
+      {imageSrc ? (
+        <span className="pointer-events-none absolute bottom-full left-full z-20 mb-2 ml-2 hidden w-40 sm:w-48 rounded-sm border border-black/10 bg-white shadow-xl group-hover:block">
+          <img
+            src={imageSrc}
+            alt={imageAlt || label}
+            className="h-auto w-full object-cover"
+          />
+        </span>
+      ) : null}
+    </span>
+  )
+}
+
 const ChiSiamoPage = ({ data, services }) => {
   const pageData = data?.wordpress?.page?.chisiamoacf
 
@@ -36,6 +57,14 @@ const ChiSiamoPage = ({ data, services }) => {
       .replace(/&lt;\/details&gt;/gi, "</details>")
       .replace(/&lt;summary&gt;/gi, "<summary>")
       .replace(/&lt;\/summary&gt;/gi, "</summary>")
+
+    // Step 1.5: Convert custom inline hover-image syntax into a temporary tag.
+    // Authoring syntax in WordPress: {{hover:Visible Word|https://image.url/file.jpg}}
+    processedHtml = processedHtml.replace(
+      /\{\{hover:([^|}]+)\|([^|}]+)\}\}/gi,
+      (_, word, src) =>
+        `<hoverword data-word="${word.trim()}" data-src="${src.trim()}" data-alt="${word.trim()}"></hoverword>`,
+    )
 
     // Step 2: Remove <p> wrappers around details/summary tags
     // This handles cases where WordPress wraps these tags in <p> elements
@@ -105,6 +134,21 @@ const ChiSiamoPage = ({ data, services }) => {
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
+          )
+        }
+
+        // Handle custom inline hover words
+        if (domNode.name === "hoverword") {
+          const label = domNode.attribs?.["data-word"] || ""
+          const imageSrc = domNode.attribs?.["data-src"] || ""
+          const imageAlt = domNode.attribs?.["data-alt"] || label
+
+          return (
+            <InlineHoverImageWord
+              label={label}
+              imageSrc={imageSrc}
+              imageAlt={imageAlt}
+            />
           )
         }
       },

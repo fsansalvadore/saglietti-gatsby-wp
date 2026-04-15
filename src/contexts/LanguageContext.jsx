@@ -4,6 +4,7 @@ const LanguageContext = createContext()
 
 export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState("it")
+  const [projectTranslationPaths, setProjectTranslationPaths] = useState(null)
 
   // Initialize language from localStorage on mount
   useEffect(() => {
@@ -34,7 +35,13 @@ export const LanguageProvider = ({ children }) => {
 
   return (
     <LanguageContext.Provider
-      value={{ language, toggleLanguage, setLanguage: setSpecificLanguage }}
+      value={{
+        language,
+        toggleLanguage,
+        setLanguage: setSpecificLanguage,
+        projectTranslationPaths,
+        setProjectTranslationPaths,
+      }}
     >
       {children}
     </LanguageContext.Provider>
@@ -51,6 +58,8 @@ export const useLanguage = () => {
       language: "it",
       toggleLanguage: () => {},
       setLanguage: () => {},
+      projectTranslationPaths: null,
+      setProjectTranslationPaths: () => {},
     }
   }
   

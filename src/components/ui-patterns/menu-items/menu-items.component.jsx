@@ -11,6 +11,7 @@ import CustomEase from "../../common/vendor/gsap/CustomEase"
 import { useInfoSheet } from "../InfoSheet/InfoSheetProvider"
 import { useTranslation } from "../../../hooks/useTranslation"
 import { useLanguage } from "../../../contexts/LanguageContext"
+import { getLanguageToggleTargetPath } from "../../../utils/getLanguageToggleTargetPath"
 
 if (typeof window !== `undefined`) {
   gsap.registerPlugin(CSSRulePlugin, CustomEase)
@@ -29,7 +30,7 @@ const dividerClasses =
 const MenuItems = ({ isOpen }) => {
   const { setIsOpen: setInfoSheetOpen } = useInfoSheet()
   const { t } = useTranslation()
-  const { language } = useLanguage()
+  const { language, projectTranslationPaths } = useLanguage()
 
   const handleLanguageToggle = () => {
     if (typeof window === "undefined") return
@@ -38,26 +39,11 @@ const MenuItems = ({ isOpen }) => {
       currentPath = currentPath.slice(0, -1)
     }
     const newLanguage = language === "it" ? "en" : "it"
-    let targetPath = "/"
-    if (newLanguage === "en") {
-      if (currentPath === "/" || currentPath === "") targetPath = "/en"
-      else if (currentPath === "/chi-siamo") targetPath = "/en/about"
-      else if (currentPath.startsWith("/progetti/")) {
-        const slug = currentPath.replace("/progetti/", "")
-        targetPath = `/en/projects/${slug}`
-      } else if (currentPath === "/progetti") targetPath = "/en/projects"
-      else if (currentPath === "/privacy") targetPath = "/en/privacy"
-      else targetPath = "/en"
-    } else {
-      if (currentPath === "/en" || currentPath === "") targetPath = "/"
-      else if (currentPath === "/en/about") targetPath = "/chi-siamo"
-      else if (currentPath.startsWith("/en/projects/")) {
-        const slug = currentPath.replace("/en/projects/", "")
-        targetPath = `/progetti/${slug}`
-      } else if (currentPath === "/en/projects") targetPath = "/progetti"
-      else if (currentPath === "/en/privacy") targetPath = "/privacy"
-      else targetPath = "/"
-    }
+    const targetPath = getLanguageToggleTargetPath({
+      currentPath,
+      newLanguage,
+      projectTranslationPaths,
+    })
     navigate(targetPath)
   }
 
