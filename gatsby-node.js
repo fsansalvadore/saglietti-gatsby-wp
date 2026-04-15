@@ -1,5 +1,6 @@
 const path = require(`path`)
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
+const { publicProjectSlugForUrl } = require(`./src/utils/publicProjectSlug`)
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -20,6 +21,43 @@ const mediaFields = `
   title
   link
 `
+
+function normalizeLang(lang) {
+  return String(lang || "")
+    .toLowerCase()
+    .trim()
+}
+
+/**
+ * Full Gatsby paths for IT / EN versions of a Polylang-linked project.
+ * @param {object} project - GraphQL project node (slug, language, translations)
+ */
+function buildProjectTranslationPaths(project) {
+  const current =
+    normalizeLang(project.language?.slug || project.language?.code) || "it"
+  const list = project.translations || []
+
+  const slugFor = lang => {
+    const l = normalizeLang(lang)
+    if (current === l) return project.slug
+    const match = list.find(t => {
+      const tl = normalizeLang(t.language?.slug || t.language?.code)
+      return tl === l
+    })
+    return match?.slug ?? null
+  }
+
+  const itSlug = slugFor("it")
+  const enSlug = slugFor("en")
+
+  const itPathSlug = itSlug ? publicProjectSlugForUrl(itSlug, "it") : null
+  const enPathSlug = enSlug ? publicProjectSlugForUrl(enSlug, "en") : null
+
+  return {
+    translationPathIt: itPathSlug ? `/progetti/${itPathSlug}` : null,
+    translationPathEn: enPathSlug ? `/en/projects/${enPathSlug}` : null,
+  }
+}
 
 const projectCustomDetails = `
   custom_post_type_Project {
@@ -166,6 +204,14 @@ const query = `
           title
           language {
             slug
+            code
+          }
+          translations {
+            slug
+            language {
+              slug
+              code
+            }
           }
           tags {
             nodes {
@@ -277,13 +323,18 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   wordpress?.projects?.nodes?.forEach(project => {
     const projectLanguage = project.language?.slug || "it"
-    // Determine the path based on language
+    const urlSlug = publicProjectSlugForUrl(project.slug, projectLanguage)
     // Italian: /progetti/{slug}
-    // English: /en/projects/{slug}
+    // English: /en/projects/{slug} (WP slug may be `{base}-eng`; URL uses `base`)
     const projectPath =
       projectLanguage === "en"
-        ? `/en/projects/${project.slug}`
-        : `/progetti/${project.slug}`
+        ? `/en/projects/${urlSlug}`
+        : `/progetti/${urlSlug}`
+
+    const { translationPathIt, translationPathEn } =
+      buildProjectTranslationPaths(project)
+    const projectContext = { ...project, slug: urlSlug }
+    delete projectContext.translations
 
     // Get projects in the same language for navigation
     const projectsInLanguage = wordpress?.projects?.nodes?.filter(
@@ -298,7 +349,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         `./src/components/common/templates/project.layout.jsx`,
       ),
       context: {
-        ...project,
+        ...projectContext,
+        translationPathIt,
+        translationPathEn,
         projectLanguage: projectLanguage,
         index: projectsInLanguage
           ?.sort((a, b) =>

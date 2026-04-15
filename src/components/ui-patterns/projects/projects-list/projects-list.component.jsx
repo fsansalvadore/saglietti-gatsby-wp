@@ -10,6 +10,7 @@ import CustomEase from "../../../common/vendor/gsap/CustomEase"
 import { useTranslation } from "../../../../hooks/useTranslation"
 import { Search } from "lucide-react"
 import projectHover from "../../../common/hooks/projectHover"
+import { publicProjectSlugForUrl } from "../../../../utils/publicProjectSlug"
 
 import "./projects-list.styles.scss"
 
@@ -186,8 +187,8 @@ const ProjectsList = ({ data, limit = 200, showVisitableOnly, hideTitle }) => {
               <Link
                 to={
                   proj.language?.slug === "en"
-                    ? `/en/projects/${proj.slug}`
-                    : `/progetti/${proj.slug}`
+                    ? `/en/projects/${publicProjectSlugForUrl(proj.slug, "en")}`
+                    : `/progetti/${publicProjectSlugForUrl(proj.slug, "it")}`
                 }
                 className={`project-item-content grid grid-cols-12 items-center w-full text-base tracking-normal m-0 leading-tight no-underline opacity-0 transition-opacity duration-200 ${
                   !proj.custom_post_type_Project.visitabile

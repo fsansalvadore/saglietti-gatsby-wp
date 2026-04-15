@@ -59,12 +59,11 @@ const ChiSiamoPage = ({ data, services }) => {
       .replace(/&lt;\/summary&gt;/gi, "</summary>")
 
     // Step 1.5: Convert custom inline hover-image syntax into a temporary tag.
-    // Authoring syntax in WordPress:
-    // {{hover:Visible Word|https://image.url/file.jpg|Optional alt text}}
+    // Authoring syntax in WordPress: {{hover:Visible Word|https://image.url/file.jpg}}
     processedHtml = processedHtml.replace(
-      /\{\{hover:([^|}]+)\|([^|}]+)(?:\|([^}]+))?\}\}/gi,
-      (_, word, src, alt = "") =>
-        `<hoverword data-word="${word.trim()}" data-src="${src.trim()}" data-alt="${alt.trim()}"></hoverword>`,
+      /\{\{hover:([^|}]+)\|([^|}]+)\}\}/gi,
+      (_, word, src) =>
+        `<hoverword data-word="${word.trim()}" data-src="${src.trim()}" data-alt="${word.trim()}"></hoverword>`,
     )
 
     // Step 2: Remove <p> wrappers around details/summary tags

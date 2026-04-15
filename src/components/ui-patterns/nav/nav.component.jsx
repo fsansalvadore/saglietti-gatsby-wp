@@ -10,6 +10,7 @@ import cn from "classnames"
 import { useLockBodyScroll, useWindowSize } from "react-use"
 import { useInfoSheet } from "../InfoSheet/InfoSheetProvider"
 import { useLanguage } from "../../../contexts/LanguageContext"
+import { getLanguageToggleTargetPath } from "../../../utils/getLanguageToggleTargetPath"
 import { useTranslation } from "../../../hooks/useTranslation"
 import useHasScrolled from "../../../hooks/useHasScrolled"
 
@@ -58,7 +59,7 @@ const MenuBtn = styled.a`
 
 const Nav = ({ initialTransparent = false }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const { language } = useLanguage()
+  const { language, projectTranslationPaths } = useLanguage()
   const { t } = useTranslation()
   const { width } = useWindowSize()
   const { setIsOpen: setInfoSheetOpen, isOpen: infoSheetOpen } = useInfoSheet()
@@ -146,43 +147,11 @@ const Nav = ({ initialTransparent = false }) => {
     }
 
     const newLanguage = language === "it" ? "en" : "it"
-    let targetPath = "/"
-
-    if (newLanguage === "en") {
-      // Switching to English
-      if (currentPath === "/" || currentPath === "") {
-        targetPath = "/en"
-      } else if (currentPath === "/chi-siamo") {
-        targetPath = "/en/about"
-      } else if (currentPath.startsWith("/progetti/")) {
-        // Project detail page: /progetti/slug -> /en/projects/slug
-        const slug = currentPath.replace("/progetti/", "")
-        targetPath = `/en/projects/${slug}`
-      } else if (currentPath === "/progetti") {
-        targetPath = "/en/projects"
-      } else if (currentPath === "/privacy") {
-        targetPath = "/en/privacy"
-      } else {
-        targetPath = "/en"
-      }
-    } else {
-      // Switching to Italian
-      if (currentPath === "/en" || currentPath === "") {
-        targetPath = "/"
-      } else if (currentPath === "/en/about") {
-        targetPath = "/chi-siamo"
-      } else if (currentPath.startsWith("/en/projects/")) {
-        // Project detail page: /en/projects/slug -> /progetti/slug
-        const slug = currentPath.replace("/en/projects/", "")
-        targetPath = `/progetti/${slug}`
-      } else if (currentPath === "/en/projects") {
-        targetPath = "/progetti"
-      } else if (currentPath === "/en/privacy") {
-        targetPath = "/privacy"
-      } else {
-        targetPath = "/"
-      }
-    }
+    const targetPath = getLanguageToggleTargetPath({
+      currentPath,
+      newLanguage,
+      projectTranslationPaths,
+    })
 
     navigate(targetPath)
   }
